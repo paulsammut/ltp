@@ -1,32 +1,36 @@
+#include <PacketSerial.h>
+#include "LTP.h"
+
 // LTP class file
-// LTP stands for Lidar Test Platfrom 
+// LTP stands for Lidar Test Platfrom
 // By Paul Sammut , Nov 2016
 
-class LTP
+
+LTP::LTP()
 {
-private:
-    int m_samplerate;
-    int m_actualRMP;
-    int m_motorpower;
-    int m_curMeasurement;
-    int m_curAngle;
-    bool m_debug;
-    bool m_run;
+  m_sampleRate = 100;
+  m_actualRMP = 0;
+  m_motorPower = 0;
+  m_curMeasurement = 0;
+  m_curAngle = 0;
+  m_debug = false;
+  m_run = false;
+}
 
-public:
-    void setSample(int angle, int measurement)
-    {
-        m_curAngle = angle;
-        m_curMeasurement = measurement;
-    }
+void LTP::setSample(int angle, int measurement)
+{
+  m_curAngle = angle;
+  m_curMeasurement = measurement;
+}
 
-    void setAngle(int angle)
-    {
-        m_curAngle = angle;
-    }
-    void setMeasurement(int measurement)
-    {
-        m_curMeasurement = measurement;
-    }
-};
+void LTP::setAngle(int angle)
+{
+  m_curAngle = angle;
+}
+
+void LTP::setMeasurement(int measurement)
+{
+  m_curMeasurement = measurement;
+}
+
 
