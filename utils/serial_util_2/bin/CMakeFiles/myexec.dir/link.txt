@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11   CMakeFiles/myexec.dir/read_port.cpp.o  -o myexec -rdynamic /usr/local/lib/libserial.so -lpthread -Wl,-rpath,/usr/local/lib 

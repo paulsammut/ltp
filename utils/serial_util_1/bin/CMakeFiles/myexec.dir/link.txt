@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11 -lserial -g   CMakeFiles/myexec.dir/main.cpp.o  -o myexec -rdynamic 
