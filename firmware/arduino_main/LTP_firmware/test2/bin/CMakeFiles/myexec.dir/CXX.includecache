@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test2/cobs2.cpp
+cobs2.h
+/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test2/cobs2.h
+iostream
+-
+
+/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test2/cobs2.h
+stdint.h
+-
+stddef.h
+-
+
+/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test2/main.cpp
+iostream
+-
+array
+-
+string
+-
+vector
+-
+cobs2.h
+/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test2/cobs2.h
+
