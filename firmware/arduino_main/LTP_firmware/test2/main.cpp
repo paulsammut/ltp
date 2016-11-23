@@ -4,6 +4,9 @@
 #include <vector>
 #include "cobs2.h"
 
+// I tried to use this other library from here but i don't need it. 
+// https://github.com/jacquesf/COBS-Consistent-Overhead-Byte-Stuffing
+
 int main()
 {
 

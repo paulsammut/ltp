@@ -1,6 +1,7 @@
 #pragma once
 
 #include <LIDARLite.h>
+#include <Wire.h>
 
 class LIDAR
 {
@@ -12,6 +13,7 @@ private:
 
 public:
     LIDAR();
+    void init();
 
-    void getDistance();
+    int getDistance();
 };
