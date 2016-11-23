@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/main.cpp" "/home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/bin/CMakeFiles/myexec.dir/main.cpp.o"
-  "/home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/packet.cpp" "/home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/bin/CMakeFiles/myexec.dir/packet.cpp.o"
+  "/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/main.cpp" "/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/bin/CMakeFiles/myexec.dir/main.cpp.o"
+  "/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/packet.cpp" "/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/bin/CMakeFiles/myexec.dir/packet.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

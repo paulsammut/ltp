@@ -1,4 +1,4 @@
-# Install script for directory: /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test
+# Install script for directory: /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/bin/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/bin/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

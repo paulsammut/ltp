@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/main.cpp
+/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/main.cpp
 iostream
 -
 array
@@ -16,11 +16,11 @@ string
 vector
 -
 packet.h
-/home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/packet.h
+/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/packet.h
 
-/home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/packet.cpp
+/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/packet.cpp
 packet.h
-/home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/packet.h
+/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/packet.h
 
-/home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/packet.h
+/home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/packet.h
 

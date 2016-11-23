@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test
+CMAKE_SOURCE_DIR = /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/bin
+CMAKE_BINARY_DIR = /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/bin
 
 # Include any dependencies generated for this target.
 include CMakeFiles/myexec.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/myexec.dir/flags.make
 
 CMakeFiles/myexec.dir/packet.cpp.o: CMakeFiles/myexec.dir/flags.make
 CMakeFiles/myexec.dir/packet.cpp.o: ../packet.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/bin/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/bin/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/myexec.dir/packet.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/myexec.dir/packet.cpp.o -c /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/packet.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/myexec.dir/packet.cpp.o -c /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/packet.cpp
 
 CMakeFiles/myexec.dir/packet.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myexec.dir/packet.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/packet.cpp > CMakeFiles/myexec.dir/packet.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/packet.cpp > CMakeFiles/myexec.dir/packet.cpp.i
 
 CMakeFiles/myexec.dir/packet.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myexec.dir/packet.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/packet.cpp -o CMakeFiles/myexec.dir/packet.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/packet.cpp -o CMakeFiles/myexec.dir/packet.cpp.s
 
 CMakeFiles/myexec.dir/packet.cpp.o.requires:
 .PHONY : CMakeFiles/myexec.dir/packet.cpp.o.requires
@@ -74,17 +74,17 @@ CMakeFiles/myexec.dir/packet.cpp.o.provides.build: CMakeFiles/myexec.dir/packet.
 
 CMakeFiles/myexec.dir/main.cpp.o: CMakeFiles/myexec.dir/flags.make
 CMakeFiles/myexec.dir/main.cpp.o: ../main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/bin/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/bin/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/myexec.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/myexec.dir/main.cpp.o -c /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/main.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/myexec.dir/main.cpp.o -c /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/main.cpp
 
 CMakeFiles/myexec.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myexec.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/main.cpp > CMakeFiles/myexec.dir/main.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/main.cpp > CMakeFiles/myexec.dir/main.cpp.i
 
 CMakeFiles/myexec.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myexec.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/main.cpp -o CMakeFiles/myexec.dir/main.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/main.cpp -o CMakeFiles/myexec.dir/main.cpp.s
 
 CMakeFiles/myexec.dir/main.cpp.o.requires:
 .PHONY : CMakeFiles/myexec.dir/main.cpp.o.requires
@@ -123,6 +123,6 @@ CMakeFiles/myexec.dir/clean:
 .PHONY : CMakeFiles/myexec.dir/clean
 
 CMakeFiles/myexec.dir/depend:
-	cd /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/bin && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/bin /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/bin /home/paul/work/LTP/firmware/arduino_main/LTP_firmware_main.ino/test/bin/CMakeFiles/myexec.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/bin && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/bin /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/bin /home/paul/work/LTP/firmware/arduino_main/LTP_firmware/test/bin/CMakeFiles/myexec.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/myexec.dir/depend
 
