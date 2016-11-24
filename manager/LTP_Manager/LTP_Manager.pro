@@ -13,8 +13,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        ltp_manager.cpp
+        ltp_manager.cpp \
+    packet.cpp \
+    handlepacket.cpp
 
-HEADERS  += ltp_manager.h
+HEADERS  += ltp_manager.h \
+    packet.h \
+    handlepacket.h
 
 FORMS    += ltp_manager.ui
