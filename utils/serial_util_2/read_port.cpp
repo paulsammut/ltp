@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <cstdlib>
 
-int main(int argc, char** argv) 
+int main(int argc, char** argv)
 {
     //
     // Open the serial port.
@@ -73,20 +73,39 @@ int main(int argc, char** argv)
     //
     // Wait for some data to be available at the serial port.
     //
-    while( serial_port.rdbuf()->in_avail() == 0 )
+
+    char buffer[256]; //make a buffer
+    int buffIndex = 0;
+    while(1)
     {
         usleep(100) ;
-    }
-    //
-    // Keep reading data from serial port and print it to the screen.
-    //
-    while( serial_port.rdbuf()->in_avail() > 0  )
-    {
-        char next_byte;
-        serial_port.get(next_byte);
-        std::cerr << std::hex << static_cast<int>(next_byte) << " ";
+        serial_port.read(buffer, 1);
+        if(buffer[0] == 0) {
+            std::cout << "End of packet!! Index:" << buffIndex<< std::endl;
+            buffIndex = 0;
+        } else
+        {
+            buffIndex++;
+        }
         usleep(100) ;
     }
+//
+// Keep reading data from serial port and print it to the screen.
+//
     std::cerr << std::endl ;
     return EXIT_SUCCESS ;
+
+    /*
+        while(1)
+        {
+            usleep(100) ;
+            if( serial_port.rdbuf()->in_avail() > 0  )
+            {
+                char next_byte;
+                serial_port.get(next_byte);
+                std::cerr << std::hex << static_cast<int>(next_byte) << " ";
+                usleep(100) ;
+            }
+        }
+    */
 }

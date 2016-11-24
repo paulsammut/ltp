@@ -22,7 +22,7 @@ void loop() {
   const uint8_t packet1 = lidar.getDistance();
   serial.send(&packet1, 1);
 
-  delay(5000);
+  delay(2);
   
 }
 
