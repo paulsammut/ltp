@@ -1,18 +1,24 @@
 
 #include <PacketSerial.h>
 #include "lidar.h"
+#include "encoder.h"
+
 
 LIDAR lidar;
 PacketSerial serial;
+Encoder encoder;
 
 void setup() {
   
   lidar.init();
+  encoder.init();
   // We must specify a packet handler method so that
-  // serial.setPacketHandler(&onPacket);
+  serial.setPacketHandler(&onPacket);
   serial.begin(115200);
-
+  
   Serial.println("Booted up!");
+
+  
 
 }
 
@@ -23,9 +29,9 @@ void loop() {
   //const uint8_t packet1 = lidar.getDistance();
   //serial.send(&packet1, 1);
 
-  delay(1000);
+  delay(10);
 
-  Serial.println("beep boop");
+  Serial.println(encoder.getAngle());
   
 }
 
