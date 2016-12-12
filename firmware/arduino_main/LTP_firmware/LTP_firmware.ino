@@ -29,7 +29,7 @@ void loop() {
   const uint8_t packet1 = lidar.getDistance();
   //serial.send(&packet1, 1);
 
-  delay(10);
+  //delay(10);
   Serial.print(packet1);
   Serial.print(",");
   Serial.println(encoder.getAngle());
