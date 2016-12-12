@@ -26,11 +26,12 @@ void loop() {
   // put your main code here, to run repeatedly:
   // serial.update();
 
-  //const uint8_t packet1 = lidar.getDistance();
+  const uint8_t packet1 = lidar.getDistance();
   //serial.send(&packet1, 1);
 
   delay(10);
-
+  Serial.print(packet1);
+  Serial.print(" ");
   Serial.println(encoder.getAngle());
   
 }
