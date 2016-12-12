@@ -31,7 +31,7 @@ void loop() {
 
   delay(10);
   Serial.print(packet1);
-  Serial.print(" ");
+  Serial.print(",");
   Serial.println(encoder.getAngle());
   
 }
