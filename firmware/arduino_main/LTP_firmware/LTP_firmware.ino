@@ -32,6 +32,7 @@ void setup() {
   
   Serial.println("Booted up!");
   setMotorSpeed(50);
+  //setPwmFrequency(6, 256);
 
   
 
@@ -49,7 +50,7 @@ void loop() {
   Serial.print(",");
   Serial.println(encoder.getAngle());
 
-  analogWrite(6, 50);
+  //analogWrite(6, 50);
   //generateMotorSig();
 }
 
@@ -77,5 +78,36 @@ void setMotorSpeed(int motorSpeed)
   motorDutyEndTime = (double)(motorSpeed)*0.01*motorDutyPeriod;
   Serial.print("MotorDuty end time is: ");
   Serial.println(motorDutyEndTime);
+}
+
+void setPwmFrequency(int pin, int divisor) {
+  byte mode;
+  if(pin == 5 || pin == 6 || pin == 9 || pin == 10) {
+    switch(divisor) {
+      case 1: mode = 0x01; break;
+      case 8: mode = 0x02; break;
+      case 64: mode = 0x03; break;
+      case 256: mode = 0x04; break;
+      case 1024: mode = 0x05; break;
+      default: return;
+    }
+    if(pin == 5 || pin == 6) {
+      TCCR0B = TCCR0B & 0b11111000 | mode;
+    } else {
+      TCCR1B = TCCR1B & 0b11111000 | mode;
+    }
+  } else if(pin == 3 || pin == 11) {
+    switch(divisor) {
+      case 1: mode = 0x01; break;
+      case 8: mode = 0x02; break;
+      case 32: mode = 0x03; break;
+      case 64: mode = 0x04; break;
+      case 128: mode = 0x05; break;
+      case 256: mode = 0x06; break;
+      case 1024: mode = 0x07; break;
+      default: return;
+    }
+    TCCR2B = TCCR2B & 0b11111000 | mode;
+  }
 }
 
