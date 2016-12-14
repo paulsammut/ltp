@@ -19,7 +19,7 @@ void LIDAR::init()
   m_biasTreshold = 100; // the datasheet says to do this every 100 samples
 
   m_LIDAR.begin(0, true); // Set configuration to default and I2C to 400 kHz
-  m_LIDAR.configure(1); // Change this number to try out alternate configurations
+  m_LIDAR.configure(2); // Change this number to try out alternate configurations
 }
 
 
