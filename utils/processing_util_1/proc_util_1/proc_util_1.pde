@@ -7,7 +7,7 @@ float inEncoder =0;
 float x = 0;
 float y = 0;
 
-int arrayLength =200;
+int arrayLength =100;
 float[][] myArray = new float[arrayLength][2];
 
 PFont f;
@@ -44,7 +44,7 @@ void draw () {
     // This is for creating different colors based on how new the point is. 
     for (int i = 0; i< arrayLength; i++) {
         int curColor = (int) map(i, 0,arrayLength, 0, 255);
-        fill(255 - curColor, curColor, i);
+        fill(0, curColor, 0);
         ellipse(myArray[i][0], myArray[i][1], 5, 5);
     }
 

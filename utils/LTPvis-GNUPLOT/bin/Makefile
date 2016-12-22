@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/paul/work/LTP/utils/serial_util_1
+CMAKE_SOURCE_DIR = /home/paul/work/LTP/utils/LTPvis-GNUPLOT
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/paul/work/LTP/utils/serial_util_1/bin
+CMAKE_BINARY_DIR = /home/paul/work/LTP/utils/LTPvis-GNUPLOT/bin
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/paul/work/LTP/utils/serial_util_1/bin/CMakeFiles /home/paul/work/LTP/utils/serial_util_1/bin/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/paul/work/LTP/utils/LTPvis-GNUPLOT/bin/CMakeFiles /home/paul/work/LTP/utils/LTPvis-GNUPLOT/bin/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/paul/work/LTP/utils/serial_util_1/bin/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/paul/work/LTP/utils/LTPvis-GNUPLOT/bin/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,32 +123,32 @@ myexec/fast:
 	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/build
 .PHONY : myexec/fast
 
-main.o: main.cpp.o
+LTPvis-GNUPLOT_serial.o: LTPvis-GNUPLOT_serial.cpp.o
 
-.PHONY : main.o
+.PHONY : LTPvis-GNUPLOT_serial.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/main.cpp.o
-.PHONY : main.cpp.o
+LTPvis-GNUPLOT_serial.cpp.o:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/LTPvis-GNUPLOT_serial.cpp.o
+.PHONY : LTPvis-GNUPLOT_serial.cpp.o
 
-main.i: main.cpp.i
+LTPvis-GNUPLOT_serial.i: LTPvis-GNUPLOT_serial.cpp.i
 
-.PHONY : main.i
+.PHONY : LTPvis-GNUPLOT_serial.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/main.cpp.i
-.PHONY : main.cpp.i
+LTPvis-GNUPLOT_serial.cpp.i:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/LTPvis-GNUPLOT_serial.cpp.i
+.PHONY : LTPvis-GNUPLOT_serial.cpp.i
 
-main.s: main.cpp.s
+LTPvis-GNUPLOT_serial.s: LTPvis-GNUPLOT_serial.cpp.s
 
-.PHONY : main.s
+.PHONY : LTPvis-GNUPLOT_serial.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/main.cpp.s
-.PHONY : main.cpp.s
+LTPvis-GNUPLOT_serial.cpp.s:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/LTPvis-GNUPLOT_serial.cpp.s
+.PHONY : LTPvis-GNUPLOT_serial.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... myexec"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... LTPvis-GNUPLOT_serial.o"
+	@echo "... LTPvis-GNUPLOT_serial.i"
+	@echo "... LTPvis-GNUPLOT_serial.s"
 .PHONY : help
 
 

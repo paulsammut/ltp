@@ -1,4 +1,4 @@
-#include <PacketSerial.h>
+ #include <PacketSerial.h>
 #include "lidar.h"
 #include "encoder.h"
 
@@ -10,18 +10,21 @@ int testPin2 = 7;
 int powerEnablePin = 2;
 
 void setup() {
+  pinMode(powerEnablePin, OUTPUT);
+  digitalWrite(powerEnablePin, HIGH);
+  
   lidar.init();
   encoder.init();
 
   pinMode(testPin1, OUTPUT);
-  pinMode(testPin2, OUTPUT);
-  pinMode(powerEnablePin, OUTPUT);
+  pinMode(testPin2, OUTPUT);  
   digitalWrite(testPin1, LOW);
   digitalWrite(testPin2, LOW);
-  digitalWrite(powerEnablePin, HIGH);
+  
   
   Serial.begin(115200);
-  Serial.println("Booted up!");  
+  Serial.println("Booted up!");
+  delay(500);
 }
 
 void loop() {

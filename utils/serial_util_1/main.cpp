@@ -73,6 +73,7 @@ int main(void)
     }
 
 
+    cfmakeraw(&new_termios);
     // Now read() and write() to the device at your heart's delight
 
     // Before leaving, reset the old serial settings.
