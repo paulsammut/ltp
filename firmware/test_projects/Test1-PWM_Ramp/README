@@ -1,0 +1,17 @@
+=======================================
+= Paul's PIC24 test projects ==========
+=======================================
+
+Test1-PWM_Ramp 
+
+Notes:
+
+Using perhipherals UART1 and MCCP1 I have a PWM signal that is swept from 0 to
+100% duty cycle and a uart that's going to my computer for debugging. There
+were some issues getting the configurations setup right.
+
+Oscillator is set as primary oscillator with a 32MHz crystal.
+
+This system has an issue with starting up. I have to hit the reset button for
+it work. Not sure what's up. I have the brownout bit enabled.
+
