@@ -147,9 +147,9 @@ section                    address   length (PC units)   length (bytes) (dec)
 .const                      0x114c                0x28            0x3c  (60)
 .text                       0x1174               0x62e           0x945  (2373)
 .dinit                      0x17a2                0xdc           0x14a  (330)
-.text                       0x187e               0x1dc           0x2ca  (714)
+.text                       0x187e               0x1ca           0x2af  (687)
 
-                 Total program memory used (bytes):         0x2487  (9351) 57%
+                 Total program memory used (bytes):         0x246c  (9324) 57%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -297,24 +297,24 @@ External Symbols in Program Memory (by address):
                   0x001926                  _UART1_Read
                   0x001944                  _UART1_Write
                   0x00195c                  _UART1_StatusGet
-                  0x001964                  _encoder_init
-                  0x001976                  _getAngle
-                  0x0019b4                  __OscillatorFail
-                  0x0019bc                  __StackError
-                  0x0019c6                  __AddressError
-                  0x0019ce                  __MathError
-                  0x0019d6                  _PIN_MANAGER_Initialize
-                  0x001a0e                  _SYSTEM_Initialize
-                  0x001a22                  _OSCILLATOR_Initialize
-                  0x001a3c                  _LTP_system_init
-                  0x001a54                  _INTERRUPT_Initialize
+                  0x00197a                  __OscillatorFail
+                  0x001982                  __StackError
+                  0x00198c                  __AddressError
+                  0x001994                  __MathError
+                  0x00199c                  _PIN_MANAGER_Initialize
+                  0x0019d4                  _SYSTEM_Initialize
+                  0x0019e8                  _OSCILLATOR_Initialize
+                  0x001a02                  _encoder_init
+                  0x001a14                  _getAngle
+                  0x001a2a                  _LTP_system_init
+                  0x001a42                  _INTERRUPT_Initialize
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x001a54                  _INTERRUPT_Initialize
-                  0x001a3c                  _LTP_system_init
+                  0x001a42                  _INTERRUPT_Initialize
+                  0x001a2a                  _LTP_system_init
                   0x001640                  _MCCP1_COMPARE_CenterAlignedPWMConfig
                   0x00161c                  _MCCP1_COMPARE_DualCompareValueSet
                   0x00162e                  _MCCP1_COMPARE_DualEdgeBufferedConfig
@@ -346,14 +346,14 @@ External Symbols in Program Memory (by name):
                   0x0014aa                  _MSSP2_I2C_MasterTRBInsert
                   0x001446                  _MSSP2_I2C_MasterWrite
                   0x001552                  _MSSP2_I2C_MasterWriteTRBBuild
-                  0x001a22                  _OSCILLATOR_Initialize
-                  0x0019d6                  _PIN_MANAGER_Initialize
-                  0x001a0e                  _SYSTEM_Initialize
+                  0x0019e8                  _OSCILLATOR_Initialize
+                  0x00199c                  _PIN_MANAGER_Initialize
+                  0x0019d4                  _SYSTEM_Initialize
                   0x001912                  _UART1_Initialize
                   0x001926                  _UART1_Read
                   0x00195c                  _UART1_StatusGet
                   0x001944                  _UART1_Write
-                  0x0019c6                  __AddressError
+                  0x00198c                  __AddressError
                   0x000da6                  __Atexit
                   0x000c70                  __Closreg
                   0x000d32                  __DNKfflush
@@ -364,10 +364,10 @@ External Symbols in Program Memory (by name):
                   0x000edc                  __Getmem
                   0x000892                  __Litob
                   0x0011ba                  __MSSP2Interrupt
-                  0x0019ce                  __MathError
-                  0x0019b4                  __OscillatorFail
+                  0x001994                  __MathError
+                  0x00197a                  __OscillatorFail
                   0x000af0                  __Puttxt
-                  0x0019bc                  __StackError
+                  0x001982                  __StackError
                   0x000c68                  __Vacopy
                   0x0003ae                  ___Printf_cdnopuxX
                   0x000512                  ___Putfld_cdnopuxX
@@ -387,11 +387,11 @@ External Symbols in Program Memory (by name):
                   0x00039e                  __printf_cdnopuxX
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x001964                  _encoder_init
+                  0x001a02                  _encoder_init
                   0x000c82                  _fclose
                   0x000dbe                  _free
                   0x000722                  _fwrite
-                  0x001976                  _getAngle
+                  0x001a14                  _getAngle
                   0x00187e                  _main
                   0x000e88                  _malloc
                   0x0007ca                  _memchr
@@ -605,7 +605,7 @@ __FICD
  *(.comment)
  .comment         0x000000         0x5e /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xfiles.XX_eo)
 
-.debug_info       0x000000       0x4150
+.debug_info       0x000000       0x4144
  *(.debug_info)
  .debug_info      0x000000         0xec build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_info      0x0000ec        0x394 build/default/production/mcc_generated_files/traps.o
@@ -617,7 +617,7 @@ __FICD
  .debug_info      0x002147        0x6a7 build/default/production/LTP_system.o
  .debug_info      0x0027ee        0x76b build/default/production/mcc_generated_files/mssp1_spi.o
  .debug_info      0x002f59        0xe9f build/default/production/mcc_generated_files/mssp2_i2c.o
- .debug_info      0x003df8        0x358 build/default/production/encoder.o
+ .debug_info      0x003df8        0x34c build/default/production/encoder.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x9c2
@@ -634,7 +634,7 @@ __FICD
  .debug_abbrev    0x0006f1        0x212 build/default/production/mcc_generated_files/mssp2_i2c.o
  .debug_abbrev    0x000903         0xbf build/default/production/encoder.o
 
-.debug_line       0x000000        0x9d0
+.debug_line       0x000000        0x9cd
  *(.debug_line)
  .debug_line      0x000000         0x55 build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_line      0x000055         0xf7 build/default/production/mcc_generated_files/traps.o
@@ -646,7 +646,7 @@ __FICD
  .debug_line      0x0005a3         0x8c build/default/production/LTP_system.o
  .debug_line      0x00062f        0x106 build/default/production/mcc_generated_files/mssp1_spi.o
  .debug_line      0x000735        0x1c4 build/default/production/mcc_generated_files/mssp2_i2c.o
- .debug_line      0x0008f9         0xd7 build/default/production/encoder.o
+ .debug_line      0x0008f9         0xd4 build/default/production/encoder.o
 
 .debug_frame      0x000000        0x6b8
  *(.debug_frame)
@@ -1756,7 +1756,7 @@ __c30_signature
 .dinit            0x0017a2         0xdc
  .dinit           0x0017a2         0xdc data_init
 
-.text             0x00187e        0x1dc
+.text             0x00187e        0x1ca
  .text            0x00187e         0x94 build/default/production/main.o
                   0x00187e                  _main
                   0x00188c                  _test1
@@ -1765,21 +1765,21 @@ __c30_signature
                   0x001926                  _UART1_Read
                   0x001944                  _UART1_Write
                   0x00195c                  _UART1_StatusGet
- .text            0x001964         0x3a build/default/production/encoder.o
-                  0x001964                  _encoder_init
-                  0x001976                  _getAngle
- .text            0x00199e         0x38 build/default/production/mcc_generated_files/traps.o
-                  0x00199e                  _TRAPS_halt_on_error
-                  0x0019b4                  __OscillatorFail
-                  0x0019bc                  __StackError
-                  0x0019c6                  __AddressError
-                  0x0019ce                  __MathError
- .text            0x0019d6         0x38 build/default/production/mcc_generated_files/pin_manager.o
-                  0x0019d6                  _PIN_MANAGER_Initialize
- .text            0x001a0e         0x2e build/default/production/mcc_generated_files/mcc.o
-                  0x001a0e                  _SYSTEM_Initialize
-                  0x001a22                  _OSCILLATOR_Initialize
- .text            0x001a3c         0x18 build/default/production/LTP_system.o
-                  0x001a3c                  _LTP_system_init
- .text            0x001a54          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
-                  0x001a54                  _INTERRUPT_Initialize
+ .text            0x001964         0x38 build/default/production/mcc_generated_files/traps.o
+                  0x001964                  _TRAPS_halt_on_error
+                  0x00197a                  __OscillatorFail
+                  0x001982                  __StackError
+                  0x00198c                  __AddressError
+                  0x001994                  __MathError
+ .text            0x00199c         0x38 build/default/production/mcc_generated_files/pin_manager.o
+                  0x00199c                  _PIN_MANAGER_Initialize
+ .text            0x0019d4         0x2e build/default/production/mcc_generated_files/mcc.o
+                  0x0019d4                  _SYSTEM_Initialize
+                  0x0019e8                  _OSCILLATOR_Initialize
+ .text            0x001a02         0x28 build/default/production/encoder.o
+                  0x001a02                  _encoder_init
+                  0x001a14                  _getAngle
+ .text            0x001a2a         0x18 build/default/production/LTP_system.o
+                  0x001a2a                  _LTP_system_init
+ .text            0x001a42          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x001a42                  _INTERRUPT_Initialize

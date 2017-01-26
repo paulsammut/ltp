@@ -55,11 +55,7 @@ uint16_t getAngle(void) {
     
     //read MRD1
     SS_ENCODER = 0;
-        int i;
-    for(i = 0; i < 20; i++)
-    {
-        Nop();
-    }
+
     MSSP1_SPI_Exchange8bit(0x48);
     LSByte = MSSP1_SPI_Exchange8bit(0x00);
     SS_ENCODER = 1;
