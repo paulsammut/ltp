@@ -16,7 +16,7 @@ extern "C" {
     
 void encoder_init(void);
 
-uint16_t getAngle(void);
+int16_t getAngle(void);
 
 
 
