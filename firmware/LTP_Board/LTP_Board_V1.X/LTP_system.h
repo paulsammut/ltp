@@ -19,6 +19,8 @@ extern "C" {
 #define DP2 LATCbits.LATC1
 #define MOTOR_DIR LATBbits.LATB6
 #define SS_ENCODER LATBbits.LATB12
+#define LIDAR1_PE LATBbits.LATB7
+    
 
 void LTP_system_init(void);
     

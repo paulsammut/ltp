@@ -2,16 +2,14 @@
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
 
-
 void encoder_init(void) {
-    
+
     // Here we set the registers of the LS7366R chip to 
     // do a reset of the count after passing the index
-    
     SS_ENCODER = 0;
-    MSSP1_SPI_Exchange8bit(0x88);// Write to MRD0
-    MSSP1_SPI_Exchange8bit(0x23);// x4 quadrature, Index resets CNTR
-    SS_ENCODER = 1;    
+    MSSP1_SPI_Exchange8bit(0x88); // Write to MRD0
+    MSSP1_SPI_Exchange8bit(0x23); // x4 quadrature, Index resets CNTR
+    SS_ENCODER = 1;
 
 }
 
