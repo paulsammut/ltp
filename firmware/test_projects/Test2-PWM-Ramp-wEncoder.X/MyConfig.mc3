@@ -435,7 +435,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="System Module" registerAlias="FPOR" settingAlias="BORV"/>
-         <value>V30</value>
+         <value>V18</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="MCCP1" registerAlias="CCPCON1H" settingAlias="IOPS" alias="4th Time Base Period Match"/>
@@ -2635,7 +2635,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="System Module" registerAlias="FPOR"/>
-         <value>191</value>
+         <value>255</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="LATA" settingAlias="LATA4" alias="clear"/>
@@ -7025,7 +7025,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files/mcc.c</file>
-         <hash>f46977f54fb4595c2eedfe4f35a51e389ab2f178059eacfc876faee110948b9c</hash>
+         <hash>22a69477d5a56b94862cdd772d6aa2330b4af1fec39a88d82f60d6924c42e458</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/uart1.c</file>

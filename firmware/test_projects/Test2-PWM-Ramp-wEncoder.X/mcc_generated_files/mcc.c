@@ -77,7 +77,7 @@
 #pragma config RETCFG = OFF    // ->Retention regulator is not available
 #pragma config PWRTEN = ON    // Power-up Timer Enable bit->PWRT enabled
 #pragma config I2C1SEL = PRI    // Alternate I2C1 Pin Mapping bit->Use Default SCL1/SDA1 Pins For I2C1
-#pragma config BORV = V30    // Brown-out Reset Voltage bits->Brown-out Reset set to Highest Voltage (3.0V)
+#pragma config BORV = V18    // Brown-out Reset Voltage bits->Brown-out Reset set to lowest voltage (1.8V)
 #pragma config MCLRE = ON    // MCLR Pin Enable bit->RA5 input pin disabled, MCLR pin enabled
 
 // FICD
