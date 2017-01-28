@@ -105,8 +105,9 @@ void test1(void)
     // Toggle the LED output pin to alternate between the LED being on and off
     DEBUG_GREEN ^= 1;
     
-    printf("PWM val is %d, and head angle is %d\n\r",PWMval,getAngle());
+    printf("PWM val is %d, and head angle is %d",PWMval,getAngle());
     testEncoder();
+    printf("\r\n");
 
     c++;
     
