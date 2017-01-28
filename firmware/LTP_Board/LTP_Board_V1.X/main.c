@@ -106,8 +106,11 @@ void test1(void)
     DEBUG_GREEN ^= 1;
     
     printf("PWM val is %d, and head angle is %d\n\r",PWMval,getAngle());
+    testEncoder();
 
     c++;
+    
+    //lidar_getDistance();
     
     //getAngle();
     

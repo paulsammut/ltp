@@ -44,4 +44,8 @@ int16_t getAngle(void) {
     return readData;
 }
 
+void testEncoder(void) {
+    printf("Encoder is posting: 0x%02x\r\n",MSSP1_SPI_Exchange8bit(0x00));
+}
+
 

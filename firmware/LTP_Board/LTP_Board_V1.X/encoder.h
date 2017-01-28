@@ -18,6 +18,8 @@ void encoder_init(void);
 
 int16_t getAngle(void);
 
+void testEncoder(void);
+
 
 
 #ifdef	__cplusplus

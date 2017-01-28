@@ -20,6 +20,7 @@ void LTP_system_init(void)
    LIDAR1_PE = 1;  // turn on lidar
     
     encoder_init();
+    lidar_init();
     
     
 }

@@ -4,6 +4,7 @@
  *
  * Created on January 26, 2017, 12:33 PM
  */
+#include <stdint.h> // needed for the return types of the 
 
 #ifndef LIDAR_H
 #define	LIDAR_H
@@ -15,6 +16,7 @@ extern "C" {
     
     void lidar_init();
     
+    uint16_t lidar_getDistance(void);
 
 
 #ifdef	__cplusplus
