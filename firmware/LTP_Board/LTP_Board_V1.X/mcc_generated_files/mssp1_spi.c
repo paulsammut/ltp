@@ -59,8 +59,8 @@ void MSSP1_SPI_Initialize (void)
 {
     // SMP Middle; CKE Active to Idle; 
     SSP1STAT = 0x0040;
-    // SSPEN enabled; WCOL no_collision; CKP Idle:Low, Active:High; SSPM FOSC/32; SSPOV no_overflow; 
-    SSP1CON1 = 0x0022;
+    // SSPEN enabled; WCOL no_collision; CKP Idle:Low, Active:High; SSPM FOSC/8; SSPOV no_overflow; 
+    SSP1CON1 = 0x0021;
     // ACKEN disabled; GCEN disabled; PEN disabled; ACKDT acknowledge; RSEN disabled; RCEN disabled; SEN disabled; 
     SSP1CON2 = 0x0000;
     // SBCDE disabled; BOEN disabled; SCIE disabled; PCIE disabled; DHEN disabled; SDAHT 100ns; AHEN disabled; 

@@ -12,7 +12,7 @@ uint16_t lidar_getDistance(void){
     uint8_t *pData = malloc(sizeof(*pData));
     *pData = 0x40;
     uint8_t length = 1;
-    uint16_t address = 0x62;
+    uint16_t address = 0xC4;
     MSSP2_I2C_MESSAGE_STATUS pStatus =MSSP2_I2C_MESSAGE_COMPLETE;
     
      MSSP2_I2C_MasterWrite(pData, length, address, &pStatus);

@@ -66,12 +66,11 @@ int main(void)
     // initialize the device
     SYSTEM_Initialize();
     LTP_system_init();
+    DEBUG_RED =1; 
+    DEBUG_GREEN =1; 
     while(1)
     {
-        
-        DEBUG_RED = 0;
-        DEBUG_RED = 0;
-        test1();
+        test2();
 
     }
 
@@ -105,16 +104,22 @@ void test1(void)
     // Toggle the LED output pin to alternate between the LED being on and off
     DEBUG_GREEN ^= 1;
     
+    c++;
+    
     printf("PWM val is %d, and head angle is %d",PWMval,getAngle());
     testEncoder();
     printf("\r\n");
-
-    c++;
     
     //lidar_getDistance();
     
     //getAngle();
     
+}
+
+
+// I2C test
+test2(void){
+    lidar_getDistance();
 }
 /**
  End of File

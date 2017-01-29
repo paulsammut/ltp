@@ -17,9 +17,11 @@ void LTP_system_init(void)
      TRISBbits.TRISB5 = 0;   //output - LIDAR Power enable 
      
     SS_ENCODER = 1; //idle high
-   LIDAR1_PE = 1;  // turn on lidar
-    
-    encoder_init();
+    LIDAR1_PE = 1;  // turn on lidar
+    DEBUG_GREEN = 0;
+    DEBUG_RED =0;
+     
+      encoder_init();
     lidar_init();
     
     
