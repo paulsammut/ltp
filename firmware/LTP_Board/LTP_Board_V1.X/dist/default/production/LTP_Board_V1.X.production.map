@@ -157,14 +157,14 @@ Program Memory  [Origin = 0x200, Length = 0x2a00]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200              0x1128          0x19bc  (6588)
-.const                      0x1328                0x7a            0xb7  (183)
-.text                       0x13a2               0x7e8           0xbdc  (3036)
-.dinit                      0x1b8a                0xde           0x14d  (333)
-.text                       0x1c68               0x228           0x33c  (828)
-.init.delay32               0x1e90                0x1c            0x2a  (42)
-.text                       0x1eac                 0x6             0x9  (9)
+.const                      0x1328                0x80            0xc0  (192)
+.text                       0x13a8               0x822           0xc33  (3123)
+.dinit                      0x1bca                0xde           0x14d  (333)
+.text                       0x1ca8               0x224           0x336  (822)
+.init.delay32               0x1ecc                0x1c            0x2a  (42)
+.text                       0x1ee8                 0x6             0x9  (9)
 
-                 Total program memory used (bytes):         0x2b0b  (11019) 68%
+                 Total program memory used (bytes):         0x2b65  (11109) 68%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -277,110 +277,110 @@ External Symbols in Program Memory (by address):
                   0x00126c                  ___divdi3
                   0x0012cc                  ___moddi3
                   0x001328                  _period
-                  0x0013a2                  _MSSP2_I2C_Initialize
-                  0x0013da                  _MSSP2_I2C_ErrorCountGet
-                  0x0013e8                  __MSSP2Interrupt
-                  0x001674                  _MSSP2_I2C_MasterWrite
-                  0x0016a6                  _MSSP2_I2C_MasterRead
-                  0x0016d8                  _MSSP2_I2C_MasterTRBInsert
-                  0x001750                  _MSSP2_I2C_MasterReadTRBBuild
-                  0x001780                  _MSSP2_I2C_MasterWriteTRBBuild
-                  0x0017a4                  _MSSP2_I2C_MasterQueueIsEmpty
-                  0x0017be                  _MSSP2_I2C_MasterQueueIsFull
-                  0x0017d6                  _lidar_init
-                  0x0017ee                  _lidar_getDistance
-                  0x001858                  _LIDAR_Read
-                  0x00191e                  _LIDAR_Write
-                  0x00198e                  _MCCP1_COMPARE_Initialize
-                  0x0019c4                  _MCCP1_COMPARE_Tasks
-                  0x0019d4                  _MCCP1_COMPARE_TimerTasks
-                  0x0019e6                  _MCCP1_COMPARE_Start
-                  0x0019ee                  _MCCP1_COMPARE_Stop
-                  0x0019f6                  _MCCP1_COMPARE_SingleCompare16ValueSet
-                  0x001a02                  _MCCP1_COMPARE_DualCompareValueSet
-                  0x001a14                  _MCCP1_COMPARE_DualEdgeBufferedConfig
-                  0x001a26                  _MCCP1_COMPARE_CenterAlignedPWMConfig
-                  0x001a38                  _MCCP1_COMPARE_VariableFrequencyPulseConfig
-                  0x001a44                  _MCCP1_COMPARE_IsCompareCycleComplete
-                  0x001a5c                  _MCCP1_COMPARE_TriggerStatusGet
-                  0x001a74                  _MCCP1_COMPARE_TriggerStatusSet
-                  0x001a7c                  _MCCP1_COMPARE_TriggerStatusClear
-                  0x001a84                  _MCCP1_COMPARE_SingleCompareStatusGet
-                  0x001a9c                  _MCCP1_COMPARE_SingleCompareStatusClear
-                  0x001aa4                  _MSSP1_SPI_Initialize
-                  0x001abc                  _MSSP1_SPI_Exchange8bit
-                  0x001ad6                  _MSSP1_SPI_Exchange8bitBuffer
-                  0x001b4a                  _MSSP1_SPI_IsBufferFull
-                  0x001b5e                  _MSSP1_SPI_HasWriteCollisionOccured
-                  0x001b74                  _MSSP1_SPI_HasReceiveOverflowOccured
-                  0x001c68                  _main
-                  0x001c80                  _test1
-                  0x001d0c                  _test2
-                  0x001d14                  _encoder_init
-                  0x001d26                  _getAngle
-                  0x001d60                  _testEncoder
-                  0x001d80                  _UART1_Initialize
-                  0x001d94                  _UART1_Read
-                  0x001db2                  _UART1_Write
-                  0x001dca                  _UART1_StatusGet
-                  0x001de8                  __OscillatorFail
-                  0x001df0                  __StackError
-                  0x001dfa                  __AddressError
-                  0x001e02                  __MathError
-                  0x001e0a                  _PIN_MANAGER_Initialize
-                  0x001e42                  _SYSTEM_Initialize
-                  0x001e56                  _OSCILLATOR_Initialize
-                  0x001e70                  _LTP_system_init
-                  0x001e90                  ___delay32
-                  0x001eac                  _INTERRUPT_Initialize
+                  0x0013a8                  _MSSP2_I2C_Initialize
+                  0x0013e0                  _MSSP2_I2C_ErrorCountGet
+                  0x0013ee                  __MSSP2Interrupt
+                  0x00167a                  _MSSP2_I2C_MasterWrite
+                  0x0016ac                  _MSSP2_I2C_MasterRead
+                  0x0016de                  _MSSP2_I2C_MasterTRBInsert
+                  0x001756                  _MSSP2_I2C_MasterReadTRBBuild
+                  0x001786                  _MSSP2_I2C_MasterWriteTRBBuild
+                  0x0017aa                  _MSSP2_I2C_MasterQueueIsEmpty
+                  0x0017c4                  _MSSP2_I2C_MasterQueueIsFull
+                  0x0017dc                  _lidar_init
+                  0x00182e                  _lidar_getDistance
+                  0x001898                  _LIDAR_Read
+                  0x00195e                  _LIDAR_Write
+                  0x0019ce                  _MCCP1_COMPARE_Initialize
+                  0x001a04                  _MCCP1_COMPARE_Tasks
+                  0x001a14                  _MCCP1_COMPARE_TimerTasks
+                  0x001a26                  _MCCP1_COMPARE_Start
+                  0x001a2e                  _MCCP1_COMPARE_Stop
+                  0x001a36                  _MCCP1_COMPARE_SingleCompare16ValueSet
+                  0x001a42                  _MCCP1_COMPARE_DualCompareValueSet
+                  0x001a54                  _MCCP1_COMPARE_DualEdgeBufferedConfig
+                  0x001a66                  _MCCP1_COMPARE_CenterAlignedPWMConfig
+                  0x001a78                  _MCCP1_COMPARE_VariableFrequencyPulseConfig
+                  0x001a84                  _MCCP1_COMPARE_IsCompareCycleComplete
+                  0x001a9c                  _MCCP1_COMPARE_TriggerStatusGet
+                  0x001ab4                  _MCCP1_COMPARE_TriggerStatusSet
+                  0x001abc                  _MCCP1_COMPARE_TriggerStatusClear
+                  0x001ac4                  _MCCP1_COMPARE_SingleCompareStatusGet
+                  0x001adc                  _MCCP1_COMPARE_SingleCompareStatusClear
+                  0x001ae4                  _MSSP1_SPI_Initialize
+                  0x001afc                  _MSSP1_SPI_Exchange8bit
+                  0x001b16                  _MSSP1_SPI_Exchange8bitBuffer
+                  0x001b8a                  _MSSP1_SPI_IsBufferFull
+                  0x001b9e                  _MSSP1_SPI_HasWriteCollisionOccured
+                  0x001bb4                  _MSSP1_SPI_HasReceiveOverflowOccured
+                  0x001ca8                  _main
+                  0x001cbc                  _test1
+                  0x001d48                  _test2
+                  0x001d50                  _encoder_init
+                  0x001d62                  _getAngle
+                  0x001d9c                  _testEncoder
+                  0x001dbc                  _UART1_Initialize
+                  0x001dd0                  _UART1_Read
+                  0x001dee                  _UART1_Write
+                  0x001e06                  _UART1_StatusGet
+                  0x001e24                  __OscillatorFail
+                  0x001e2c                  __StackError
+                  0x001e36                  __AddressError
+                  0x001e3e                  __MathError
+                  0x001e46                  _PIN_MANAGER_Initialize
+                  0x001e7e                  _SYSTEM_Initialize
+                  0x001e92                  _OSCILLATOR_Initialize
+                  0x001eac                  _LTP_system_init
+                  0x001ecc                  ___delay32
+                  0x001ee8                  _INTERRUPT_Initialize
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x001eac                  _INTERRUPT_Initialize
-                  0x001858                  _LIDAR_Read
-                  0x00191e                  _LIDAR_Write
-                  0x001e70                  _LTP_system_init
-                  0x001a26                  _MCCP1_COMPARE_CenterAlignedPWMConfig
-                  0x001a02                  _MCCP1_COMPARE_DualCompareValueSet
-                  0x001a14                  _MCCP1_COMPARE_DualEdgeBufferedConfig
-                  0x00198e                  _MCCP1_COMPARE_Initialize
-                  0x001a44                  _MCCP1_COMPARE_IsCompareCycleComplete
-                  0x0019f6                  _MCCP1_COMPARE_SingleCompare16ValueSet
-                  0x001a9c                  _MCCP1_COMPARE_SingleCompareStatusClear
-                  0x001a84                  _MCCP1_COMPARE_SingleCompareStatusGet
-                  0x0019e6                  _MCCP1_COMPARE_Start
-                  0x0019ee                  _MCCP1_COMPARE_Stop
-                  0x0019c4                  _MCCP1_COMPARE_Tasks
-                  0x0019d4                  _MCCP1_COMPARE_TimerTasks
-                  0x001a7c                  _MCCP1_COMPARE_TriggerStatusClear
-                  0x001a5c                  _MCCP1_COMPARE_TriggerStatusGet
-                  0x001a74                  _MCCP1_COMPARE_TriggerStatusSet
-                  0x001a38                  _MCCP1_COMPARE_VariableFrequencyPulseConfig
-                  0x001abc                  _MSSP1_SPI_Exchange8bit
-                  0x001ad6                  _MSSP1_SPI_Exchange8bitBuffer
-                  0x001b74                  _MSSP1_SPI_HasReceiveOverflowOccured
-                  0x001b5e                  _MSSP1_SPI_HasWriteCollisionOccured
-                  0x001aa4                  _MSSP1_SPI_Initialize
-                  0x001b4a                  _MSSP1_SPI_IsBufferFull
-                  0x0013da                  _MSSP2_I2C_ErrorCountGet
-                  0x0013a2                  _MSSP2_I2C_Initialize
-                  0x0017a4                  _MSSP2_I2C_MasterQueueIsEmpty
-                  0x0017be                  _MSSP2_I2C_MasterQueueIsFull
-                  0x0016a6                  _MSSP2_I2C_MasterRead
-                  0x001750                  _MSSP2_I2C_MasterReadTRBBuild
-                  0x0016d8                  _MSSP2_I2C_MasterTRBInsert
-                  0x001674                  _MSSP2_I2C_MasterWrite
-                  0x001780                  _MSSP2_I2C_MasterWriteTRBBuild
-                  0x001e56                  _OSCILLATOR_Initialize
-                  0x001e0a                  _PIN_MANAGER_Initialize
-                  0x001e42                  _SYSTEM_Initialize
-                  0x001d80                  _UART1_Initialize
-                  0x001d94                  _UART1_Read
-                  0x001dca                  _UART1_StatusGet
-                  0x001db2                  _UART1_Write
-                  0x001dfa                  __AddressError
+                  0x001ee8                  _INTERRUPT_Initialize
+                  0x001898                  _LIDAR_Read
+                  0x00195e                  _LIDAR_Write
+                  0x001eac                  _LTP_system_init
+                  0x001a66                  _MCCP1_COMPARE_CenterAlignedPWMConfig
+                  0x001a42                  _MCCP1_COMPARE_DualCompareValueSet
+                  0x001a54                  _MCCP1_COMPARE_DualEdgeBufferedConfig
+                  0x0019ce                  _MCCP1_COMPARE_Initialize
+                  0x001a84                  _MCCP1_COMPARE_IsCompareCycleComplete
+                  0x001a36                  _MCCP1_COMPARE_SingleCompare16ValueSet
+                  0x001adc                  _MCCP1_COMPARE_SingleCompareStatusClear
+                  0x001ac4                  _MCCP1_COMPARE_SingleCompareStatusGet
+                  0x001a26                  _MCCP1_COMPARE_Start
+                  0x001a2e                  _MCCP1_COMPARE_Stop
+                  0x001a04                  _MCCP1_COMPARE_Tasks
+                  0x001a14                  _MCCP1_COMPARE_TimerTasks
+                  0x001abc                  _MCCP1_COMPARE_TriggerStatusClear
+                  0x001a9c                  _MCCP1_COMPARE_TriggerStatusGet
+                  0x001ab4                  _MCCP1_COMPARE_TriggerStatusSet
+                  0x001a78                  _MCCP1_COMPARE_VariableFrequencyPulseConfig
+                  0x001afc                  _MSSP1_SPI_Exchange8bit
+                  0x001b16                  _MSSP1_SPI_Exchange8bitBuffer
+                  0x001bb4                  _MSSP1_SPI_HasReceiveOverflowOccured
+                  0x001b9e                  _MSSP1_SPI_HasWriteCollisionOccured
+                  0x001ae4                  _MSSP1_SPI_Initialize
+                  0x001b8a                  _MSSP1_SPI_IsBufferFull
+                  0x0013e0                  _MSSP2_I2C_ErrorCountGet
+                  0x0013a8                  _MSSP2_I2C_Initialize
+                  0x0017aa                  _MSSP2_I2C_MasterQueueIsEmpty
+                  0x0017c4                  _MSSP2_I2C_MasterQueueIsFull
+                  0x0016ac                  _MSSP2_I2C_MasterRead
+                  0x001756                  _MSSP2_I2C_MasterReadTRBBuild
+                  0x0016de                  _MSSP2_I2C_MasterTRBInsert
+                  0x00167a                  _MSSP2_I2C_MasterWrite
+                  0x001786                  _MSSP2_I2C_MasterWriteTRBBuild
+                  0x001e92                  _OSCILLATOR_Initialize
+                  0x001e46                  _PIN_MANAGER_Initialize
+                  0x001e7e                  _SYSTEM_Initialize
+                  0x001dbc                  _UART1_Initialize
+                  0x001dd0                  _UART1_Read
+                  0x001e06                  _UART1_StatusGet
+                  0x001dee                  _UART1_Write
+                  0x001e36                  __AddressError
                   0x000a66                  __Atexit
                   0x00092c                  __Closreg
                   0x0009d8                  __DNKfflush
@@ -390,15 +390,15 @@ External Symbols in Program Memory (by name):
                   0x0004cc                  __Fwprep
                   0x000cd6                  __Getmem
                   0x000cee                  __Litob
-                  0x0013e8                  __MSSP2Interrupt
-                  0x001e02                  __MathError
-                  0x001de8                  __OscillatorFail
+                  0x0013ee                  __MSSP2Interrupt
+                  0x001e3e                  __MathError
+                  0x001e24                  __OscillatorFail
                   0x000f4e                  __Puttxt
-                  0x001df0                  __StackError
+                  0x001e2c                  __StackError
                   0x000a7e                  __Vacopy
                   0x000590                  ___Printf_cdnopuxX
                   0x000714                  ___Putfld_cdnopuxX
-                  0x001e90                  ___delay32
+                  0x001ecc                  ___delay32
                   0x00126c                  ___divdi3
                   0x0010d4                  ___divsi3
                   0x0012cc                  ___moddi3
@@ -415,16 +415,16 @@ External Symbols in Program Memory (by name):
                   0x000580                  __printf_cdnopuxX
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x001d14                  _encoder_init
+                  0x001d50                  _encoder_init
                   0x00093e                  _fclose
                   0x000398                  _fputc
                   0x0003e4                  _fputs
                   0x000a82                  _free
                   0x000aec                  _fwrite
-                  0x001d26                  _getAngle
-                  0x0017ee                  _lidar_getDistance
-                  0x0017d6                  _lidar_init
-                  0x001c68                  _main
+                  0x001d62                  _getAngle
+                  0x00182e                  _lidar_getDistance
+                  0x0017dc                  _lidar_init
+                  0x001ca8                  _main
                   0x000c38                  _malloc
                   0x000ca6                  _memchr
                   0x00047e                  _memcpy
@@ -433,9 +433,9 @@ External Symbols in Program Memory (by name):
                   0x000a4e                  _strchr
                   0x000494                  _strlen
                   0x0004ac                  _strrchr
-                  0x001c80                  _test1
-                  0x001d0c                  _test2
-                  0x001d60                  _testEncoder
+                  0x001cbc                  _test1
+                  0x001d48                  _test2
+                  0x001d9c                  _testEncoder
                   0x00033e                  _write
                   0x0009c2                  fclose.XX_eo:_closeall
                   0x00055c                  printf_cdnopuxX.XXelo:_prout
@@ -653,7 +653,7 @@ __FICD
  *(.comment)
  .comment         0x000000         0x5e /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xfiles.XX_eo)
 
-.debug_info       0x000000       0x479a
+.debug_info       0x000000       0x492c
  *(.debug_info)
  .debug_info      0x000000         0xec build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_info      0x0000ec        0x394 build/default/production/mcc_generated_files/traps.o
@@ -666,10 +666,10 @@ __FICD
  .debug_info      0x0032a8        0x4a6 build/default/production/main.o
  .debug_info      0x00374e        0x8c9 build/default/production/LTP_system.o
  .debug_info      0x004017        0x389 build/default/production/encoder.o
- .debug_info      0x0043a0        0x3fa build/default/production/lidar.o
+ .debug_info      0x0043a0        0x58c build/default/production/lidar.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0xab5
+.debug_abbrev     0x000000        0xae7
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x34 build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_abbrev    0x000034        0x10d build/default/production/mcc_generated_files/traps.o
@@ -682,9 +682,9 @@ __FICD
  .debug_abbrev    0x00078c         0xfc build/default/production/main.o
  .debug_abbrev    0x000888         0x7d build/default/production/LTP_system.o
  .debug_abbrev    0x000905         0xc9 build/default/production/encoder.o
- .debug_abbrev    0x0009ce         0xe7 build/default/production/lidar.o
+ .debug_abbrev    0x0009ce        0x119 build/default/production/lidar.o
 
-.debug_line       0x000000        0xaf2
+.debug_line       0x000000        0xb43
  *(.debug_line)
  .debug_line      0x000000         0x55 build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_line      0x000055         0xf7 build/default/production/mcc_generated_files/traps.o
@@ -694,10 +694,10 @@ __FICD
  .debug_line      0x000401        0x10b build/default/production/mcc_generated_files/uart1.o
  .debug_line      0x00050c        0x106 build/default/production/mcc_generated_files/mssp1_spi.o
  .debug_line      0x000612        0x1c4 build/default/production/mcc_generated_files/mssp2_i2c.o
- .debug_line      0x0007d6         0x9f build/default/production/main.o
- .debug_line      0x000875         0x90 build/default/production/LTP_system.o
- .debug_line      0x000905         0xdd build/default/production/encoder.o
- .debug_line      0x0009e2        0x110 build/default/production/lidar.o
+ .debug_line      0x0007d6         0x9d build/default/production/main.o
+ .debug_line      0x000873         0x90 build/default/production/LTP_system.o
+ .debug_line      0x000903         0xdd build/default/production/encoder.o
+ .debug_line      0x0009e0        0x163 build/default/production/lidar.o
 
 .debug_frame      0x000000        0x796
  *(.debug_frame)
@@ -714,7 +714,7 @@ __FICD
  .debug_frame     0x000690         0x6e build/default/production/encoder.o
  .debug_frame     0x0006fe         0x98 build/default/production/lidar.o
 
-.debug_str        0x000000        0x1ec
+.debug_str        0x000000        0x1f5
  *(.debug_str)
  .debug_str       0x000000          0xc build/default/production/mcc_generated_files/traps.o
  .debug_str       0x00000c         0x9d build/default/production/mcc_generated_files/mccp1_compare.o
@@ -724,7 +724,7 @@ __FICD
  .debug_str       0x000162         0x12 build/default/production/main.o
  .debug_str       0x000174         0x39 build/default/production/LTP_system.o
  .debug_str       0x0001ad          0x9 build/default/production/encoder.o
- .debug_str       0x0001b6         0x36 build/default/production/lidar.o
+ .debug_str       0x0001b6         0x3f build/default/production/lidar.o
 
 .debug_loc
  *(.debug_loc)
@@ -1580,7 +1580,7 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000128        0x4e7
+                  0x000128        0x504
  .debug_pubtypes
                   0x000128         0x12 build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_pubtypes
@@ -1604,104 +1604,104 @@ LOAD data_init
  .debug_pubtypes
                   0x000580         0x47 build/default/production/encoder.o
  .debug_pubtypes
-                  0x0005c7         0x48 build/default/production/lidar.o
+                  0x0005c7         0x65 build/default/production/lidar.o
 
 __c30_signature
-                  0x00060f        0x11a
+                  0x00062c        0x11a
  __c30_signature
-                  0x00060f          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x00062c          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
  __c30_signature
-                  0x000615          0x6 build/default/production/mcc_generated_files/traps.o
+                  0x000632          0x6 build/default/production/mcc_generated_files/traps.o
  __c30_signature
-                  0x00061b          0x6 build/default/production/mcc_generated_files/mcc.o
+                  0x000638          0x6 build/default/production/mcc_generated_files/mcc.o
  __c30_signature
-                  0x000621          0x6 build/default/production/mcc_generated_files/pin_manager.o
+                  0x00063e          0x6 build/default/production/mcc_generated_files/pin_manager.o
  __c30_signature
-                  0x000627          0x6 build/default/production/mcc_generated_files/mccp1_compare.o
+                  0x000644          0x6 build/default/production/mcc_generated_files/mccp1_compare.o
  __c30_signature
-                  0x00062d          0x6 build/default/production/mcc_generated_files/uart1.o
+                  0x00064a          0x6 build/default/production/mcc_generated_files/uart1.o
  __c30_signature
-                  0x000633          0x6 build/default/production/mcc_generated_files/mssp1_spi.o
+                  0x000650          0x6 build/default/production/mcc_generated_files/mssp1_spi.o
  __c30_signature
-                  0x000639          0x6 build/default/production/mcc_generated_files/mssp2_i2c.o
+                  0x000656          0x6 build/default/production/mcc_generated_files/mssp2_i2c.o
  __c30_signature
-                  0x00063f          0x6 build/default/production/main.o
+                  0x00065c          0x6 build/default/production/main.o
  __c30_signature
-                  0x000645          0x6 build/default/production/LTP_system.o
+                  0x000662          0x6 build/default/production/LTP_system.o
  __c30_signature
-                  0x00064b          0x6 build/default/production/encoder.o
+                  0x000668          0x6 build/default/production/encoder.o
  __c30_signature
-                  0x000651          0x6 build/default/production/lidar.o
+                  0x00066e          0x6 build/default/production/lidar.o
  __c30_signature
-                  0x000657          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(crt0_standard.o)
+                  0x000674          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x00065d          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(data_init_standard.o)
+                  0x00067a          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(data_init_standard.o)
  __c30_signature
-                  0x000663          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(delay32.Leo)
+                  0x000680          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(delay32.Leo)
  __c30_signature
-                  0x000669          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(puts.XX_eo)
+                  0x000686          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(puts.XX_eo)
  __c30_signature
-                  0x00066f          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xfiles.XX_eo)
+                  0x00068c          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xfiles.XX_eo)
  __c30_signature
-                  0x000675          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(fputc.XX_elo)
+                  0x000692          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(fputc.XX_elo)
  __c30_signature
-                  0x00067b          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(fputs.XX_elo)
+                  0x000698          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(fputs.XX_elo)
  __c30_signature
-                  0x000681          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(memcpy.XX_elo)
+                  0x00069e          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(memcpy.XX_elo)
  __c30_signature
-                  0x000687          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(strlen.XX_elo)
+                  0x0006a4          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(strlen.XX_elo)
  __c30_signature
-                  0x00068d          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(strrchr.XX_elo)
+                  0x0006aa          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(strrchr.XX_elo)
  __c30_signature
-                  0x000693          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xfwprep.XX_elo)
+                  0x0006b0          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xfwprep.XX_elo)
  __c30_signature
-                  0x000699          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(printf_cdnopuxX.XXelo)
+                  0x0006b6          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(printf_cdnopuxX.XXelo)
  __c30_signature
-                  0x00069f          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xprintf_cdnopuxX.XXelo)
+                  0x0006bc          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xprintf_cdnopuxX.XXelo)
  __c30_signature
-                  0x0006a5          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xputfld_cdnopuxX.XXelo)
+                  0x0006c2          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xputfld_cdnopuxX.XXelo)
  __c30_signature
-                  0x0006ab          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(fclose.XX_eo)
+                  0x0006c8          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(fclose.XX_eo)
  __c30_signature
-                  0x0006b1          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(fflush.XX_eo)
+                  0x0006ce          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(fflush.XX_eo)
  __c30_signature
-                  0x0006b7          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(strchr.XX_eo)
+                  0x0006d4          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(strchr.XX_eo)
  __c30_signature
-                  0x0006bd          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xatexit.XX_eo)
+                  0x0006da          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xatexit.XX_eo)
  __c30_signature
-                  0x0006c3          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xvacopy.XX_eo)
+                  0x0006e0          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xvacopy.XX_eo)
  __c30_signature
-                  0x0006c9          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(free.XX_elo)
+                  0x0006e6          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(free.XX_elo)
  __c30_signature
-                  0x0006cf          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(fwrite.XX_elo)
+                  0x0006ec          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(fwrite.XX_elo)
  __c30_signature
-                  0x0006d5          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(malloc.XX_elo)
+                  0x0006f2          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(malloc.XX_elo)
  __c30_signature
-                  0x0006db          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(memchr.XX_elo)
+                  0x0006f8          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(memchr.XX_elo)
  __c30_signature
-                  0x0006e1          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xgetmem.XX_elo)
+                  0x0006fe          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xgetmem.XX_elo)
  __c30_signature
-                  0x0006e7          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xlitob.XX_elo)
+                  0x000704          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xlitob.XX_elo)
  __c30_signature
-                  0x0006ed          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xputtxt.XX_elo)
+                  0x00070a          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xputtxt.XX_elo)
  __c30_signature
-                  0x0006f3          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(close.Leo)
+                  0x000710          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(close.Leo)
  __c30_signature
-                  0x0006f9          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(remove.Leo)
+                  0x000716          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(remove.Leo)
  __c30_signature
-                  0x0006ff          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(sbrk.Leo)
+                  0x00071c          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(sbrk.Leo)
  __c30_signature
-                  0x000705          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(brk.Lelo)
+                  0x000722          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(brk.Lelo)
  __c30_signature
-                  0x00070b          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/libm-elf.a(divsi3.eo)
+                  0x000728          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/libm-elf.a(divsi3.eo)
  __c30_signature
-                  0x000711          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/libm-elf.a(udivsi3.eo)
+                  0x00072e          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/libm-elf.a(udivsi3.eo)
  __c30_signature
-                  0x000717          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/libm-elf.a(umodsi3.eo)
+                  0x000734          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/libm-elf.a(umodsi3.eo)
  __c30_signature
-                  0x00071d          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/libm-elf.a(mulsi3.eo)
+                  0x00073a          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/libm-elf.a(mulsi3.eo)
  __c30_signature
-                  0x000723          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/libm-elf.a(divmoddi3.eo)
+                  0x000740          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/libm-elf.a(divmoddi3.eo)
 
 .nbss               0x0800         0x64
  .nbss              0x0800         0x2a build/default/production/mcc_generated_files/mssp2_i2c.o
@@ -1781,89 +1781,89 @@ __c30_signature
  .ivt._MSSP2Interrupt
                   0x000076          0x2 build/default/production/mcc_generated_files/mssp2_i2c.o
 
-.const              0x9328         0x7a load address 0x001328  
+.const              0x9328         0x80 load address 0x001328  
  .const             0x9328         0x3e build/default/production/main.o
                     0x9328                  _period
- .const             0x9366         0x20 build/default/production/lidar.o
- .const             0x9386         0x1c build/default/production/encoder.o
+ .const             0x9366         0x26 build/default/production/lidar.o
+ .const             0x938c         0x1c build/default/production/encoder.o
 
-.text             0x0013a2        0x7e8
- .text            0x0013a2        0x434 build/default/production/mcc_generated_files/mssp2_i2c.o
-                  0x0013a2                  _MSSP2_I2C_Initialize
-                  0x0013da                  _MSSP2_I2C_ErrorCountGet
-                  0x0013e8                  __MSSP2Interrupt
-                  0x001674                  _MSSP2_I2C_MasterWrite
-                  0x0016a6                  _MSSP2_I2C_MasterRead
-                  0x0016d8                  _MSSP2_I2C_MasterTRBInsert
-                  0x001750                  _MSSP2_I2C_MasterReadTRBBuild
-                  0x001780                  _MSSP2_I2C_MasterWriteTRBBuild
-                  0x0017a4                  _MSSP2_I2C_MasterQueueIsEmpty
-                  0x0017be                  _MSSP2_I2C_MasterQueueIsFull
- .text            0x0017d6        0x1b8 build/default/production/lidar.o
-                  0x0017d6                  _lidar_init
-                  0x0017ee                  _lidar_getDistance
-                  0x001858                  _LIDAR_Read
-                  0x00191e                  _LIDAR_Write
- .text            0x00198e        0x116 build/default/production/mcc_generated_files/mccp1_compare.o
-                  0x00198e                  _MCCP1_COMPARE_Initialize
-                  0x0019c4                  _MCCP1_COMPARE_Tasks
-                  0x0019d4                  _MCCP1_COMPARE_TimerTasks
-                  0x0019e6                  _MCCP1_COMPARE_Start
-                  0x0019ee                  _MCCP1_COMPARE_Stop
-                  0x0019f6                  _MCCP1_COMPARE_SingleCompare16ValueSet
-                  0x001a02                  _MCCP1_COMPARE_DualCompareValueSet
-                  0x001a14                  _MCCP1_COMPARE_DualEdgeBufferedConfig
-                  0x001a26                  _MCCP1_COMPARE_CenterAlignedPWMConfig
-                  0x001a38                  _MCCP1_COMPARE_VariableFrequencyPulseConfig
-                  0x001a44                  _MCCP1_COMPARE_IsCompareCycleComplete
-                  0x001a5c                  _MCCP1_COMPARE_TriggerStatusGet
-                  0x001a74                  _MCCP1_COMPARE_TriggerStatusSet
-                  0x001a7c                  _MCCP1_COMPARE_TriggerStatusClear
-                  0x001a84                  _MCCP1_COMPARE_SingleCompareStatusGet
-                  0x001a9c                  _MCCP1_COMPARE_SingleCompareStatusClear
- .text            0x001aa4         0xe6 build/default/production/mcc_generated_files/mssp1_spi.o
-                  0x001aa4                  _MSSP1_SPI_Initialize
-                  0x001abc                  _MSSP1_SPI_Exchange8bit
-                  0x001ad6                  _MSSP1_SPI_Exchange8bitBuffer
-                  0x001b4a                  _MSSP1_SPI_IsBufferFull
-                  0x001b5e                  _MSSP1_SPI_HasWriteCollisionOccured
-                  0x001b74                  _MSSP1_SPI_HasReceiveOverflowOccured
+.text             0x0013a8        0x822
+ .text            0x0013a8        0x434 build/default/production/mcc_generated_files/mssp2_i2c.o
+                  0x0013a8                  _MSSP2_I2C_Initialize
+                  0x0013e0                  _MSSP2_I2C_ErrorCountGet
+                  0x0013ee                  __MSSP2Interrupt
+                  0x00167a                  _MSSP2_I2C_MasterWrite
+                  0x0016ac                  _MSSP2_I2C_MasterRead
+                  0x0016de                  _MSSP2_I2C_MasterTRBInsert
+                  0x001756                  _MSSP2_I2C_MasterReadTRBBuild
+                  0x001786                  _MSSP2_I2C_MasterWriteTRBBuild
+                  0x0017aa                  _MSSP2_I2C_MasterQueueIsEmpty
+                  0x0017c4                  _MSSP2_I2C_MasterQueueIsFull
+ .text            0x0017dc        0x1f2 build/default/production/lidar.o
+                  0x0017dc                  _lidar_init
+                  0x00182e                  _lidar_getDistance
+                  0x001898                  _LIDAR_Read
+                  0x00195e                  _LIDAR_Write
+ .text            0x0019ce        0x116 build/default/production/mcc_generated_files/mccp1_compare.o
+                  0x0019ce                  _MCCP1_COMPARE_Initialize
+                  0x001a04                  _MCCP1_COMPARE_Tasks
+                  0x001a14                  _MCCP1_COMPARE_TimerTasks
+                  0x001a26                  _MCCP1_COMPARE_Start
+                  0x001a2e                  _MCCP1_COMPARE_Stop
+                  0x001a36                  _MCCP1_COMPARE_SingleCompare16ValueSet
+                  0x001a42                  _MCCP1_COMPARE_DualCompareValueSet
+                  0x001a54                  _MCCP1_COMPARE_DualEdgeBufferedConfig
+                  0x001a66                  _MCCP1_COMPARE_CenterAlignedPWMConfig
+                  0x001a78                  _MCCP1_COMPARE_VariableFrequencyPulseConfig
+                  0x001a84                  _MCCP1_COMPARE_IsCompareCycleComplete
+                  0x001a9c                  _MCCP1_COMPARE_TriggerStatusGet
+                  0x001ab4                  _MCCP1_COMPARE_TriggerStatusSet
+                  0x001abc                  _MCCP1_COMPARE_TriggerStatusClear
+                  0x001ac4                  _MCCP1_COMPARE_SingleCompareStatusGet
+                  0x001adc                  _MCCP1_COMPARE_SingleCompareStatusClear
+ .text            0x001ae4         0xe6 build/default/production/mcc_generated_files/mssp1_spi.o
+                  0x001ae4                  _MSSP1_SPI_Initialize
+                  0x001afc                  _MSSP1_SPI_Exchange8bit
+                  0x001b16                  _MSSP1_SPI_Exchange8bitBuffer
+                  0x001b8a                  _MSSP1_SPI_IsBufferFull
+                  0x001b9e                  _MSSP1_SPI_HasWriteCollisionOccured
+                  0x001bb4                  _MSSP1_SPI_HasReceiveOverflowOccured
 
-.dinit            0x001b8a         0xde
- .dinit           0x001b8a         0xde data_init
+.dinit            0x001bca         0xde
+ .dinit           0x001bca         0xde data_init
 
-.text             0x001c68        0x228
- .text            0x001c68         0xac build/default/production/main.o
-                  0x001c68                  _main
-                  0x001c80                  _test1
-                  0x001d0c                  _test2
- .text            0x001d14         0x6c build/default/production/encoder.o
-                  0x001d14                  _encoder_init
-                  0x001d26                  _getAngle
-                  0x001d60                  _testEncoder
- .text            0x001d80         0x52 build/default/production/mcc_generated_files/uart1.o
-                  0x001d80                  _UART1_Initialize
-                  0x001d94                  _UART1_Read
-                  0x001db2                  _UART1_Write
-                  0x001dca                  _UART1_StatusGet
- .text            0x001dd2         0x38 build/default/production/mcc_generated_files/traps.o
-                  0x001dd2                  _TRAPS_halt_on_error
-                  0x001de8                  __OscillatorFail
-                  0x001df0                  __StackError
-                  0x001dfa                  __AddressError
-                  0x001e02                  __MathError
- .text            0x001e0a         0x38 build/default/production/mcc_generated_files/pin_manager.o
-                  0x001e0a                  _PIN_MANAGER_Initialize
- .text            0x001e42         0x2e build/default/production/mcc_generated_files/mcc.o
-                  0x001e42                  _SYSTEM_Initialize
-                  0x001e56                  _OSCILLATOR_Initialize
- .text            0x001e70         0x20 build/default/production/LTP_system.o
-                  0x001e70                  _LTP_system_init
+.text             0x001ca8        0x224
+ .text            0x001ca8         0xa8 build/default/production/main.o
+                  0x001ca8                  _main
+                  0x001cbc                  _test1
+                  0x001d48                  _test2
+ .text            0x001d50         0x6c build/default/production/encoder.o
+                  0x001d50                  _encoder_init
+                  0x001d62                  _getAngle
+                  0x001d9c                  _testEncoder
+ .text            0x001dbc         0x52 build/default/production/mcc_generated_files/uart1.o
+                  0x001dbc                  _UART1_Initialize
+                  0x001dd0                  _UART1_Read
+                  0x001dee                  _UART1_Write
+                  0x001e06                  _UART1_StatusGet
+ .text            0x001e0e         0x38 build/default/production/mcc_generated_files/traps.o
+                  0x001e0e                  _TRAPS_halt_on_error
+                  0x001e24                  __OscillatorFail
+                  0x001e2c                  __StackError
+                  0x001e36                  __AddressError
+                  0x001e3e                  __MathError
+ .text            0x001e46         0x38 build/default/production/mcc_generated_files/pin_manager.o
+                  0x001e46                  _PIN_MANAGER_Initialize
+ .text            0x001e7e         0x2e build/default/production/mcc_generated_files/mcc.o
+                  0x001e7e                  _SYSTEM_Initialize
+                  0x001e92                  _OSCILLATOR_Initialize
+ .text            0x001eac         0x20 build/default/production/LTP_system.o
+                  0x001eac                  _LTP_system_init
 
-.init.delay32     0x001e90         0x1c
- .init.delay32    0x001e90         0x1c /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(delay32.Leo)
-                  0x001e90                  ___delay32
+.init.delay32     0x001ecc         0x1c
+ .init.delay32    0x001ecc         0x1c /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(delay32.Leo)
+                  0x001ecc                  ___delay32
 
-.text             0x001eac          0x6
- .text            0x001eac          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
-                  0x001eac                  _INTERRUPT_Initialize
+.text             0x001ee8          0x6
+ .text            0x001ee8          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x001ee8                  _INTERRUPT_Initialize

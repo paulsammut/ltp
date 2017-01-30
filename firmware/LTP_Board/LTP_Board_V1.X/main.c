@@ -68,18 +68,21 @@ int main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-    LTP_system_init();
+    
     printf("\r\n");
     printf("LTP_BOARD_BOOTING..\r\n");
+    
+    LTP_system_init();
+
     DEBUG_RED =1; 
     DEBUG_GREEN =1; 
 
    
-    test2();
+    //test2();
      
     while(1)
     {
-        lidar_getDistance(); 
+        //lidar_getDistance(); 
     }
 
     return -1;
