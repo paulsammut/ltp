@@ -88,8 +88,8 @@
 void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
-    OSCILLATOR_Initialize();
     INTERRUPT_Initialize();
+    OSCILLATOR_Initialize();
     MSSP2_I2C_Initialize();
     UART1_Initialize();
     MSSP1_SPI_Initialize();

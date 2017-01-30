@@ -46,7 +46,9 @@
 #include "mcc_generated_files/mcc.h"
 #include <stdio.h>
 #include "LTP_system.h"
-
+#include "lidar.h"
+#include "encoder.h"
+#include "mcc_generated_files/mccp1_compare.h"
 /*
                          Main application
  */
@@ -59,6 +61,7 @@ char buf[20];
 bool rampup = 1;
 
 void test1(void);
+void test2(void);
 
     
 int main(void)
@@ -68,10 +71,10 @@ int main(void)
     LTP_system_init();
     DEBUG_RED =1; 
     DEBUG_GREEN =1; 
+    
     while(1)
     {
         test2();
-
     }
 
     return -1;
@@ -118,7 +121,7 @@ void test1(void)
 
 
 // I2C test
-test2(void){
+void test2(void){
     lidar_getDistance();
 }
 /**

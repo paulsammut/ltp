@@ -1,6 +1,7 @@
 #include "encoder.h"
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
+#include <stdio.h>
 
 void encoder_init(void) {
 
