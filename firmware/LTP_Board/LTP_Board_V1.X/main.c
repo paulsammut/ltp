@@ -71,10 +71,10 @@ int main(void)
     LTP_system_init();
     DEBUG_RED =1; 
     DEBUG_GREEN =1; 
-    
+     test2();
     while(1)
     {
-        test2();
+       
     }
 
     return -1;
