@@ -161,3 +161,64 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
     // Sucessfull read!
     return (1);
 }
+
+
+uint8_t LIDAR_Write(uint8_t registerAddress, uint8_t pData){
+
+    MSSP2_I2C_MESSAGE_STATUS status = MSSP2_I2C_MESSAGE_PENDING;
+    uint8_t writeBuffer[2];
+    uint16_t retryTimeOut, slaveTimeOut;
+
+    // build the write buffer first
+    writeBuffer[0] = registerAddress;
+    writeBuffer[1] = pData;
+
+    // Now it is possible that the slave device will be slow.
+    // As a work around on these slaves, the application can
+    // retry sending the transaction
+    retryTimeOut = 0;
+    slaveTimeOut = 0;
+
+    while (status != MSSP2_I2C_MESSAGE_FAIL) {
+        // write the register address to the Lidar that we want to read
+        printf("writing!\r\n");
+        MSSP2_I2C_MasterWrite(writeBuffer,
+                              2,
+                              LIDAR_ADDRESS,
+                              &status);
+
+        // wait for the message to be sent or status has changed.
+        while (status == MSSP2_I2C_MESSAGE_PENDING) {
+            // add some delay here
+
+            // timeout checking
+            // check for max retry and skip this byte
+            if (slaveTimeOut == LIDAR_DEVICE_TIMEOUT)
+                return (0);
+            else
+                slaveTimeOut++;
+        }
+
+        if (status == MSSP2_I2C_MESSAGE_COMPLETE)
+            break;
+
+        // if status is  MSSP2_I2C_MESSAGE_ADDRESS_NO_ACK,
+        //               or MSSP2_I2C_DATA_NO_ACK,
+        // The device may be busy and needs more time for the last
+        // write so we can retry writing the data, this is why we
+        // use a while loop here
+
+        // check for max retry and skip this byte
+        if (retryTimeOut == LIDAR_DEVICE_TIMEOUT)
+            return (0);
+        else
+            retryTimeOut++;
+    }
+
+    if (status == MSSP2_I2C_MESSAGE_FAIL) {
+        return (0);
+    }
+
+    // Sucessfull read!
+    return (1);
+}

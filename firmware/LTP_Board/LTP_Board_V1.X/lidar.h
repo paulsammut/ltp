@@ -24,6 +24,29 @@ uint16_t lidar_getDistance(void);
 
 /**
     @Summary
+        Writes one byte to the LIDAR. 
+
+    @Description
+        This function does an I2C write with error checking and monitoring.
+
+    @Preconditions
+        None
+
+    @Param
+        registerAddress - The address of the register to be accessed
+
+    @Param
+        *pdata - A pointer to the memory location where received data will
+                 be stored
+
+    @Returns
+        0 if read was unsuccessful, 1 if the read was successful
+*/
+
+uint8_t LIDAR_Write(uint8_t registerAddress, uint8_t pData);
+
+/**
+    @Summary
         Reads a specified number of bytes from the Lidar.
 
     @Description
@@ -37,14 +60,14 @@ uint16_t lidar_getDistance(void);
         None
 
     @Param
-        address - The address of the i2c peripheral to be accessed
-
-    @Param
-        length - The number of bytes to read.
+        registerAddress - The address of the register to be accessed
 
     @Param
         *pdata - A pointer to the memory location where received data will
                  be stored
+    @Param
+        length - The number of bytes to read.
+
 
     @Returns
         0 if read was unsuccessful, 1 if the read was successful
