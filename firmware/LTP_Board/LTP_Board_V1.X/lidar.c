@@ -21,8 +21,13 @@ uint16_t lidar_getDistance(void) {
     LIDAR_Write(0x00, 0x04);
     __delay_ms(100);
     uint8_t response = LIDAR_Read(0x01, pData, 1);
-    if(response == 1)
+    if(response == 1){
         printf("Reading: %d", pData[0]);
+        LIDAR_Read(0x8f, pData, 2);
+
+        uint16_t distance = pData[0]<<8 || pData[1];
+        printf("Distance is: %d",distance);
+    }
 
     return 0;
 }

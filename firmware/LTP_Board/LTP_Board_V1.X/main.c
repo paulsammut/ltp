@@ -79,7 +79,7 @@ int main(void)
      
     while(1)
     {
-       
+        lidar_getDistance(); 
     }
 
     return -1;
