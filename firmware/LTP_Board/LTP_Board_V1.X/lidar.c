@@ -2,13 +2,8 @@
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
 #include <stdlib.h>
-#include <stdio.h> 
+#include <stdio.h>
 
-#define LIDAR_RETRY_MAX       100  // define the retry count
-#define LIDAR_ADDRESS         0x62 // slave device address
-#define LIDAR_DEVICE_TIMEOUT  50   // define slave timeout 
-
-uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData);
 
 void lidar_init(void) {
 
@@ -35,31 +30,33 @@ uint16_t lidar_getDistance(void) {
         if (pStatus == MSSP2_I2C_MESSAGE_COMPLETE)
             printf("yay!\r\n");
     }
-    
-    LIDAR_Read(0x02, pData);
 
-   
-    
-
-
-
+    LIDAR_Read(0x02, pData, 1);
 
     return 0;
 }
 
 /*
-     switch(pStatus){
-        case MSSP2_I2C_MESSAGE_FAIL                        : printf("MSSP2_I2C_MESSAGE_FAIL\n\r"); break;
-        case MSSP2_I2C_MESSAGE_PENDING                : printf("MSSP2_I2C_MESSAGE_PENDING\n\r");break;
-        case MSSP2_I2C_MESSAGE_COMPLETE            : printf("MSSP2_I2C_MESSAGE_COMPLETE\n\r");break;
-        case MSSP2_I2C_STUCK_START                         : printf("MSSP2_I2C_STUCK_START\n\r");break;
-        case MSSP2_I2C_MESSAGE_ADDRESS_NO_ACK    : printf("MSSP2_I2C_MESSAGE_ADDRESS_NO_ACK\n\r");break;
-        case MSSP2_I2C_DATA_NO_ACK    : printf("MSSP2_I2C_DATA_NO_ACK\n\r");break;
-        case MSSP2_I2C_LOST_STATE    : printf("MSSP2_I2C_LOST_STATE\n\r");break;
-        default: break;
-    }*/
+switch(pStatus){
+    case MSSP2_I2C_MESSAGE_FAIL: 
+        printf("MSSP2_I2C_MESSAGE_FAIL\n\r"); break;
+    case MSSP2_I2C_MESSAGE_PENDING:
+        printf("MSSP2_I2C_MESSAGE_PENDING\n\r");break;
+    case MSSP2_I2C_MESSAGE_COMPLETE: 
+        printf("MSSP2_I2C_MESSAGE_COMPLETE\n\r");break;
+    case MSSP2_I2C_STUCK_START: 
+        printf("MSSP2_I2C_STUCK_START\n\r");break;
+    case MSSP2_I2C_MESSAGE_ADDRESS_NO_ACK: 
+        printf("MSSP2_I2C_MESSAGE_ADDRESS_NO_ACK\n\r");break;
+    case MSSP2_I2C_DATA_NO_ACK: 
+        printf("MSSP2_I2C_DATA_NO_ACK\n\r");break;
+    case MSSP2_I2C_LOST_STATE: 
+        printf("MSSP2_I2C_LOST_STATE\n\r");break;
+    default: break;
+}
+*/
 
-uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData) {
+uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
 
     MSSP2_I2C_MESSAGE_STATUS status = MSSP2_I2C_MESSAGE_PENDING;
     uint8_t writeBuffer[2];
@@ -67,7 +64,6 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData) {
     uint8_t *pD;
 
     pD = pData;
-
 
     // build the write buffer first
     writeBuffer[0] = registerAddress;
@@ -77,15 +73,14 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData) {
     // retry sending the transaction
     retryTimeOut = 0;
     slaveTimeOut = 0;
-    
 
     while (status != MSSP2_I2C_MESSAGE_FAIL) {
-        // write one byte to EEPROM (2 is the count of bytes to write)
-         printf("writing!\r\n");
+        // write the register address to the Lidar that we want to read
+        printf("writing!\r\n");
         MSSP2_I2C_MasterWrite(writeBuffer,
-                1,
-                LIDAR_ADDRESS,
-                &status);
+                              1,
+                              LIDAR_ADDRESS,
+                              &status);
 
         // wait for the message to be sent or status has changed.
         while (status == MSSP2_I2C_MESSAGE_PENDING) {
@@ -116,17 +111,16 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData) {
     }
 
     if (status == MSSP2_I2C_MESSAGE_COMPLETE) {
-
         // this portion will read the byte from the memory location.
         retryTimeOut = 0;
         slaveTimeOut = 0;
 
         while (status != MSSP2_I2C_MESSAGE_FAIL) {
-            // write one byte to EEPROM (2 is the count of bytes to write)
+            // Do a read request for the number of bytes that we want
             MSSP2_I2C_MasterRead(pD,
-                    1,
-                    LIDAR_ADDRESS,
-                    &status);
+                                 length,
+                                 LIDAR_ADDRESS,
+                                 &status);
 
             // wait for the message to be sent or status has changed.
             while (status == MSSP2_I2C_MESSAGE_PENDING) {
@@ -140,8 +134,8 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData) {
                     slaveTimeOut++;
             }
 
-            if (status == MSSP2_I2C_MESSAGE_COMPLETE){
-                printf("Read:%d",pD[0]);
+            if (status == MSSP2_I2C_MESSAGE_COMPLETE) {
+                printf("Read: 0x%02x",pD[0]);
                 break;
             }
 
@@ -164,7 +158,6 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData) {
         return (0);
     }
 
-    
+    // Sucessfull read!
     return (1);
-
 }
