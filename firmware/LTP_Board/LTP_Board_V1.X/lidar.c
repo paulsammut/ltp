@@ -4,6 +4,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define FOSC    (32000000ULL)
+#define FCY     (FOSC/2)
+  
+#include <libpic30.h>
 
 void lidar_init(void) {
 
@@ -11,27 +15,10 @@ void lidar_init(void) {
 
 uint16_t lidar_getDistance(void) {
     uint8_t pData[4] = {0x40, 0x00,0x00,0x49};
-    uint8_t length = 2;
-    uint16_t address = 0x62;
-    MSSP2_I2C_MESSAGE_STATUS pStatus = MSSP2_I2C_MESSAGE_COMPLETE;
-    uint16_t retryTimeOut, slaveTimeOut;
 
-    //MSSP2_I2C_MasterWrite(pData, length, address, &pStatus);
-    while (pStatus == MSSP2_I2C_MESSAGE_PENDING) {
-        // add some delay here
-
-        // timeout checking
-        // check for max retry and skip this byte
-        if (slaveTimeOut == LIDAR_DEVICE_TIMEOUT)
-            return (0);
-        else
-            slaveTimeOut++;
-
-        if (pStatus == MSSP2_I2C_MESSAGE_COMPLETE)
-            printf("yay!\r\n");
-    }
-
-    LIDAR_Read(0x02, pData, 1);
+    //LIDAR_Write(0x00, 0x04);
+    //__delay_ms(100);
+    LIDAR_Read(0x01, pData, 1);
 
     return 0;
 }
@@ -76,7 +63,7 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
 
     while (status != MSSP2_I2C_MESSAGE_FAIL) {
         // write the register address to the Lidar that we want to read
-        printf("writing!\r\n");
+        printf("Writing register for read!\r\n");
         MSSP2_I2C_MasterWrite(writeBuffer,
                               1,
                               LIDAR_ADDRESS,
@@ -94,8 +81,9 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
                 slaveTimeOut++;
         }
 
-        if (status == MSSP2_I2C_MESSAGE_COMPLETE)
+        if (status == MSSP2_I2C_MESSAGE_COMPLETE){
             break;
+        }
 
         // if status is  MSSP2_I2C_MESSAGE_ADDRESS_NO_ACK,
         //               or MSSP2_I2C_DATA_NO_ACK,
@@ -104,13 +92,16 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
         // use a while loop here
 
         // check for max retry and skip this byte
-        if (retryTimeOut == LIDAR_DEVICE_TIMEOUT)
+        if (retryTimeOut == LIDAR_DEVICE_TIMEOUT){
+            printf("LIDAR_DEVICE_TIMEOUT\r\n");
             break;
+        }
         else
             retryTimeOut++;
     }
 
     if (status == MSSP2_I2C_MESSAGE_COMPLETE) {
+        printf("Register write complete. \r\n");
         // this portion will read the byte from the memory location.
         retryTimeOut = 0;
         slaveTimeOut = 0;
@@ -128,8 +119,10 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
 
                 // timeout checking
                 // check for max retry and skip this byte
-                if (slaveTimeOut == LIDAR_DEVICE_TIMEOUT)
+                if (slaveTimeOut == LIDAR_DEVICE_TIMEOUT){
+                    printf("LIDAR_DEVICE_TIMEOUT on read\r\n");
                     return (0);
+                }
                 else
                     slaveTimeOut++;
             }
@@ -155,6 +148,7 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
 
     // exit if the last transaction failed
     if (status == MSSP2_I2C_MESSAGE_FAIL) {
+        printf("Read failed!\r\n");
         return (0);
     }
 

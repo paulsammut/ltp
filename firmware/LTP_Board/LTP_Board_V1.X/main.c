@@ -72,7 +72,8 @@ int main(void)
     printf("\r\n");
     DEBUG_RED =1; 
     DEBUG_GREEN =1; 
-     test2();
+
+    test2();
      
     while(1)
     {
