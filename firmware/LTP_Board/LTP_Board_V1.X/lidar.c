@@ -18,9 +18,11 @@ void lidar_init(void) {
 uint16_t lidar_getDistance(void) {
     uint8_t pData[4] = {0x40, 0x00,0x00,0x49};
 
-    //LIDAR_Write(0x00, 0x04);
-    //__delay_ms(100);
-    LIDAR_Read(0x01, pData, 1);
+    LIDAR_Write(0x00, 0x04);
+    __delay_ms(100);
+    uint8_t response = LIDAR_Read(0x01, pData, 1);
+    if(response == 1)
+        printf("Reading: %d", pData[0]);
 
     return 0;
 }

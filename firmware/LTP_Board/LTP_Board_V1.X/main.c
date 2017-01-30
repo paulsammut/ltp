@@ -75,7 +75,7 @@ int main(void)
     DEBUG_GREEN =1; 
 
    
-    //test2();
+    test2();
      
     while(1)
     {
