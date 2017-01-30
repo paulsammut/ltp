@@ -70,10 +70,12 @@ int main(void)
     SYSTEM_Initialize();
     LTP_system_init();
     printf("\r\n");
+    printf("LTP_BOARD_BOOTING..\r\n");
     DEBUG_RED =1; 
     DEBUG_GREEN =1; 
 
-    test2();
+   
+    //test2();
      
     while(1)
     {

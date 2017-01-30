@@ -21,7 +21,7 @@ void LTP_system_init(void)
     DEBUG_GREEN = 0;
     DEBUG_RED =0;
      
-      encoder_init();
+    encoder_init();
     lidar_init();
     
     

@@ -10,7 +10,9 @@
 #include <libpic30.h>
 
 void lidar_init(void) {
-
+      LIDAR_Write(0x02, 0x80);
+      LIDAR_Write(0x04, 0x08);
+      LIDAR_Write(0x1c, 0x00);
 }
 
 uint16_t lidar_getDistance(void) {
@@ -63,7 +65,7 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
 
     while (status != MSSP2_I2C_MESSAGE_FAIL) {
         // write the register address to the Lidar that we want to read
-        printf("Writing register for read!\r\n");
+        // printf("Writing register for read!\r\n");
         MSSP2_I2C_MasterWrite(writeBuffer,
                               1,
                               LIDAR_ADDRESS,
@@ -93,7 +95,7 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
 
         // check for max retry and skip this byte
         if (retryTimeOut == LIDAR_DEVICE_TIMEOUT){
-            printf("LIDAR_DEVICE_TIMEOUT\r\n");
+            //printf("LIDAR_DEVICE_TIMEOUT\r\n");
             break;
         }
         else
@@ -101,7 +103,7 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
     }
 
     if (status == MSSP2_I2C_MESSAGE_COMPLETE) {
-        printf("Register write complete. \r\n");
+        //printf("Register write complete. \r\n");
         // this portion will read the byte from the memory location.
         retryTimeOut = 0;
         slaveTimeOut = 0;
@@ -120,7 +122,7 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
                 // timeout checking
                 // check for max retry and skip this byte
                 if (slaveTimeOut == LIDAR_DEVICE_TIMEOUT){
-                    printf("LIDAR_DEVICE_TIMEOUT on read\r\n");
+                    //printf("LIDAR_DEVICE_TIMEOUT on read\r\n");
                     return (0);
                 }
                 else
@@ -128,7 +130,7 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
             }
 
             if (status == MSSP2_I2C_MESSAGE_COMPLETE) {
-                printf("Read: 0x%02x",pD[0]);
+                //printf("Read: 0x%02x",pD[0]);
                 break;
             }
 
@@ -148,7 +150,7 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
 
     // exit if the last transaction failed
     if (status == MSSP2_I2C_MESSAGE_FAIL) {
-        printf("Read failed!\r\n");
+        //printf("Read failed!\r\n");
         return (0);
     }
 
@@ -175,7 +177,7 @@ uint8_t LIDAR_Write(uint8_t registerAddress, uint8_t pData){
 
     while (status != MSSP2_I2C_MESSAGE_FAIL) {
         // write the register address to the Lidar that we want to read
-        printf("writing!\r\n");
+        //printf("writing!\r\n");
         MSSP2_I2C_MasterWrite(writeBuffer,
                               2,
                               LIDAR_ADDRESS,

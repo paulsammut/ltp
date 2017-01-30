@@ -203,8 +203,8 @@ void MSSP2_I2C_Initialize(void)
 
     mssp2_i2c_object.i2cErrors = 0;
 
-    // SMP High Speed; CKE Idle to Active; 
-    SSP2STAT = 0x0000;
+    // SMP Standard Speed; CKE Idle to Active; 
+    SSP2STAT = 0x0080;
     // SSPEN enabled; WCOL no_collision; CKP Clock Stretch; SSPM FOSC/(2 * (BRG_Value_I2C + 1)); SSPOV no_overflow; 
     SSP2CON1 = 0x0028;
     // SBCDE disabled; BOEN disabled; SCIE disabled; PCIE disabled; DHEN disabled; SDAHT 100ns; AHEN disabled; 
