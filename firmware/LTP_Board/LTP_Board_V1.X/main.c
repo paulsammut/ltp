@@ -69,9 +69,11 @@ int main(void)
     // initialize the device
     SYSTEM_Initialize();
     LTP_system_init();
+    printf("\r\n");
     DEBUG_RED =1; 
     DEBUG_GREEN =1; 
      test2();
+     
     while(1)
     {
        

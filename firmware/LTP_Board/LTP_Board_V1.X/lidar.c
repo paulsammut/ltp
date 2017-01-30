@@ -8,18 +8,20 @@
 #define LIDAR_ADDRESS         0x62 // slave device address
 #define LIDAR_DEVICE_TIMEOUT  50   // define slave timeout 
 
+uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData);
+
 void lidar_init(void) {
 
 }
 
 uint16_t lidar_getDistance(void) {
-    uint8_t pData[2] = {0x40, 0x00};
+    uint8_t pData[4] = {0x40, 0x00,0x00,0x49};
     uint8_t length = 2;
     uint16_t address = 0x62;
     MSSP2_I2C_MESSAGE_STATUS pStatus = MSSP2_I2C_MESSAGE_COMPLETE;
     uint16_t retryTimeOut, slaveTimeOut;
 
-    MSSP2_I2C_MasterWrite(pData, length, address, &pStatus);
+    //MSSP2_I2C_MasterWrite(pData, length, address, &pStatus);
     while (pStatus == MSSP2_I2C_MESSAGE_PENDING) {
         // add some delay here
 
@@ -34,6 +36,7 @@ uint16_t lidar_getDistance(void) {
             printf("yay!\r\n");
     }
     
+    LIDAR_Read(0x02, pData);
 
    
     
@@ -58,7 +61,7 @@ uint16_t lidar_getDistance(void) {
 
 uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData) {
 
-    MSSP2_I2C_MESSAGE_STATUS status;
+    MSSP2_I2C_MESSAGE_STATUS status = MSSP2_I2C_MESSAGE_PENDING;
     uint8_t writeBuffer[2];
     uint16_t retryTimeOut, slaveTimeOut;
     uint8_t *pD;
@@ -74,11 +77,13 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData) {
     // retry sending the transaction
     retryTimeOut = 0;
     slaveTimeOut = 0;
+    
 
     while (status != MSSP2_I2C_MESSAGE_FAIL) {
         // write one byte to EEPROM (2 is the count of bytes to write)
+         printf("writing!\r\n");
         MSSP2_I2C_MasterWrite(writeBuffer,
-                2,
+                1,
                 LIDAR_ADDRESS,
                 &status);
 
@@ -135,8 +140,10 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData) {
                     slaveTimeOut++;
             }
 
-            if (status == MSSP2_I2C_MESSAGE_COMPLETE)
+            if (status == MSSP2_I2C_MESSAGE_COMPLETE){
+                printf("Read:%d",pD[0]);
                 break;
+            }
 
             // if status is  MSSP2_I2C_MESSAGE_ADDRESS_NO_ACK,
             //               or MSSP2_I2C_DATA_NO_ACK,
@@ -157,7 +164,7 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData) {
         return (0);
     }
 
-
+    
     return (1);
 
 }
