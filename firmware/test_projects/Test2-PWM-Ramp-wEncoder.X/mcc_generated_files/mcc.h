@@ -49,12 +49,12 @@
 #include "pin_manager.h"
 #include <stdint.h>
 #include <stdbool.h>
+#include "uart1.h"
+#include "mssp2_i2c.h"
+#include "mccp1_compare.h"
+#include "mssp1_spi.h"
 #include "traps.h"
 #include "interrupt_manager.h"
-#include "mssp2_i2c.h"
-#include "mssp1_spi.h"
-#include "uart1.h"
-#include "mccp1_compare.h"
 
 #define _XTAL_FREQ  32000000UL
 
