@@ -49,6 +49,12 @@
 #include "lidar.h"
 #include "encoder.h"
 #include "mcc_generated_files/mccp1_compare.h"
+
+#define FOSC    (32000000ULL)
+#define FCY     (FOSC/2)
+
+#include <libpic30.h>
+
 /*
                          Main application
  */
@@ -82,7 +88,8 @@ int main(void)
      
     while(1)
     {
-        //lidar_getDistance(); 
+        lidar_getDistance(); 
+        __delay_ms(1);
     }
 
     return -1;

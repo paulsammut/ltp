@@ -37,6 +37,13 @@ uint16_t lidar_getDistance(void) {
 
     LIDAR_Write(0x00, 0x04);
     __delay_ms(100);
+    
+    LIDAR_Read(0x8f, pData, 2);
+    printf("The number: %d\r\n",pData[1]);
+    return 0;
+}
+
+/*
     uint8_t response = LIDAR_Read(0x01, pData, 1);
     if (response == 1) {
         printf("Reading: %d", pData[0]);
@@ -44,10 +51,9 @@ uint16_t lidar_getDistance(void) {
 
         uint16_t distance = pData[0] << 8 || pData[1];
         printf("Distance is: %d", distance);
-    }
-
-    return 0;
-}
+    } else
+        printf("Read of 0x01 failed!\r\n");
+*/
 
 uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
 

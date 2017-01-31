@@ -9,9 +9,12 @@
 #ifndef LIDAR_H
 #define	LIDAR_H
 
-#define LIDAR_RETRY_MAX       1000  // define the retry count
 #define LIDAR_ADDRESS         0x62 // slave device address
-#define LIDAR_DEVICE_TIMEOUT  500   // define slave timeout 
+
+// The following retry counts were tweaked. Lower counts of 100, and 50 
+// cause the system to not work!!
+#define LIDAR_RETRY_MAX       10000  // define the retry count 
+#define LIDAR_DEVICE_TIMEOUT  5000   // define slave timeout 
 
 #ifdef	__cplusplus
 extern "C" {
