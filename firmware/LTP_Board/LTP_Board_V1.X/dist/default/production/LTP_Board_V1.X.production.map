@@ -655,7 +655,7 @@ __FICD
  *(.comment)
  .comment         0x000000         0x5e /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xfiles.XX_eo)
 
-.debug_info       0x000000       0x4a06
+.debug_info       0x000000       0x4a1a
  *(.debug_info)
  .debug_info      0x000000         0xec build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_info      0x0000ec        0x394 build/default/production/mcc_generated_files/traps.o
@@ -668,10 +668,10 @@ __FICD
  .debug_info      0x0032a8        0x4a6 build/default/production/main.o
  .debug_info      0x00374e        0x8c9 build/default/production/LTP_system.o
  .debug_info      0x004017        0x389 build/default/production/encoder.o
- .debug_info      0x0043a0        0x666 build/default/production/lidar.o
+ .debug_info      0x0043a0        0x67a build/default/production/lidar.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0xafc
+.debug_abbrev     0x000000        0xb09
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x34 build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_abbrev    0x000034        0x10d build/default/production/mcc_generated_files/traps.o
@@ -684,7 +684,7 @@ __FICD
  .debug_abbrev    0x00078c         0xfc build/default/production/main.o
  .debug_abbrev    0x000888         0x7d build/default/production/LTP_system.o
  .debug_abbrev    0x000905         0xc9 build/default/production/encoder.o
- .debug_abbrev    0x0009ce        0x12e build/default/production/lidar.o
+ .debug_abbrev    0x0009ce        0x13b build/default/production/lidar.o
 
 .debug_line       0x000000        0xb5d
  *(.debug_line)

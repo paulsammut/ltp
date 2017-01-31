@@ -42,6 +42,7 @@ uint16_t lidar_getDistance(void) {
     uint8_t response;
     uint8_t pData[4];
     uint8_t busy_flag;
+    uint16_t busy_counter;
     uint16_t distance;
 
     // Send a distance measurement request
@@ -62,6 +63,7 @@ uint16_t lidar_getDistance(void) {
     busy_flag = 0x01 & pData[0];
 
     while (pData == 0) {
+        busy_counter ++;
         //we are busy so check again!
         __delay_ms(1);
         // Read the System Status bit
@@ -71,6 +73,11 @@ uint16_t lidar_getDistance(void) {
             return 0;
         }
         busy_flag = 0x01 & pData[0];
+        
+        if(busy_flag >= LIDAR_BUSY_FLAG_TIMEOUT){
+            printf("LIDAR busy flag timeout!\r\n");
+            return 0;
+        }        
     }
 
     // we are no longer busy!
@@ -80,7 +87,7 @@ uint16_t lidar_getDistance(void) {
         return 0;
     }
     
-    distance = ((uint16_t)pData[0] << 8) + pData[1];
+    distance = (pData[0] << 8) + pData[1];
     printf("The number: %d\r\n", distance);
     return 1;
 }
@@ -204,7 +211,7 @@ uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
         return (0);
     }
 
-    // Sucessfull read!
+    // Successful read!
     return (1);
 }
 

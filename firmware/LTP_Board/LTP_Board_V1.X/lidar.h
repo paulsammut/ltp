@@ -15,7 +15,7 @@
 // cause the system to not work!!
 #define LIDAR_RETRY_MAX       10000  // define the retry count 
 #define LIDAR_DEVICE_TIMEOUT  5000   // define slave timeout 
-#define LIDAT_BUSY_FLAG_TIMEOUT 1000 // define the busy flag timeout
+#define LIDAR_BUSY_FLAG_TIMEOUT 1000 // define the busy flag timeout
 
 #ifdef	__cplusplus
 extern "C" {
