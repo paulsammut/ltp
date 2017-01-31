@@ -88,7 +88,8 @@ int main(void)
      
     while(1)
     {
-        lidar_getDistance(); 
+        test1();
+        test3();
     }
 
     return -1;
@@ -96,14 +97,28 @@ int main(void)
 
 void test1(void)
 {
-    // To make the LED blink visibly, we have to wait a while between toggling
-
-    // the LED pin.
-    for(i = 0; i < 1000; i++)
-    {
-        Nop();
-    }
+    uint16_t angle;
+    uint16_t distance;
     
+
+    angle = getAngle();
+    distance = lidar_getDistance();
+    printf("PWM val is %d, and head angle is %d and the distance is %d\r\n",PWMval,angle,distance);
+}
+
+
+// I2C test
+void test2(void){
+    lidar_getDistance();
+}
+/**
+ End of File
+*/
+
+
+void test3(){
+    
+   
     //enact the PWM value
     MCCP1_COMPARE_DualEdgeBufferedConfig(0,PWMval);
     
@@ -116,28 +131,6 @@ void test1(void)
         rampup = 0;
     if(PWMval == 0 && !rampup)
         rampup = 1;
-   
-
-    // Toggle the LED output pin to alternate between the LED being on and off
-    DEBUG_GREEN ^= 1;
-    
+ 
     c++;
-    
-    printf("PWM val is %d, and head angle is %d",PWMval,getAngle());
-    testEncoder();
-    printf("\r\n");
-    
-    //lidar_getDistance();
-    
-    //getAngle();
-    
 }
-
-
-// I2C test
-void test2(void){
-    lidar_getDistance();
-}
-/**
- End of File
-*/

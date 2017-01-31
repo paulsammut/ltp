@@ -46,7 +46,7 @@ uint16_t lidar_getDistance(void) {
     uint16_t distance;
 
     // Send a distance measurement request
-    response = LIDAR_Write(0x00, 0x04);
+    response = LIDAR_Write(0x00, 0x03);
 
     if (response == 0) {
         printf("Failed to write sample request!\r\n");
@@ -88,8 +88,8 @@ uint16_t lidar_getDistance(void) {
     }
     
     distance = (pData[0] << 8) + pData[1];
-    printf("The number: %d\r\n", distance);
-    return 1;
+    //printf("The number: %d\r\n", distance);
+    return distance;
 }
 
 /*
