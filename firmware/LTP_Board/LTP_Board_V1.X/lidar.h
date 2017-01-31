@@ -20,6 +20,12 @@
 extern "C" {
 #endif
 
+typedef struct
+{
+    uint8_t SIG_COUNT_VAL; // maximum number of acquisitions during measurement
+    uint8_t ACQ_CONFIG_REG; // acquisition mode control
+    uint8_t THRESHOLD_BYPASS; // Peak detection threshold bypass   
+} LIDAR_CONFIG;
 
 void lidar_init();
 
@@ -77,6 +83,25 @@ uint8_t LIDAR_Write(uint8_t registerAddress, uint8_t pData);
 */
 
 uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length);
+
+/**
+    @Summary
+        Writes the configuration to the LIDAR.
+
+    @Description
+        Writes the values of the LIDAR_CONFIG struct to the appropriate registers on the LIDAR.
+
+    @Preconditions
+        None
+
+    @Param
+        *lidar_config  - Pointer to a LIDAR_CONFIG struct containing the configuration values.
+
+    @Returns
+        0 if configuration was unsuccessful, 1 if the configuration was successful
+*/
+
+uint8_t LIDAR_configure(LIDAR_CONFIG *lidar_config );
 
 
 #ifdef	__cplusplus

@@ -88,7 +88,7 @@ int main(void)
      
     while(1)
     {
-        lidar_getDistance(); 
+        //lidar_getDistance(); 
         __delay_ms(1);
     }
 

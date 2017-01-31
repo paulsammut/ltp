@@ -15,21 +15,27 @@ void lidar_init(void) {
     LIDAR1_PE = 1;
     __delay_ms(500);
     
+    LIDAR_CONFIG lidar_config;
+    lidar_config.SIG_COUNT_VAL = 0x80;
+    lidar_config.ACQ_CONFIG_REG = 0x08;
+    lidar_config.THRESHOLD_BYPASS = 0x00;
+    
+    LIDAR_configure(&lidar_config);
 
-    if (!LIDAR_Write(0x02, 0x80)){
-        printf("Fail\r\n");
-        __delay_us(50);
-    }    
-    if (!LIDAR_Write(0x04, 0x08)){
-        printf("Fail\r\n");
-        __delay_us(50);
-    }
-    if (!LIDAR_Write(0x1C, 0x00)){
-        printf("Fail\r\n");
-        __delay_us(50);
-    }
+}
 
-
+uint8_t LIDAR_configure(LIDAR_CONFIG *lidar_config ){
+    uint8_t write_success = 0;
+    write_success += LIDAR_Write(0x02, lidar_config ->SIG_COUNT_VAL);
+    write_success += LIDAR_Write(0x04, lidar_config ->ACQ_CONFIG_REG) << 1;
+    write_success += LIDAR_Write(0x1C, lidar_config ->THRESHOLD_BYPASS) << 2;
+    
+    if(write_success == 0b0000111)
+        return (1);
+    else{
+        printf("Configuration failed.\r\n");
+        return (0);
+    }        
 }
 
 uint16_t lidar_getDistance(void) {
