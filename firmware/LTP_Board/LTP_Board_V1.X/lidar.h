@@ -15,6 +15,7 @@
 // cause the system to not work!!
 #define LIDAR_RETRY_MAX       10000  // define the retry count 
 #define LIDAR_DEVICE_TIMEOUT  5000   // define slave timeout 
+#define LIDAT_BUSY_FLAG_TIMEOUT 1000 // define the busy flag timeout
 
 #ifdef	__cplusplus
 extern "C" {
@@ -32,75 +33,32 @@ void lidar_init();
 uint16_t lidar_getDistance(void);
 
 /**
-    @Summary
-        Writes one byte to the LIDAR. 
-
-    @Description
-        This function does an I2C write with error checking and monitoring.
-
-    @Preconditions
-        None
-
-    @Param
-        registerAddress - The address of the register to be accessed
-
-    @Param
-        *pdata - A pointer to the memory location where received data will
-                 be stored
-
-    @Returns
-        0 if read was unsuccessful, 1 if the read was successful
-*/
-
+ * This function does an I2C write of one byte with error checking and monitoring.
+ * @param registerAddress The address of the register to be accessed
+ * @param pData A pointer to the memory location where received data will be stored
+ * @return  0 if read was unsuccessful, 1 if the read was successful
+ */
 uint8_t LIDAR_Write(uint8_t registerAddress, uint8_t pData);
 
-/**
-    @Summary
-        Reads a specified number of bytes from the Lidar.
 
-    @Description
-        This function does an I2C read by first writing a byte that is the
+/**
+ * This function does an I2C read by first writing a byte that is the
         register address to the LIDAR with the address specified. It then
         waits a delay while checking on this write message to make sure
-        it was sent. Once this write message was sent succesfully, it then
+        it was sent. Once this write message was sent successfully, it then
         sends a read command with the specified number of read bytes.
-
-    @Preconditions
-        None
-
-    @Param
-        registerAddress - The address of the register to be accessed
-
-    @Param
-        *pdata - A pointer to the memory location where received data will
-                 be stored
-    @Param
-        length - The number of bytes to read.
-
-
-    @Returns
-        0 if read was unsuccessful, 1 if the read was successful
-*/
-
+ * @param registerAddress   The address of the register to be accessed
+ * @param pData     A pointer to the memory location where received data will be stored
+ * @param length    The number of bytes to read.
+ * @return  0 if read was unsuccessful, 1 if the read was successful
+ */
 uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length);
 
 /**
-    @Summary
-        Writes the configuration to the LIDAR.
-
-    @Description
-        Writes the values of the LIDAR_CONFIG struct to the appropriate registers on the LIDAR.
-
-    @Preconditions
-        None
-
-    @Param
-        *lidar_config  - Pointer to a LIDAR_CONFIG struct containing the configuration values.
-
-    @Returns
-        0 if configuration was unsuccessful, 1 if the configuration was successful
-*/
-
+ * Writes the values of the LIDAR_CONFIG struct to the appropriate registers on the LIDAR.
+ * @param lidar_config  Pointer to a LIDAR_CONFIG struct containing the configuration values.
+ * @return  0 if configuration was unsuccessful, 1 if the configuration was successful
+ */
 uint8_t LIDAR_configure(LIDAR_CONFIG *lidar_config );
 
 

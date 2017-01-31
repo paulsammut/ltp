@@ -14,39 +14,75 @@ void lidar_init(void) {
     __delay_ms(10);
     LIDAR1_PE = 1;
     __delay_ms(500);
-    
+
     LIDAR_CONFIG lidar_config;
     lidar_config.SIG_COUNT_VAL = 0x80;
     lidar_config.ACQ_CONFIG_REG = 0x08;
     lidar_config.THRESHOLD_BYPASS = 0x00;
-    
+
     LIDAR_configure(&lidar_config);
 
 }
 
-uint8_t LIDAR_configure(LIDAR_CONFIG *lidar_config ){
+uint8_t LIDAR_configure(LIDAR_CONFIG *lidar_config) {
     uint8_t write_success = 0;
     write_success += LIDAR_Write(0x02, lidar_config ->SIG_COUNT_VAL);
     write_success += LIDAR_Write(0x04, lidar_config ->ACQ_CONFIG_REG) << 1;
     write_success += LIDAR_Write(0x1C, lidar_config ->THRESHOLD_BYPASS) << 2;
-    
-    if(write_success == 0b0000111)
+
+    if (write_success == 0b0000111)
         return (1);
-    else{
+    else {
         printf("Configuration failed.\r\n");
         return (0);
-    }        
+    }
 }
 
 uint16_t lidar_getDistance(void) {
-    uint8_t pData[4] = {0x40, 0x00, 0x00, 0x49};
+    uint8_t response;
+    uint8_t pData[4];
+    uint8_t busy_flag;
+    uint16_t distance;
 
-    LIDAR_Write(0x00, 0x04);
-    __delay_ms(100);
+    // Send a distance measurement request
+    response = LIDAR_Write(0x00, 0x04);
+
+    if (response == 0) {
+        printf("Failed to write sample request!\r\n");
+        return 0;
+    }
+
+    // Read the System Status bit
+    response = LIDAR_Read(0x01, pData, 1);
+    if (response == 0) {
+        printf("Failed to  read the System Status bit!\r\n");
+        return 0;
+    }
+
+    busy_flag = 0x01 & pData[0];
+
+    while (pData == 0) {
+        //we are busy so check again!
+        __delay_ms(1);
+        // Read the System Status bit
+        response = LIDAR_Read(0x01, pData, 1);
+        if (response == 0) {
+            printf("Failed to  read the System Status bit!\r\n");
+            return 0;
+        }
+        busy_flag = 0x01 & pData[0];
+    }
+
+    // we are no longer busy!
+    response = LIDAR_Read(0x8F, pData, 2);
+    if (response == 0) {
+        printf("Failed to  read the measurement!\r\n");
+        return 0;
+    }
     
-    LIDAR_Read(0x8f, pData, 2);
-    printf("The number: %d\r\n",pData[1]);
-    return 0;
+    distance = ((uint16_t)pData[0] << 8) + pData[1];
+    printf("The number: %d\r\n", distance);
+    return 1;
 }
 
 /*
@@ -59,7 +95,7 @@ uint16_t lidar_getDistance(void) {
         printf("Distance is: %d", distance);
     } else
         printf("Read of 0x01 failed!\r\n");
-*/
+ */
 
 uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
 
