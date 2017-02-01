@@ -181,13 +181,13 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200              0x13b8          0x1d94  (7572)
 .const                      0x15b8               0x16e           0x225  (549)
-.text                       0x1726               0x774           0xb2e  (2862)
-.dinit                      0x1e9a               0x100           0x180  (384)
-.text                       0x1f9a               0x520           0x7b0  (1968)
-.init.delay32               0x24ba                0x1c            0x2a  (42)
-.text                       0x24d6                 0x6             0x9  (9)
+.text                       0x1726               0x882           0xcc3  (3267)
+.dinit                      0x1fa8               0x100           0x180  (384)
+.text                       0x20a8               0x432           0x64b  (1611)
+.init.delay32               0x24da                0x1c            0x2a  (42)
+.text                       0x24f6                 0x6             0x9  (9)
 
-                 Total program memory used (bytes):         0x344a  (13386) 82%
+                 Total program memory used (bytes):         0x347a  (13434) 83%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -377,68 +377,68 @@ External Symbols in Program Memory (by address):
                   0x001e72                  _MCCP1_COMPARE_TriggerStatusClear
                   0x001e7a                  _MCCP1_COMPARE_SingleCompareStatusGet
                   0x001e92                  _MCCP1_COMPARE_SingleCompareStatusClear
-                  0x001f9a                  _PID_init
-                  0x001fa2                  _PID_reset
-                  0x001fb0                  _PID_setAnglePtr
-                  0x001fbc                  _PID_poll
-                  0x001fd0                  _PID_cycle
-                  0x00207c                  _PID_setDesiredAngle
-                  0x002088                  _MSSP1_SPI_Initialize
-                  0x0020a0                  _MSSP1_SPI_Exchange8bit
-                  0x0020ba                  _MSSP1_SPI_Exchange8bitBuffer
-                  0x00212e                  _MSSP1_SPI_IsBufferFull
-                  0x002142                  _MSSP1_SPI_HasWriteCollisionOccured
-                  0x002158                  _MSSP1_SPI_HasReceiveOverflowOccured
-                  0x00216e                  _main
-                  0x00218c                  _test1
-                  0x0021ae                  _test2
-                  0x0021b6                  _test3
-                  0x00220e                  _test4
-                  0x00222e                  _test5
-                  0x00223a                  _TMR1_Initialize
-                  0x00224c                  _TMR1_Tasks_16BitOperation
-                  0x002266                  _TMR1_Period16BitSet
-                  0x002274                  _TMR1_Period16BitGet
-                  0x00227c                  _TMR1_Counter16BitSet
-                  0x00228a                  _TMR1_Counter16BitGet
-                  0x002292                  _TMR1_Start
-                  0x00229c                  _TMR1_Stop
-                  0x0022a4                  _TMR1_GetElapsedThenClear
-                  0x0022ba                  _TMR1_SoftwareCounterGet
-                  0x0022c4                  _TMR1_SoftwareCounterClear
-                  0x0022cc                  _encoder_init
-                  0x0022de                  _getAngle
-                  0x002318                  _testEncoder
-                  0x002338                  _motor_init
-                  0x002342                  _motor_setSpeed
-                  0x002384                  _motor_scaleSetpointPWN
-                  0x00239c                  _motor_getSpeed
-                  0x0023a4                  _UART1_Initialize
-                  0x0023b8                  _UART1_Read
-                  0x0023d6                  _UART1_Write
-                  0x0023ee                  _UART1_StatusGet
-                  0x00240c                  __OscillatorFail
-                  0x002414                  __StackError
-                  0x00241e                  __AddressError
-                  0x002426                  __MathError
-                  0x00242e                  _PIN_MANAGER_Initialize
-                  0x002466                  _SYSTEM_Initialize
-                  0x00247c                  _OSCILLATOR_Initialize
-                  0x002496                  _LTP_system_init
-                  0x0024ba                  ___delay32
-                  0x0024d6                  _INTERRUPT_Initialize
+                  0x001e9a                  _PID_init
+                  0x001ea2                  _PID_reset
+                  0x001eb0                  _PID_setAnglePtr
+                  0x001ebc                  _PID_poll
+                  0x001ed0                  _PID_cycle
+                  0x001f9c                  _PID_setDesiredAngle
+                  0x0020a8                  _MSSP1_SPI_Initialize
+                  0x0020c0                  _MSSP1_SPI_Exchange8bit
+                  0x0020da                  _MSSP1_SPI_Exchange8bitBuffer
+                  0x00214e                  _MSSP1_SPI_IsBufferFull
+                  0x002162                  _MSSP1_SPI_HasWriteCollisionOccured
+                  0x002178                  _MSSP1_SPI_HasReceiveOverflowOccured
+                  0x00218e                  _main
+                  0x0021ac                  _test1
+                  0x0021ce                  _test2
+                  0x0021d6                  _test3
+                  0x00222e                  _test4
+                  0x00224e                  _test5
+                  0x00225a                  _TMR1_Initialize
+                  0x00226c                  _TMR1_Tasks_16BitOperation
+                  0x002286                  _TMR1_Period16BitSet
+                  0x002294                  _TMR1_Period16BitGet
+                  0x00229c                  _TMR1_Counter16BitSet
+                  0x0022aa                  _TMR1_Counter16BitGet
+                  0x0022b2                  _TMR1_Start
+                  0x0022bc                  _TMR1_Stop
+                  0x0022c4                  _TMR1_GetElapsedThenClear
+                  0x0022da                  _TMR1_SoftwareCounterGet
+                  0x0022e4                  _TMR1_SoftwareCounterClear
+                  0x0022ec                  _encoder_init
+                  0x0022fe                  _getAngle
+                  0x002338                  _testEncoder
+                  0x002358                  _motor_init
+                  0x002362                  _motor_setSpeed
+                  0x0023a4                  _motor_scaleSetpointPWN
+                  0x0023bc                  _motor_getSpeed
+                  0x0023c4                  _UART1_Initialize
+                  0x0023d8                  _UART1_Read
+                  0x0023f6                  _UART1_Write
+                  0x00240e                  _UART1_StatusGet
+                  0x00242c                  __OscillatorFail
+                  0x002434                  __StackError
+                  0x00243e                  __AddressError
+                  0x002446                  __MathError
+                  0x00244e                  _PIN_MANAGER_Initialize
+                  0x002486                  _SYSTEM_Initialize
+                  0x00249c                  _OSCILLATOR_Initialize
+                  0x0024b6                  _LTP_system_init
+                  0x0024da                  ___delay32
+                  0x0024f6                  _INTERRUPT_Initialize
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x0024d6                  _INTERRUPT_Initialize
+                  0x0024f6                  _INTERRUPT_Initialize
                   0x001c4e                  _LIDAR_Read
                   0x001d14                  _LIDAR_Write
                   0x001b84                  _LIDAR_configure
                   0x001bca                  _LIDAR_getDistance
                   0x001b5a                  _LIDAR_init
-                  0x002496                  _LTP_system_init
+                  0x0024b6                  _LTP_system_init
                   0x001e1c                  _MCCP1_COMPARE_CenterAlignedPWMConfig
                   0x001df8                  _MCCP1_COMPARE_DualCompareValueSet
                   0x001e0a                  _MCCP1_COMPARE_DualEdgeBufferedConfig
@@ -455,12 +455,12 @@ External Symbols in Program Memory (by name):
                   0x001e52                  _MCCP1_COMPARE_TriggerStatusGet
                   0x001e6a                  _MCCP1_COMPARE_TriggerStatusSet
                   0x001e2e                  _MCCP1_COMPARE_VariableFrequencyPulseConfig
-                  0x0020a0                  _MSSP1_SPI_Exchange8bit
-                  0x0020ba                  _MSSP1_SPI_Exchange8bitBuffer
-                  0x002158                  _MSSP1_SPI_HasReceiveOverflowOccured
-                  0x002142                  _MSSP1_SPI_HasWriteCollisionOccured
-                  0x002088                  _MSSP1_SPI_Initialize
-                  0x00212e                  _MSSP1_SPI_IsBufferFull
+                  0x0020c0                  _MSSP1_SPI_Exchange8bit
+                  0x0020da                  _MSSP1_SPI_Exchange8bitBuffer
+                  0x002178                  _MSSP1_SPI_HasReceiveOverflowOccured
+                  0x002162                  _MSSP1_SPI_HasWriteCollisionOccured
+                  0x0020a8                  _MSSP1_SPI_Initialize
+                  0x00214e                  _MSSP1_SPI_IsBufferFull
                   0x00175e                  _MSSP2_I2C_ErrorCountGet
                   0x001726                  _MSSP2_I2C_Initialize
                   0x001b28                  _MSSP2_I2C_MasterQueueIsEmpty
@@ -470,31 +470,31 @@ External Symbols in Program Memory (by name):
                   0x001a5c                  _MSSP2_I2C_MasterTRBInsert
                   0x0019f8                  _MSSP2_I2C_MasterWrite
                   0x001b04                  _MSSP2_I2C_MasterWriteTRBBuild
-                  0x00247c                  _OSCILLATOR_Initialize
-                  0x001fd0                  _PID_cycle
-                  0x001f9a                  _PID_init
-                  0x001fbc                  _PID_poll
-                  0x001fa2                  _PID_reset
-                  0x001fb0                  _PID_setAnglePtr
-                  0x00207c                  _PID_setDesiredAngle
-                  0x00242e                  _PIN_MANAGER_Initialize
-                  0x002466                  _SYSTEM_Initialize
-                  0x00228a                  _TMR1_Counter16BitGet
-                  0x00227c                  _TMR1_Counter16BitSet
-                  0x0022a4                  _TMR1_GetElapsedThenClear
-                  0x00223a                  _TMR1_Initialize
-                  0x002274                  _TMR1_Period16BitGet
-                  0x002266                  _TMR1_Period16BitSet
-                  0x0022c4                  _TMR1_SoftwareCounterClear
-                  0x0022ba                  _TMR1_SoftwareCounterGet
-                  0x002292                  _TMR1_Start
-                  0x00229c                  _TMR1_Stop
-                  0x00224c                  _TMR1_Tasks_16BitOperation
-                  0x0023a4                  _UART1_Initialize
-                  0x0023b8                  _UART1_Read
-                  0x0023ee                  _UART1_StatusGet
-                  0x0023d6                  _UART1_Write
-                  0x00241e                  __AddressError
+                  0x00249c                  _OSCILLATOR_Initialize
+                  0x001ed0                  _PID_cycle
+                  0x001e9a                  _PID_init
+                  0x001ebc                  _PID_poll
+                  0x001ea2                  _PID_reset
+                  0x001eb0                  _PID_setAnglePtr
+                  0x001f9c                  _PID_setDesiredAngle
+                  0x00244e                  _PIN_MANAGER_Initialize
+                  0x002486                  _SYSTEM_Initialize
+                  0x0022aa                  _TMR1_Counter16BitGet
+                  0x00229c                  _TMR1_Counter16BitSet
+                  0x0022c4                  _TMR1_GetElapsedThenClear
+                  0x00225a                  _TMR1_Initialize
+                  0x002294                  _TMR1_Period16BitGet
+                  0x002286                  _TMR1_Period16BitSet
+                  0x0022e4                  _TMR1_SoftwareCounterClear
+                  0x0022da                  _TMR1_SoftwareCounterGet
+                  0x0022b2                  _TMR1_Start
+                  0x0022bc                  _TMR1_Stop
+                  0x00226c                  _TMR1_Tasks_16BitOperation
+                  0x0023c4                  _UART1_Initialize
+                  0x0023d8                  _UART1_Read
+                  0x00240e                  _UART1_StatusGet
+                  0x0023f6                  _UART1_Write
+                  0x00243e                  __AddressError
                   0x000cf6                  __Atexit
                   0x000bbc                  __Closreg
                   0x000c68                  __DNKfflush
@@ -505,15 +505,15 @@ External Symbols in Program Memory (by name):
                   0x000f66                  __Getmem
                   0x000f7e                  __Litob
                   0x00176c                  __MSSP2Interrupt
-                  0x002426                  __MathError
-                  0x00240c                  __OscillatorFail
+                  0x002446                  __MathError
+                  0x00242c                  __OscillatorFail
                   0x0011de                  __Puttxt
-                  0x002414                  __StackError
+                  0x002434                  __StackError
                   0x000d0e                  __Vacopy
                   0x000820                  ___Printf_cdnopuxX
                   0x0009a4                  ___Putfld_cdnopuxX
                   0x000384                  ___addsf3
-                  0x0024ba                  ___delay32
+                  0x0024da                  ___delay32
                   0x0014fc                  ___divdi3
                   0x001364                  ___divsi3
                   0x00043e                  ___fixsfsi
@@ -542,32 +542,32 @@ External Symbols in Program Memory (by name):
                   0x000810                  __printf_cdnopuxX
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x0022cc                  _encoder_init
+                  0x0022ec                  _encoder_init
                   0x000bce                  _fclose
                   0x000628                  _fputc
                   0x000674                  _fputs
                   0x000d12                  _free
                   0x000d7c                  _fwrite
-                  0x0022de                  _getAngle
-                  0x00216e                  _main
+                  0x0022fe                  _getAngle
+                  0x00218e                  _main
                   0x000ec8                  _malloc
                   0x000f36                  _memchr
                   0x00070e                  _memcpy
-                  0x00239c                  _motor_getSpeed
-                  0x002338                  _motor_init
-                  0x002384                  _motor_scaleSetpointPWN
-                  0x002342                  _motor_setSpeed
+                  0x0023bc                  _motor_getSpeed
+                  0x002358                  _motor_init
+                  0x0023a4                  _motor_scaleSetpointPWN
+                  0x002362                  _motor_setSpeed
                   0x001724                  _period
                   0x000612                  _puts
                   0x000cde                  _strchr
                   0x000724                  _strlen
                   0x00073c                  _strrchr
-                  0x00218c                  _test1
-                  0x0021ae                  _test2
-                  0x0021b6                  _test3
-                  0x00220e                  _test4
-                  0x00222e                  _test5
-                  0x002318                  _testEncoder
+                  0x0021ac                  _test1
+                  0x0021ce                  _test2
+                  0x0021d6                  _test3
+                  0x00222e                  _test4
+                  0x00224e                  _test5
+                  0x002338                  _testEncoder
                   0x00033e                  _write
                   0x000c52                  fclose.XX_eo:_closeall
                   0x0007ec                  printf_cdnopuxX.XXelo:_prout
@@ -857,7 +857,7 @@ __FICD
  .debug_abbrev    0x000ca5        0x13f build/default/production/motor.o
  .debug_abbrev    0x000de4        0x10e build/default/production/PID.o
 
-.debug_line       0x000000        0xe71
+.debug_line       0x000000        0xe75
  *(.debug_line)
  .debug_line      0x000000         0x55 build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_line      0x000055         0xf7 build/default/production/mcc_generated_files/traps.o
@@ -873,7 +873,7 @@ __FICD
  .debug_line      0x000a34        0x182 build/default/production/lidar.o
  .debug_line      0x000bb6        0x103 build/default/production/mcc_generated_files/tmr1.o
  .debug_line      0x000cb9         0xd5 build/default/production/motor.o
- .debug_line      0x000d8e         0xe3 build/default/production/PID.o
+ .debug_line      0x000d8e         0xe7 build/default/production/PID.o
 
 .debug_frame      0x000000        0xa94
  *(.debug_frame)
@@ -2038,7 +2038,7 @@ __c30_signature
  .const             0x9724          0x2 build/default/production/motor.o
                     0x9724                  _period
 
-.text             0x001726        0x774
+.text             0x001726        0x882
  .text            0x001726        0x434 build/default/production/mcc_generated_files/mssp2_i2c.o
                   0x001726                  _MSSP2_I2C_Initialize
                   0x00175e                  _MSSP2_I2C_ErrorCountGet
@@ -2073,76 +2073,76 @@ __c30_signature
                   0x001e72                  _MCCP1_COMPARE_TriggerStatusClear
                   0x001e7a                  _MCCP1_COMPARE_SingleCompareStatusGet
                   0x001e92                  _MCCP1_COMPARE_SingleCompareStatusClear
+ .text            0x001e9a        0x10e build/default/production/PID.o
+                  0x001e9a                  _PID_init
+                  0x001ea2                  _PID_reset
+                  0x001eb0                  _PID_setAnglePtr
+                  0x001ebc                  _PID_poll
+                  0x001ed0                  _PID_cycle
+                  0x001f9c                  _PID_setDesiredAngle
 
-.dinit            0x001e9a        0x100
- .dinit           0x001e9a        0x100 data_init
+.dinit            0x001fa8        0x100
+ .dinit           0x001fa8        0x100 data_init
 
-.text             0x001f9a        0x520
- .text            0x001f9a         0xee build/default/production/PID.o
-                  0x001f9a                  _PID_init
-                  0x001fa2                  _PID_reset
-                  0x001fb0                  _PID_setAnglePtr
-                  0x001fbc                  _PID_poll
-                  0x001fd0                  _PID_cycle
-                  0x00207c                  _PID_setDesiredAngle
- .text            0x002088         0xe6 build/default/production/mcc_generated_files/mssp1_spi.o
-                  0x002088                  _MSSP1_SPI_Initialize
-                  0x0020a0                  _MSSP1_SPI_Exchange8bit
-                  0x0020ba                  _MSSP1_SPI_Exchange8bitBuffer
-                  0x00212e                  _MSSP1_SPI_IsBufferFull
-                  0x002142                  _MSSP1_SPI_HasWriteCollisionOccured
-                  0x002158                  _MSSP1_SPI_HasReceiveOverflowOccured
- .text            0x00216e         0xcc build/default/production/main.o
-                  0x00216e                  _main
-                  0x00218c                  _test1
-                  0x0021ae                  _test2
-                  0x0021b6                  _test3
-                  0x00220e                  _test4
-                  0x00222e                  _test5
- .text            0x00223a         0x92 build/default/production/mcc_generated_files/tmr1.o
-                  0x00223a                  _TMR1_Initialize
-                  0x00224c                  _TMR1_Tasks_16BitOperation
-                  0x002266                  _TMR1_Period16BitSet
-                  0x002274                  _TMR1_Period16BitGet
-                  0x00227c                  _TMR1_Counter16BitSet
-                  0x00228a                  _TMR1_Counter16BitGet
-                  0x002292                  _TMR1_Start
-                  0x00229c                  _TMR1_Stop
-                  0x0022a4                  _TMR1_GetElapsedThenClear
-                  0x0022ba                  _TMR1_SoftwareCounterGet
-                  0x0022c4                  _TMR1_SoftwareCounterClear
- .text            0x0022cc         0x6c build/default/production/encoder.o
-                  0x0022cc                  _encoder_init
-                  0x0022de                  _getAngle
-                  0x002318                  _testEncoder
- .text            0x002338         0x6c build/default/production/motor.o
-                  0x002338                  _motor_init
-                  0x002342                  _motor_setSpeed
-                  0x002384                  _motor_scaleSetpointPWN
-                  0x00239c                  _motor_getSpeed
- .text            0x0023a4         0x52 build/default/production/mcc_generated_files/uart1.o
-                  0x0023a4                  _UART1_Initialize
-                  0x0023b8                  _UART1_Read
-                  0x0023d6                  _UART1_Write
-                  0x0023ee                  _UART1_StatusGet
- .text            0x0023f6         0x38 build/default/production/mcc_generated_files/traps.o
-                  0x0023f6                  _TRAPS_halt_on_error
-                  0x00240c                  __OscillatorFail
-                  0x002414                  __StackError
-                  0x00241e                  __AddressError
-                  0x002426                  __MathError
- .text            0x00242e         0x38 build/default/production/mcc_generated_files/pin_manager.o
-                  0x00242e                  _PIN_MANAGER_Initialize
- .text            0x002466         0x30 build/default/production/mcc_generated_files/mcc.o
-                  0x002466                  _SYSTEM_Initialize
-                  0x00247c                  _OSCILLATOR_Initialize
- .text            0x002496         0x24 build/default/production/LTP_system.o
-                  0x002496                  _LTP_system_init
+.text             0x0020a8        0x432
+ .text            0x0020a8         0xe6 build/default/production/mcc_generated_files/mssp1_spi.o
+                  0x0020a8                  _MSSP1_SPI_Initialize
+                  0x0020c0                  _MSSP1_SPI_Exchange8bit
+                  0x0020da                  _MSSP1_SPI_Exchange8bitBuffer
+                  0x00214e                  _MSSP1_SPI_IsBufferFull
+                  0x002162                  _MSSP1_SPI_HasWriteCollisionOccured
+                  0x002178                  _MSSP1_SPI_HasReceiveOverflowOccured
+ .text            0x00218e         0xcc build/default/production/main.o
+                  0x00218e                  _main
+                  0x0021ac                  _test1
+                  0x0021ce                  _test2
+                  0x0021d6                  _test3
+                  0x00222e                  _test4
+                  0x00224e                  _test5
+ .text            0x00225a         0x92 build/default/production/mcc_generated_files/tmr1.o
+                  0x00225a                  _TMR1_Initialize
+                  0x00226c                  _TMR1_Tasks_16BitOperation
+                  0x002286                  _TMR1_Period16BitSet
+                  0x002294                  _TMR1_Period16BitGet
+                  0x00229c                  _TMR1_Counter16BitSet
+                  0x0022aa                  _TMR1_Counter16BitGet
+                  0x0022b2                  _TMR1_Start
+                  0x0022bc                  _TMR1_Stop
+                  0x0022c4                  _TMR1_GetElapsedThenClear
+                  0x0022da                  _TMR1_SoftwareCounterGet
+                  0x0022e4                  _TMR1_SoftwareCounterClear
+ .text            0x0022ec         0x6c build/default/production/encoder.o
+                  0x0022ec                  _encoder_init
+                  0x0022fe                  _getAngle
+                  0x002338                  _testEncoder
+ .text            0x002358         0x6c build/default/production/motor.o
+                  0x002358                  _motor_init
+                  0x002362                  _motor_setSpeed
+                  0x0023a4                  _motor_scaleSetpointPWN
+                  0x0023bc                  _motor_getSpeed
+ .text            0x0023c4         0x52 build/default/production/mcc_generated_files/uart1.o
+                  0x0023c4                  _UART1_Initialize
+                  0x0023d8                  _UART1_Read
+                  0x0023f6                  _UART1_Write
+                  0x00240e                  _UART1_StatusGet
+ .text            0x002416         0x38 build/default/production/mcc_generated_files/traps.o
+                  0x002416                  _TRAPS_halt_on_error
+                  0x00242c                  __OscillatorFail
+                  0x002434                  __StackError
+                  0x00243e                  __AddressError
+                  0x002446                  __MathError
+ .text            0x00244e         0x38 build/default/production/mcc_generated_files/pin_manager.o
+                  0x00244e                  _PIN_MANAGER_Initialize
+ .text            0x002486         0x30 build/default/production/mcc_generated_files/mcc.o
+                  0x002486                  _SYSTEM_Initialize
+                  0x00249c                  _OSCILLATOR_Initialize
+ .text            0x0024b6         0x24 build/default/production/LTP_system.o
+                  0x0024b6                  _LTP_system_init
 
-.init.delay32     0x0024ba         0x1c
- .init.delay32    0x0024ba         0x1c /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(delay32.Leo)
-                  0x0024ba                  ___delay32
+.init.delay32     0x0024da         0x1c
+ .init.delay32    0x0024da         0x1c /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(delay32.Leo)
+                  0x0024da                  ___delay32
 
-.text             0x0024d6          0x6
- .text            0x0024d6          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
-                  0x0024d6                  _INTERRUPT_Initialize
+.text             0x0024f6          0x6
+ .text            0x0024f6          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x0024f6                  _INTERRUPT_Initialize

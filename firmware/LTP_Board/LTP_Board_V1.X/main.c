@@ -92,7 +92,7 @@ int main(void) {
     PID_setAnglePtr(&curAngle);
     
     
-    PID_setDesiredAngle(2000);
+    PID_setDesiredAngle(100);
     while (1) {
         //test1();
         //test3();
