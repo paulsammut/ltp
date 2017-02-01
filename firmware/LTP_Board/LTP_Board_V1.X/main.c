@@ -75,6 +75,8 @@ int main(void)
     // initialize the device
     SYSTEM_Initialize();
     
+    MCCP1_COMPARE_DualEdgeBufferedConfig(0,0);
+    
     printf("\r\n");
     printf("LTP_BOARD_BOOTING..\r\n");
     
@@ -84,12 +86,17 @@ int main(void)
     DEBUG_GREEN =1; 
 
    
-    //test2();
+    TMR1_Start();
      
     while(1)
     {
-        test1();
-        test3();
+        //test1();
+        //test3();
+        printf("Timer val: %u\r\n", TMR1);
+        if(IFS0bits.T1IF){
+            printf("Timer reset!\r\n"); 
+            IFS0bits.T1IF = false;
+        }
     }
 
     return -1;
