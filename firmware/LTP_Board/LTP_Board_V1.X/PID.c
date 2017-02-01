@@ -8,12 +8,18 @@
 // relative to that timer in counts. 0x139 is 5ms, 0x3F is 1ms.
 uint16_t periodPID = 0x139; 
 uint16_t elapsedTime;
+uint16_t desiredAngle;
+uint16_t *actualAngle;
+
 double error_prior = 0;
 double integral = 0;
 double gains_KP = 0;
 double gains_KI = 0;
 double gains_KD = 0;
 
+void PID_setAnglePtr(uint16_t *actualAnglePtr){
+    actualAngle = actualAnglePtr;
+}
 void PID_init(void) {
     IFS0bits.T1IF = false;
     TMR1 = 0;
@@ -32,7 +38,7 @@ void PID_poll(void) {
 }
 
 void PID_cycle(void) {
-
+     
 }
 
 /*

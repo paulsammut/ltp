@@ -50,6 +50,7 @@
 #include "encoder.h"
 #include "mcc_generated_files/mccp1_compare.h"
 #include "motor.h"
+#include "PID.h"
 
 
 #define FOSC    (32000000ULL)
@@ -66,11 +67,13 @@ unsigned char c = 0;
 int8_t sweepVal = 0;
 char buf[20];
 bool rampup = 1;
+uint16_t curAngle;
 
 void test1(void);
 void test2(void);
 void test3(void);
 void test4(void);
+void test5(void);
 
 int main(void) {
     // initialize the device
@@ -86,13 +89,14 @@ int main(void) {
     DEBUG_RED = 1;
     DEBUG_GREEN = 1;
 
-
+    PID_setAnglePtr(&curAngle);
     
 
     while (1) {
         //test1();
         //test3();
-        test4();
+        //test4();
+        test5();
     }
 
     return -1;
@@ -140,6 +144,10 @@ void test4() {
         printf("Timer reset!\r\n");
         IFS0bits.T1IF = false;
     }
+}
+
+void test5() {
+    curAngle = getAngle();
 }
 
 

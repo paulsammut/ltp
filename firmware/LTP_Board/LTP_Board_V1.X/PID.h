@@ -28,6 +28,8 @@ extern "C" {
      * Goes through a PID cycle
      */
     void PID_cycle(void);
+    
+    void PID_setAnglePtr(uint16_t *actualAnglePtr);
 
 
 #ifdef	__cplusplus
