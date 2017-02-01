@@ -21,7 +21,6 @@ void LIDAR_init(void) {
     lidar_config.THRESHOLD_BYPASS = 0x00;
 
     LIDAR_configure(&lidar_config);
-
 }
 
 uint8_t LIDAR_configure(LIDAR_CONFIG *lidar_config) {

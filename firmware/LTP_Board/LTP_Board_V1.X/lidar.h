@@ -28,6 +28,9 @@ typedef struct
     uint8_t THRESHOLD_BYPASS; // Peak detection threshold bypass   
 } LIDAR_CONFIG;
 
+/**
+ * Resets the LIDAR and Initializes a default configuration.
+ */
 void LIDAR_init();
 
 uint16_t lidar_getDistance(void);
