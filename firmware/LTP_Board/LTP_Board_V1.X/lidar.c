@@ -10,8 +10,10 @@
 #include <libpic30.h>
 
 void LIDAR_init(void) {
+    
+    printf("Initializing LIDAR with reset. \r\n");
     LIDAR1_PE = 0;
-    __delay_ms(10);
+    __delay_ms(50);
     LIDAR1_PE = 1;
     __delay_ms(500);
 
@@ -49,6 +51,7 @@ uint16_t lidar_getDistance(void) {
 
     if (response == 0) {
         printf("Failed to write sample request!\r\n");
+        LIDAR_init();
         return 0;
     }
 

@@ -115,7 +115,7 @@ void test3() {
 
 
     //enact the PWM value
-    motor_setSpeed(sweepVal);
+    motor_setSpeed(sweepVal/2);
 
     if (rampup)
         sweepVal++;
