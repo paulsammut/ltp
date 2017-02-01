@@ -107,15 +107,9 @@ void test1(void) {
 
 
 // I2C test
-
 void test2(void) {
     lidar_getDistance();
 }
-
-/**
- End of File
- */
-
 
 void test3() {
 
@@ -143,3 +137,8 @@ void test4() {
         IFS0bits.T1IF = false;
     }
 }
+
+
+/**
+ End of File
+ */
