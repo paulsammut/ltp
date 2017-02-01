@@ -33,7 +33,13 @@ typedef struct
  */
 void LIDAR_init();
 
-uint16_t lidar_getDistance(void);
+/**
+ * Gets a distance measurement from the LIDAR. First it sends a sample request,
+ * then it polls the LIDAR to see if the sample request is ready. Then it does a 2 byte read to get
+ * the 16 bit distance number. Every 100 samples, it does a calibrated sample. 
+ * @return 
+ */
+uint16_t LIDAR_getDistance(void);
 
 /**
  * This function does an I2C write of one byte with error checking and monitoring.

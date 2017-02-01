@@ -69,6 +69,7 @@ bool rampup = 1;
 
 void test1(void);
 void test2(void);
+void test3(void);
 
 int main(void) {
     // initialize the device
@@ -101,17 +102,17 @@ void test1(void) {
 
 
     angle = getAngle();
-    distance = lidar_getDistance();
+    distance = LIDAR_getDistance();
     printf("PWM val is %d, and head angle is %d and the distance is %d\r\n", sweepVal, angle, distance);
 }
 
 
 // I2C test
 void test2(void) {
-    lidar_getDistance();
+    LIDAR_getDistance();
 }
 
-void test3() {
+void test3(void) {
 
 
     //enact the PWM value

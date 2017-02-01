@@ -9,8 +9,10 @@
 
 #include <libpic30.h>
 
+uint8_t lidar_numCal = 0;
+
 void LIDAR_init(void) {
-    
+
     printf("Initializing LIDAR with reset. \r\n");
     LIDAR1_PE = 0;
     __delay_ms(50);
@@ -39,15 +41,22 @@ uint8_t LIDAR_configure(LIDAR_CONFIG *lidar_config) {
     }
 }
 
-uint16_t lidar_getDistance(void) {
+uint16_t LIDAR_getDistance(void) {
     uint8_t response;
     uint8_t pData[4];
     uint8_t busy_flag;
     uint16_t busy_counter;
     uint16_t distance;
+    uint8_t readReq = 0x03; //receiver bias disabled
 
+    if (lidar_numCal == 100) {
+        readReq = 0x04;
+        lidar_numCal = 0;
+    }else
+        lidar_numCal ++;
+    
     // Send a distance measurement request
-    response = LIDAR_Write(0x00, 0x03);
+    response = LIDAR_Write(0x00, readReq);
 
     if (response == 0) {
         printf("Failed to write sample request!\r\n");
@@ -65,7 +74,7 @@ uint16_t lidar_getDistance(void) {
     busy_flag = 0x01 & pData[0];
 
     while (pData == 0) {
-        busy_counter ++;
+        busy_counter++;
         //we are busy so check again!
         __delay_ms(1);
         // Read the System Status bit
@@ -75,11 +84,11 @@ uint16_t lidar_getDistance(void) {
             return 0;
         }
         busy_flag = 0x01 & pData[0];
-        
-        if(busy_flag >= LIDAR_BUSY_FLAG_TIMEOUT){
+
+        if (busy_flag >= LIDAR_BUSY_FLAG_TIMEOUT) {
             printf("LIDAR busy flag timeout!\r\n");
             return 0;
-        }        
+        }
     }
 
     // we are no longer busy!
@@ -88,7 +97,7 @@ uint16_t lidar_getDistance(void) {
         printf("Failed to  read the measurement!\r\n");
         return 0;
     }
-    
+
     distance = (pData[0] << 8) + pData[1];
     //printf("The number: %d\r\n", distance);
     return distance;
