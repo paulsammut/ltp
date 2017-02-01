@@ -70,6 +70,7 @@ bool rampup = 1;
 void test1(void);
 void test2(void);
 void test3(void);
+void test4(void);
 
 int main(void) {
     // initialize the device
@@ -89,8 +90,9 @@ int main(void) {
     TMR1_Start();
 
     while (1) {
-        test1();
+        //test1();
         //test3();
+        test4();
     }
 
     return -1;
@@ -134,6 +136,7 @@ void test3(void) {
 void test4() {
     printf("Timer val: %u\r\n", TMR1);
     if (IFS0bits.T1IF) {
+        //TMR1 = 0;
         printf("Timer reset!\r\n");
         IFS0bits.T1IF = false;
     }

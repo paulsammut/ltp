@@ -698,7 +698,7 @@ __FICD
  *(.comment)
  .comment         0x000000         0x5e /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xfiles.XX_eo)
 
-.debug_info       0x000000       0x56ff
+.debug_info       0x000000       0x5700
  *(.debug_info)
  .debug_info      0x000000         0xec build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_info      0x0000ec        0x394 build/default/production/mcc_generated_files/traps.o
@@ -708,15 +708,15 @@ __FICD
  .debug_info      0x001564        0x73a build/default/production/mcc_generated_files/uart1.o
  .debug_info      0x001c9e        0x76b build/default/production/mcc_generated_files/mssp1_spi.o
  .debug_info      0x002409        0xe9f build/default/production/mcc_generated_files/mssp2_i2c.o
- .debug_info      0x0032a8        0x608 build/default/production/main.o
- .debug_info      0x0038b0        0x8c9 build/default/production/LTP_system.o
- .debug_info      0x004179        0x389 build/default/production/encoder.o
- .debug_info      0x004502        0x6ab build/default/production/lidar.o
- .debug_info      0x004bad        0x736 build/default/production/mcc_generated_files/tmr1.o
- .debug_info      0x0052e3        0x41c build/default/production/motor.o
+ .debug_info      0x0032a8        0x609 build/default/production/main.o
+ .debug_info      0x0038b1        0x8c9 build/default/production/LTP_system.o
+ .debug_info      0x00417a        0x389 build/default/production/encoder.o
+ .debug_info      0x004503        0x6ab build/default/production/lidar.o
+ .debug_info      0x004bae        0x736 build/default/production/mcc_generated_files/tmr1.o
+ .debug_info      0x0052e4        0x41c build/default/production/motor.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0xdf7
+.debug_abbrev     0x000000        0xde4
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x34 build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_abbrev    0x000034        0x10d build/default/production/mcc_generated_files/traps.o
@@ -726,12 +726,12 @@ __FICD
  .debug_abbrev    0x000317        0x147 build/default/production/mcc_generated_files/uart1.o
  .debug_abbrev    0x00045e        0x11c build/default/production/mcc_generated_files/mssp1_spi.o
  .debug_abbrev    0x00057a        0x212 build/default/production/mcc_generated_files/mssp2_i2c.o
- .debug_abbrev    0x00078c        0x141 build/default/production/main.o
- .debug_abbrev    0x0008cd         0x7d build/default/production/LTP_system.o
- .debug_abbrev    0x00094a         0xc9 build/default/production/encoder.o
- .debug_abbrev    0x000a13        0x15d build/default/production/lidar.o
- .debug_abbrev    0x000b70        0x148 build/default/production/mcc_generated_files/tmr1.o
- .debug_abbrev    0x000cb8        0x13f build/default/production/motor.o
+ .debug_abbrev    0x00078c        0x12e build/default/production/main.o
+ .debug_abbrev    0x0008ba         0x7d build/default/production/LTP_system.o
+ .debug_abbrev    0x000937         0xc9 build/default/production/encoder.o
+ .debug_abbrev    0x000a00        0x15d build/default/production/lidar.o
+ .debug_abbrev    0x000b5d        0x148 build/default/production/mcc_generated_files/tmr1.o
+ .debug_abbrev    0x000ca5        0x13f build/default/production/motor.o
 
 .debug_line       0x000000        0xd82
  *(.debug_line)
