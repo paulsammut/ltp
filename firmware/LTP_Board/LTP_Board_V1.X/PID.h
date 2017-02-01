@@ -13,7 +13,21 @@
 extern "C" {
 #endif
 
-
+    /**
+     * To be launched whenever PID mode is activated. Clears the timer
+     * and PID values.
+     */
+    void PID_int(void);
+    
+    /**
+     * Checks timer 1 to see if it is time to fire
+     */
+    void PID_poll(void);
+    
+    /**
+     * Goes through a PID cycle
+     */
+    void PID_cycle(void);
 
 
 #ifdef	__cplusplus
