@@ -3,6 +3,7 @@
 #include "encoder.h"
 #include "lidar.h"
 #include "motor.h"
+#include "PID.h"
 #include "mcc_generated_files/tmr1.h"
 
 void LTP_system_init(void)
@@ -26,8 +27,8 @@ void LTP_system_init(void)
     encoder_init();
     LIDAR_init();
     motor_init();
+    PID_init();
     
-    TMR1_Start();
     
     
 }
