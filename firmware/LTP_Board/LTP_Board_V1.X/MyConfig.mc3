@@ -1015,7 +1015,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR1" name="actualPeriod"/>
-         <value>0.000016</value>
+         <value>1.04856</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="MCCP1" registerAlias="CCPCON1L" settingAlias="MOD" alias="Edge Detect"/>
@@ -1279,7 +1279,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR1" name="customPR"/>
-         <value>1</value>
+         <value>65535</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="TMR1" registerAlias="TCON" settingAlias="TCS"/>
@@ -1759,7 +1759,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="TMR1" registerAlias="PR"/>
-         <value>1</value>
+         <value>65535</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="RESET" registerAlias="RCON" settingAlias="SLEEP"/>
@@ -1835,7 +1835,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="Pin Module" registerAlias="ANSB"/>
-         <value>17392</value>
+         <value>17008</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="MSSP1" registerAlias="SSPCON3" settingAlias="DHEN" alias="disabled"/>
@@ -2847,7 +2847,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR1" name="callBackRate"/>
-         <value>0.000016</value>
+         <value>1.04856</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="System Module" registerAlias="FOSC" settingAlias="FCKSM" alias="CSECME"/>
@@ -4519,7 +4519,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR1" name="requestedPeriod"/>
-         <value>0.000016</value>
+         <value>1</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="MCCP1" registerAlias="CCPCON1H" settingAlias="IOPS" alias="12th Time Base Period Match"/>
@@ -4731,7 +4731,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="ANSB" settingAlias="ANSB8"/>
-         <value>analog</value>
+         <value>digital</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="CNEN1" settingAlias="CN1IE" alias="enabled"/>
@@ -4819,7 +4819,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="ANSB" settingAlias="ANSB7"/>
-         <value>analog</value>
+         <value>digital</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="MCCP1" registerAlias="CCPCON2H" settingAlias="ICSEL" alias="IC1"/>
@@ -5627,7 +5627,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="TMR1" registerAlias="PR" settingAlias="PR"/>
-         <value>1</value>
+         <value>65535</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="System Module" registerAlias="FPOR" settingAlias="MCLRE" alias="ON"/>
@@ -5759,7 +5759,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="anselUserSetRB8"/>
-         <value>disabled</value>
+         <value>enabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="CNPU1" settingAlias="CN9PUE" alias="enabled"/>
@@ -5779,7 +5779,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="anselUserSetRB7"/>
-         <value>disabled</value>
+         <value>enabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="TRISB" settingAlias="TRISB4" alias="input"/>
@@ -7197,7 +7197,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files/tmr1.c</file>
-         <hash>6b9bb51c2f3c04a3eefa1b48c2d10457dec69c176e06ce54d40f57835f32ae9f</hash>
+         <hash>e64bd722d86fe72ac481cad743b2cdb606c332238f9e697fe16ebe83f4b6b9b4</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/mssp1_spi.c</file>
@@ -7249,7 +7249,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files/pin_manager.c</file>
-         <hash>6dcdb39c843b5904df6315607adec8f40017755abcd564113841b56869a58ae6</hash>
+         <hash>77e95d561a6802f01f9c9ecc5186fc6674b66fe6c6d33cf6a0146778b4879941</hash>
       </entry>
    </generatedFileHashHistoryMap>
 </config>

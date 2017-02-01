@@ -33,14 +33,20 @@ void PID_init(void) {
 void PID_poll(void) {
     if(TMR1 >= periodPID){
         // we run the loop!
-        PID_cycle();
+        
+        IFS0bits.T1IF = false;
+        
+        PID_cycle();     
+        TMR1 = 0x0000;
+        
         
     }
 
 }
 
 void PID_cycle(void) {
-    printf("Current head angle is: %d", *actualAngle);
+    uint16_t usecsElapsed = TMR1*16;
+    printf("Current head angle is: %d and elapsed time is %u\r\n", *actualAngle, TMR1*16);
 }
 
 /*

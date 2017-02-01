@@ -148,6 +148,7 @@ void test4() {
 
 void test5() {
     curAngle = getAngle();
+    PID_poll();
 }
 
 
