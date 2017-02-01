@@ -87,7 +87,7 @@ int main(void) {
     DEBUG_GREEN = 1;
 
 
-    TMR1_Start();
+    
 
     while (1) {
         //test1();
