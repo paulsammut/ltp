@@ -2,6 +2,7 @@
 #include "LTP_system.h"
 #include "encoder.h"
 #include "lidar.h"
+#include "motor.h"
 
 void LTP_system_init(void)
 {
@@ -23,6 +24,7 @@ void LTP_system_init(void)
      
     encoder_init();
     LIDAR_init();
+    motor_init();
     
     
 }

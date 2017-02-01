@@ -12,4 +12,5 @@ mcc_generated_files/mssp1_spi.h  \
 LTP_system.h  \
 lidar.h  \
 encoder.h  \
- mcc_generated_files/mccp1_compare.h 
+ mcc_generated_files/mccp1_compare.h  \
+motor.h 

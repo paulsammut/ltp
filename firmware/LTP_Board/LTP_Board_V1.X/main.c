@@ -19,7 +19,7 @@
     The generated drivers are tested against the following:
         Compiler          :  XC16 1.26
         MPLAB             :  MPLAB X 3.45
-*/
+ */
 
 /*
     (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
@@ -41,7 +41,7 @@
 
     MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
     TERMS.
-*/
+ */
 
 #include "mcc_generated_files/mcc.h"
 #include <stdio.h>
@@ -49,6 +49,7 @@
 #include "lidar.h"
 #include "encoder.h"
 #include "mcc_generated_files/mccp1_compare.h"
+#include "motor.h"
 
 
 #define FOSC    (32000000ULL)
@@ -62,82 +63,83 @@
 
 unsigned int i;
 unsigned char c = 0;
+int8_t sweepVal = 0;
 char buf[20];
 bool rampup = 1;
 
 void test1(void);
 void test2(void);
 
-    
-int main(void)
-{
+int main(void) {
     // initialize the device
     SYSTEM_Initialize();
-    
-    
-    
+
+
+
     printf("\r\n");
     printf("LTP_BOARD_BOOTING..\r\n");
-    
+
     LTP_system_init();
 
-    DEBUG_RED =1; 
-    DEBUG_GREEN =1; 
+    DEBUG_RED = 1;
+    DEBUG_GREEN = 1;
 
-   
+
     TMR1_Start();
-     
-    while(1)
-    {
-        //test1();
-        //test3();
-        printf("Timer val: %u\r\n", TMR1);
-        if(IFS0bits.T1IF){
-            printf("Timer reset!\r\n"); 
-            IFS0bits.T1IF = false;
-        }
+
+    while (1) {
+        test1();
+        test3();
     }
 
     return -1;
 }
 
-void test1(void)
-{
+void test1(void) {
     uint16_t angle;
     uint16_t distance;
-    
+
 
     angle = getAngle();
     distance = lidar_getDistance();
-    //printf("PWM val is %d, and head angle is %d and the distance is %d\r\n",PWMval,angle,distance);
+    printf("PWM val is %d, and head angle is %d and the distance is %d\r\n", sweepVal, angle, distance);
 }
 
 
 // I2C test
-void test2(void){
+
+void test2(void) {
     lidar_getDistance();
 }
+
 /**
  End of File
-*/
+ */
 
-/*
-void test3(){
-    
-   
+
+void test3() {
+
+
     //enact the PWM value
-    MCCP1_COMPARE_DualEdgeBufferedConfig(0,PWMval);
-    
-    if(rampup)
-        PWMval++;
+    motor_setSpeed(sweepVal);
+
+    if (rampup)
+        sweepVal++;
     else
-        PWMval--;
-    
-    if(PWMval >= period && rampup)
+        sweepVal--;
+
+    if (sweepVal >= 100 && rampup)
         rampup = 0;
-    if(PWMval == 0 && !rampup)
+    if (sweepVal <= -100 && !rampup)
         rampup = 1;
- 
+
     c++;
 }
- */
+
+void test4() {
+    printf("Timer val: %u\r\n", TMR1);
+    if (IFS0bits.T1IF) {
+        printf("Timer reset!\r\n");
+        IFS0bits.T1IF = false;
+    }
+}
