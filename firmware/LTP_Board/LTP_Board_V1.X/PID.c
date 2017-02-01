@@ -12,6 +12,7 @@ uint16_t elapsedTime;
 uint16_t desiredAngle;
 uint16_t *actualAngle;
 
+double error;
 double error_prior = 0;
 double integral = 0;
 double gains_KP = 0;
@@ -52,6 +53,12 @@ void PID_cycle(void) {
     uint16_t usecsElapsed = TMR1 * 16;
     printf("Current head angle is: %d and elapsed time is %u\r\n", *actualAngle, usecsElapsed);
 
+    error = desiredAngle - *actualAngle;
+
+}
+
+void PID_setDesiredAngle(uint16_t p_desiredAngle) {
+    desiredAngle = p_desiredAngle;
 }
 
 /*

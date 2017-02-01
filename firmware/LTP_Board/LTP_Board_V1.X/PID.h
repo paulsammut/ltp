@@ -38,6 +38,12 @@ extern "C" {
      * Initializes some timer stuff
      */
     void PID_init(void);
+    
+    /**
+     * Sets the desired angle of the PID loop
+     * @param p_desiredAngle desired angle in encoder counts. 0-4000
+     */
+    void PID_setDesiredAngle(uint16_t p_desiredAngle);
 
 
 #ifdef	__cplusplus
