@@ -9,7 +9,7 @@
 
 #include <libpic30.h>
 
-void lidar_init(void) {
+void LIDAR_init(void) {
     LIDAR1_PE = 0;
     __delay_ms(10);
     LIDAR1_PE = 1;

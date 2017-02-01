@@ -50,6 +50,7 @@
 #include "encoder.h"
 #include "mcc_generated_files/mccp1_compare.h"
 
+
 #define FOSC    (32000000ULL)
 #define FCY     (FOSC/2)
 
