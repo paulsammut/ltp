@@ -62,8 +62,6 @@
 
 unsigned int i;
 unsigned char c = 0;
-const unsigned int period = 0x03E8/2;
-unsigned int PWMval = 0;
 char buf[20];
 bool rampup = 1;
 
@@ -76,7 +74,7 @@ int main(void)
     // initialize the device
     SYSTEM_Initialize();
     
-    MCCP1_COMPARE_DualEdgeBufferedConfig(0,0);
+    
     
     printf("\r\n");
     printf("LTP_BOARD_BOOTING..\r\n");
@@ -111,7 +109,7 @@ void test1(void)
 
     angle = getAngle();
     distance = lidar_getDistance();
-    printf("PWM val is %d, and head angle is %d and the distance is %d\r\n",PWMval,angle,distance);
+    //printf("PWM val is %d, and head angle is %d and the distance is %d\r\n",PWMval,angle,distance);
 }
 
 
@@ -123,7 +121,7 @@ void test2(void){
  End of File
 */
 
-
+/*
 void test3(){
     
    
@@ -142,3 +140,4 @@ void test3(){
  
     c++;
 }
+ */
