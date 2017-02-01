@@ -163,11 +163,11 @@ section                    address   length (PC units)   length (bytes) (dec)
 .const                      0x1328               0x134           0x1ce  (462)
 .text                       0x145c               0x774           0xb2e  (2862)
 .dinit                      0x1bd0                0xfe           0x17d  (381)
-.text                       0x1cce               0x402           0x603  (1539)
-.init.delay32               0x20d0                0x1c            0x2a  (42)
-.text                       0x20ec                0x1e            0x2d  (45)
+.text                       0x1cce               0x426           0x639  (1593)
+.init.delay32               0x20f4                0x1c            0x2a  (42)
+.text                       0x2110                 0x6             0x9  (9)
 
-                 Total program memory used (bytes):         0x2e8f  (11919) 73%
+                 Total program memory used (bytes):         0x2ea1  (11937) 74%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -185,17 +185,16 @@ Data Memory  [Origin = 0x800, Length = 0x800]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                        0x800                   0            0x62  (98)
-.ndata                       0x862                   0             0x2  (2)
-.nbss                        0x864                   0             0x2  (2)
-.ndata                       0x866                   0             0x2  (2)
-.nbss                        0x868                   0             0x6  (6)
-.ndata                       0x86e                   0             0x2  (2)
-.nbss                        0x870                   0             0x2  (2)
-.data                        0x872                   0            0xc8  (200)
-.bss                         0x93a                   0             0x8  (8)
+.nbss                        0x800                   0            0x78  (120)
+.ndata                       0x878                   0             0x2  (2)
+.nbss                        0x87a                   0             0x2  (2)
+.ndata                       0x87c                   0             0x2  (2)
+.nbss                        0x87e                   0             0x6  (6)
+.ndata                       0x884                   0             0x2  (2)
+.data                        0x886                   0            0xc8  (200)
+.bss                         0x94e                   0             0x8  (8)
 
-                 Total data memory used (bytes):          0x142  (322) 15%
+                 Total data memory used (bytes):          0x156  (342) 16%
 
 
 Dynamic Memory Usage
@@ -203,9 +202,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x942                               0x6be  (1726)
+stack                        0x956                               0x6aa  (1706)
 
-                 Maximum dynamic memory (bytes):          0x6be  (1726)
+                 Maximum dynamic memory (bytes):          0x6aa  (1706)
 
 
 External Symbols in Data Memory (by address):
@@ -214,36 +213,46 @@ External Symbols in Data Memory (by address):
                     0x084c                  _c
                     0x084d                  _sweepVal
                     0x084e                  _buf
-                    0x0866                  _rampup
-                    0x0868                  _lidar_numCal
-                    0x086c                  _cur_setpoint
-                    0x086e                  _periodPID
-                    0x0870                  _elapsedTime
-                    0x0872                  __Stdin
-                    0x089a                  __Stdout
-                    0x08c2                  __Stderr
-                    0x08ea                  __Files
-                    0x0936                  __Size_block
-                    0x093a                  __Aldata
-                    0x0940                  ___curbrk
+                    0x0862                  _elapsedTime
+                    0x0864                  _error_prior
+                    0x0868                  _integral
+                    0x086c                  _gains_KP
+                    0x0870                  _gains_KI
+                    0x0874                  _gains_KD
+                    0x087c                  _rampup
+                    0x087e                  _lidar_numCal
+                    0x0882                  _cur_setpoint
+                    0x0884                  _periodPID
+                    0x0886                  __Stdin
+                    0x08ae                  __Stdout
+                    0x08d6                  __Stderr
+                    0x08fe                  __Files
+                    0x094a                  __Size_block
+                    0x094e                  __Aldata
+                    0x0954                  ___curbrk
 
 External Symbols in Data Memory (by name):
 
-                    0x093a                  __Aldata
-                    0x08ea                  __Files
-                    0x0936                  __Size_block
-                    0x08c2                  __Stderr
-                    0x0872                  __Stdin
-                    0x089a                  __Stdout
-                    0x0940                  ___curbrk
+                    0x094e                  __Aldata
+                    0x08fe                  __Files
+                    0x094a                  __Size_block
+                    0x08d6                  __Stderr
+                    0x0886                  __Stdin
+                    0x08ae                  __Stdout
+                    0x0954                  ___curbrk
                     0x084e                  _buf
                     0x084c                  _c
-                    0x086c                  _cur_setpoint
-                    0x0870                  _elapsedTime
+                    0x0882                  _cur_setpoint
+                    0x0862                  _elapsedTime
+                    0x0864                  _error_prior
+                    0x0874                  _gains_KD
+                    0x0870                  _gains_KI
+                    0x086c                  _gains_KP
                     0x084a                  _i
-                    0x0868                  _lidar_numCal
-                    0x086e                  _periodPID
-                    0x0866                  _rampup
+                    0x0868                  _integral
+                    0x087e                  _lidar_numCal
+                    0x0884                  _periodPID
+                    0x087c                  _rampup
                     0x084d                  _sweepVal
 
 External Symbols in Program Memory (by address):
@@ -363,17 +372,17 @@ External Symbols in Program Memory (by address):
                   0x00207c                  _SYSTEM_Initialize
                   0x002092                  _OSCILLATOR_Initialize
                   0x0020ac                  _LTP_system_init
-                  0x0020d0                  ___delay32
-                  0x0020ec                  _PID_init
-                  0x0020f6                  _PID_poll
-                  0x0020fe                  _PID_cycle
-                  0x002104                  _INTERRUPT_Initialize
+                  0x0020d0                  _PID_init
+                  0x0020e6                  _PID_poll
+                  0x0020ee                  _PID_cycle
+                  0x0020f4                  ___delay32
+                  0x002110                  _INTERRUPT_Initialize
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x002104                  _INTERRUPT_Initialize
+                  0x002110                  _INTERRUPT_Initialize
                   0x001984                  _LIDAR_Read
                   0x001a4a                  _LIDAR_Write
                   0x0018ba                  _LIDAR_configure
@@ -412,9 +421,9 @@ External Symbols in Program Memory (by name):
                   0x00172e                  _MSSP2_I2C_MasterWrite
                   0x00183a                  _MSSP2_I2C_MasterWriteTRBBuild
                   0x002092                  _OSCILLATOR_Initialize
-                  0x0020fe                  _PID_cycle
-                  0x0020ec                  _PID_init
-                  0x0020f6                  _PID_poll
+                  0x0020ee                  _PID_cycle
+                  0x0020d0                  _PID_init
+                  0x0020e6                  _PID_poll
                   0x002044                  _PIN_MANAGER_Initialize
                   0x00207c                  _SYSTEM_Initialize
                   0x001ebc                  _TMR1_Counter16BitGet
@@ -450,7 +459,7 @@ External Symbols in Program Memory (by name):
                   0x000a7e                  __Vacopy
                   0x000590                  ___Printf_cdnopuxX
                   0x000714                  ___Putfld_cdnopuxX
-                  0x0020d0                  ___delay32
+                  0x0020f4                  ___delay32
                   0x00126c                  ___divdi3
                   0x0010d4                  ___divsi3
                   0x0012cc                  ___moddi3
@@ -712,7 +721,7 @@ __FICD
  *(.comment)
  .comment         0x000000         0x5e /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xfiles.XX_eo)
 
-.debug_info       0x000000       0x5a0e
+.debug_info       0x000000       0x5a9b
  *(.debug_info)
  .debug_info      0x000000         0xec build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_info      0x0000ec        0x394 build/default/production/mcc_generated_files/traps.o
@@ -728,7 +737,7 @@ __FICD
  .debug_info      0x004503        0x6ab build/default/production/lidar.o
  .debug_info      0x004bae        0x736 build/default/production/mcc_generated_files/tmr1.o
  .debug_info      0x0052e4        0x41c build/default/production/motor.o
- .debug_info      0x005700        0x30e build/default/production/PID.o
+ .debug_info      0x005700        0x39b build/default/production/PID.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0xeb2
@@ -749,7 +758,7 @@ __FICD
  .debug_abbrev    0x000ca5        0x13f build/default/production/motor.o
  .debug_abbrev    0x000de4         0xce build/default/production/PID.o
 
-.debug_line       0x000000        0xe4a
+.debug_line       0x000000        0xe4c
  *(.debug_line)
  .debug_line      0x000000         0x55 build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_line      0x000055         0xf7 build/default/production/mcc_generated_files/traps.o
@@ -765,7 +774,7 @@ __FICD
  .debug_line      0x000a2c        0x182 build/default/production/lidar.o
  .debug_line      0x000bae        0x103 build/default/production/mcc_generated_files/tmr1.o
  .debug_line      0x000cb1         0xd1 build/default/production/motor.o
- .debug_line      0x000d82         0xc8 build/default/production/PID.o
+ .debug_line      0x000d82         0xca build/default/production/PID.o
 
 .debug_frame      0x000000        0xa10
  *(.debug_frame)
@@ -785,7 +794,7 @@ __FICD
  .debug_frame     0x000924         0x84 build/default/production/motor.o
  .debug_frame     0x0009a8         0x68 build/default/production/PID.o
 
-.debug_str        0x000000        0x266
+.debug_str        0x000000        0x27b
  *(.debug_str)
  .debug_str       0x000000          0xc build/default/production/mcc_generated_files/traps.o
  .debug_str       0x00000c         0x9d build/default/production/mcc_generated_files/mccp1_compare.o
@@ -798,7 +807,7 @@ __FICD
  .debug_str       0x0001c8         0x59 build/default/production/lidar.o
  .debug_str       0x000221         0x13 build/default/production/mcc_generated_files/tmr1.o
  .debug_str       0x000234         0x1f build/default/production/motor.o
- .debug_str       0x000253         0x13 build/default/production/PID.o
+ .debug_str       0x000253         0x28 build/default/production/PID.o
 
 .debug_loc
  *(.debug_loc)
@@ -807,7 +816,7 @@ __FICD
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x8fa
+                  0x000000        0x93e
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x2b build/default/production/mcc_generated_files/interrupt_manager.o
@@ -838,7 +847,7 @@ __FICD
  .debug_pubnames
                   0x000824         0x7e build/default/production/motor.o
  .debug_pubnames
-                  0x0008a2         0x58 build/default/production/PID.o
+                  0x0008a2         0x9c build/default/production/PID.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1801,7 +1810,7 @@ __c30_signature
  __c30_signature
                   0x0008ea          0x6 /opt/microchip/xc16/v1.30/bin/bin/../../lib/libm-elf.a(divmoddi3.eo)
 
-.nbss               0x0800         0x62
+.nbss               0x0800         0x78
  .nbss              0x0800         0x2a build/default/production/mcc_generated_files/mssp2_i2c.o
  .nbss              0x082a         0x20 build/default/production/mcc_generated_files/traps.o
  .nbss              0x084a         0x18 build/default/production/main.o
@@ -1809,49 +1818,52 @@ __c30_signature
                     0x084c                  _c
                     0x084d                  _sweepVal
                     0x084e                  _buf
+ .nbss              0x0862         0x16 build/default/production/PID.o
+                    0x0862                  _elapsedTime
+                    0x0864                  _error_prior
+                    0x0868                  _integral
+                    0x086c                  _gains_KP
+                    0x0870                  _gains_KI
+                    0x0874                  _gains_KD
 
-.ndata              0x0862          0x2
- .ndata             0x0862          0x2 build/default/production/mcc_generated_files/traps.o
+.ndata              0x0878          0x2
+ .ndata             0x0878          0x2 build/default/production/mcc_generated_files/traps.o
 
-.nbss               0x0864          0x2
- .nbss              0x0864          0x2 build/default/production/mcc_generated_files/mccp1_compare.o
+.nbss               0x087a          0x2
+ .nbss              0x087a          0x2 build/default/production/mcc_generated_files/mccp1_compare.o
 
-.ndata              0x0866          0x2
- .ndata             0x0866          0x2 build/default/production/main.o
-                    0x0866                  _rampup
+.ndata              0x087c          0x2
+ .ndata             0x087c          0x2 build/default/production/main.o
+                    0x087c                  _rampup
 
-.nbss               0x0868          0x6
- .nbss              0x0868          0x2 build/default/production/lidar.o
-                    0x0868                  _lidar_numCal
- .nbss              0x086a          0x2 build/default/production/mcc_generated_files/tmr1.o
- .nbss              0x086c          0x2 build/default/production/motor.o
-                    0x086c                  _cur_setpoint
+.nbss               0x087e          0x6
+ .nbss              0x087e          0x2 build/default/production/lidar.o
+                    0x087e                  _lidar_numCal
+ .nbss              0x0880          0x2 build/default/production/mcc_generated_files/tmr1.o
+ .nbss              0x0882          0x2 build/default/production/motor.o
+                    0x0882                  _cur_setpoint
 
-.ndata              0x086e          0x2
- .ndata             0x086e          0x2 build/default/production/PID.o
-                    0x086e                  _periodPID
+.ndata              0x0884          0x2
+ .ndata             0x0884          0x2 build/default/production/PID.o
+                    0x0884                  _periodPID
 
-.nbss               0x0870          0x2
- .nbss              0x0870          0x2 build/default/production/PID.o
-                    0x0870                  _elapsedTime
+.data               0x0886         0xc8
+ .data              0x0886         0x88 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xfiles.XX_eo)
+                    0x0886                  __Stdin
+                    0x08ae                  __Stdout
+                    0x08d6                  __Stderr
+                    0x08fe                  __Files
+ .data              0x090e         0x22 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xlitob.XX_elo)
+ .data              0x0930         0x1a /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xprintf_cdnopuxX.XXelo)
+ .data              0x094a          0x4 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(malloc.XX_elo)
+                    0x094a                  __Size_block
 
-.data               0x0872         0xc8
- .data              0x0872         0x88 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xfiles.XX_eo)
-                    0x0872                  __Stdin
-                    0x089a                  __Stdout
-                    0x08c2                  __Stderr
-                    0x08ea                  __Files
- .data              0x08fa         0x22 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xlitob.XX_elo)
- .data              0x091c         0x1a /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(xprintf_cdnopuxX.XXelo)
- .data              0x0936          0x4 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(malloc.XX_elo)
-                    0x0936                  __Size_block
-
-.bss                0x093a          0x8
- .bss               0x093a          0x4 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(malloc.XX_elo)
-                    0x093a                  __Aldata
- .bss               0x093e          0x2 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(fclose.XX_eo)
- .bss               0x0940          0x2 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(brk.Lelo)
-                    0x0940                  ___curbrk
+.bss                0x094e          0x8
+ .bss               0x094e          0x4 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(malloc.XX_elo)
+                    0x094e                  __Aldata
+ .bss               0x0952          0x2 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-c-elf.a(fclose.XX_eo)
+ .bss               0x0954          0x2 /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(brk.Lelo)
+                    0x0954                  ___curbrk
 
 .ivt._OscillatorFail
                   0x000006          0x2
@@ -1940,7 +1952,7 @@ __c30_signature
 .dinit            0x001bd0         0xfe
  .dinit           0x001bd0         0xfe data_init
 
-.text             0x001cce        0x402
+.text             0x001cce        0x426
  .text            0x001cce         0xe6 build/default/production/mcc_generated_files/mssp1_spi.o
                   0x001cce                  _MSSP1_SPI_Initialize
                   0x001ce6                  _MSSP1_SPI_Exchange8bit
@@ -1993,15 +2005,15 @@ __c30_signature
                   0x002092                  _OSCILLATOR_Initialize
  .text            0x0020ac         0x24 build/default/production/LTP_system.o
                   0x0020ac                  _LTP_system_init
+ .text            0x0020d0         0x24 build/default/production/PID.o
+                  0x0020d0                  _PID_init
+                  0x0020e6                  _PID_poll
+                  0x0020ee                  _PID_cycle
 
-.init.delay32     0x0020d0         0x1c
- .init.delay32    0x0020d0         0x1c /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(delay32.Leo)
-                  0x0020d0                  ___delay32
+.init.delay32     0x0020f4         0x1c
+ .init.delay32    0x0020f4         0x1c /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(delay32.Leo)
+                  0x0020f4                  ___delay32
 
-.text             0x0020ec         0x1e
- .text            0x0020ec         0x18 build/default/production/PID.o
-                  0x0020ec                  _PID_init
-                  0x0020f6                  _PID_poll
-                  0x0020fe                  _PID_cycle
- .text            0x002104          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
-                  0x002104                  _INTERRUPT_Initialize
+.text             0x002110          0x6
+ .text            0x002110          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x002110                  _INTERRUPT_Initialize

@@ -8,10 +8,18 @@
 // relative to that timer in counts. 0x139 is 5ms, 0x3F is 1ms.
 uint16_t periodPID = 0x139; 
 uint16_t elapsedTime;
+double error_prior = 0;
+double integral = 0;
+double gains_KP = 0;
+double gains_KI = 0;
+double gains_KD = 0;
 
 void PID_init(void) {
     IFS0bits.T1IF = false;
     TMR1 = 0;
+    
+    error_prior = 0;
+    integral = 0;
 
 }
 
@@ -26,3 +34,20 @@ void PID_poll(void) {
 void PID_cycle(void) {
 
 }
+
+/*
+error_prior = 0
+integral = 0
+KP = Some value you need to come up (see tuning section below)
+KI = Some value you need to come up (see tuning section below)
+KD = Some value you need to come up (see tuning section below)
+
+while(1) {
+    error = desired_value ? actual_value
+    integral = integral + (error*iteration_time)
+    derivative = (error ? error_prior)/iteration_time
+    output = KP*error + KI*integral + KD*derivative + bias
+    error_prior = error
+    sleep(iteration_time)
+}
+ */
