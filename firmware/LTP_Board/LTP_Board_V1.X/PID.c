@@ -17,7 +17,7 @@ int16_t error;
 int16_t error_prior = 0;
 int16_t integral = 0;
 int16_t derivative = 0;
-double KP = .05;
+double KP = .1;
 double KI = 0;
 double KD = 0;
 int16_t output = 0;

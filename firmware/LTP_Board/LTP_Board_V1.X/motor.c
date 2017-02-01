@@ -4,13 +4,13 @@
 #include "stdlib.h"
 
 const unsigned int period = 0x03E8 / 2;
-int8_t cur_setpoint = 0;
+int16_t cur_setpoint = 0;
 
 void motor_init(void) {
     motor_setSpeed(cur_setpoint);
 }
 
-void motor_setSpeed(int8_t setpoint) {
+void motor_setSpeed(int16_t setpoint) {
     //The pwm value is going to be 100  to -100. 
     cur_setpoint = setpoint;
     
@@ -33,7 +33,7 @@ void motor_setSpeed(int8_t setpoint) {
 
 }
 
-uint16_t motor_scaleSetpointPWN(int8_t setpoint) {
+uint16_t motor_scaleSetpointPWN(int16_t setpoint) {
 
     // setpoint is from -100 to 100 while PWM val is 0 to 1000;
     uint16_t tempVal = abs(setpoint);

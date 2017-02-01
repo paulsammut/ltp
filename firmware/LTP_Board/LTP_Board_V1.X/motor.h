@@ -24,14 +24,14 @@ extern "C" {
      * and positive is clockwise
      * @param setpoint -100 to 100 setpoint
      */
-    void motor_setSpeed(int8_t setpoint);
+    void motor_setSpeed(int16_t setpoint);
 
     /**
      * Scales the -100 to 100 setpoint to PWM value numbers. Gets rid of sign.
      * @param setpoint
      * @return PWM scaled number ready to go into the MCCP compare function.
      */
-   uint16_t motor_scaleSetpointPWN(int8_t setpoint);
+   uint16_t motor_scaleSetpointPWN(int16_t setpoint);
    
    int8_t motor_getSpeed(void);
 
