@@ -90,7 +90,7 @@ int main(void) {
 
     while (1) {
         test1();
-        test3();
+        //test3();
     }
 
     return -1;
