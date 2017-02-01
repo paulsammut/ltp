@@ -2,6 +2,7 @@
 #include "motor.h"
 #include "mcc_generated_files/tmr1.h"
 #include "PID.h"
+#include <stdio.h>
 
 // we have a 16 bit timer with a 1:256 prescaler on a 32MHz clock cycle
 // which means a 16 us timer count. This gives us our PID loop time 
@@ -32,13 +33,14 @@ void PID_init(void) {
 void PID_poll(void) {
     if(TMR1 >= periodPID){
         // we run the loop!
+        PID_cycle();
         
     }
 
 }
 
 void PID_cycle(void) {
-     
+    printf("Current head angle is: %d", *actualAngle);
 }
 
 /*
