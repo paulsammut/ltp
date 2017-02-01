@@ -13,6 +13,13 @@ void motor_init(void) {
 void motor_setSpeed(int8_t setpoint) {
     //The pwm value is going to be 100  to -100. 
     cur_setpoint = setpoint;
+    
+    // Do a bounds check and clip if necassary. 
+    
+    if(cur_setpoint > 100)
+        cur_setpoint = 100;
+    if(cur_setpoint < -100)
+        cur_setpoint = -100;
 
     // Set the motor direction
     if (cur_setpoint < 0) {

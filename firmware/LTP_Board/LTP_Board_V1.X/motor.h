@@ -20,7 +20,8 @@ extern "C" {
     void motor_init(void);
 
     /**
-     * Sets the motor speed and direction based on a -100 to 100 setpoint.
+     * Sets the motor speed and direction based on a -100 to 100 setpoint. Negative is counterclockwise
+     * and positive is clockwise
      * @param setpoint -100 to 100 setpoint
      */
     void motor_setSpeed(int8_t setpoint);
