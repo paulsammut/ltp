@@ -94,7 +94,7 @@ int main(void) {
     
     PID_setDesiredAngle(100);
     
-    sweep_set(2000,1500,1);
+    sweep_set(2000,1500,3);
     while (1) {
         test1();
         //test3();
