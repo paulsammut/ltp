@@ -34,7 +34,7 @@ void sweep_set(uint16_t arg_a, uint16_t arg_b, double arg_f) {
 }
 
 void sweep_cycle(void) {
-    val_time += TMR1 * 0.0000016;
+    val_time += TMR1 * 0.000016;
     genPoint = amplitude*sin(2*3.14159*val_f*val_time)+val_d;
     PID_setDesiredAngle(genPoint);
 }
