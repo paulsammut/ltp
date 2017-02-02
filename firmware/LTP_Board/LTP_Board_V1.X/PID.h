@@ -19,10 +19,6 @@ extern "C" {
      */
     void PID_setAnglePtr(uint16_t *actualAnglePtr);
 
-    /**
-     * Checks timer 1 to see if it is time to fire
-     */
-    void PID_poll(void);
 
     /**
      * Goes through a PID cycle

@@ -5,6 +5,12 @@
 #include "motor.h"
 #include "PID.h"
 #include "mcc_generated_files/tmr1.h"
+#include "sweep.h"
+
+// we have a 16 bit timer with a 1:256 prescaler on a 32MHz clock cycle
+// which means a 16 us timer count. This gives us our PID loop time 
+// relative to that timer in counts. 0x139 is 5ms, 0x3F is 1ms.
+uint16_t pollPeriod= 0x139;
 
 void LTP_system_init(void)
 {
@@ -28,7 +34,17 @@ void LTP_system_init(void)
     LIDAR_init();
     motor_init();
     PID_init();
-    
-    
-    
+      
+}
+
+void LTP_poll(void){
+        if (TMR1 >= pollPeriod) {
+        // we run the loop!
+
+        IFS0bits.T1IF = false;
+        
+        //sweep_cycle();
+        PID_cycle();
+        TMR1 = 0x0000;
+    }
 }

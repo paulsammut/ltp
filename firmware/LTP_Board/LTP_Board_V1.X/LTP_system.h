@@ -21,9 +21,15 @@ extern "C" {
 #define SS_ENCODER LATBbits.LATB12
 #define LIDAR1_PE LATBbits.LATB5
     
-
+/**
+ * Initializes the LTP stuff
+ */
 void LTP_system_init(void);
     
+/**
+ * Runs the polling of TMR1 to run the time operations based on the current mode. 
+ */
+void LTP_poll(void);
 
 #ifdef	__cplusplus
 }

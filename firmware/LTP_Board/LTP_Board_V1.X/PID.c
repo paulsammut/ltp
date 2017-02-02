@@ -2,12 +2,11 @@
 #include "motor.h"
 #include "mcc_generated_files/tmr1.h"
 #include "PID.h"
-#include <stdio.h>
+#include "dbg.h"
 
-// we have a 16 bit timer with a 1:256 prescaler on a 32MHz clock cycle
-// which means a 16 us timer count. This gives us our PID loop time 
-// relative to that timer in counts. 0x139 is 5ms, 0x3F is 1ms.
-uint16_t periodPID = 0x139;
+
+
+
 uint16_t usecsElapsed;
 uint16_t desiredAngle = 0;
 uint16_t *actualAngle;
@@ -38,17 +37,6 @@ void PID_setAnglePtr(uint16_t *actualAnglePtr) {
     actualAngle = actualAnglePtr;
 }
 
-void PID_poll(void) {
-    if (TMR1 >= periodPID) {
-        // we run the loop!
-
-        IFS0bits.T1IF = false;
-
-        PID_cycle();
-        TMR1 = 0x0000;
-    }
-}
-
 void PID_cycle(void) {
     usecsElapsed = TMR1 * 16;
     iteration_time = usecsElapsed; //1000000;
@@ -64,7 +52,7 @@ void PID_cycle(void) {
     output = KP * error + KI * integral + KD*derivative;
     error_prior = error;
 
-    printf("Actual is: %u desired is: %u error is: %d output is: %d\r\n", *actualAngle, desiredAngle, error, output);
+    dbg_printf("Actual is: %u desired is: %u error is: %d output is: %d\r\n", *actualAngle, desiredAngle, error, output);
     motor_setSpeed(output);
 }
 

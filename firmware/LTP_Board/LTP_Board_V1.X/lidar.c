@@ -1,8 +1,7 @@
 #include "lidar.h"
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include "dbg.h"
 
 #define FOSC    (32000000ULL)
 #define FCY     (FOSC/2)
@@ -13,7 +12,7 @@ uint8_t lidar_numCal = 0;
 
 void LIDAR_init(void) {
 
-    printf("Initializing LIDAR with reset. \r\n");
+    dbg_printf("Initializing LIDAR with reset. \r\n");
     LIDAR1_PE = 0;
     __delay_ms(50);
     LIDAR1_PE = 1;
@@ -36,7 +35,7 @@ uint8_t LIDAR_configure(LIDAR_CONFIG *lidar_config) {
     if (write_success == 0b0000111)
         return (1);
     else {
-        printf("Configuration failed.\r\n");
+        dbg_printf("Configuration failed.\r\n");
         return (0);
     }
 }
@@ -59,7 +58,7 @@ uint16_t LIDAR_getDistance(void) {
     response = LIDAR_Write(0x00, readReq);
 
     if (response == 0) {
-        printf("Failed to write sample request!\r\n");
+        dbg_printf("Failed to write sample request!\r\n");
         LIDAR_init();
         return 0;
     }
@@ -67,7 +66,7 @@ uint16_t LIDAR_getDistance(void) {
     // Read the System Status bit
     response = LIDAR_Read(0x01, pData, 1);
     if (response == 0) {
-        printf("Failed to  read the System Status bit!\r\n");
+        dbg_printf("Failed to  read the System Status bit!\r\n");
         return 0;
     }
 
@@ -80,13 +79,13 @@ uint16_t LIDAR_getDistance(void) {
         // Read the System Status bit
         response = LIDAR_Read(0x01, pData, 1);
         if (response == 0) {
-            printf("Failed to  read the System Status bit!\r\n");
+            dbg_printf("Failed to  read the System Status bit!\r\n");
             return 0;
         }
         busy_flag = 0x01 & pData[0];
 
         if (busy_flag >= LIDAR_BUSY_FLAG_TIMEOUT) {
-            printf("LIDAR busy flag timeout!\r\n");
+            dbg_printf("LIDAR busy flag timeout!\r\n");
             return 0;
         }
     }
@@ -94,7 +93,7 @@ uint16_t LIDAR_getDistance(void) {
     // we are no longer busy!
     response = LIDAR_Read(0x8F, pData, 2);
     if (response == 0) {
-        printf("Failed to  read the measurement!\r\n");
+        dbg_printf("Failed to  read the measurement!\r\n");
         return 0;
     }
 

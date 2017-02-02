@@ -42,15 +42,17 @@
     MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
     TERMS.
  */
+#define _DEBUG
+
 
 #include "mcc_generated_files/mcc.h"
-#include <stdio.h>
 #include "LTP_system.h"
 #include "lidar.h"
 #include "encoder.h"
 #include "mcc_generated_files/mccp1_compare.h"
 #include "motor.h"
 #include "PID.h"
+#include "dbg.h"
 
 
 #define FOSC    (32000000ULL)
@@ -81,8 +83,8 @@ int main(void) {
 
 
 
-    printf("\r\n");
-    printf("LTP_BOARD_BOOTING..\r\n");
+    dbg_printf("\r\n");
+    dbg_printf("LTP_BOARD_BOOTING..\r\n");
 
     LTP_system_init();
 
@@ -110,7 +112,7 @@ void test1(void) {
 
     angle = getAngle();
     distance = LIDAR_getDistance();
-    printf("PWM val is %d, and head angle is %d and the distance is %d\r\n", sweepVal, angle, distance);
+    dbg_printf("PWM val is %d, and head angle is %d and the distance is %d\r\n", sweepVal, angle, distance);
 }
 
 
@@ -139,17 +141,17 @@ void test3(void) {
 }
 
 void test4() {
-    printf("Timer val: %u\r\n", TMR1);
+    dbg_printf("Timer val: %u\r\n", TMR1);
     if (IFS0bits.T1IF) {
         //TMR1 = 0;
-        printf("Timer reset!\r\n");
+        dbg_printf("Timer reset!\r\n");
         IFS0bits.T1IF = false;
     }
 }
 
 void test5() {
     curAngle = getAngle();
-    PID_poll();
+    LTP_poll();
 }
 
 

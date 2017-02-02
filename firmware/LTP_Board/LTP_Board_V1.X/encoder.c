@@ -1,7 +1,7 @@
 #include "encoder.h"
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
-#include <stdio.h>
+#include "dbg.h"
 
 void encoder_init(void) {
 
@@ -45,12 +45,12 @@ int16_t getAngle(void) {
     return readData;
 }
 
+#ifdef _DEBUG
 void testEncoder(void) {
     SS_ENCODER = 0;
     MSSP1_SPI_Exchange8bit(0x48);
     uint8_t rdata = MSSP1_SPI_Exchange8bit(0x00);
     SS_ENCODER = 1;
-    printf("Encoder is posting: 0x%02x",rdata);
+    dbg_printf("Encoder is posting: 0x%02x",rdata);
 }
-
-
+#endif
