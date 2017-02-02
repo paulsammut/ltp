@@ -2,6 +2,7 @@
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
 #include "dbg.h"
+#include "motor.h"
 
 #define FOSC    (32000000ULL)
 #define FCY     (FOSC/2)
@@ -11,6 +12,9 @@
 uint8_t lidar_numCal = 0;
 
 void LIDAR_init(void) {
+    
+    // turn off the motor while we do this
+    motor_setSpeed(0);
 
     dbg_printf("Initializing LIDAR with reset. \r\n");
     LIDAR1_PE = 0;

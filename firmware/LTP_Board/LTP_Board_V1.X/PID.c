@@ -48,7 +48,7 @@ void PID_cycle(void) {
     
     //dbg_printf("Error - error_prior: %d iteration_time: %d\r\n", (error-error_prior), iteration_time);
     integral = integral + (error * iteration_time);
-    derivative = ((error - error_prior)*1000) / iteration_time;
+    derivative = ((error - error_prior)*1000) / iteration_time;  // added the 1000 because it was being divided by a huge number (time in usecs)
     output = KP * error + KI * integral + KD*derivative;
     error_prior = error;
 

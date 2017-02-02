@@ -11,4 +11,5 @@ mcc_generated_files/interrupt_manager.h  \
 mcc_generated_files/mssp1_spi.h  \
  mcc_generated_files/mssp2_i2c.h  \
 LTP_system.h  \
-dbg.h 
+dbg.h  \
+motor.h 
