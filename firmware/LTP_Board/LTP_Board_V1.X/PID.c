@@ -17,8 +17,8 @@ int16_t error;
 int16_t error_prior = 0;
 int16_t integral = 0;
 int16_t derivative = 0;
-double KP = .1;
-double KI = 0;
+double KP = .15;
+double KI = .0002;
 double KD = 0;
 int16_t output = 0;
 
@@ -46,10 +46,7 @@ void PID_poll(void) {
 
         PID_cycle();
         TMR1 = 0x0000;
-
-
     }
-
 }
 
 void PID_cycle(void) {
