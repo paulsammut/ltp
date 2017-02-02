@@ -21,7 +21,9 @@ extern "C" {
      */
     void sweep_set(uint16_t val_a, uint16_t val_b, double val_f);
 
-    void sweep_cycle();
+    void sweep_cycle(void);
+    
+    uint16_t sweep_getVal(void);
 
 #ifdef	__cplusplus
 }
