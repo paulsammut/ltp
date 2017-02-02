@@ -1,11 +1,10 @@
+#define _DEBUG
+
 #include <stdint.h> 
 #include "motor.h"
 #include "mcc_generated_files/tmr1.h"
 #include "PID.h"
 #include "dbg.h"
-
-
-
 
 uint16_t usecsElapsed;
 uint16_t desiredAngle = 0;
@@ -18,7 +17,7 @@ int16_t integral = 0;
 int16_t derivative = 0;
 double KP = .15;
 double KI = .0002;
-double KD = 0;
+double KD = 2;
 int16_t output = 0;
 
 void PID_init(void) {
@@ -47,12 +46,13 @@ void PID_cycle(void) {
     if (error < -1999)
         error = error + 3998;
     
+    //dbg_printf("Error - error_prior: %d iteration_time: %d\r\n", (error-error_prior), iteration_time);
     integral = integral + (error * iteration_time);
-    derivative = (error - error_prior) / iteration_time;
+    derivative = ((error - error_prior)*1000) / iteration_time;
     output = KP * error + KI * integral + KD*derivative;
     error_prior = error;
 
-    dbg_printf("Actual is: %u desired is: %u error is: %d output is: %d\r\n", *actualAngle, desiredAngle, error, output);
+    dbg_printf("Actual is: %u desired is: %u error is: %d derivative is: %d output is: %d\r\n", *actualAngle, desiredAngle, error, derivative, output);
     motor_setSpeed(output);
 }
 

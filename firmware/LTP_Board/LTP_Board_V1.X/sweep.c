@@ -7,7 +7,7 @@
 #include "dbg.h"
 #include "PID.h"
 
-bool zeroCross = 0;
+
 int16_t val_a = 0;
 int16_t val_b = 0;
 int16_t val_d = 0;
@@ -23,12 +23,10 @@ void sweep_set(uint16_t arg_a, uint16_t arg_b, double arg_f) {
 
     if (val_a > val_b) {
         // Case 0: we do NOT cross the 0 mark
-        zeroCross = 0;
         amplitude = (val_a - val_b) / 2;
-        val_d = amplitude + val_b;
+        val_d = val_a - amplitude;
     } else if (val_a < val_b) {
         // Case 1: we crossed 0
-        zeroCross = 1;
         amplitude = ((3998 - val_b) + val_a) / 2;
         val_d = val_a - amplitude;
     } else
@@ -38,8 +36,8 @@ void sweep_set(uint16_t arg_a, uint16_t arg_b, double arg_f) {
 void sweep_cycle(void) {
     val_time += TMR1 * 0.000016;
     genPoint = amplitude * sin(2 * 3.14159 * val_f * val_time) + val_d;
-    
-    if(genPoint < 0){
+
+    if (genPoint < 0) {
         genPoint = 3998 + genPoint;
     }
     PID_setDesiredAngle(genPoint);
