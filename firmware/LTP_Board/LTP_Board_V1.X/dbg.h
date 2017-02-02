@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
- //#define _DEBUG   
+ #define _DEBUG   
     
 #ifdef _DEBUG
 #include <stdio.h>

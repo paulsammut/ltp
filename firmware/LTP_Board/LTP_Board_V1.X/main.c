@@ -41,6 +41,7 @@
 uint16_t curAngle;
 LTP_MODE curMode = IDLE;
 
+
 int main(void) {
     
     // initialize the device
@@ -55,16 +56,16 @@ int main(void) {
     DEBUG_GREEN = 1;
 
     PID_setAnglePtr(&curAngle);
-    encoder_setAnglePts(&curAngle);
+    encoder_setAnglePtr(&curAngle);
     
     PID_setDesiredAngle(100);
     
     sweep_set(3000,2000,.5);
     while (1) {
-        test1();
-        //test3();
+        //test1();
+        test3();
         //test4();
-        test5();
+        //test5();
     }
 
     return -1;

@@ -16,11 +16,9 @@ void encoder_init(void) {
 
 }
 
-void encoder_setAnglePts(uint16_t *anglePtr){
+void encoder_setAnglePtr(uint16_t *anglePtr){
     encoder_anglePtr = anglePtr;
 }
-
-void encoder_setAnglePts(uint16_t *anglePtr);
 
 /*  This function does an SPI read of the CNTR register which is a 4 byte register. 
  *  In it, is the current angle of the LIDAR head. 
