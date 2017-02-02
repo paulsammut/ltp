@@ -42,9 +42,6 @@
     MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
     TERMS.
  */
-#define _DEBUG
-
-
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
 #include "lidar.h"
@@ -53,6 +50,7 @@
 #include "motor.h"
 #include "PID.h"
 #include "dbg.h"
+#include "sweep.h"
 
 
 #define FOSC    (32000000ULL)
@@ -95,11 +93,13 @@ int main(void) {
     
     
     PID_setDesiredAngle(100);
+    
+    sweep_set(2000,00,10);
     while (1) {
-        //test1();
+        test1();
         //test3();
         //test4();
-        test5();
+        //test5();
     }
 
     return -1;
@@ -110,7 +110,7 @@ void test1(void) {
     uint16_t distance;
 
 
-    angle = getAngle();
+    //angle = getAngle();
     distance = LIDAR_getDistance();
     dbg_printf("PWM val is %d, and head angle is %d and the distance is %d\r\n", sweepVal, angle, distance);
 }

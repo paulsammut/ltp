@@ -12,6 +12,8 @@
 extern "C" {
 #endif
 
+ #define _DEBUG   
+    
 #ifdef _DEBUG
 #include <stdio.h>
 # define dbg_printf(...) printf (__VA_ARGS__)

@@ -15,4 +15,5 @@ encoder.h  \
  mcc_generated_files/mccp1_compare.h  \
 motor.h  \
 PID.h  \
-dbg.h 
+dbg.h  \
+sweep.h 

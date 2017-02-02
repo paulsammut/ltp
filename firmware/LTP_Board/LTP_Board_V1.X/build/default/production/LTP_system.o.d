@@ -6,4 +6,5 @@ lidar.h  \
 motor.h  \
 PID.h  \
 mcc_generated_files/tmr1.h  \
-sweep.h 
+sweep.h  \
+dbg.h 
