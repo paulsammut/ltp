@@ -210,7 +210,7 @@ void MSSP2_I2C_Initialize(void)
     // SBCDE disabled; BOEN disabled; SCIE disabled; PCIE disabled; DHEN disabled; SDAHT 100ns; AHEN disabled; 
     SSP2CON3 = 0x0000;
     // Baud Rate Generator Value: SSPADD 25;   
-    // Calculated Frequency: 400000
+    // Calculated Frequency: 307692.30769230769230769230769230769230769230769230769230769230769230769230769230769230769230769230769230769230769230769230769230769231
     SSP2ADD = 0x0019;
 
     /* MSSP2 - I2C/SPI Interrupt */
