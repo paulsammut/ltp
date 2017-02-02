@@ -21,27 +21,7 @@
         MPLAB             :  MPLAB X 3.45
  */
 
-/*
-    (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
-    software and any derivatives exclusively with Microchip products.
 
-    THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
-    EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
-    WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
-    PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION
-    WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION.
-
-    IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
-    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
-    WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
-    BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
-    FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
-    ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
-    THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-
-    MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
-    TERMS.
- */
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
 #include "lidar.h"
@@ -51,31 +31,18 @@
 #include "PID.h"
 #include "dbg.h"
 #include "sweep.h"
-
+#include "tests.h"
 
 #define FOSC    (32000000ULL)
 #define FCY     (FOSC/2)
 
 #include <libpic30.h>
 
-/*
-                         Main application
- */
-
-unsigned int i;
-unsigned char c = 0;
-int8_t sweepVal = 0;
-char buf[20];
-bool rampup = 1;
 uint16_t curAngle;
-
-void test1(void);
-void test2(void);
-void test3(void);
-void test4(void);
-void test5(void);
+LTP_MODE curMode = IDLE;
 
 int main(void) {
+    
     // initialize the device
     SYSTEM_Initialize();
     
@@ -88,7 +55,7 @@ int main(void) {
     DEBUG_GREEN = 1;
 
     PID_setAnglePtr(&curAngle);
-    
+    encoder_setAnglePts(&curAngle);
     
     PID_setDesiredAngle(100);
     
@@ -102,57 +69,3 @@ int main(void) {
 
     return -1;
 }
-
-void test1(void) {
-    uint16_t angle;
-    uint16_t distance;
-
-
-    //angle = getAngle();
-    distance = LIDAR_getDistance();
-    dbg_printf("PWM val is %d, and head angle is %d and the distance is %d\r\n", sweepVal, angle, distance);
-}
-
-
-// I2C test
-void test2(void) {
-    LIDAR_getDistance();
-}
-
-void test3(void) {
-
-
-    //enact the PWM value
-    motor_setSpeed(sweepVal/2);
-
-    if (rampup)
-        sweepVal++;
-    else
-        sweepVal--;
-
-    if (sweepVal >= 100 && rampup)
-        rampup = 0;
-    if (sweepVal <= -100 && !rampup)
-        rampup = 1;
-
-    c++;
-}
-
-void test4() {
-    dbg_printf("Timer val: %u\r\n", TMR1);
-    if (IFS0bits.T1IF) {
-        //TMR1 = 0;
-        dbg_printf("Timer reset!\r\n");
-        IFS0bits.T1IF = false;
-    }
-}
-
-void test5() {
-    curAngle = getAngle();
-    LTP_poll();
-}
-
-
-/**
- End of File
- */

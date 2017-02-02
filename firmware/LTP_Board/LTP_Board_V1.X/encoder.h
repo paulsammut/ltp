@@ -16,10 +16,20 @@ extern "C" {
     
 void encoder_init(void);
 
-int16_t getAngle(void);
+int16_t encoder_getAngle(void);
 
 void testEncoder(void);
 
+/**
+ * Sets the angle pointer that gets updated when encoder_updateAngle() gets called
+ * @param anglePtr pointer to be held by the encoder
+ */
+void encoder_setAnglePts(uint16_t *anglePtr);
+
+/**
+ * Does an encoder read and sets the pointer to the value.
+ */
+void encoder_updateAngle(void);
 
 
 #ifdef	__cplusplus
@@ -27,3 +37,4 @@ void testEncoder(void);
 #endif
 
 #endif	/* ENCODER_H */
+

@@ -16,4 +16,5 @@ encoder.h  \
 motor.h  \
 PID.h  \
 dbg.h  \
-sweep.h 
+sweep.h  \
+tests.h 

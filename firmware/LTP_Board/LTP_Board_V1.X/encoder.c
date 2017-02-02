@@ -3,6 +3,8 @@
 #include "LTP_system.h"
 #include "dbg.h"
 
+uint16_t *encoder_anglePtr;
+
 void encoder_init(void) {
 
     // Here we set the registers of the LS7366R chip to 
@@ -14,10 +16,16 @@ void encoder_init(void) {
 
 }
 
+void encoder_setAnglePts(uint16_t *anglePtr){
+    encoder_anglePtr = anglePtr;
+}
+
+void encoder_setAnglePts(uint16_t *anglePtr);
+
 /*  This function does an SPI read of the CNTR register which is a 4 byte register. 
  *  In it, is the current angle of the LIDAR head. 
  */
-int16_t getAngle(void) {
+int16_t encoder_getAngle(void) {
 
     int16_t readData;
     uint8_t LSByte;
@@ -45,12 +53,7 @@ int16_t getAngle(void) {
     return readData;
 }
 
-#ifdef _DEBUG
-void testEncoder(void) {
-    SS_ENCODER = 0;
-    MSSP1_SPI_Exchange8bit(0x48);
-    uint8_t rdata = MSSP1_SPI_Exchange8bit(0x00);
-    SS_ENCODER = 1;
-    dbg_printf("Encoder is posting: 0x%02x",rdata);
+
+void encoder_updateAngle(void){
+    *encoder_anglePtr = encoder_getAngle();
 }
-#endif
