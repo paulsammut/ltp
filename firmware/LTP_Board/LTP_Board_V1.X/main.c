@@ -78,9 +78,7 @@ void test5(void);
 int main(void) {
     // initialize the device
     SYSTEM_Initialize();
-
-
-
+    
     dbg_printf("\r\n");
     dbg_printf("LTP_BOARD_BOOTING..\r\n");
 
@@ -96,7 +94,7 @@ int main(void) {
     
     sweep_set(3000,2000,.5);
     while (1) {
-        //test1();
+        test1();
         //test3();
         //test4();
         test5();

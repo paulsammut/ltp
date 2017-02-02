@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-// Pin definitions
+    // Pin definitions
 #define DEBUG_GREEN LATAbits.LATA9
 #define DEBUG_RED LATCbits.LATC3
 #define DP1 LATCbits.LATC2
@@ -20,16 +20,25 @@ extern "C" {
 #define MOTOR_DIR LATBbits.LATB6
 #define SS_ENCODER LATBbits.LATB12
 #define LIDAR1_PE LATBbits.LATB5
+
     
-/**
- * Initializes the LTP stuff
- */
-void LTP_system_init(void);
-    
-/**
- * Runs the polling of TMR1 to run the time operations based on the current mode. 
- */
-void LTP_poll(void);
+    typedef enum  {
+        IDLE,
+        SPIN,
+        SETPOINT,
+        SWEEP,
+        STOP
+    }LTP_MODE;
+
+    /**
+     * Initializes the LTP stuff
+     */
+    void LTP_system_init(void);
+
+    /**
+     * Runs the polling of TMR1 to run the time operations based on the current mode. 
+     */
+    void LTP_poll(void);
 
 #ifdef	__cplusplus
 }
