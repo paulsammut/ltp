@@ -8,6 +8,8 @@
 #ifndef LTP_SYSTEM_H
 #define	LTP_SYSTEM_H
 
+#include <stdint.h>
+
 #ifdef	__cplusplus
 extern "C" {
 #endif
@@ -25,14 +27,14 @@ extern "C" {
 
   @Summary
      The type of modes that define behavior during the timer polling phase.
-*/
-    typedef enum  {
+     */
+    typedef enum {
         IDLE,
         SPIN,
         SETPOINT,
         SWEEP,
         STOP
-    }LTP_MODE;
+    } LTP_MODE;
 
     /**
      * Initializes the LTP stuff
@@ -43,18 +45,22 @@ extern "C" {
      * Runs the polling of TMR1 to run the time operations based on the current mode. 
      */
     void LTP_poll(void);
-    
+
     /**
      * Reads the encoder and the lidar, forms a COBS packet and sends it on the UART
      */
     void LTP_sampleAndSend(void);
-    
+
+
+
     /**
-     * Sets the LTP_modePtr so that we don't have to share data with other parts of the program
-     * @param LTP_modePtr LTP mode pointer that contains the address of the value of the current mode
+     * Sets the pointers  used in the LTP_system to keep track of things
+     * @param modePtr Current mode that the system is in
+     * @param anglePtr Memory location that holds the latest encoder sample
+     * @param distancePtr Memory location that holds the latest distance sample
      */
-    void LTP_setModePtr(LTP_MODE *modePtr);
-    
+    void LTP_setPtrs(LTP_MODE *_modePtr, uint16_t *_anglePtr,  uint16_t *_distancePtr);
+
     /**
      * Checks the uart for bytes to see if we received any control packets. It then acts on these messages.
      */

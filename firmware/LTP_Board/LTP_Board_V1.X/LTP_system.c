@@ -15,7 +15,8 @@
 uint16_t pollPeriod = 0x139;
 
 LTP_MODE *LTP_modePtr;
-uint16_t *LTP_curAngle;
+uint16_t *LTP_anglePtr;
+uint16_t *LTP_distancePtr;
 
 void LTP_system_init(void) {
     // any system initializations for the LTP
@@ -41,12 +42,14 @@ void LTP_system_init(void) {
 
 }
 
-void LTP_setModePtr(LTP_MODE *modePtr){
-    modePtr = LTP_modePtr;
+void LTP_setPtrs(LTP_MODE *_modePtr, uint16_t *_anglePtr, uint16_t *_distancePtr) {
+    LTP_modePtr = _modePtr;
+    LTP_anglePtr = _anglePtr;
+    //LTP_distancePtr = _distancePtr;
 }
 
-void LTP_sampleAndSend(void){
-    
+void LTP_sampleAndSend(void) {
+
 }
 
 void LTP_poll(void) {

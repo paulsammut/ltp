@@ -59,7 +59,7 @@ int main(void) {
     PID_setAnglePtr(&curAngle);
     encoder_setAnglePtr(&curAngle);
     LIDAR_setDistancePtr(&curDistance);
-    LTP_setModePtr(&curMode);
+    //LTP_setPtrs(&curMode, &curAngle, &curDistance);
     
     PID_setDesiredAngle(100);
     
