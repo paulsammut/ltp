@@ -1,10 +1,11 @@
-#define _DEBUG
+//#define _DEBUG
 
 #include <stdint.h> 
 #include "motor.h"
 #include "mcc_generated_files/tmr1.h"
 #include "PID.h"
 #include "dbg.h"
+
 
 uint16_t usecsElapsed;
 uint16_t desiredAngle = 0;
