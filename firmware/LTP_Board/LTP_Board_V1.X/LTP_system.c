@@ -45,7 +45,7 @@ void LTP_poll(void) {
         IFS0bits.T1IF = false;
 
         //sweep_cycle();
-        PID_cycle();
+        //PID_cycle();
         TMR1 = 0x0000;
     }
 }

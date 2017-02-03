@@ -76,7 +76,7 @@ uint16_t LIDAR_getDistance(void) {
 
     busy_flag = 0x01 & pData[0];
 
-    while (pData == 0) {
+    while (busy_flag == 0) {
         busy_counter++;
         //we are busy so check again!
         __delay_ms(1);
@@ -105,18 +105,6 @@ uint16_t LIDAR_getDistance(void) {
     //printf("The number: %d\r\n", distance);
     return distance;
 }
-
-/*
-    uint8_t response = LIDAR_Read(0x01, pData, 1);
-    if (response == 1) {
-        printf("Reading: %d", pData[0]);
-        LIDAR_Read(0x8f, pData, 2);
-
-        uint16_t distance = pData[0] << 8 || pData[1];
-        printf("Distance is: %d", distance);
-    } else
-        printf("Read of 0x01 failed!\r\n");
- */
 
 uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
 
@@ -290,22 +278,3 @@ uint8_t LIDAR_Write(uint8_t registerAddress, uint8_t pData) {
     return (1);
 }
 
-/*
-switch(pStatus){
-    case MSSP2_I2C_MESSAGE_FAIL: 
-        printf("MSSP2_I2C_MESSAGE_FAIL\n\r"); break;
-    case MSSP2_I2C_MESSAGE_PENDING:
-        printf("MSSP2_I2C_MESSAGE_PENDING\n\r");break;
-    case MSSP2_I2C_MESSAGE_COMPLETE: 
-        printf("MSSP2_I2C_MESSAGE_COMPLETE\n\r");break;
-    case MSSP2_I2C_STUCK_START: 
-        printf("MSSP2_I2C_STUCK_START\n\r");break;
-    case MSSP2_I2C_MESSAGE_ADDRESS_NO_ACK: 
-        printf("MSSP2_I2C_MESSAGE_ADDRESS_NO_ACK\n\r");break;
-    case MSSP2_I2C_DATA_NO_ACK: 
-        printf("MSSP2_I2C_DATA_NO_ACK\n\r");break;
-    case MSSP2_I2C_LOST_STATE: 
-        printf("MSSP2_I2C_LOST_STATE\n\r");break;
-    default: break;
-}
- */

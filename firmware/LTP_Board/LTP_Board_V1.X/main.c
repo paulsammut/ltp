@@ -21,7 +21,7 @@
         MPLAB             :  MPLAB X 3.45
  */
 
-
+#define _DEBUG
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
 #include "lidar.h"
@@ -63,9 +63,14 @@ int main(void) {
     sweep_set(3000,2000,.5);
     while (1) {
         //test1();
-        test3();
+        //test3();
         //test4();
         //test5();
+        //uint16_t tempD = LIDAR_getDistance();
+        //dbg_printf("Lidar distance is: %u\r\n", tempD);
+        
+        printf("Lidar distance is: %d\r\n", 4);
+        LTP_poll();
     }
 
     return -1;
