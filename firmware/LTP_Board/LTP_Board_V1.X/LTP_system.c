@@ -61,9 +61,30 @@ void LTP_poll(void) {
     if (TMR1 >= pollPeriod) {
         // we run the loop!
 
+        // Here we just reset the timer flag.
         IFS0bits.T1IF = false;
-
-
+        
+        switch(*LTP_modePtr){
+            case IDLE   :
+                // do nothing!
+                break;
+            case SPIN   :
+                // not much to do here either, we are spinning
+                break;
+            case SETPOINT :
+                // ok now something for us! SETPOINT mode means we just run the 
+                // PID_cycle function. We are confident that whoever put us in setpoint
+                // mode also set the setpoint. haha!
+                PID_cycle();
+                break;
+            case SWEEP:
+                // almost same deal as SETPOINT, with the exception that we have a master
+                // sweep control loop that sets the setpoint that we also have to run. Cool!
+                sweep_cycle();
+                PID_cycle();
+                break;
+               
+        }
         TMR1 = 0x0000;
     }
 }
