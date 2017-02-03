@@ -48,6 +48,8 @@ int main(void) {
     // initialize the device
     SYSTEM_Initialize();
     
+    char splash[] = {};
+    
     dbg_printf("\r\n");
     dbg_printf("LTP_BOARD_BOOTING..\r\n");
 
@@ -63,7 +65,10 @@ int main(void) {
     
     PID_setDesiredAngle(100);
     
-    sweep_set(3000,2000,.5);
+    sweep_set(3000,2000,2);
+    
+    motor_setSpeed(50);
+    curMode = SWEEP;
     
     while (1) {    
         LTP_sampleAndSend();

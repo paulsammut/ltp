@@ -53,25 +53,26 @@ void LTP_setPtrs(LTP_MODE *_modePtr, uint16_t *_anglePtr, uint16_t *_distancePtr
 void LTP_sampleAndSend(void) {
     encoder_updateAngle();
     LIDAR_updateDistance();
-    dbg_printf("Angle is: %u, and distance is: %u\r\n", *LTP_anglePtr, *LTP_distancePtr);
+    dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
 }
 
 void LTP_poll(void) {
-    
+
+    // This polls TMR1 to see if it is greater than our polling period.
     if (TMR1 >= pollPeriod) {
         // we run the loop!
 
         // Here we just reset the timer flag.
         IFS0bits.T1IF = false;
-        
-        switch(*LTP_modePtr){
-            case IDLE   :
+
+        switch (*LTP_modePtr) {
+            case IDLE:
                 // do nothing!
                 break;
-            case SPIN   :
+            case SPIN:
                 // not much to do here either, we are spinning
                 break;
-            case SETPOINT :
+            case SETPOINT:
                 // ok now something for us! SETPOINT mode means we just run the 
                 // PID_cycle function. We are confident that whoever put us in setpoint
                 // mode also set the setpoint. haha!
@@ -83,7 +84,10 @@ void LTP_poll(void) {
                 sweep_cycle();
                 PID_cycle();
                 break;
-               
+            case STOP:
+                motor_setSpeed(0);
+                break;
+
         }
         TMR1 = 0x0000;
     }
