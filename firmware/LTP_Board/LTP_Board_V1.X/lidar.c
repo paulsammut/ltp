@@ -10,6 +10,7 @@
 #include <libpic30.h>
 
 uint8_t lidar_numCal = 0;
+uint16_t *LIDAR_distancePtr;
 
 void LIDAR_init(void) {
     
@@ -30,6 +31,10 @@ void LIDAR_init(void) {
     LIDAR_configure(&lidar_config);
 }
 
+void LIDAR_setDistancePtr(uint16_t *distancePtr){
+    LIDAR_distancePtr = distancePtr;
+}
+
 uint8_t LIDAR_configure(LIDAR_CONFIG *lidar_config) {
     uint8_t write_success = 0;
     write_success += LIDAR_Write(0x02, lidar_config ->SIG_COUNT_VAL);
@@ -44,12 +49,11 @@ uint8_t LIDAR_configure(LIDAR_CONFIG *lidar_config) {
     }
 }
 
-uint16_t LIDAR_getDistance(void) {
+uint8_t LIDAR_updateDistance(void) {
     uint8_t response;
     uint8_t pData[4];
     uint8_t busy_flag;
     uint16_t busy_counter;
-    uint16_t distance;
     uint8_t readReq = 0x03; //receiver bias disabled
 
     if (lidar_numCal == 100) {
@@ -101,9 +105,10 @@ uint16_t LIDAR_getDistance(void) {
         return 0;
     }
 
-    distance = (pData[0] << 8) + pData[1];
+    *LIDAR_distancePtr = (pData[0] << 8) + pData[1];
     //printf("The number: %d\r\n", distance);
-    return distance;
+    
+    return 1;
 }
 
 uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {

@@ -53,7 +53,7 @@ extern "C" {
      * Sets the LTP_modePtr so that we don't have to share data with other parts of the program
      * @param LTP_modePtr LTP mode pointer that contains the address of the value of the current mode
      */
-    void LTP_setModePtr(LTP_MODE *LTP_modePtr);
+    void LTP_setModePtr(LTP_MODE *modePtr);
     
     /**
      * Checks the uart for bytes to see if we received any control packets. It then acts on these messages.

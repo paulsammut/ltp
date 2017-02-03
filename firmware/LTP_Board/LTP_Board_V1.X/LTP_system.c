@@ -14,6 +14,9 @@
 // relative to that timer in counts. 0x139 is 5ms, 0x3F is 1ms.
 uint16_t pollPeriod = 0x139;
 
+LTP_MODE *LTP_modePtr;
+uint16_t *LTP_curAngle;
+
 void LTP_system_init(void) {
     // any system initializations for the LTP
 
@@ -36,6 +39,14 @@ void LTP_system_init(void) {
     motor_init();
     PID_init();
 
+}
+
+void LTP_setModePtr(LTP_MODE *modePtr){
+    modePtr = LTP_modePtr;
+}
+
+void LTP_sampleAndSend(void){
+    
 }
 
 void LTP_poll(void) {

@@ -39,6 +39,7 @@
 #include <libpic30.h>
 
 uint16_t curAngle;
+uint16_t curDistance;
 LTP_MODE curMode = IDLE;
 
 
@@ -57,19 +58,16 @@ int main(void) {
 
     PID_setAnglePtr(&curAngle);
     encoder_setAnglePtr(&curAngle);
+    LIDAR_setDistancePtr(&curDistance);
+    LTP_setModePtr(&curMode);
     
     PID_setDesiredAngle(100);
     
     sweep_set(3000,2000,.5);
     while (1) {
-        //test1();
-        //test3();
-        //test4();
-        //test5();
-        //uint16_t tempD = LIDAR_getDistance();
         //dbg_printf("Lidar distance is: %u\r\n", tempD);
         
-        printf("Lidar distance is: %d\r\n", 4);
+        
         LTP_poll();
     }
 
