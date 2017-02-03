@@ -82,10 +82,10 @@ uint8_t LIDAR_updateDistance(void) {
 
     busy_flag = 0x01 & pData[0];
 
-    while (busy_flag == 0) {
+    while (busy_flag == 1) {
         busy_counter++;
         //we are busy so check again!
-        __delay_ms(1);
+        __delay_us(500);
         // Read the System Status bit
         response = LIDAR_Read(0x01, pData, 1);
         if (response == 0) {
