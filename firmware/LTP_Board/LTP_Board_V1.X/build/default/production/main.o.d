@@ -12,8 +12,7 @@ mcc_generated_files/interrupt_manager.h  \
  LTP_system.h  \
 lidar.h  \
 encoder.h  \
-mcc_generated_files/mccp1_compare.h  \
- motor.h  \
+motor.h  \
 PID.h  \
 dbg.h  \
 sweep.h  \

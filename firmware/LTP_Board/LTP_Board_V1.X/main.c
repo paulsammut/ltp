@@ -26,7 +26,6 @@
 #include "LTP_system.h"
 #include "lidar.h"
 #include "encoder.h"
-#include "mcc_generated_files/mccp1_compare.h"
 #include "motor.h"
 #include "PID.h"
 #include "dbg.h"
@@ -65,7 +64,7 @@ int main(void) {
     
     PID_setDesiredAngle(100);
     
-    sweep_set(3000,2000,2);
+    sweep_set(3000,2000,.1);
     
     motor_setSpeed(50);
     curMode = SWEEP;
