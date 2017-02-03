@@ -11,5 +11,5 @@ mcc_generated_files/tmr1.h  \
 mcc_generated_files/traps.h  \
  mcc_generated_files/interrupt_manager.h  \
 LTP_system.h  \
-dbg.h  \
-motor.h 
+motor.h  \
+dbg.h 

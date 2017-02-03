@@ -59,15 +59,14 @@ int main(void) {
     PID_setAnglePtr(&curAngle);
     encoder_setAnglePtr(&curAngle);
     LIDAR_setDistancePtr(&curDistance);
-    //LTP_setPtrs(&curMode, &curAngle, &curDistance);
+    LTP_setPtrs(&curMode, &curAngle, &curDistance);
     
     PID_setDesiredAngle(100);
     
     sweep_set(3000,2000,.5);
-    while (1) {
-        //dbg_printf("Lidar distance is: %u\r\n", tempD);
-        
-        
+    
+    while (1) {    
+        LTP_sampleAndSend();
         LTP_poll();
     }
 

@@ -1,8 +1,10 @@
 #include "lidar.h"
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
-#include "dbg.h"
 #include "motor.h"
+
+#define _DEBUG
+#include "dbg.h"
 
 #define FOSC    (32000000ULL)
 #define FCY     (FOSC/2)

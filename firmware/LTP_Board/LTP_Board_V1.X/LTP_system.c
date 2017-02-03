@@ -6,6 +6,8 @@
 #include "PID.h"
 #include "mcc_generated_files/tmr1.h"
 #include "sweep.h"
+
+#define _DEBUG
 #include "dbg.h"
 
 
@@ -45,21 +47,23 @@ void LTP_system_init(void) {
 void LTP_setPtrs(LTP_MODE *_modePtr, uint16_t *_anglePtr, uint16_t *_distancePtr) {
     LTP_modePtr = _modePtr;
     LTP_anglePtr = _anglePtr;
-    //LTP_distancePtr = _distancePtr;
+    LTP_distancePtr = _distancePtr;
 }
 
 void LTP_sampleAndSend(void) {
-
+    encoder_updateAngle();
+    LIDAR_updateDistance();
+    dbg_printf("Angle is: %u, and distance is: %u\r\n", *LTP_anglePtr, *LTP_distancePtr);
 }
 
 void LTP_poll(void) {
+    
     if (TMR1 >= pollPeriod) {
         // we run the loop!
 
         IFS0bits.T1IF = false;
 
-        //sweep_cycle();
-        //PID_cycle();
+
         TMR1 = 0x0000;
     }
 }
