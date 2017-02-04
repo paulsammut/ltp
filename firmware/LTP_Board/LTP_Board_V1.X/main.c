@@ -31,7 +31,6 @@
 #include "dbg.h"
 #include "sweep.h"
 #include "tests.h"
-
 #define FOSC    (32000000ULL)
 #define FCY     (FOSC/2)
 
@@ -46,8 +45,7 @@ int main(void) {
     
     // initialize the device
     SYSTEM_Initialize();
-    
-    char splash[] = {};
+          
     
     dbg_printf("\r\n");
     dbg_printf("LTP_BOARD_BOOTING..\r\n");
@@ -64,7 +62,7 @@ int main(void) {
     
     PID_setDesiredAngle(100);
     
-    sweep_set(3000,2000,.1);
+    sweep_set(1500,500,.2);
     
     motor_setSpeed(50);
     curMode = SWEEP;
