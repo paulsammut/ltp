@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/myexec.dir/serial.cpp.o"
+  "CMakeFiles/myexec.dir/test.cpp.o"
+  "CMakeFiles/myexec.dir/main.cpp.o"
   "CMakeFiles/myexec.dir/cobs.c.o"
-  "CMakeFiles/myexec.dir/main.c.o"
   "myexec.pdb"
   "myexec"
 )

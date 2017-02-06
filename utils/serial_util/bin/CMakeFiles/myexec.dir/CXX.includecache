@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/paul/work/LTP/utils/serial_util/main.cpp
+serial.h
+/home/paul/work/LTP/utils/serial_util/serial.h
+stdio.h
+-
+test.h
+/home/paul/work/LTP/utils/serial_util/test.h
+iostream
+-
+
 /home/paul/work/LTP/utils/serial_util/serial.cpp
 serial.h
 /home/paul/work/LTP/utils/serial_util/serial.h
@@ -31,4 +41,12 @@ stdint.h
 -
 stdlib.h
 -
+
+/home/paul/work/LTP/utils/serial_util/test.cpp
+test.h
+/home/paul/work/LTP/utils/serial_util/test.h
+iostream
+-
+
+/home/paul/work/LTP/utils/serial_util/test.h
 

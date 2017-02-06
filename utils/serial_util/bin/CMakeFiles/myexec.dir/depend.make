@@ -3,9 +3,13 @@
 
 CMakeFiles/myexec.dir/cobs.c.o: ../cobs.c
 
-CMakeFiles/myexec.dir/main.c.o: ../main.c
-CMakeFiles/myexec.dir/main.c.o: ../serial.h
+CMakeFiles/myexec.dir/main.cpp.o: ../main.cpp
+CMakeFiles/myexec.dir/main.cpp.o: ../serial.h
+CMakeFiles/myexec.dir/main.cpp.o: ../test.h
 
 CMakeFiles/myexec.dir/serial.cpp.o: ../serial.cpp
 CMakeFiles/myexec.dir/serial.cpp.o: ../serial.h
+
+CMakeFiles/myexec.dir/test.cpp.o: ../test.cpp
+CMakeFiles/myexec.dir/test.cpp.o: ../test.h
 
