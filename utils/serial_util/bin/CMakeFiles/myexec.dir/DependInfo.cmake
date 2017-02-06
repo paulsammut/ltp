@@ -1,8 +1,18 @@
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "C"
   "CXX"
   )
 # The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_C
+  "/home/paul/work/LTP/utils/serial_util/cobs.c" "/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles/myexec.dir/cobs.c.o"
+  "/home/paul/work/LTP/utils/serial_util/main.c" "/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles/myexec.dir/main.c.o"
+  )
+set(CMAKE_C_COMPILER_ID "GNU")
+
+# The include file search paths:
+set(CMAKE_C_TARGET_INCLUDE_PATH
+  )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/paul/work/LTP/utils/serial_util/serial.cpp" "/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles/myexec.dir/serial.cpp.o"
   )

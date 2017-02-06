@@ -123,6 +123,60 @@ myexec/fast:
 	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/build
 .PHONY : myexec/fast
 
+cobs.o: cobs.c.o
+
+.PHONY : cobs.o
+
+# target to build an object file
+cobs.c.o:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/cobs.c.o
+.PHONY : cobs.c.o
+
+cobs.i: cobs.c.i
+
+.PHONY : cobs.i
+
+# target to preprocess a source file
+cobs.c.i:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/cobs.c.i
+.PHONY : cobs.c.i
+
+cobs.s: cobs.c.s
+
+.PHONY : cobs.s
+
+# target to generate assembly for a file
+cobs.c.s:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/cobs.c.s
+.PHONY : cobs.c.s
+
+main.o: main.c.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.c.o:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/main.c.o
+.PHONY : main.c.o
+
+main.i: main.c.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.c.i:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/main.c.i
+.PHONY : main.c.i
+
+main.s: main.c.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.c.s:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/main.c.s
+.PHONY : main.c.s
+
 serial.o: serial.cpp.o
 
 .PHONY : serial.o
@@ -159,6 +213,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... myexec"
+	@echo "... cobs.o"
+	@echo "... cobs.i"
+	@echo "... cobs.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 	@echo "... serial.o"
 	@echo "... serial.i"
 	@echo "... serial.s"
