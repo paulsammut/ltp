@@ -41,6 +41,8 @@ stdint.h
 -
 stdlib.h
 -
+termios.h
+-
 
 /home/paul/work/LTP/utils/serial_util/test.cpp
 test.h
