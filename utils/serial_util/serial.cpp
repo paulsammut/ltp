@@ -18,6 +18,18 @@ struct termios oldtio,newtio;
 volatile int STOP=FALSE;
 
 int serialOpen(char *port, serialSpeed baudrate) {
+    unsigned long val_BAUDRATE;
+    switch(baudrate) {
+    case _B57600:
+        val_BAUDRATE = B57600;
+        break;
+    case _B115200:
+        val_BAUDRATE = B115200;
+        break;
+    case _B230400:
+        val_BAUDRATE = B230400;
+        break;
+    }
 
     // open the serial point and get its file handle
     fd = open(port, O_RDWR | O_NOCTTY );
@@ -29,7 +41,7 @@ int serialOpen(char *port, serialSpeed baudrate) {
     tcgetattr(fd,&oldtio); /* save current port settings */
 
     memset(&newtio,0, sizeof(newtio));
-    newtio.c_cflag = baudrate | CRTSCTS | CS8 | CLOCAL | CREAD;
+    newtio.c_cflag = val_BAUDRATE | CRTSCTS | CS8 | CLOCAL | CREAD;
     newtio.c_iflag = IGNPAR;
     newtio.c_oflag = 0;
 
