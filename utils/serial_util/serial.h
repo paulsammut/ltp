@@ -42,7 +42,7 @@ int serialOpen(char *port, serialSpeed baudrate);
  *
  * @return 
  */
-int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool print = false);  
+int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose = false);  
 
 
 /**

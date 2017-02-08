@@ -30,9 +30,6 @@ ARCHITECTURE_ID	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	420;"	
 ARCHITECTURE_ID	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	423;"	d	file:
 ARCHITECTURE_ID	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	426;"	d	file:
 ARCHITECTURE_ID	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	430;"	d	file:
-B115200	serial.h	/^    B115200,$/;"	e	enum:__anon1
-B230400	serial.h	/^    B230400$/;"	e	enum:__anon1
-B57600	serial.h	/^    B57600,$/;"	e	enum:__anon1
 BAUDRATE	serial.h	11;"	d
 CMAKE_BINARY_DIR	bin/Makefile	/^CMAKE_BINARY_DIR = \/home\/paul\/work\/LTP\/utils\/serial_util\/bin$/;"	m
 CMAKE_COMMAND	bin/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
@@ -355,6 +352,9 @@ STRINGIFY_HELPER	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	288;"	d	fil
 STRINGIFY_HELPER	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	283;"	d	file:
 SUFFIXES	bin/Makefile	/^SUFFIXES =$/;"	m
 TRUE	serial.h	15;"	d
+_B115200	serial.h	/^    _B115200,$/;"	e	enum:__anon1
+_B230400	serial.h	/^    _B230400$/;"	e	enum:__anon1
+_B57600	serial.h	/^    _B57600,$/;"	e	enum:__anon1
 _POSIX_SOURCE	serial.h	13;"	d
 __SERIAL_H_	serial.h	5;"	d
 c	serial.cpp	/^int c;  \/\/$/;"	v
@@ -391,7 +391,7 @@ qnxnto	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto 
 qnxnto	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 res	serial.cpp	/^int res;$/;"	v
 serialClose	serial.cpp	/^int serialClose(void) {$/;"	f
-serialOpen	serial.cpp	/^int serialOpen(void) {$/;"	f
-serialRead	serial.cpp	/^int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool print = false) {$/;"	f
+serialOpen	serial.cpp	/^int serialOpen(char *port, serialSpeed baudrate) {$/;"	f
+serialRead	serial.cpp	/^int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool print) {$/;"	f
 serialSpeed	serial.h	/^} serialSpeed;$/;"	t	typeref:enum:__anon1
 testFunc	test.cpp	/^void testFunc(void){$/;"	f

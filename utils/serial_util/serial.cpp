@@ -61,11 +61,11 @@ int serialOpen(char *port, serialSpeed baudrate) {
 /**
  * @brief Does a serial port read with an optional print to screen.
  *
- * @param sReadBuf
- * @param maxNumBytes
- * @param print
+ * @param sReadBuf Pointer to the read buffer that will be filled with read bytes.
+ * @param maxNumBytes Max number of bytes to read from the port.
+ * @param verbose If true, this prints the received bytes
  *
- * @return
+ * @return Returns the number of bytes read.
  */
 int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool print) {
     int res;
