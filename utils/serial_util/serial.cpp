@@ -67,11 +67,11 @@ int serialOpen(char *port, serialSpeed baudrate) {
  *
  * @return Returns the number of bytes read.
  */
-int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool print) {
+int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {
     int res;
     res = read(fd,sReadBuf,maxNumBytes);
 
-    if(print) {
+    if(verbose) {
         // printf which uses stdout is buffered. The larger the buffer, the slower it
         // will post to the terminal. I can either set the buffer to smaller size like
         // the following, or call fflush(stdout) to force a write to the terminal

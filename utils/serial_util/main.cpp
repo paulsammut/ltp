@@ -14,18 +14,17 @@ int main(int argc, char *argv[])
     bool packetClean = false;
 
     char port[] = "/dev/ttyUSB0";
-    printf("Ummm Hello!\r\n");
+    std::cout << "Program Loaded!" << std::endl;
 
 
     if(serialOpen(port, _B230400) < 0)
         exit (0);
 
-
+    // This flushes the serial port.
     serialRead(tempBuff,128,false);
 
-    while(1) {
-        // std::cout << std::flush;
 
+    while(1) {
         if(packetLength >= 255)
         {
             std::cout << "Buffer overflow" << std::endl;
@@ -48,19 +47,13 @@ int main(int argc, char *argv[])
             {
                 if(tempBuff[i] == DELIMITER)
                 {
-                    //std::cout << "Yay we got a packet!: " << packetLength << " : " ;
-
                     // set the end of the packet to 0, which terminates the string
                     tempBuff[packetLength] = 0;
 
                     if(packetClean)
                     {
-                        //std::cout << tempBuff << std::endl;
-                        //return 1;
-                        if(packetLength != 8)
-                        {
+                        if(packetLength != 38)
                             std::cout << tempBuff << std::endl;
-                        }
                     }
 
                     // reset the packet length
