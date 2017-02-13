@@ -5,17 +5,24 @@
 #include <unistd.h>
 #include <iostream>
 
-int fd; // file handle for the device
-struct termios oldtio,newtio;
+SerialClass::SerialClass(void){
+    BUFF_LENGTH = 255;  
+    tempBuff = new unsigned char [BUFF_LENGTH];
+    bytesRead = 0;
+    packetLength = 0;
+    packetClean = false;
+    portOpen = false;
+}
 
-// Members for packet length
-const int BUFF_LENGTH = 255;  
-unsigned char tempBuff[BUFF_LENGTH];
-int bytesRead = 0;
-int packetLength = 0;
-bool packetClean = false;
+SerialClass::~SerialClass(void){
+    if(portOpen){
+       this->serialClose();
+       portOpen = false;
+    }
+    delete[] tempBuff;
+}
 
-int serialOpen(char *port, serialSpeed baudrate) {
+int SerialClass::serialOpen(char *port, serialSpeed baudrate) {
     unsigned long val_BAUDRATE;
     switch(baudrate) {
     case _B57600:
@@ -55,7 +62,7 @@ int serialOpen(char *port, serialSpeed baudrate) {
     return fd;
 }
 
-int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {
+int SerialClass::serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {
     // Number of bytes read
     int res;
     res = read(fd,sReadBuf,maxNumBytes);
@@ -74,12 +81,12 @@ int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {
     return res;
 }
 
-int serialClose(void) {
+int SerialClass::serialClose(void) {
     // reset the modem
     return tcsetattr(fd,TCSANOW,&oldtio);
 }
 
-int serialGetPacket(unsigned char *packetBuffer, unsigned char delimeter) {
+int SerialClass::serialGetPacket(unsigned char *packetBuffer, unsigned char delimeter) {
     // Check to see if our current packet length is greater than our limit
     if(packetLength >= BUFF_LENGTH)
     {
