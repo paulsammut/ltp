@@ -1,1 +1,0 @@
-/usr/bin/c++    -std=c++11   CMakeFiles/myexec.dir/serial.cpp.o CMakeFiles/myexec.dir/test.cpp.o CMakeFiles/myexec.dir/main.cpp.o CMakeFiles/myexec.dir/cobs.c.o  -o myexec -rdynamic 
