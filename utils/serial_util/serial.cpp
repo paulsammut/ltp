@@ -1,27 +1,19 @@
 #include "serial.h"
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 #include <termios.h>
-#include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include <iostream>
 
 int fd; // file handle for the device
-int c;  //
-int res;
-
 struct termios oldtio,newtio;
 
-volatile int STOP=FALSE;
-const int BUFF_LENGTH = 10;  
-unsigned char tempBuff[BUFF_LENGTH] = {10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
+// Members for packet length
+const int BUFF_LENGTH = 255;  
+unsigned char tempBuff[BUFF_LENGTH];
 int bytesRead = 0;
-int packetLength = 3;
-// Here we make sure that the packet was read from start to finish.
-bool packetClean = true;
+int packetLength = 0;
+bool packetClean = false;
 
 int serialOpen(char *port, serialSpeed baudrate) {
     unsigned long val_BAUDRATE;
@@ -54,7 +46,7 @@ int serialOpen(char *port, serialSpeed baudrate) {
     /* set input mode (non-canonical, no echo,...) */
     newtio.c_lflag = 0;
 
-    newtio.c_cc[VTIME]    = 0;   /* inter-character timer unused */
+    newtio.c_cc[VTIME]    = 1;   /* inter-character timer unused */
     newtio.c_cc[VMIN]     = 1;   /* blocking read until 5 chars received */
 
     tcflush(fd, TCIFLUSH);
@@ -74,8 +66,7 @@ int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {
         // the following, or call fflush(stdout) to force a write to the terminal
         // char buffer[10];
         // setvbuf(stdout, buffer, _IOFBF, sizeof(buffer));
-        int i = 0;
-        for(i = 0; i < res ; i++) {
+        for(int i = 0; i < res ; i++) {
             printf("%c",sReadBuf[i]);
         }
         fflush(stdout);
@@ -88,8 +79,7 @@ int serialClose(void) {
     return tcsetattr(fd,TCSANOW,&oldtio);
 }
 
-int serialGetPacket(unsigned char *packetBuffer, char delimeter)
-{
+int serialGetPacket(unsigned char *packetBuffer, unsigned char delimeter) {
     // Check to see if our current packet length is greater than our limit
     if(packetLength >= BUFF_LENGTH)
     {
@@ -99,8 +89,7 @@ int serialGetPacket(unsigned char *packetBuffer, char delimeter)
     }
 
     // Do a serial read
-    // bytesRead = serialRead(tempBuff+packetLength,128,false);
-    bytesRead = 7;  
+    bytesRead = serialRead(tempBuff+packetLength,128,false);
     packetLength += bytesRead;
 
     // Check to see if we overflowed after a serial read
@@ -120,21 +109,14 @@ int serialGetPacket(unsigned char *packetBuffer, char delimeter)
                 // set the end of the packet to 0, which terminates the string
                 // this replaces the delimeter with 0
 
-                if(packetClean)
-                {
-                    std::cout << tempBuff << std::endl;
-                    memcpy(packetBuffer, tempBuff, i+1);
-                    packetLength = packetLength - i - 1;
-                    printf("New Packet length: %d i: %d\r\n", packetLength, i);
-                    memcpy(tempBuff, tempBuff+i+1, packetLength); 
-                    printf("The new tempBuff:\r\n");
-                    for(int j = 0; j < 10; j++) 
-                        printf("%u ",tempBuff[j]);
-                    return i+1;
-                }
+                memcpy(packetBuffer, tempBuff, i+1);
+                packetLength = packetLength - i - 1;
+                memcpy(tempBuff, tempBuff+i+1, packetLength); 
 
-                // reset the packet length
-                packetLength = 0;
+                if(packetClean)
+                    return i+1;
+
+                // reach here if previous packet was not clean
                 packetClean = true;
             }
         }

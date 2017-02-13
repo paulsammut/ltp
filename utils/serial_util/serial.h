@@ -59,5 +59,5 @@ int serialClose(void);
  *
  * @return 
  */
-int serialGetPacket(unsigned char *packetBuffer, char delimeter);
+int serialGetPacket(unsigned char *packetBuffer, unsigned char delimeter);
 #endif
