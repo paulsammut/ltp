@@ -2,16 +2,12 @@
 #include <stdio.h>
 #include "test.h"
 #include <iostream>
+#include <string.h>
 
 #define DELIMITER '\r'
 
 int main(int argc, char *argv[])
 {
-    unsigned char tempBuff[255];
-    int bytesRead = 0;
-    int packetLength = 0;
-    // Here we make sure that the packet was read from start to finish.
-    bool packetClean = false;
 
     char port[] = "/dev/ttyUSB0";
     std::cout << "Program Loaded!" << std::endl;
@@ -21,47 +17,20 @@ int main(int argc, char *argv[])
         exit (0);
 
     // This flushes the serial port.
-    serialRead(tempBuff,128,false);
+    // serialRead(tempBuff,128,false);
 
+    int index=3;
+    int size=10;
+    unsigned char test[10]; 
+    for(int i = 0; i < 10; i++) 
+        printf("%u ",test[i]);
+
+    printf("\n\r Returned: %d\r\n",serialGetPacket(test, 13));
+    for(int i = 0; i < 10; i++) 
+        printf("%u ",test[i]);
 
     while(1) {
-        if(packetLength >= 255)
-        {
-            std::cout << "Buffer overflow" << std::endl;
-            packetClean = false;
-            packetLength = 0;
-        }
-
-        bytesRead = serialRead(tempBuff+packetLength,128,false);
-
-        packetLength += bytesRead;
-
-        if(packetLength >= 255)
-        {
-            std::cout << "Buffer overflow" << std::endl;
-            packetClean = false;
-            packetLength = 0;
-        } else {
-            // We scan the "just read portion" for a delimeter
-            for(int i = packetLength-bytesRead; i < packetLength; i++)
-            {
-                if(tempBuff[i] == DELIMITER)
-                {
-                    // set the end of the packet to 0, which terminates the string
-                    tempBuff[packetLength] = 0;
-
-                    if(packetClean)
-                    {
-                        if(packetLength != 38)
-                            std::cout << tempBuff << std::endl;
-                    }
-
-                    // reset the packet length
-                    packetLength = 0;
-                    packetClean = true;
-                }
-            }
-        }
+        break;
     }
 
     serialClose();

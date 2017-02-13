@@ -257,12 +257,12 @@ COMPILER_VERSION_TWEAK	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp
 COMPILER_VERSION_TWEAK	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	33;"	d	file:
 DEC	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	439;"	d	file:
 DEC	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	434;"	d	file:
+DELIMITER	main.cpp	6;"	d	file:
 EQUALS	bin/Makefile	/^EQUALS = =$/;"	m
-FALSE	serial.h	14;"	d
+FALSE	serial.h	13;"	d
 HEX	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	450;"	d	file:
 HEX	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	445;"	d	file:
 ID_VOID_MAIN	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
-MODEMDEVICE	serial.h	12;"	d
 PLATFORM_ID	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	293;"	d	file:
 PLATFORM_ID	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	296;"	d	file:
 PLATFORM_ID	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	299;"	d	file:
@@ -351,12 +351,13 @@ STRINGIFY	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	284;"	d	file
 STRINGIFY_HELPER	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	288;"	d	file:
 STRINGIFY_HELPER	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	283;"	d	file:
 SUFFIXES	bin/Makefile	/^SUFFIXES =$/;"	m
-TRUE	serial.h	15;"	d
+TRUE	serial.h	14;"	d
 _B115200	serial.h	/^    _B115200,$/;"	e	enum:__anon1
 _B230400	serial.h	/^    _B230400$/;"	e	enum:__anon1
 _B57600	serial.h	/^    _B57600,$/;"	e	enum:__anon1
-_POSIX_SOURCE	serial.h	13;"	d
+_POSIX_SOURCE	serial.h	12;"	d
 __SERIAL_H_	serial.h	5;"	d
+bytesRead	serial.cpp	/^int bytesRead = 0;$/;"	v
 c	serial.cpp	/^int c;  \/\/$/;"	v
 cobs_decode	cobs.c	/^size_t cobs_decode(const uint8_t * restrict input, size_t length, uint8_t * restrict output)$/;"	f
 cobs_encode	cobs.c	/^size_t cobs_encode(const uint8_t * restrict input, size_t length, uint8_t * restrict output)$/;"	f
@@ -387,11 +388,15 @@ main	bin/CMakeFiles/feature_tests.cxx	/^int main(int argc, char** argv) { (void)
 main	main.cpp	/^int main(int argc, char *argv[])$/;"	f
 newtio	serial.cpp	/^struct termios oldtio,newtio;$/;"	v	typeref:struct:
 oldtio	serial.cpp	/^struct termios oldtio,newtio;$/;"	v	typeref:struct:termios
+packetClean	serial.cpp	/^bool packetClean = false;$/;"	v
+packetLength	serial.cpp	/^int packetLength = 0;$/;"	v
 qnxnto	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 qnxnto	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 res	serial.cpp	/^int res;$/;"	v
 serialClose	serial.cpp	/^int serialClose(void) {$/;"	f
+serialGetPacket	serial.cpp	/^int serialGetPacket(unsigned char *packetBuffer, char delimeter)$/;"	f
 serialOpen	serial.cpp	/^int serialOpen(char *port, serialSpeed baudrate) {$/;"	f
-serialRead	serial.cpp	/^int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool print) {$/;"	f
+serialRead	serial.cpp	/^int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {$/;"	f
 serialSpeed	serial.h	/^} serialSpeed;$/;"	t	typeref:enum:__anon1
+tempBuff	serial.cpp	/^unsigned char tempBuff[255];$/;"	v
 testFunc	test.cpp	/^void testFunc(void){$/;"	f

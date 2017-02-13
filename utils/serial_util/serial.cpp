@@ -7,7 +7,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-
+#include <iostream>
 
 int fd; // file handle for the device
 int c;  //
@@ -16,6 +16,12 @@ int res;
 struct termios oldtio,newtio;
 
 volatile int STOP=FALSE;
+const int BUFF_LENGTH = 10;  
+unsigned char tempBuff[BUFF_LENGTH] = {10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
+int bytesRead = 0;
+int packetLength = 3;
+// Here we make sure that the packet was read from start to finish.
+bool packetClean = true;
 
 int serialOpen(char *port, serialSpeed baudrate) {
     unsigned long val_BAUDRATE;
@@ -34,7 +40,7 @@ int serialOpen(char *port, serialSpeed baudrate) {
     // open the serial point and get its file handle
     fd = open(port, O_RDWR | O_NOCTTY );
     if (fd <0) {
-        perror(MODEMDEVICE);
+        perror(port);
         exit(-1);
     }
 
@@ -57,17 +63,8 @@ int serialOpen(char *port, serialSpeed baudrate) {
     return fd;
 }
 
-
-/**
- * @brief Does a serial port read with an optional print to screen.
- *
- * @param sReadBuf Pointer to the read buffer that will be filled with read bytes.
- * @param maxNumBytes Max number of bytes to read from the port.
- * @param verbose If true, this prints the received bytes
- *
- * @return Returns the number of bytes read.
- */
 int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {
+    // Number of bytes read
     int res;
     res = read(fd,sReadBuf,maxNumBytes);
 
@@ -83,19 +80,65 @@ int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {
         }
         fflush(stdout);
     }
-
     return res;
 }
 
-
-/**
- * @brief Closes the serial port
- *
- * @return 0 on success, negative 1 on failure.
- */
 int serialClose(void) {
     // reset the modem
     return tcsetattr(fd,TCSANOW,&oldtio);
 }
 
+int serialGetPacket(unsigned char *packetBuffer, char delimeter)
+{
+    // Check to see if our current packet length is greater than our limit
+    if(packetLength >= BUFF_LENGTH)
+    {
+        std::cout << "Buffer overflow" << std::endl;
+        packetClean = false;
+        packetLength = 0;
+    }
+
+    // Do a serial read
+    // bytesRead = serialRead(tempBuff+packetLength,128,false);
+    bytesRead = 7;  
+    packetLength += bytesRead;
+
+    // Check to see if we overflowed after a serial read
+    if(packetLength > BUFF_LENGTH)
+    {
+        std::cout << "Buffer overflow" << std::endl;
+        packetClean = false;
+        packetLength = 0;
+        return 0;
+    } else {
+        // We scan the "just read portion" for a delimeter
+        for(int i = packetLength-bytesRead; i < packetLength; i++)
+        {
+            if(tempBuff[i] == delimeter)
+            {
+                // We have found a delimiter
+                // set the end of the packet to 0, which terminates the string
+                // this replaces the delimeter with 0
+
+                if(packetClean)
+                {
+                    std::cout << tempBuff << std::endl;
+                    memcpy(packetBuffer, tempBuff, i+1);
+                    packetLength = packetLength - i - 1;
+                    printf("New Packet length: %d i: %d\r\n", packetLength, i);
+                    memcpy(tempBuff, tempBuff+i+1, packetLength); 
+                    printf("The new tempBuff:\r\n");
+                    for(int j = 0; j < 10; j++) 
+                        printf("%u ",tempBuff[j]);
+                    return i+1;
+                }
+
+                // reset the packet length
+                packetLength = 0;
+                packetClean = true;
+            }
+        }
+    }
+    return 0;
+}
 

@@ -9,7 +9,6 @@
 #include <termios.h>
 
 #define BAUDRATE B230400
-#define MODEMDEVICE "/dev/ttyUSB0"
 #define _POSIX_SOURCE 1 /* POSIX compliant source */
 #define FALSE 0
 #define TRUE 1
@@ -34,13 +33,13 @@ typedef enum {
 int serialOpen(char *port, serialSpeed baudrate);
 
 /**
- * @brief Does a serial read and puts the bytes read in the sReadBuf. It will do a
- * read once the VMIN buffer is full. This buffer is set in the configuration.
+ * @brief Does a serial port read with an optional print to screen.
  *
- * @param sReadBuf A pointer to a character array where the data read will be stored.
- * @param maxNumBytes 
+ * @param sReadBuf Pointer to the read buffer that will be filled with read bytes.
+ * @param maxNumBytes Max number of bytes to read from the port.
+ * @param verbose If true, this prints the received bytes
  *
- * @return 
+ * @return Returns the number of bytes read.
  */
 int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose = false);  
 
@@ -52,4 +51,13 @@ int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose = fals
  */
 int serialClose(void);
 
+/**
+ * @brief  
+ *
+ * @param packetBuffer
+ * @param delimeter
+ *
+ * @return 
+ */
+int serialGetPacket(unsigned char *packetBuffer, char delimeter);
 #endif
