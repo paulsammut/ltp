@@ -39,7 +39,7 @@
 uint16_t curAngle;
 uint16_t curDistance;
 LTP_MODE curMode = IDLE;
-
+int hi;
 
 int main(void) {
     
@@ -64,7 +64,7 @@ int main(void) {
     
     sweep_set(1500,500,.2);
     
-    motor_setSpeed(50);
+    //motor_setSpeed(50);
     curMode = SWEEP;
     
     while (1) {    

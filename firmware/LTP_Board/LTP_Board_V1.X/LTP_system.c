@@ -6,6 +6,7 @@
 #include "PID.h"
 #include "mcc_generated_files/tmr1.h"
 #include "sweep.h"
+#include ".../../../../../LTP_msg_library/LTPmessge.h"
 
 #define _DEBUG
 #include "dbg.h"
@@ -57,7 +58,6 @@ void LTP_sampleAndSend(void) {
 }
 
 void LTP_poll(void) {
-
     // This polls TMR1 to see if it is greater than our polling period.
     if (TMR1 >= pollPeriod) {
         // we run the loop!

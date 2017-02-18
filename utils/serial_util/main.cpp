@@ -28,7 +28,6 @@ int main(int argc, char *argv[])
             printf("%.*s", packetLength, packetBuffer);
             fflush(stdout);
         }
-        
     }
     return ( 1 );
 }

@@ -35,6 +35,7 @@ extern "C" {
         SWEEP,
         STOP
     } LTP_MODE;
+    
 
     /**
      * Initializes the LTP stuff
