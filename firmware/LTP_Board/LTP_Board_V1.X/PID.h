@@ -5,6 +5,7 @@
  * Created on February 1, 2017, 12:17 PM
  */
 #include <stdint.h> 
+#include "LTP_message.h"
 
 #ifndef PID_H
 #define	PID_H
@@ -12,13 +13,6 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-
-    /**
-     * Sets the pointer to the actual angle
-     * @param actualAnglePtr Pointer to the actual angle from the encoder.
-     */
-    void PID_setAnglePtr(uint16_t *actualAnglePtr);
-
 
     /**
      * Goes through a PID cycle

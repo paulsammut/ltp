@@ -14,6 +14,7 @@ lidar.h  \
 encoder.h  \
 motor.h  \
 PID.h  \
+LTP_message.h  \
 dbg.h  \
 sweep.h  \
-tests.h 
+ tests.h 

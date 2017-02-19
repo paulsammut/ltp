@@ -34,12 +34,6 @@ typedef struct
 void LIDAR_init();
 
 /**
- * Sets the distance pointer used in the LIDAR source file to keep track of the distance measurment
- * @param distancePtr Pointer that points to the memory address of the latest distance measurement
- */
-void LIDAR_setDistancePtr(uint16_t *distancePtr);
-
-/**
  * Gets a distance measurement from the LIDAR. First it sends a sample request,
  * then it polls the LIDAR to see if the sample request is ready. Then it does a 2 byte read to get
  * the 16 bit distance number. Every 100 samples, it does a calibrated sample. 

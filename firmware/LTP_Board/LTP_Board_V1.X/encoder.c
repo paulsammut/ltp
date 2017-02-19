@@ -2,7 +2,7 @@
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
 #include "dbg.h"
-
+#include "LTP_message.h"
 uint16_t *encoder_anglePtr;
 
 void encoder_init(void) {
@@ -13,7 +13,6 @@ void encoder_init(void) {
     MSSP1_SPI_Exchange8bit(0x88); // Write to MRD0
     MSSP1_SPI_Exchange8bit(0x23); // x4 quadrature, Index resets CNTR
     SS_ENCODER = 1;
-
 }
 
 void encoder_setAnglePtr(uint16_t *anglePtr){
@@ -53,5 +52,5 @@ int16_t encoder_getAngle(void) {
 
 
 void encoder_updateAngle(void){
-    *encoder_anglePtr = encoder_getAngle();
+    curSamplePtr->angle = encoder_getAngle();
 }

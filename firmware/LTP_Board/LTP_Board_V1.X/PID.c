@@ -5,11 +5,11 @@
 #include "mcc_generated_files/tmr1.h"
 #include "PID.h"
 #include "dbg.h"
-
+#include "LTP_message.h"
+#include "LTP_system.h"
 
 uint16_t usecsElapsed;
 uint16_t desiredAngle = 0;
-uint16_t *actualAngle;
 
 int16_t iteration_time;
 int16_t error;
@@ -20,6 +20,7 @@ double KP = .15;
 double KI = .0002;
 double KD = 2;
 int16_t output = 0;
+
 
 void PID_init(void) {
     TMR1_Start();
@@ -33,15 +34,11 @@ void PID_reset(void) {
     integral = 0;
 }
 
-void PID_setAnglePtr(uint16_t *actualAnglePtr) {
-    actualAngle = actualAnglePtr;
-}
-
 void PID_cycle(void) {
     usecsElapsed = TMR1 * 16;
     iteration_time = usecsElapsed; //1000000;
 
-    error = desiredAngle - *actualAngle;
+    error = desiredAngle - curSamplePtr->angle;
     if (error > 1999)
         error = error - 3998;
     if (error < -1999)

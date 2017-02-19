@@ -25,6 +25,7 @@
       <itemPath>sweep.h</itemPath>
       <itemPath>dbg.h</itemPath>
       <itemPath>tests.h</itemPath>
+      <itemPath>LTP_message.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

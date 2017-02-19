@@ -31,15 +31,12 @@
 #include "dbg.h"
 #include "sweep.h"
 #include "tests.h"
+#include "LTP_message.h"
 #define FOSC    (32000000ULL)
 #define FCY     (FOSC/2)
 
 #include <libpic30.h>
 
-uint16_t curAngle;
-uint16_t curDistance;
-LTP_MODE curMode = IDLE;
-int hi;
 
 int main(void) {
     
@@ -55,18 +52,21 @@ int main(void) {
     DEBUG_RED = 1;
     DEBUG_GREEN = 1;
 
-    PID_setAnglePtr(&curAngle);
-    encoder_setAnglePtr(&curAngle);
-    LIDAR_setDistancePtr(&curDistance);
-    LTP_setPtrs(&curMode, &curAngle, &curDistance);
+    //PID_setAnglePtr(&curAngle);
+    //encoder_setAnglePtr(&curAngle);
+    //LIDAR_setDistancePtr(&curDistance);
+    //LTP_setPtrs(&curMode, &curAngle, &curDistance);
     
     PID_setDesiredAngle(100);
     
     sweep_set(1500,500,.2);
     
     //motor_setSpeed(50);
-    curMode = SWEEP;
+    LTP_setMode(SWEEP);
     
+    int sizeLTP = sizeof(struct LTPSample);
+    
+    dbg_printf("Sample size: %d\r\n", sizeLTP);
     while (1) {    
         LTP_sampleAndSend();
         LTP_poll();

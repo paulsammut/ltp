@@ -22,6 +22,8 @@ extern "C" {
 #define MOTOR_DIR LATBbits.LATB6
 #define SS_ENCODER LATBbits.LATB12
 #define LIDAR1_PE LATBbits.LATB5
+    
+extern struct LTPSample *curSamplePtr;
 
     /** LTP Modes 
 
@@ -66,6 +68,13 @@ extern "C" {
      * Checks the uart for bytes to see if we received any control packets. It then acts on these messages.
      */
     void LTP_checkMessages(void);
+    
+    
+    /**
+     * Sets the mode of the LTP. 
+     * @param _mode The desired mode of the LTP, such as sweep, stop etc.
+     */
+    void LTP_setMode(LTP_MODE _mode);
 
 #ifdef	__cplusplus
 }

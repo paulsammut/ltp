@@ -6,7 +6,8 @@
 #include "PID.h"
 #include "mcc_generated_files/tmr1.h"
 #include "sweep.h"
-#include ".../../../../../LTP_msg_library/LTPmessge.h"
+#include "LTP_message.h"
+#include <stdlib.h>
 
 #define _DEBUG
 #include "dbg.h"
@@ -17,13 +18,14 @@
 // relative to that timer in counts. 0x139 is 5ms, 0x3F is 1ms.
 uint16_t pollPeriod = 0x139;
 
-LTP_MODE *LTP_modePtr;
-uint16_t *LTP_anglePtr;
-uint16_t *LTP_distancePtr;
+LTP_MODE LTP_mode = IDLE;
+
+// allocate memory for the current sample struct point that is going 
+// to get passed to all the subsystems that need it.
+struct LTPSample curSampleMem;
+struct LTPSample *curSamplePtr = &curSampleMem;
 
 void LTP_system_init(void) {
-    // any system initializations for the LTP
-
     //All TRIS pins set for ALL peripherals
     TRISBbits.TRISB6 = 0; //output - motor direction
     TRISCbits.TRISC3 = 0; //output - DEBUG_RED led
@@ -45,16 +47,22 @@ void LTP_system_init(void) {
 
 }
 
-void LTP_setPtrs(LTP_MODE *_modePtr, uint16_t *_anglePtr, uint16_t *_distancePtr) {
-    LTP_modePtr = _modePtr;
-    LTP_anglePtr = _anglePtr;
-    LTP_distancePtr = _distancePtr;
+void LTP_setMode(LTP_MODE _mode) {
+    LTP_mode = _mode;    
 }
 
 void LTP_sampleAndSend(void) {
     encoder_updateAngle();
     LIDAR_updateDistance();
-    dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
+    //dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
+    
+    uint8_t *sampleBytes = (uint8_t*)curSamplePtr;
+    int i = 0;
+    for( i = 0; i < 4; i++ )
+        dbg_printf("0x%02x  ", *(sampleBytes+i));
+    dbg_printf("\r\n");
+    
+    
 }
 
 void LTP_poll(void) {
@@ -65,7 +73,7 @@ void LTP_poll(void) {
         // Here we just reset the timer flag.
         IFS0bits.T1IF = false;
 
-        switch (*LTP_modePtr) {
+        switch (LTP_mode) {
             case IDLE:
                 // do nothing!
                 break;
