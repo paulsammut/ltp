@@ -414,6 +414,11 @@ bool MCCP1_COMPARE_SingleCompareStatusGet( void );
 */
 
 void MCCP1_COMPARE_SingleCompareStatusClear( void );
+
+/**
+ */
+void MCCP1_COMPARE_DualEdgeBufferedConfig( uint16_t priVal, uint16_t secVal );
+
 #ifdef __cplusplus  // Provide C++ Compatibility
 
     }

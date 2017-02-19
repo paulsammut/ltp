@@ -22,8 +22,8 @@ extern "C" {
 #define MOTOR_DIR LATBbits.LATB6
 #define SS_ENCODER LATBbits.LATB12
 #define LIDAR1_PE LATBbits.LATB5
-    
-extern struct LTPSample *curSamplePtr;
+
+    extern struct LTPSample *curSamplePtr;
 
     /** LTP Modes 
 
@@ -37,7 +37,7 @@ extern struct LTPSample *curSamplePtr;
         SWEEP,
         STOP
     } LTP_MODE;
-    
+
 
     /**
      * Initializes the LTP stuff
@@ -62,23 +62,43 @@ extern struct LTPSample *curSamplePtr;
      * @param anglePtr Memory location that holds the latest encoder sample
      * @param distancePtr Memory location that holds the latest distance sample
      */
-    void LTP_setPtrs(LTP_MODE *_modePtr, uint16_t *_anglePtr,  uint16_t *_distancePtr);
+    void LTP_setPtrs(LTP_MODE *_modePtr, uint16_t *_anglePtr, uint16_t *_distancePtr);
 
     /**
      * Checks the uart for bytes to see if we received any control packets. It then acts on these messages.
      */
     void LTP_checkMessages(void);
-    
-    
+
+
     /**
      * Sets the mode of the LTP. 
      * @param _mode The desired mode of the LTP, such as sweep, stop etc.
      */
     void LTP_setMode(LTP_MODE _mode);
 
+    /**
+     * Sets the parameters of the sine wave sweep generator.
+     * @param arg_a Sweep is defined as clockwise *to* this angle. Encoder units, 0 to 3998.
+     * @param arg_b Sweep is defined as clockwise *from* this angle. Encoder units, 0 to 3998.
+     * @param val_f Frequency in Hertz.
+     */
+    void LTP_cmdSweep(uint16_t arg_a, uint16_t arg_b, double val_f);
+
+    /**
+     * Sets the motor speed and direction based on a -100 to 100 setpoint. Negative is counterclockwise
+     * and positive is clockwise
+     * @param setpoint -100 to 100 setpoint
+     */
+    void LTP_cmdSpin(uint16_t motorSpeed);
+
+    /**
+     * Tells the LIDAR to stop. Simple!
+     */
+    void LTP_cmdStop(void);
+
+    void LTP_cmdSetpoint(uint16_t setpoint);
 #ifdef	__cplusplus
 }
 #endif
 
 #endif	/* LTP_SYSTEM_H */
-

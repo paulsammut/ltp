@@ -1,6 +1,6 @@
+#include "mcc_generated_files/mccp1_compare.h"
 #include "motor.h"
 #include "LTP_system.h"
-#include "mcc_generated_files/mccp1_compare.h"
 #include "stdlib.h"
 
 #define FOSC    (32000000ULL)
@@ -23,7 +23,6 @@ void motor_setSpeed(int16_t setpoint) {
     cur_setpoint = setpoint;
     
     // Do a bounds check and clip if necassary. 
-    
     if(cur_setpoint > 100)
         cur_setpoint = 100;
     if(cur_setpoint < -100)

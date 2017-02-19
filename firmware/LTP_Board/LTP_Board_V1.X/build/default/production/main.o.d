@@ -10,11 +10,4 @@ mcc_generated_files/mccp1_compare.h  \
  mcc_generated_files/traps.h  \
 mcc_generated_files/interrupt_manager.h  \
  LTP_system.h  \
-lidar.h  \
-encoder.h  \
-motor.h  \
-PID.h  \
-LTP_message.h  \
-dbg.h  \
-sweep.h  \
- tests.h 
+dbg.h 

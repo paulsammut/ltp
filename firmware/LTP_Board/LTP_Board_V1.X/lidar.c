@@ -34,8 +34,6 @@ void LIDAR_init(void) {
     LIDAR_configure(&lidar_config);
 }
 
-
-
 uint8_t LIDAR_configure(LIDAR_CONFIG *lidar_config) {
     uint8_t write_success = 0;
     write_success += LIDAR_Write(0x02, lidar_config ->SIG_COUNT_VAL);
@@ -106,8 +104,7 @@ uint8_t LIDAR_updateDistance(void) {
         return 0;
     }
 
-    curSamplePtr->distance = (pData[0] << 8) + pData[1];
-    
+    curSamplePtr->distance = (pData[0] << 8) + pData[1];    
     return 1;
 }
 

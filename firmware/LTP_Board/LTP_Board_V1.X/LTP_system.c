@@ -9,8 +9,9 @@
 #include "LTP_message.h"
 #include <stdlib.h>
 
-#define _DEBUG
+//#define _DEBUG
 #include "dbg.h"
+#include "serialComms.h"
 
 
 // we have a 16 bit timer with a 1:256 prescaler on a 32MHz clock cycle
@@ -44,11 +45,11 @@ void LTP_system_init(void) {
     LIDAR_init();
     motor_init();
     PID_init();
-
+    
 }
 
 void LTP_setMode(LTP_MODE _mode) {
-    LTP_mode = _mode;    
+    LTP_mode = _mode;
 }
 
 void LTP_sampleAndSend(void) {
@@ -56,13 +57,8 @@ void LTP_sampleAndSend(void) {
     LIDAR_updateDistance();
     //dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
     
-    uint8_t *sampleBytes = (uint8_t*)curSamplePtr;
-    int i = 0;
-    for( i = 0; i < 4; i++ )
-        dbg_printf("0x%02x  ", *(sampleBytes+i));
-    dbg_printf("\r\n");
-    
-    
+    sendLTPSample(curSamplePtr);
+
 }
 
 void LTP_poll(void) {
@@ -99,4 +95,24 @@ void LTP_poll(void) {
         }
         TMR1 = 0x0000;
     }
+}
+
+void LTP_cmdSweep(uint16_t arg_a, uint16_t arg_b, double val_f) {
+    sweep_set(arg_a, arg_b, val_f);
+    LTP_setMode(SWEEP);
+}
+
+void LTP_cmdSpin(uint16_t motorSpeed) {
+    motor_setSpeed(motorSpeed);
+    LTP_setMode(SPIN);
+}
+
+void LTP_cmdStop(void) {
+    motor_setSpeed(0);
+    LTP_setMode(IDLE);
+}
+
+void LTP_cmdSetpoint(uint16_t setpoint) {
+    PID_setDesiredAngle(setpoint);
+    LTP_setMode(SETPOINT);
 }

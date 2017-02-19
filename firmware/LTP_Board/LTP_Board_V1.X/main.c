@@ -24,14 +24,7 @@
 #define _DEBUG
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
-#include "lidar.h"
-#include "encoder.h"
-#include "motor.h"
-#include "PID.h"
 #include "dbg.h"
-#include "sweep.h"
-#include "tests.h"
-#include "LTP_message.h"
 #define FOSC    (32000000ULL)
 #define FCY     (FOSC/2)
 
@@ -40,10 +33,9 @@
 
 int main(void) {
     
-    // initialize the device
+    // initialize the device with MCC configuration
     SYSTEM_Initialize();
           
-    
     dbg_printf("\r\n");
     dbg_printf("LTP_BOARD_BOOTING..\r\n");
 
@@ -52,21 +44,10 @@ int main(void) {
     DEBUG_RED = 1;
     DEBUG_GREEN = 1;
 
-    //PID_setAnglePtr(&curAngle);
-    //encoder_setAnglePtr(&curAngle);
-    //LIDAR_setDistancePtr(&curDistance);
-    //LTP_setPtrs(&curMode, &curAngle, &curDistance);
+
+    LTP_cmdSweep(1500,500,.2);
     
-    PID_setDesiredAngle(100);
     
-    sweep_set(1500,500,.2);
-    
-    //motor_setSpeed(50);
-    LTP_setMode(SWEEP);
-    
-    int sizeLTP = sizeof(struct LTPSample);
-    
-    dbg_printf("Sample size: %d\r\n", sizeLTP);
     while (1) {    
         LTP_sampleAndSend();
         LTP_poll();
