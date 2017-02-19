@@ -17,8 +17,9 @@ extern "C" {
  * This function takes an LTPSample, converts it a byte array, then encodes it with COBS and then sends
  * it out on the UART
  * @param sendSample Pointer to the sample we want to send out.
+ * @return 0 if failed, 1 if successful
  */
-    void sendLTPSample(struct LTPSample *sendSample);
+    int sendLTPSample(struct LTPSample *sendSample);
 
 
 #ifdef	__cplusplus
