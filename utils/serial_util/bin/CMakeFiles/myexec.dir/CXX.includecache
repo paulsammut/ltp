@@ -33,16 +33,12 @@ stdint.h
 -
 
 /home/paul/work/LTP/utils/serial_util/main.cpp
-stdint.h
--
 iostream
 -
 ltpclass.h
 /home/paul/work/LTP/utils/serial_util/ltpclass.h
 ltpmessage.h
 /home/paul/work/LTP/utils/serial_util/ltpmessage.h
-serialclass.h
-/home/paul/work/LTP/utils/serial_util/serialclass.h
 
 /home/paul/work/LTP/utils/serial_util/serialclass.cpp
 serialclass.h

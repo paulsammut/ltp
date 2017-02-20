@@ -2,9 +2,9 @@
 #include "serialclass.h"
 #include <iostream>
 
-extern "C" 
+extern "C"
 {
-    #include "cobs.h"
+#include "cobs.h"
 }
 
 uint16_t LtpClass::InitLtp(const char *port_name)
@@ -21,9 +21,9 @@ uint16_t LtpClass::InitLtp(const char *port_name)
 
 
 uint16_t LtpClass::DecodePacket(
-       const uint8_t *raw_packet, 
-       size_t raw_packet_length, 
-       struct LtpSample *sample1)
+    const uint8_t *raw_packet,
+    size_t raw_packet_length,
+    struct LtpSample *sample1)
 {
 
     uint8_t tempBuff[255];
@@ -34,8 +34,8 @@ uint16_t LtpClass::DecodePacket(
         return 0;
 
     // we decrement rawPacketLength to get rid of the trailing zero
-    --raw_packet_length; 
-    
+    --raw_packet_length;
+
     tempBuffLength = cobs_decode(raw_packet, raw_packet_length, tempBuff);
 
     if(!tempBuffLength)
@@ -49,11 +49,16 @@ uint16_t LtpClass::DecodePacket(
 
 int16_t LtpClass::PollReadLtp(struct LtpSample *ltp_sample)
 {
+    // Do a serial read
     int packet_length = ltp_serial_port_.SerialGetPacket(packet_buffer_,0x00);
-    if(packet_length) 
+    if(packet_length)
+    {
+        // This means that we got a byte array from the serial read.
         if(DecodePacket(packet_buffer_, packet_length,ltp_sample))
             return 1;
-    
+    }
+
+    // packet read failed
     return 0;
 }
 

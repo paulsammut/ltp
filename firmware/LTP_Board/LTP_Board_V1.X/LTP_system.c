@@ -12,7 +12,24 @@
 //#define _DEBUG
 #include "dbg.h"
 #include "serialComms.h"
+#include "mcc_generated_files/uart1.h"
 
+#include <stdio.h>
+
+/*----- Static Functions -------------------------------------*/
+
+/**
+ * Sets the mode of the LTP. 
+ * @param _mode The desired mode of the LTP, such as sweep, stop etc.
+ */
+static void LTP_setMode(LTP_MODE _mode);
+
+/**
+ * Keeps track of the serial port and forms packets from incoming byte stream based on 
+ * the delimeter.
+ * @return 1 if we have a packet, 0 if not. 
+ */
+static uint8_t LTP_GetPacket(void) ;
 
 // we have a 16 bit timer with a 1:256 prescaler on a 32MHz clock cycle
 // which means a 16 us timer count. This gives us our PID loop time 
@@ -20,6 +37,10 @@
 uint16_t pollPeriod = 0x139;
 
 LTP_MODE LTP_mode = IDLE;
+
+static uint8_t serial_buffer[255];
+static uint16_t serial_buffer_length = 0;
+static bool packet_good = false;
 
 // allocate memory for the current sample struct point that is going 
 // to get passed to all the subsystems that need it.
@@ -45,18 +66,14 @@ void LTP_system_init(void) {
     LIDAR_init();
     motor_init();
     PID_init();
-    
-}
 
-void LTP_setMode(LTP_MODE _mode) {
-    LTP_mode = _mode;
 }
 
 void LTP_sampleAndSend(void) {
     encoder_updateAngle();
     LIDAR_updateDistance();
     //dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
-    
+
     sendLTPSample(curSamplePtr);
 
 }
@@ -115,4 +132,55 @@ void LTP_cmdStop(void) {
 void LTP_cmdSetpoint(uint16_t setpoint) {
     PID_setDesiredAngle(setpoint);
     LTP_setMode(SETPOINT);
+}
+
+void LTP_checkMessages(void) {
+    LTP_GetPacket();
+
+}
+
+static void LTP_setMode(LTP_MODE _mode) {
+    LTP_mode = _mode;
+}
+
+static uint8_t LTP_GetPacket(void) {
+    
+    uint8_t max_read_bytes = 20;
+    uint8_t read_counter = 0;
+    
+    // Check to see if we have data in the UART
+    while (UART1_StatusGet() == UART1_RX_DATA_AVAILABLE) {
+        
+        // check to see if we have overflowed the buffer
+        if(serial_buffer_length + 1 >= 254){
+            serial_buffer_length = 0;
+            packet_good = false;
+            return 0;
+        }
+        
+        // put the byte into the serial buffer and increment the length
+        serial_buffer[serial_buffer_length++] = UART1_Read();
+        
+        printf("Buffer length : %d\r\n", serial_buffer_length);
+
+        if (serial_buffer[serial_buffer_length - 1] == 'c') {
+            if(packet_good)
+                return 1;
+            else {
+                packet_good = true;
+                serial_buffer_length = 0;
+                return 0;
+            }
+        }
+
+        // Here we break out of the while loop if we get stuck doing reads for too long.
+        // this prevents us from hanging up the rest of the code
+        if (++read_counter > max_read_bytes) {
+            read_counter = 0;
+            return 0;
+        }
+    }
+    
+    //should never get here
+    return 0;
 }

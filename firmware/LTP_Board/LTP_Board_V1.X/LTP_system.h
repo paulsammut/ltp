@@ -69,13 +69,6 @@ extern "C" {
      */
     void LTP_checkMessages(void);
 
-
-    /**
-     * Sets the mode of the LTP. 
-     * @param _mode The desired mode of the LTP, such as sweep, stop etc.
-     */
-    void LTP_setMode(LTP_MODE _mode);
-
     /**
      * Sets the parameters of the sine wave sweep generator.
      * @param arg_a Sweep is defined as clockwise *to* this angle. Encoder units, 0 to 3998.
@@ -96,6 +89,10 @@ extern "C" {
      */
     void LTP_cmdStop(void);
 
+    /**
+     * Sets a commanded setpoint and changes the mode to setpoint. 
+     * @param setpoint setpoint from 0-4000 which means angle
+     */
     void LTP_cmdSetpoint(uint16_t setpoint);
 #ifdef	__cplusplus
 }

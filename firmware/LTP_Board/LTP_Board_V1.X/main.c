@@ -49,6 +49,7 @@ int main(void) {
     
     
     while (1) {    
+        LTP_checkMessages();
         LTP_sampleAndSend();
         LTP_poll();
     }
