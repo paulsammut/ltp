@@ -30,7 +30,9 @@ ARCHITECTURE_ID	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	420;"	
 ARCHITECTURE_ID	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	423;"	d	file:
 ARCHITECTURE_ID	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	426;"	d	file:
 ARCHITECTURE_ID	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	430;"	d	file:
-BAUDRATE	serial.h	11;"	d
+BAUDRATE	archive/packet_test/serial.h	11;"	d
+BUFF_LENGTH	archive/packet_test/serial.cpp	/^const int BUFF_LENGTH = 10;  $/;"	v
+BUFF_LENGTH	serialclass.h	/^        int BUFF_LENGTH;  $/;"	m	class:SerialClass
 CMAKE_BINARY_DIR	bin/Makefile	/^CMAKE_BINARY_DIR = \/home\/paul\/work\/LTP\/utils\/serial_util\/bin$/;"	m
 CMAKE_COMMAND	bin/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
 CMAKE_SOURCE_DIR	bin/Makefile	/^CMAKE_SOURCE_DIR = \/home\/paul\/work\/LTP\/utils\/serial_util$/;"	m
@@ -257,12 +259,25 @@ COMPILER_VERSION_TWEAK	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp
 COMPILER_VERSION_TWEAK	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	33;"	d	file:
 DEC	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	439;"	d	file:
 DEC	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	434;"	d	file:
-DELIMITER	main.cpp	6;"	d	file:
+DELIMITER	archive/packet_test/main.cpp	7;"	d	file:
+DecodePacket	ltpclass.cpp	/^uint16_t LtpClass::DecodePacket($/;"	f	class:LtpClass
 EQUALS	bin/Makefile	/^EQUALS = =$/;"	m
-FALSE	serial.h	13;"	d
+FALSE	archive/packet_test/serial.h	13;"	d
+FALSE	serialclass.h	11;"	d
 HEX	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	450;"	d	file:
 HEX	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	445;"	d	file:
 ID_VOID_MAIN	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
+InitLtp	ltpclass.cpp	/^uint16_t LtpClass::InitLtp(unsigned char *port_name)$/;"	f	class:LtpClass
+LTPCLASS_H	ltpclass.h	2;"	d
+LTP_MESSAGE_H	ltpmessage.h	2;"	d
+LtpClass	ltpclass.h	/^class LtpClass$/;"	c
+LtpCommand	ltpmessage.h	/^struct LtpCommand$/;"	s
+LtpCommandType	ltpmessage.h	/^enum LtpCommandType {$/;"	g
+LtpSample	ltpmessage.h	/^struct LtpSample$/;"	s
+MSG_POSITION	ltpmessage.h	/^    MSG_POSITION,$/;"	e	enum:LtpCommandType
+MSG_SPIN	ltpmessage.h	/^    MSG_SPIN,$/;"	e	enum:LtpCommandType
+MSG_STOP	ltpmessage.h	/^    MSG_STOP,$/;"	e	enum:LtpCommandType
+MSG_SWEEP	ltpmessage.h	/^    MSG_SWEEP$/;"	e	enum:LtpCommandType
 PLATFORM_ID	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	293;"	d	file:
 PLATFORM_ID	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	296;"	d	file:
 PLATFORM_ID	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	299;"	d	file:
@@ -325,6 +340,7 @@ PLATFORM_ID	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	370;"	d	fi
 PLATFORM_ID	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	373;"	d	file:
 PLATFORM_ID	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	376;"	d	file:
 PLATFORM_ID	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	380;"	d	file:
+PollReadLtp	ltpclass.cpp	/^int16_t LtpClass::PollReadLtp(struct LtpSample *ltp_sample)$/;"	f	class:LtpClass
 RM	bin/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
 SHELL	bin/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SIMULATE_ID	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	155;"	d	file:
@@ -345,23 +361,40 @@ SIMULATE_VERSION_MINOR	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	33;"	
 SIMULATE_VERSION_MINOR	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	165;"	d	file:
 SIMULATE_VERSION_MINOR	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	180;"	d	file:
 SIMULATE_VERSION_MINOR	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	38;"	d	file:
-STOP	serial.cpp	/^volatile int STOP=FALSE;$/;"	v
+STOP	archive/packet_test/serial.cpp	/^volatile int STOP=FALSE;$/;"	v
 STRINGIFY	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	289;"	d	file:
 STRINGIFY	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	284;"	d	file:
 STRINGIFY_HELPER	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	288;"	d	file:
 STRINGIFY_HELPER	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	283;"	d	file:
 SUFFIXES	bin/Makefile	/^SUFFIXES =$/;"	m
-TRUE	serial.h	14;"	d
-_B115200	serial.h	/^    _B115200,$/;"	e	enum:__anon1
-_B230400	serial.h	/^    _B230400$/;"	e	enum:__anon1
-_B57600	serial.h	/^    _B57600,$/;"	e	enum:__anon1
-_POSIX_SOURCE	serial.h	12;"	d
-__SERIAL_H_	serial.h	5;"	d
-bytesRead	serial.cpp	/^int bytesRead = 0;$/;"	v
-c	serial.cpp	/^int c;  \/\/$/;"	v
-cobs_decode	cobs.c	/^size_t cobs_decode(const uint8_t * restrict input, size_t length, uint8_t * restrict output)$/;"	f
-cobs_encode	cobs.c	/^size_t cobs_encode(const uint8_t * restrict input, size_t length, uint8_t * restrict output)$/;"	f
-fd	serial.cpp	/^int fd; \/\/ file handle for the device$/;"	v
+SerialClass	serialclass.cpp	/^SerialClass::SerialClass(void){$/;"	f	class:SerialClass
+SerialClass	serialclass.h	/^class SerialClass$/;"	c
+SerialClose	serialclass.cpp	/^int SerialClass::SerialClose(void) {$/;"	f	class:SerialClass
+SerialGetPacket	serialclass.cpp	/^int SerialClass::SerialGetPacket(unsigned char *packetBuffer, unsigned char delimeter) {$/;"	f	class:SerialClass
+SerialOpen	serialclass.cpp	/^int SerialClass::SerialOpen(const char *port, serialSpeed baudrate) {$/;"	f	class:SerialClass
+SerialRead	serialclass.cpp	/^int SerialClass::SerialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {$/;"	f	class:SerialClass
+Shutdown	ltpclass.cpp	/^int16_t LtpClass::Shutdown(void)$/;"	f	class:LtpClass
+TRUE	archive/packet_test/serial.h	14;"	d
+TRUE	serialclass.h	12;"	d
+_B115200	archive/packet_test/serial.h	/^    _B115200,$/;"	e	enum:__anon2
+_B115200	serialclass.h	/^            _B115200,$/;"	e	enum:SerialClass::__anon1
+_B230400	archive/packet_test/serial.h	/^    _B230400$/;"	e	enum:__anon2
+_B230400	serialclass.h	/^            _B230400$/;"	e	enum:SerialClass::__anon1
+_B57600	archive/packet_test/serial.h	/^    _B57600,$/;"	e	enum:__anon2
+_B57600	serialclass.h	/^            _B57600,$/;"	e	enum:SerialClass::__anon1
+_POSIX_SOURCE	archive/packet_test/serial.h	12;"	d
+__SERIAL_H_	archive/packet_test/serial.h	5;"	d
+__SERIAL_H_	serialclass.h	5;"	d
+angle_	ltpmessage.h	/^    uint16_t angle_;$/;"	m	struct:LtpSample
+bytesRead	archive/packet_test/serial.cpp	/^int bytesRead = 0;$/;"	v
+bytesRead	serialclass.h	/^        int bytesRead;$/;"	m	class:SerialClass
+c	archive/packet_test/serial.cpp	/^int c;  \/\/$/;"	v
+cmdtype_	ltpmessage.h	/^    enum LtpCommandType cmdtype_;$/;"	m	struct:LtpCommand	typeref:enum:LtpCommand::LtpCommandType
+cobs_decode	cobs.c	/^size_t cobs_decode(const uint8_t * input, size_t length, uint8_t * output) {$/;"	f
+cobs_encode	cobs.c	/^size_t cobs_encode(const uint8_t * input, size_t length, uint8_t * output) {$/;"	f
+distance_	ltpmessage.h	/^    uint16_t distance_;$/;"	m	struct:LtpSample
+fd	archive/packet_test/serial.cpp	/^int fd; \/\/ file handle for the device$/;"	v
+fd	serialclass.h	/^        int fd; \/\/ file handle for the device$/;"	m	class:SerialClass
 features	bin/CMakeFiles/feature_tests.c	/^  const char features[] = {"\\n"$/;"	v
 features	bin/CMakeFiles/feature_tests.cxx	/^  const char features[] = {"\\n"$/;"	v
 info_arch	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
@@ -380,23 +413,37 @@ info_simulate_version	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	/^char
 info_simulate_version	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_simulate_version[] = {$/;"	v
 info_version	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	/^char const info_version[] = {$/;"	v
 info_version	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v
+ltp_serial_port_	ltpclass.h	/^    SerialClass ltp_serial_port_;$/;"	m	class:LtpClass
+main	archive/packet_test/main.cpp	/^int main(int argc, char *argv[])$/;"	f
 main	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	/^int main(int argc, char* argv[])$/;"	f
 main	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
 main	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
 main	bin/CMakeFiles/feature_tests.c	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
 main	bin/CMakeFiles/feature_tests.cxx	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
 main	main.cpp	/^int main(int argc, char *argv[])$/;"	f
-newtio	serial.cpp	/^struct termios oldtio,newtio;$/;"	v	typeref:struct:
-oldtio	serial.cpp	/^struct termios oldtio,newtio;$/;"	v	typeref:struct:termios
-packetClean	serial.cpp	/^bool packetClean = false;$/;"	v
-packetLength	serial.cpp	/^int packetLength = 0;$/;"	v
+newtio	archive/packet_test/serial.cpp	/^struct termios oldtio,newtio;$/;"	v	typeref:struct:
+newtio	serialclass.h	/^        struct termios oldtio,newtio;$/;"	m	class:SerialClass	typeref:struct:SerialClass::
+oldtio	archive/packet_test/serial.cpp	/^struct termios oldtio,newtio;$/;"	v	typeref:struct:termios
+oldtio	serialclass.h	/^        struct termios oldtio,newtio;$/;"	m	class:SerialClass	typeref:struct:SerialClass::termios
+packetClean	archive/packet_test/serial.cpp	/^bool packetClean = true;$/;"	v
+packetClean	serialclass.h	/^        bool packetClean;$/;"	m	class:SerialClass
+packetLength	archive/packet_test/serial.cpp	/^int packetLength = 3;$/;"	v
+packetLength	serialclass.h	/^        int packetLength;$/;"	m	class:SerialClass
+packet_buffer_	ltpclass.h	/^    uint8_t packet_buffer_[255];$/;"	m	class:LtpClass
+param1_	ltpmessage.h	/^    uint16_t param1_;$/;"	m	struct:LtpCommand
+param2_	ltpmessage.h	/^    uint16_t param2_;$/;"	m	struct:LtpCommand
+param3_	ltpmessage.h	/^    uint16_t param3_;$/;"	m	struct:LtpCommand
+portOpen	serialclass.h	/^        bool portOpen;$/;"	m	class:SerialClass
 qnxnto	bin/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 qnxnto	bin/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
-res	serial.cpp	/^int res;$/;"	v
-serialClose	serial.cpp	/^int serialClose(void) {$/;"	f
-serialGetPacket	serial.cpp	/^int serialGetPacket(unsigned char *packetBuffer, char delimeter)$/;"	f
-serialOpen	serial.cpp	/^int serialOpen(char *port, serialSpeed baudrate) {$/;"	f
-serialRead	serial.cpp	/^int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {$/;"	f
-serialSpeed	serial.h	/^} serialSpeed;$/;"	t	typeref:enum:__anon1
-tempBuff	serial.cpp	/^unsigned char tempBuff[255];$/;"	v
+res	archive/packet_test/serial.cpp	/^int res;$/;"	v
+serialClose	archive/packet_test/serial.cpp	/^int serialClose(void) {$/;"	f
+serialGetPacket	archive/packet_test/serial.cpp	/^int serialGetPacket(unsigned char *packetBuffer, char delimeter)$/;"	f
+serialOpen	archive/packet_test/serial.cpp	/^int serialOpen(char *port, serialSpeed baudrate) {$/;"	f
+serialRead	archive/packet_test/serial.cpp	/^int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {$/;"	f
+serialSpeed	archive/packet_test/serial.h	/^} serialSpeed;$/;"	t	typeref:enum:__anon2
+serialSpeed	serialclass.h	/^        } serialSpeed;$/;"	t	class:SerialClass	typeref:enum:SerialClass::__anon1
+tempBuff	archive/packet_test/serial.cpp	/^unsigned char tempBuff[BUFF_LENGTH] = {10, 11, 12, 13, 14, 15, 16, 17, 18, 19};$/;"	v
+tempBuff	serialclass.h	/^        unsigned char *tempBuff;$/;"	m	class:SerialClass
 testFunc	test.cpp	/^void testFunc(void){$/;"	f
+~SerialClass	serialclass.cpp	/^SerialClass::~SerialClass(void){$/;"	f	class:SerialClass

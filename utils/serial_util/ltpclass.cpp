@@ -1,31 +1,66 @@
-#include "LtpClass.h"
-#include "SerialClass.h"
+#include "ltpclass.h"
+#include "serialclass.h"
+#include <iostream>
 
-        //serialPortLTP.serialRead(packetBuffer, 128, true);
+extern "C" 
+{
+    #include "cobs.h"
+}
 
-        int packetLength = serialPortLTP.serialGetPacket(packetBuffer,0x00);
-        if(packetLength) {
-            printf("\r\nPacket received: ");
-            //int i;
-            //for (i = 0; i < packetLength; i++)
-            //    printf(" 0x%02X ", packetBuffer[i]);
+uint16_t LtpClass::InitLtp(unsigned char *port_name)
+{
+    //char port[] = "/dev/ttyUSB0";
+    std::cout << "Program Loaded!" << std::endl;
 
-            struct LTPSample curSample;
-            if(decodePacket(packetBuffer, packetLength,&curSample))
-                printf("Angle: %04d distance: %04d\r\n", curSample.angle, curSample.distance);
-            fflush(stdout);
-        }
-        //serialPortLTP.serialRead(packetBuffer, 128, true);
+    if(ltp_serial_port_.SerialRead(port_name, SerialClass::_B230400) < 0)
+        return 0;
 
-        int packetLength = serialPortLTP.serialGetPacket(packetBuffer,0x00);
-        if(packetLength) {
-            printf("\r\nPacket received: ");
-            //int i;
-            //for (i = 0; i < packetLength; i++)
-            //    printf(" 0x%02X ", packetBuffer[i]);
+    ltp_serial_port_.SerialRead(packet_buffer_, 128, true);
+    return 1;
+}
 
-            struct LTPSample curSample;
-            if(decodePacket(packetBuffer, packetLength,&curSample))
-                printf("Angle: %04d distance: %04d\r\n", curSample.angle, curSample.distance);
-            fflush(stdout);
-        }
+
+uint16_t LtpClass::DecodePacket(
+       const uint8_t *raw_packet, 
+       size_t raw_packet_length, 
+       struct LtpSample *sample1)
+{
+
+    uint8_t tempBuff[255];
+    size_t tempBuffLength;
+    // Make sure the packet is not longer than the limit
+    // and that the end of the raw packet has the 0 terminator
+    if(raw_packet_length >= 254 || raw_packet[raw_packet_length-1] != 0x00)
+        return 0;
+
+    // we decrement rawPacketLength to get rid of the trailing zero
+    --raw_packet_length; 
+    
+    tempBuffLength = cobs_decode(raw_packet, raw_packet_length, tempBuff);
+
+    if(!tempBuffLength)
+    {
+        return 0;
+    }
+
+    *sample1 = *(struct LtpSample*)tempBuff;
+    return 1;
+}
+
+int16_t LtpClass::PollReadLtp(struct LtpSample *ltp_sample)
+{
+    int packet_length = ltp_serial_port_.SerialGetPacket(packet_buffer_,0x00);
+    if(packet_length) 
+        if(DecodePacket(packet_buffer_, packet_length,ltp_sample))
+            return 1;
+    
+    return 0;
+}
+
+int16_t LtpClass::Shutdown(void)
+{
+    return ltp_serial_port_.SerialClose();
+}
+
+
+

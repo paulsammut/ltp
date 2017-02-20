@@ -150,6 +150,33 @@ cobs.c.s:
 	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/cobs.c.s
 .PHONY : cobs.c.s
 
+ltpclass.o: ltpclass.cpp.o
+
+.PHONY : ltpclass.o
+
+# target to build an object file
+ltpclass.cpp.o:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/ltpclass.cpp.o
+.PHONY : ltpclass.cpp.o
+
+ltpclass.i: ltpclass.cpp.i
+
+.PHONY : ltpclass.i
+
+# target to preprocess a source file
+ltpclass.cpp.i:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/ltpclass.cpp.i
+.PHONY : ltpclass.cpp.i
+
+ltpclass.s: ltpclass.cpp.s
+
+.PHONY : ltpclass.s
+
+# target to generate assembly for a file
+ltpclass.cpp.s:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/ltpclass.cpp.s
+.PHONY : ltpclass.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -177,32 +204,32 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-serial.o: serial.cpp.o
+serialclass.o: serialclass.cpp.o
 
-.PHONY : serial.o
+.PHONY : serialclass.o
 
 # target to build an object file
-serial.cpp.o:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/serial.cpp.o
-.PHONY : serial.cpp.o
+serialclass.cpp.o:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/serialclass.cpp.o
+.PHONY : serialclass.cpp.o
 
-serial.i: serial.cpp.i
+serialclass.i: serialclass.cpp.i
 
-.PHONY : serial.i
+.PHONY : serialclass.i
 
 # target to preprocess a source file
-serial.cpp.i:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/serial.cpp.i
-.PHONY : serial.cpp.i
+serialclass.cpp.i:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/serialclass.cpp.i
+.PHONY : serialclass.cpp.i
 
-serial.s: serial.cpp.s
+serialclass.s: serialclass.cpp.s
 
-.PHONY : serial.s
+.PHONY : serialclass.s
 
 # target to generate assembly for a file
-serial.cpp.s:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/serial.cpp.s
-.PHONY : serial.cpp.s
+serialclass.cpp.s:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/serialclass.cpp.s
+.PHONY : serialclass.cpp.s
 
 test.o: test.cpp.o
 
@@ -243,12 +270,15 @@ help:
 	@echo "... cobs.o"
 	@echo "... cobs.i"
 	@echo "... cobs.s"
+	@echo "... ltpclass.o"
+	@echo "... ltpclass.i"
+	@echo "... ltpclass.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... serial.o"
-	@echo "... serial.i"
-	@echo "... serial.s"
+	@echo "... serialclass.o"
+	@echo "... serialclass.i"
+	@echo "... serialclass.s"
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"

@@ -81,33 +81,57 @@ CMakeFiles/myexec.dir/cobs.c.o.provides: CMakeFiles/myexec.dir/cobs.c.o.requires
 CMakeFiles/myexec.dir/cobs.c.o.provides.build: CMakeFiles/myexec.dir/cobs.c.o
 
 
-CMakeFiles/myexec.dir/serial.cpp.o: CMakeFiles/myexec.dir/flags.make
-CMakeFiles/myexec.dir/serial.cpp.o: ../serial.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/myexec.dir/serial.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myexec.dir/serial.cpp.o -c /home/paul/work/LTP/utils/serial_util/serial.cpp
+CMakeFiles/myexec.dir/ltpclass.cpp.o: CMakeFiles/myexec.dir/flags.make
+CMakeFiles/myexec.dir/ltpclass.cpp.o: ../ltpclass.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/myexec.dir/ltpclass.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myexec.dir/ltpclass.cpp.o -c /home/paul/work/LTP/utils/serial_util/ltpclass.cpp
 
-CMakeFiles/myexec.dir/serial.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myexec.dir/serial.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/paul/work/LTP/utils/serial_util/serial.cpp > CMakeFiles/myexec.dir/serial.cpp.i
+CMakeFiles/myexec.dir/ltpclass.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myexec.dir/ltpclass.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/paul/work/LTP/utils/serial_util/ltpclass.cpp > CMakeFiles/myexec.dir/ltpclass.cpp.i
 
-CMakeFiles/myexec.dir/serial.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myexec.dir/serial.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/paul/work/LTP/utils/serial_util/serial.cpp -o CMakeFiles/myexec.dir/serial.cpp.s
+CMakeFiles/myexec.dir/ltpclass.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myexec.dir/ltpclass.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/paul/work/LTP/utils/serial_util/ltpclass.cpp -o CMakeFiles/myexec.dir/ltpclass.cpp.s
 
-CMakeFiles/myexec.dir/serial.cpp.o.requires:
+CMakeFiles/myexec.dir/ltpclass.cpp.o.requires:
 
-.PHONY : CMakeFiles/myexec.dir/serial.cpp.o.requires
+.PHONY : CMakeFiles/myexec.dir/ltpclass.cpp.o.requires
 
-CMakeFiles/myexec.dir/serial.cpp.o.provides: CMakeFiles/myexec.dir/serial.cpp.o.requires
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/serial.cpp.o.provides.build
-.PHONY : CMakeFiles/myexec.dir/serial.cpp.o.provides
+CMakeFiles/myexec.dir/ltpclass.cpp.o.provides: CMakeFiles/myexec.dir/ltpclass.cpp.o.requires
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/ltpclass.cpp.o.provides.build
+.PHONY : CMakeFiles/myexec.dir/ltpclass.cpp.o.provides
 
-CMakeFiles/myexec.dir/serial.cpp.o.provides.build: CMakeFiles/myexec.dir/serial.cpp.o
+CMakeFiles/myexec.dir/ltpclass.cpp.o.provides.build: CMakeFiles/myexec.dir/ltpclass.cpp.o
+
+
+CMakeFiles/myexec.dir/serialclass.cpp.o: CMakeFiles/myexec.dir/flags.make
+CMakeFiles/myexec.dir/serialclass.cpp.o: ../serialclass.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/myexec.dir/serialclass.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myexec.dir/serialclass.cpp.o -c /home/paul/work/LTP/utils/serial_util/serialclass.cpp
+
+CMakeFiles/myexec.dir/serialclass.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myexec.dir/serialclass.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/paul/work/LTP/utils/serial_util/serialclass.cpp > CMakeFiles/myexec.dir/serialclass.cpp.i
+
+CMakeFiles/myexec.dir/serialclass.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myexec.dir/serialclass.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/paul/work/LTP/utils/serial_util/serialclass.cpp -o CMakeFiles/myexec.dir/serialclass.cpp.s
+
+CMakeFiles/myexec.dir/serialclass.cpp.o.requires:
+
+.PHONY : CMakeFiles/myexec.dir/serialclass.cpp.o.requires
+
+CMakeFiles/myexec.dir/serialclass.cpp.o.provides: CMakeFiles/myexec.dir/serialclass.cpp.o.requires
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/serialclass.cpp.o.provides.build
+.PHONY : CMakeFiles/myexec.dir/serialclass.cpp.o.provides
+
+CMakeFiles/myexec.dir/serialclass.cpp.o.provides.build: CMakeFiles/myexec.dir/serialclass.cpp.o
 
 
 CMakeFiles/myexec.dir/test.cpp.o: CMakeFiles/myexec.dir/flags.make
 CMakeFiles/myexec.dir/test.cpp.o: ../test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/myexec.dir/test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/myexec.dir/test.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myexec.dir/test.cpp.o -c /home/paul/work/LTP/utils/serial_util/test.cpp
 
 CMakeFiles/myexec.dir/test.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/myexec.dir/test.cpp.o.provides.build: CMakeFiles/myexec.dir/test.cpp.
 
 CMakeFiles/myexec.dir/main.cpp.o: CMakeFiles/myexec.dir/flags.make
 CMakeFiles/myexec.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/myexec.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/myexec.dir/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myexec.dir/main.cpp.o -c /home/paul/work/LTP/utils/serial_util/main.cpp
 
 CMakeFiles/myexec.dir/main.cpp.i: cmake_force
@@ -156,7 +180,8 @@ CMakeFiles/myexec.dir/main.cpp.o.provides.build: CMakeFiles/myexec.dir/main.cpp.
 # Object files for target myexec
 myexec_OBJECTS = \
 "CMakeFiles/myexec.dir/cobs.c.o" \
-"CMakeFiles/myexec.dir/serial.cpp.o" \
+"CMakeFiles/myexec.dir/ltpclass.cpp.o" \
+"CMakeFiles/myexec.dir/serialclass.cpp.o" \
 "CMakeFiles/myexec.dir/test.cpp.o" \
 "CMakeFiles/myexec.dir/main.cpp.o"
 
@@ -164,12 +189,13 @@ myexec_OBJECTS = \
 myexec_EXTERNAL_OBJECTS =
 
 myexec: CMakeFiles/myexec.dir/cobs.c.o
-myexec: CMakeFiles/myexec.dir/serial.cpp.o
+myexec: CMakeFiles/myexec.dir/ltpclass.cpp.o
+myexec: CMakeFiles/myexec.dir/serialclass.cpp.o
 myexec: CMakeFiles/myexec.dir/test.cpp.o
 myexec: CMakeFiles/myexec.dir/main.cpp.o
 myexec: CMakeFiles/myexec.dir/build.make
 myexec: CMakeFiles/myexec.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable myexec"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable myexec"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/myexec.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -178,7 +204,8 @@ CMakeFiles/myexec.dir/build: myexec
 .PHONY : CMakeFiles/myexec.dir/build
 
 CMakeFiles/myexec.dir/requires: CMakeFiles/myexec.dir/cobs.c.o.requires
-CMakeFiles/myexec.dir/requires: CMakeFiles/myexec.dir/serial.cpp.o.requires
+CMakeFiles/myexec.dir/requires: CMakeFiles/myexec.dir/ltpclass.cpp.o.requires
+CMakeFiles/myexec.dir/requires: CMakeFiles/myexec.dir/serialclass.cpp.o.requires
 CMakeFiles/myexec.dir/requires: CMakeFiles/myexec.dir/test.cpp.o.requires
 CMakeFiles/myexec.dir/requires: CMakeFiles/myexec.dir/main.cpp.o.requires
 

@@ -13,8 +13,9 @@ set(CMAKE_C_COMPILER_ID "GNU")
 set(CMAKE_C_TARGET_INCLUDE_PATH
   )
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/paul/work/LTP/utils/serial_util/ltpclass.cpp" "/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles/myexec.dir/ltpclass.cpp.o"
   "/home/paul/work/LTP/utils/serial_util/main.cpp" "/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles/myexec.dir/main.cpp.o"
-  "/home/paul/work/LTP/utils/serial_util/serial.cpp" "/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles/myexec.dir/serial.cpp.o"
+  "/home/paul/work/LTP/utils/serial_util/serialclass.cpp" "/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles/myexec.dir/serialclass.cpp.o"
   "/home/paul/work/LTP/utils/serial_util/test.cpp" "/home/paul/work/LTP/utils/serial_util/bin/CMakeFiles/myexec.dir/test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

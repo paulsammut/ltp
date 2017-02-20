@@ -3,14 +3,19 @@
 
 CMakeFiles/myexec.dir/cobs.c.o: ../cobs.c
 
-CMakeFiles/myexec.dir/main.cpp.o: ../LTP_message.h
-CMakeFiles/myexec.dir/main.cpp.o: ../LtpClass.h
-CMakeFiles/myexec.dir/main.cpp.o: ../cobs.h
-CMakeFiles/myexec.dir/main.cpp.o: ../main.cpp
-CMakeFiles/myexec.dir/main.cpp.o: ../serial.h
+CMakeFiles/myexec.dir/ltpclass.cpp.o: ../cobs.h
+CMakeFiles/myexec.dir/ltpclass.cpp.o: ../ltpclass.cpp
+CMakeFiles/myexec.dir/ltpclass.cpp.o: ../ltpclass.h
+CMakeFiles/myexec.dir/ltpclass.cpp.o: ../ltpmessage.h
+CMakeFiles/myexec.dir/ltpclass.cpp.o: ../serialclass.h
 
-CMakeFiles/myexec.dir/serial.cpp.o: ../serial.cpp
-CMakeFiles/myexec.dir/serial.cpp.o: ../serial.h
+CMakeFiles/myexec.dir/main.cpp.o: ../ltpclass.h
+CMakeFiles/myexec.dir/main.cpp.o: ../ltpmessage.h
+CMakeFiles/myexec.dir/main.cpp.o: ../main.cpp
+CMakeFiles/myexec.dir/main.cpp.o: ../serialclass.h
+
+CMakeFiles/myexec.dir/serialclass.cpp.o: ../serialclass.cpp
+CMakeFiles/myexec.dir/serialclass.cpp.o: ../serialclass.h
 
 CMakeFiles/myexec.dir/test.cpp.o: ../test.cpp
 CMakeFiles/myexec.dir/test.cpp.o: ../test.h

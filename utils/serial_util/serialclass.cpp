@@ -1,10 +1,12 @@
-#include "serial.h"
+#include "serialclass.h"
 #include <fcntl.h>
 #include <termios.h>
 #include <string.h>
 #include <unistd.h>
 #include <iostream>
 #include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 SerialClass::SerialClass(void){
     BUFF_LENGTH = 255;  
@@ -17,13 +19,13 @@ SerialClass::SerialClass(void){
 
 SerialClass::~SerialClass(void){
     if(portOpen){
-       this->serialClose();
+       this->SerialClose();
        portOpen = false;
     }
     delete[] tempBuff;
 }
 
-int SerialClass::serialOpen(char *port, serialSpeed baudrate) {
+int SerialClass::SerialOpen(const char *port, serialSpeed baudrate) {
     unsigned long val_BAUDRATE;
     switch(baudrate) {
     case _B57600:
@@ -63,7 +65,7 @@ int SerialClass::serialOpen(char *port, serialSpeed baudrate) {
     return fd;
 }
 
-int SerialClass::serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {
+int SerialClass::SerialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {
     // Number of bytes read
     int res;
     res = read(fd,sReadBuf,maxNumBytes);
@@ -82,12 +84,12 @@ int SerialClass::serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool v
     return res;
 }
 
-int SerialClass::serialClose(void) {
+int SerialClass::SerialClose(void) {
     // reset the modem
     return tcsetattr(fd,TCSANOW,&oldtio);
 }
 
-int SerialClass::serialGetPacket(unsigned char *packetBuffer, unsigned char delimeter) {
+int SerialClass::SerialGetPacket(unsigned char *packetBuffer, unsigned char delimeter) {
     // Check to see if our current packet length is greater than our limit
     if(packetLength >= BUFF_LENGTH)
     {
@@ -97,7 +99,7 @@ int SerialClass::serialGetPacket(unsigned char *packetBuffer, unsigned char deli
     }
 
     // Do a serial read
-    bytesRead = serialRead(tempBuff+packetLength,128,false);
+    bytesRead = SerialRead(tempBuff+packetLength,128,false);
     packetLength += bytesRead;
 
     // Check to see if we overflowed after a serial read

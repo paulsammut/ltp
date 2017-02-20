@@ -47,7 +47,7 @@ class SerialClass
          *
          * @return -1 if failed, device handler if succeeded
          */
-        int serialOpen(char *port, serialSpeed baudrate);
+        int SerialOpen(const char *port, serialSpeed baudrate);
 
         /**
          * @brief Does a serial port read with an optional print to screen.
@@ -58,7 +58,7 @@ class SerialClass
          *
          * @return Returns the number of bytes read.
          */
-        int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose = false);  
+        int SerialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose = false);  
 
 
         /**
@@ -66,7 +66,7 @@ class SerialClass
          *
          * @return 0 if fail, 1 if successful  
          */
-        int serialClose(void);
+        int SerialClose(void);
 
         /**
          * @brief  
@@ -76,6 +76,6 @@ class SerialClass
          *
          * @return 
          */
-        int serialGetPacket(unsigned char *packetBuffer, unsigned char delimeter);
+        int SerialGetPacket(unsigned char *packetBuffer, unsigned char delimeter);
 };
 #endif

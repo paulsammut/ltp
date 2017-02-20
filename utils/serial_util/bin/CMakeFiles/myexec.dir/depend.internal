@@ -3,15 +3,20 @@
 
 CMakeFiles/myexec.dir/cobs.c.o
  /home/paul/work/LTP/utils/serial_util/cobs.c
-CMakeFiles/myexec.dir/main.cpp.o
- /home/paul/work/LTP/utils/serial_util/LTP_message.h
- /home/paul/work/LTP/utils/serial_util/LtpClass.h
+CMakeFiles/myexec.dir/ltpclass.cpp.o
  /home/paul/work/LTP/utils/serial_util/cobs.h
+ /home/paul/work/LTP/utils/serial_util/ltpclass.cpp
+ /home/paul/work/LTP/utils/serial_util/ltpclass.h
+ /home/paul/work/LTP/utils/serial_util/ltpmessage.h
+ /home/paul/work/LTP/utils/serial_util/serialclass.h
+CMakeFiles/myexec.dir/main.cpp.o
+ /home/paul/work/LTP/utils/serial_util/ltpclass.h
+ /home/paul/work/LTP/utils/serial_util/ltpmessage.h
  /home/paul/work/LTP/utils/serial_util/main.cpp
- /home/paul/work/LTP/utils/serial_util/serial.h
-CMakeFiles/myexec.dir/serial.cpp.o
- /home/paul/work/LTP/utils/serial_util/serial.cpp
- /home/paul/work/LTP/utils/serial_util/serial.h
+ /home/paul/work/LTP/utils/serial_util/serialclass.h
+CMakeFiles/myexec.dir/serialclass.cpp.o
+ /home/paul/work/LTP/utils/serial_util/serialclass.cpp
+ /home/paul/work/LTP/utils/serial_util/serialclass.h
 CMakeFiles/myexec.dir/test.cpp.o
  /home/paul/work/LTP/utils/serial_util/test.cpp
  /home/paul/work/LTP/utils/serial_util/test.h
