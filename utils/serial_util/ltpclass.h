@@ -34,7 +34,7 @@ public:
      *
      * @return 1 if success, 0 if failed
      */
-    uint16_t InitLtp(unsigned char *port_name);
+    uint16_t InitLtp(const char *port_name);
 
     /**
      * @brief To be called as rapidly as possible. This polls the serial port and

@@ -9,6 +9,22 @@ int main(int argc, char *argv[])
 {
     std::cout << "Hi!"<< std::endl;
 
+    LtpClass ltp1;
+
+    const char* serialport = "dev/ttyUSB0";
+    ltp1.InitLtp(serialport);
+    struct LtpSample sample_temp; 
+
+    while(1)
+    {
+    }
+    
+    ltp1.Shutdown();
+    return 1;
+}
+
+int test1(void)
+{
     SerialClass my_serial_port;
 
     my_serial_port.SerialOpen("/dev/ttyUSB0",SerialClass::_B230400);

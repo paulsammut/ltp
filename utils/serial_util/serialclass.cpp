@@ -65,7 +65,7 @@ int SerialClass::SerialOpen(const char *port, serialSpeed baudrate) {
     return fd;
 }
 
-int SerialClass::SerialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {
+int SerialClass::SerialRead(uint8_t *sReadBuf, uint8_t maxNumBytes, bool verbose) {
     // Number of bytes read
     int res;
     res = read(fd,sReadBuf,maxNumBytes);

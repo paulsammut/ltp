@@ -58,7 +58,7 @@ class SerialClass
          *
          * @return Returns the number of bytes read.
          */
-        int SerialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose = false);  
+        int SerialRead(uint8_t *sReadBuf, uint8_t maxNumBytes, bool verbose = false);  
 
 
         /**

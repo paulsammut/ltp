@@ -7,12 +7,12 @@ extern "C"
     #include "cobs.h"
 }
 
-uint16_t LtpClass::InitLtp(unsigned char *port_name)
+uint16_t LtpClass::InitLtp(const char *port_name)
 {
     //char port[] = "/dev/ttyUSB0";
     std::cout << "Program Loaded!" << std::endl;
 
-    if(ltp_serial_port_.SerialRead(port_name, SerialClass::_B230400) < 0)
+    if(ltp_serial_port_.SerialOpen(port_name, SerialClass::_B230400) < 0)
         return 0;
 
     ltp_serial_port_.SerialRead(packet_buffer_, 128, true);
