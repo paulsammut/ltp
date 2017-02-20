@@ -6,4 +6,4 @@ sweep.h  \
  mcc_generated_files/mccp1_compare.h  \
 dbg.h  \
 PID.h  \
-LTP_message.h 
+ltpmessage.h 

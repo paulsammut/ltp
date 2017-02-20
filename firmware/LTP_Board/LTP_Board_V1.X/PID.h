@@ -5,7 +5,7 @@
  * Created on February 1, 2017, 12:17 PM
  */
 #include <stdint.h> 
-#include "LTP_message.h"
+#include "ltpmessage.h"
 
 #ifndef PID_H
 #define	PID_H

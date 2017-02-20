@@ -25,9 +25,9 @@
       <itemPath>sweep.h</itemPath>
       <itemPath>dbg.h</itemPath>
       <itemPath>tests.h</itemPath>
-      <itemPath>LTP_message.h</itemPath>
       <itemPath>serialComms.h</itemPath>
       <itemPath>cobs.h</itemPath>
+      <itemPath>ltpmessage.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -256,6 +256,7 @@
         <property key="UART 1" value="true"/>
         <property key="UART 2" value="true"/>
         <property key="ULPWU" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>

@@ -2,7 +2,7 @@
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
 #include "dbg.h"
-#include "LTP_message.h"
+#include "ltpmessage.h"
 uint16_t *encoder_anglePtr;
 
 void encoder_init(void) {
@@ -15,13 +15,6 @@ void encoder_init(void) {
     SS_ENCODER = 1;
 }
 
-void encoder_setAnglePtr(uint16_t *anglePtr){
-    encoder_anglePtr = anglePtr;
-}
-
-/*  This function does an SPI read of the CNTR register which is a 4 byte register. 
- *  In it, is the current angle of the LIDAR head. 
- */
 int16_t encoder_getAngle(void) {
 
     int16_t readData;
@@ -50,7 +43,6 @@ int16_t encoder_getAngle(void) {
     return readData;
 }
 
-
 void encoder_updateAngle(void){
-    curSamplePtr->angle = encoder_getAngle();
+    curSamplePtr->angle_ = encoder_getAngle();
 }

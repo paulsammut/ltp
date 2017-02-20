@@ -3,9 +3,9 @@
 #include "LTP_system.h"
 #include "motor.h"
 
-#define _DEBUG
+//#define _DEBUG
 #include "dbg.h"
-#include "LTP_message.h"
+#include "ltpmessage.h"
 
 #define FOSC    (32000000ULL)
 #define FCY     (FOSC/2)
@@ -18,8 +18,7 @@ void LIDAR_init(void) {
     
     // turn off the motor while we do this
     motor_setSpeed(0);
-    curSamplePtr->angle = 11;
- printf("LIDAR WORK: %d\r\n",curSamplePtr->angle);
+    curSamplePtr->angle_ = 11;
     dbg_printf("Initializing LIDAR with reset. \r\n");
     LIDAR1_PE = 0;
     __delay_ms(50);
@@ -104,7 +103,7 @@ uint8_t LIDAR_updateDistance(void) {
         return 0;
     }
 
-    curSamplePtr->distance = (pData[0] << 8) + pData[1];    
+    curSamplePtr->distance_ = (pData[0] << 8) + pData[1];    
     return 1;
 }
 

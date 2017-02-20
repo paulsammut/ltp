@@ -23,7 +23,7 @@ extern "C" {
 #define SS_ENCODER LATBbits.LATB12
 #define LIDAR1_PE LATBbits.LATB5
 
-    extern struct LTPSample *curSamplePtr;
+    extern struct LtpSample *curSamplePtr;
 
     /** LTP Modes 
 

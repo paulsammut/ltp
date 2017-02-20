@@ -13,4 +13,4 @@ mcc_generated_files/traps.h  \
 LTP_system.h  \
 motor.h  \
 dbg.h  \
- LTP_message.h 
+ ltpmessage.h 

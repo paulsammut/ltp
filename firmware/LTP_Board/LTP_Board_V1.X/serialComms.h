@@ -8,7 +8,7 @@
 #ifndef SERIALCOMMS_H
 #define	SERIALCOMMS_H
 
-#include "LTP_message.h"
+#include "ltpmessage.h"
 
 #ifdef	__cplusplus
 extern "C" {
@@ -19,7 +19,7 @@ extern "C" {
  * @param sendSample Pointer to the sample we want to send out.
  * @return 0 if failed, 1 if successful
  */
-    int sendLTPSample(struct LTPSample *sendSample);
+    int sendLTPSample(struct LtpSample *sendSample);
 
 
 #ifdef	__cplusplus

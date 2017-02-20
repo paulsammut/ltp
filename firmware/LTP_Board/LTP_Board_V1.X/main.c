@@ -21,7 +21,7 @@
         MPLAB             :  MPLAB X 3.45
  */
 
-#define _DEBUG
+//#define _DEBUG
 #include "mcc_generated_files/mcc.h"
 #include "LTP_system.h"
 #include "dbg.h"

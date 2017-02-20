@@ -5,7 +5,7 @@
 #include "mcc_generated_files/tmr1.h"
 #include "PID.h"
 #include "dbg.h"
-#include "LTP_message.h"
+#include "ltpmessage.h"
 #include "LTP_system.h"
 
 uint16_t usecsElapsed;
@@ -38,7 +38,7 @@ void PID_cycle(void) {
     usecsElapsed = TMR1 * 16;
     iteration_time = usecsElapsed; //1000000;
 
-    error = desiredAngle - curSamplePtr->angle;
+    error = desiredAngle - curSamplePtr->angle_;
     if (error > 1999)
         error = error - 3998;
     if (error < -1999)

@@ -2,7 +2,7 @@
 #include "serialComms.h"
 #include "cobs.h"
 
-#define _DEBUG
+//#define _DEBUG
 #include "dbg.h"
 
 uint8_t buff_RxUnstuffed[255];
@@ -11,12 +11,12 @@ uint8_t buff_TxStuffed[255];
 size_t tempLength;
 size_t TxPacketLength;
 
-int sendLTPSample(struct LTPSample *sendSample) {
+int sendLTPSample(struct LtpSample *sendSample) {
     // convert the LTPSample to a byte array
     uint8_t *sampleBytes = (uint8_t*) sendSample;
 
     // this byte array is our "input" array. Get the length of it
-    TxPacketLength = sizeof (struct LTPSample);
+    TxPacketLength = sizeof (struct LtpSample);
 
     // Make sure our tx packet is not too long. This should never happen
     if (TxPacketLength >= 251)
@@ -48,9 +48,9 @@ int sendLTPSample(struct LTPSample *sendSample) {
     return 1;
 }
 
-void cobsTest(struct LTPSample *sendSample) {
+void cobsTest(struct LtpSample *sendSample) {
     uint8_t *sampleBytes = (uint8_t*) sendSample;
-    TxPacketLength = sizeof (struct LTPSample);
+    TxPacketLength = sizeof (struct LtpSample);
 
     tempLength = cobs_encode(sampleBytes, TxPacketLength, buff_TxStuffed);
 

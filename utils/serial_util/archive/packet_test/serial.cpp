@@ -1,28 +1,29 @@
 #include "serial.h"
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <fcntl.h>
 #include <termios.h>
+#include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <iostream>
 
-SerialClass::SerialClass(void){
-    BUFF_LENGTH = 255;  
-    tempBuff = new unsigned char [BUFF_LENGTH];
-    bytesRead = 0;
-    packetLength = 0;
-    packetClean = false;
-    portOpen = false;
-}
+int fd; // file handle for the device
+int c;  //
+int res;
 
-SerialClass::~SerialClass(void){
-    if(portOpen){
-       this->serialClose();
-       portOpen = false;
-    }
-    delete[] tempBuff;
-}
+struct termios oldtio,newtio;
 
-int SerialClass::serialOpen(char *port, serialSpeed baudrate) {
+volatile int STOP=FALSE;
+const int BUFF_LENGTH = 10;  
+unsigned char tempBuff[BUFF_LENGTH] = {10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
+int bytesRead = 0;
+int packetLength = 3;
+// Here we make sure that the packet was read from start to finish.
+bool packetClean = true;
+
+int serialOpen(char *port, serialSpeed baudrate) {
     unsigned long val_BAUDRATE;
     switch(baudrate) {
     case _B57600:
@@ -53,7 +54,7 @@ int SerialClass::serialOpen(char *port, serialSpeed baudrate) {
     /* set input mode (non-canonical, no echo,...) */
     newtio.c_lflag = 0;
 
-    newtio.c_cc[VTIME]    = 1;   /* inter-character timer unused */
+    newtio.c_cc[VTIME]    = 0;   /* inter-character timer unused */
     newtio.c_cc[VMIN]     = 1;   /* blocking read until 5 chars received */
 
     tcflush(fd, TCIFLUSH);
@@ -62,7 +63,7 @@ int SerialClass::serialOpen(char *port, serialSpeed baudrate) {
     return fd;
 }
 
-int SerialClass::serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {
+int serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool verbose) {
     // Number of bytes read
     int res;
     res = read(fd,sReadBuf,maxNumBytes);
@@ -73,7 +74,8 @@ int SerialClass::serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool v
         // the following, or call fflush(stdout) to force a write to the terminal
         // char buffer[10];
         // setvbuf(stdout, buffer, _IOFBF, sizeof(buffer));
-        for(int i = 0; i < res ; i++) {
+        int i = 0;
+        for(i = 0; i < res ; i++) {
             printf("%c",sReadBuf[i]);
         }
         fflush(stdout);
@@ -81,12 +83,13 @@ int SerialClass::serialRead(unsigned char *sReadBuf, uint8_t maxNumBytes, bool v
     return res;
 }
 
-int SerialClass::serialClose(void) {
+int serialClose(void) {
     // reset the modem
     return tcsetattr(fd,TCSANOW,&oldtio);
 }
 
-int SerialClass::serialGetPacket(unsigned char *packetBuffer, unsigned char delimeter) {
+int serialGetPacket(unsigned char *packetBuffer, char delimeter)
+{
     // Check to see if our current packet length is greater than our limit
     if(packetLength >= BUFF_LENGTH)
     {
@@ -96,7 +99,8 @@ int SerialClass::serialGetPacket(unsigned char *packetBuffer, unsigned char deli
     }
 
     // Do a serial read
-    bytesRead = serialRead(tempBuff+packetLength,128,false);
+    // bytesRead = serialRead(tempBuff+packetLength,128,false);
+    bytesRead = 7;  
     packetLength += bytesRead;
 
     // Check to see if we overflowed after a serial read
@@ -116,14 +120,21 @@ int SerialClass::serialGetPacket(unsigned char *packetBuffer, unsigned char deli
                 // set the end of the packet to 0, which terminates the string
                 // this replaces the delimeter with 0
 
-                memcpy(packetBuffer, tempBuff, i+1);
-                packetLength = packetLength - i - 1;
-                memcpy(tempBuff, tempBuff+i+1, packetLength); 
-
                 if(packetClean)
+                {
+                    std::cout << tempBuff << std::endl;
+                    memcpy(packetBuffer, tempBuff, i+1);
+                    packetLength = packetLength - i - 1;
+                    printf("New Packet length: %d i: %d\r\n", packetLength, i);
+                    memcpy(tempBuff, tempBuff+i+1, packetLength); 
+                    printf("The new tempBuff:\r\n");
+                    for(int j = 0; j < 10; j++) 
+                        printf("%u ",tempBuff[j]);
                     return i+1;
+                }
 
-                // reach here if previous packet was not clean
+                // reset the packet length
+                packetLength = 0;
                 packetClean = true;
             }
         }

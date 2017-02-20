@@ -6,7 +6,7 @@
 #include "PID.h"
 #include "mcc_generated_files/tmr1.h"
 #include "sweep.h"
-#include "LTP_message.h"
+#include "ltpmessage.h"
 #include <stdlib.h>
 
 //#define _DEBUG
@@ -23,8 +23,8 @@ LTP_MODE LTP_mode = IDLE;
 
 // allocate memory for the current sample struct point that is going 
 // to get passed to all the subsystems that need it.
-struct LTPSample curSampleMem;
-struct LTPSample *curSamplePtr = &curSampleMem;
+struct LtpSample curSampleMem;
+struct LtpSample *curSamplePtr = &curSampleMem;
 
 void LTP_system_init(void) {
     //All TRIS pins set for ALL peripherals

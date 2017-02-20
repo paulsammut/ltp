@@ -5,7 +5,7 @@ LTP_system.h  \
 lidar.h  \
 motor.h  \
 PID.h  \
-LTP_message.h  \
+ltpmessage.h  \
 mcc_generated_files/tmr1.h  \
  sweep.h  \
 dbg.h  \

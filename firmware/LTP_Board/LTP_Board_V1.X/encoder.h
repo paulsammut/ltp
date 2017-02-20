@@ -20,11 +20,6 @@ int16_t encoder_getAngle(void);
 
 void testEncoder(void);
 
-/**
- * Sets the angle pointer that gets updated when encoder_updateAngle() gets called
- * @param anglePtr pointer to be held by the encoder
- */
-void encoder_setAnglePtr(uint16_t *anglePtr);
 
 /**
  * Does an encoder read and sets the pointer to the value.

@@ -2,7 +2,7 @@
 #define LTP_MESSAGE_H
 
 /**
- * @file LTPmessge.h
+ * @file ltpmessge.h
  * @brief Defines the communications between the LTP and the computer
  * @author Paul Sammut
  * @version 1
@@ -13,7 +13,7 @@
 /**
  * @brief the message type 
  */
-enum LTPCommandType {
+enum LtpCommandType {
     MSG_STOP,
     MSG_SPIN,
     MSG_POSITION,
@@ -23,23 +23,23 @@ enum LTPCommandType {
 /**
  * @brief The LTPMessage struct containing a type and 3 parameters
  */
-struct LTPCommand
+struct LtpCommand
 {
-    enum LTPCommandType cmdType;
-    uint16_t param1;
-    uint16_t param2;
-    uint16_t param3;
+    enum LtpCommandType cmdtype_;
+    uint16_t param1_;
+    uint16_t param2_;
+    uint16_t param3_;
 };
 
 /**
  * @brief This message is sent by the LTP to the computer. It contains a sample of
  * data with the angle and distance of the LIDAR hit. Angle is 0-4000 and distance is
- * in centinimeres.
+ * in centimeters.
  */
-struct LTPSample
+struct LtpSample
 {
-    uint16_t distance;
-    uint16_t angle;
+    uint16_t distance_;
+    uint16_t angle_;
 };
 
 #endif /* LTP_MESSAGE_H */

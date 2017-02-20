@@ -12,4 +12,4 @@ mcc_generated_files/traps.h  \
  mcc_generated_files/interrupt_manager.h  \
 LTP_system.h  \
 dbg.h  \
-LTP_message.h 
+ltpmessage.h 
