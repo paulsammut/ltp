@@ -62,7 +62,7 @@ public:
      */
     int16_t Shutdown(void);
 
-    int SendCommand(void);
+    int SendCommand(struct LtpCommand *input_ltpcommand);
 };
 
 #endif

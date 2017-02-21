@@ -12,17 +12,22 @@ int main(int argc, char *argv[])
 
     ltp1.InitLtp("/dev/ttyUSB0");
     struct LtpSample sample_temp;
+    struct LtpCommand test_command;
+    test_command.cmdtype_ = MSG_SPIN;
+    test_command.param1_= 0x69;
+    test_command.param2_= 0x24;
+    test_command.param3_= 0x30;
 
     while(1)
     {
-        
+        /*
         if(ltp1.PollReadLtp(&sample_temp))
             std::cout<< "We have an angle of: " << sample_temp.angle_
                      << " and a distance of " <<  sample_temp.distance_
                      << std::endl;
-
-       // InputTest();
-       // ltp1.SendCommand();
+*/
+        InputTest();
+        ltp1.SendCommand(&test_command);
     }
 
     std::cout << "\r\n We shutdown with this code: " << ltp1.Shutdown();

@@ -67,7 +67,7 @@ void LTP_sampleAndSend(void) {
     LIDAR_updateDistance();
     //dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
 
-    sendLTPSample(curSamplePtr);
+    //sendLTPSample(curSamplePtr);
 
 }
 

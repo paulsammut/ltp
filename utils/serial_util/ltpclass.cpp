@@ -61,13 +61,37 @@ int16_t LtpClass::PollReadLtp(struct LtpSample *ltp_sample)
     return 0;
 }
 
-int LtpClass::SendCommand(void)
+int LtpClass::SendCommand(struct LtpCommand *input_ltpcommand)
 {
-    uint8_t test_string[] = {1,2,3,4,5,6,0};
-    int write_return = ltp_serial_port_.SerialWrite(test_string, 4);
+    // here we encode the command in cobs and then it to through the serial bus.
 
-    std::cout << "\r\n Write return is:" << write_return << std::endl;
-    return 0;
+    static uint8_t *temp_ltpcommand;
+    static uint8_t temp_encoded[255];
+    static int temp_encoded_length;
+    static int write_return = 0;
+    
+    // get the size of our byte array
+    static int temp_cmd_length = sizeof(*input_ltpcommand); 
+    
+    // Make sure our string is not too long
+    if(temp_cmd_length> 251)
+        return 0;
+    
+    // make our byte array hold the address of the command struct
+    temp_ltpcommand = (uint8_t*)input_ltpcommand;
+
+    // encode the command string
+    temp_encoded_length = cobs_encode(temp_ltpcommand, temp_cmd_length, temp_encoded);
+    
+    if(temp_encoded_length && temp_encoded_length < 255)
+    {
+       // This means we successfully encoded this string and it is not too long
+       // Terminate our string with a zero and increment our length
+       temp_encoded[temp_encoded_length++] = 0;
+       write_return = ltp_serial_port_.SerialWrite(temp_encoded, temp_encoded_length);  
+    }
+        
+    return write_return;
 }
 
 int16_t LtpClass::Shutdown(void)
