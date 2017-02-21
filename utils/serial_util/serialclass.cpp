@@ -59,8 +59,11 @@ int SerialClass::SerialOpen(const char *port, serialSpeed baudrate) {
     newtio.c_cc[VTIME]    = 1;   /* inter-character timer unused */
     newtio.c_cc[VMIN]     = 1;   /* blocking read until 5 chars received */
 
+    cfsetospeed(&newtio, val_BAUDRATE);
     tcflush(fd, TCIFLUSH);
     tcsetattr(fd,TCSANOW,&newtio);
+
+    portOpen = true;
 
     return fd;
 }
@@ -86,6 +89,7 @@ int SerialClass::SerialRead(uint8_t *sReadBuf, uint8_t maxNumBytes, bool verbose
 
 int SerialClass::SerialClose(void) {
     // reset the modem
+    close(fd);
     return tcsetattr(fd,TCSANOW,&oldtio);
 }
 
@@ -132,3 +136,11 @@ int SerialClass::SerialGetPacket(unsigned char *packetBuffer, unsigned char deli
     return 0;
 }
 
+int SerialClass::SerialWrite(uint8_t *write_array, uint16_t write_array_length){
+    unsigned char tempstr[] = {3, 2, 1};
+    write(fd, tempstr, 3);
+  //if(portOpen)
+   //  return (write(fd, write_array, write_array_length));
+    std::cout << "Fd: " << fd << "\r\n";
+  return 0;
+} 

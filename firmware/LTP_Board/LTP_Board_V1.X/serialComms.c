@@ -84,6 +84,11 @@ int ReadLtpCommand(struct LtpCommand *ltp_command) {
         read_packet_length--;
         
         decode_buff_length = cobs_decode(packet_buffer, read_packet_length, decode_buff);
+        
+        if(!decode_buff_length)
+            return 0;
+        
+        *ltp_command = *(struct LtpCommand*)decode_buff;
                
         
     }

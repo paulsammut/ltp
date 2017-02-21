@@ -1,1 +1,1 @@
-/usr/bin/c++    -std=c++11   CMakeFiles/myexec.dir/cobs.c.o CMakeFiles/myexec.dir/ltpclass.cpp.o CMakeFiles/myexec.dir/serialclass.cpp.o CMakeFiles/myexec.dir/test.cpp.o CMakeFiles/myexec.dir/main.cpp.o  -o myexec -rdynamic 
+/usr/bin/c++    -std=c++11 -g   CMakeFiles/myexec.dir/cobs.c.o CMakeFiles/myexec.dir/ltpclass.cpp.o CMakeFiles/myexec.dir/serialclass.cpp.o CMakeFiles/myexec.dir/test.cpp.o CMakeFiles/myexec.dir/main.cpp.o  -o myexec -rdynamic 

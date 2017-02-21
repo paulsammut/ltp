@@ -61,6 +61,8 @@ public:
      * @return 1 if succesfful, 0 if no
      */
     int16_t Shutdown(void);
+
+    int SendCommand(void);
 };
 
 #endif

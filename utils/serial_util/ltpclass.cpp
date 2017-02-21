@@ -15,7 +15,6 @@ uint16_t LtpClass::InitLtp(const char *port_name)
     if(ltp_serial_port_.SerialOpen(port_name, SerialClass::_B230400) < 0)
         return 0;
 
-    ltp_serial_port_.SerialRead(packet_buffer_, 128, true);
     return 1;
 }
 
@@ -43,6 +42,7 @@ uint16_t LtpClass::DecodePacket(
         return 0;
     }
 
+    // Copy the struct by value
     *sample1 = *(struct LtpSample*)tempBuff;
     return 1;
 }
@@ -62,10 +62,16 @@ int16_t LtpClass::PollReadLtp(struct LtpSample *ltp_sample)
     return 0;
 }
 
+int LtpClass::SendCommand(void)
+{
+    uint8_t test_string[] = {1,2,3,4,5,6,0};
+    int write_return = ltp_serial_port_.SerialWrite(test_string, 4);
+
+    std::cout << "\r\n Write return is:" << write_return << std::endl;
+    return 0;
+}
+
 int16_t LtpClass::Shutdown(void)
 {
     return ltp_serial_port_.SerialClose();
 }
-
-
-

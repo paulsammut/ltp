@@ -77,5 +77,15 @@ class SerialClass
          * @return 
          */
         int SerialGetPacket(unsigned char *packetBuffer, unsigned char delimeter);
+
+        
+        /**
+         * @brief Writes the array to serial port. 
+         *
+         * @param write_array
+         *
+         * @return 
+         */
+        int SerialWrite(uint8_t *write_array, uint16_t write_array_length);
 };
 #endif
