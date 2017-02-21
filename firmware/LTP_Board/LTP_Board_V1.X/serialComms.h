@@ -21,7 +21,13 @@ extern "C" {
  */
     int sendLTPSample(struct LtpSample *sendSample);
 
-
+    /**
+     * Listens to the serial port and signals when an LTP command has come in. It also decodes it 
+     * and returns it us via parameter pointer.
+     * @param ltp_command
+     * @return 1 if successful, 0 if not
+     */
+    int ReadLtpCommand(struct LtpCommand *ltp_command);
 #ifdef	__cplusplus
 }
 #endif

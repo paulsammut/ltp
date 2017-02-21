@@ -8,11 +8,11 @@
 #include "sweep.h"
 #include "ltpmessage.h"
 #include <stdlib.h>
+#include "serialComms.h"
 
 //#define _DEBUG
 #include "dbg.h"
-#include "serialComms.h"
-#include "mcc_generated_files/uart1.h"
+
 
 #include <stdio.h>
 
@@ -24,12 +24,6 @@
  */
 static void LTP_setMode(LTP_MODE _mode);
 
-/**
- * Keeps track of the serial port and forms packets from incoming byte stream based on 
- * the delimeter.
- * @return 1 if we have a packet, 0 if not. 
- */
-static uint8_t LTP_GetPacket(void) ;
 
 // we have a 16 bit timer with a 1:256 prescaler on a 32MHz clock cycle
 // which means a 16 us timer count. This gives us our PID loop time 
@@ -38,14 +32,13 @@ uint16_t pollPeriod = 0x139;
 
 LTP_MODE LTP_mode = IDLE;
 
-static uint8_t serial_buffer[255];
-static uint16_t serial_buffer_length = 0;
-static bool packet_good = false;
 
 // allocate memory for the current sample struct point that is going 
 // to get passed to all the subsystems that need it.
 struct LtpSample curSampleMem;
 struct LtpSample *curSamplePtr = &curSampleMem;
+
+struct LtpCommand ltp_command;
 
 void LTP_system_init(void) {
     //All TRIS pins set for ALL peripherals
@@ -135,52 +128,9 @@ void LTP_cmdSetpoint(uint16_t setpoint) {
 }
 
 void LTP_checkMessages(void) {
-    LTP_GetPacket();
-
+    ReadLtpCommand(&ltp_command);
 }
 
 static void LTP_setMode(LTP_MODE _mode) {
     LTP_mode = _mode;
-}
-
-static uint8_t LTP_GetPacket(void) {
-    
-    uint8_t max_read_bytes = 20;
-    uint8_t read_counter = 0;
-    
-    // Check to see if we have data in the UART
-    while (UART1_StatusGet() == UART1_RX_DATA_AVAILABLE) {
-        
-        // check to see if we have overflowed the buffer
-        if(serial_buffer_length + 1 >= 254){
-            serial_buffer_length = 0;
-            packet_good = false;
-            return 0;
-        }
-        
-        // put the byte into the serial buffer and increment the length
-        serial_buffer[serial_buffer_length++] = UART1_Read();
-        
-        printf("Buffer length : %d\r\n", serial_buffer_length);
-
-        if (serial_buffer[serial_buffer_length - 1] == 'c') {
-            if(packet_good)
-                return 1;
-            else {
-                packet_good = true;
-                serial_buffer_length = 0;
-                return 0;
-            }
-        }
-
-        // Here we break out of the while loop if we get stuck doing reads for too long.
-        // this prevents us from hanging up the rest of the code
-        if (++read_counter > max_read_bytes) {
-            read_counter = 0;
-            return 0;
-        }
-    }
-    
-    //should never get here
-    return 0;
 }

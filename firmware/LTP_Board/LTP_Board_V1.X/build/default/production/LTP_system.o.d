@@ -8,6 +8,5 @@ PID.h  \
 ltpmessage.h  \
 mcc_generated_files/tmr1.h  \
  sweep.h  \
-dbg.h  \
 serialComms.h  \
-mcc_generated_files/uart1.h 
+dbg.h 

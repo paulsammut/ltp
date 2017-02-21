@@ -109,15 +109,13 @@ int SerialClass::SerialGetPacket(unsigned char *packetBuffer, unsigned char deli
         packetClean = false;
         packetLength = 0;
         return 0;
-    } else {
+    } else if(bytesRead > 0) {
         // We scan the "just read portion" for a delimeter
         for(int i = packetLength-bytesRead; i < packetLength; i++)
         {
             if(tempBuff[i] == delimeter)
             {
                 // We have found a delimiter
-                // set the end of the packet to 0, which terminates the string
-                // this replaces the delimeter with 0
 
                 memcpy(packetBuffer, tempBuff, i+1);
                 packetLength = packetLength - i - 1;
