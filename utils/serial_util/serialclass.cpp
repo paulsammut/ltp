@@ -39,29 +39,51 @@ int SerialClass::SerialOpen(const char *port, serialSpeed baudrate) {
         break;
     }
 
-    // open the serial point and get its file handle
-    fd = open(port, O_RDWR | O_NOCTTY );
-    if (fd <0) {
-        perror(port);
-        exit(-1);
+
+    fd = open(port, O_RDWR | O_NOCTTY);
+    if (fd < 0) {
+        fprintf(stderr, "error, counldn't open file %s\n", port);
+        return 1;
     }
+    if (tcgetattr(fd, &old_termios) != 0) {
+        fprintf(stderr, "tcgetattr(fd, &old_termios) failed: %s\n", strerror(errno));
+        return 1;
+    }
+    memset(&new_termios, 0, sizeof(new_termios));
+    new_termios.c_iflag = IGNPAR;
+    new_termios.c_oflag = 0;
+    new_termios.c_cflag = CS8 | CREAD | CLOCAL | HUPCL;
+    new_termios.c_lflag = 0;
+    new_termios.c_cc[VINTR]    = 0;
+    new_termios.c_cc[VQUIT]    = 0;
+    new_termios.c_cc[VERASE]   = 0;
+    new_termios.c_cc[VKILL]    = 0;
+    new_termios.c_cc[VEOF]     = 4;
+    new_termios.c_cc[VTIME]    = 1;
+    new_termios.c_cc[VMIN]     = 1;
+    new_termios.c_cc[VSWTC]    = 0;
+    new_termios.c_cc[VSTART]   = 0;
+    new_termios.c_cc[VSTOP]    = 0;
+    new_termios.c_cc[VSUSP]    = 0;
+    new_termios.c_cc[VEOL]     = 0;
+    new_termios.c_cc[VREPRINT] = 0;
+    new_termios.c_cc[VDISCARD] = 0;
+    new_termios.c_cc[VWERASE]  = 0;
+    new_termios.c_cc[VLNEXT]   = 0;
+    new_termios.c_cc[VEOL2]    = 0;
 
-    tcgetattr(fd,&oldtio); /* save current port settings */
-
-    memset(&newtio,0, sizeof(newtio));
-    newtio.c_cflag = val_BAUDRATE | CRTSCTS | CS8 | CLOCAL | CREAD;
-    newtio.c_iflag = IGNPAR;
-    newtio.c_oflag = 0;
-
-    /* set input mode (non-canonical, no echo,...) */
-    newtio.c_lflag = 0;
-
-    newtio.c_cc[VTIME]    = 1;   /* inter-character timer unused */
-    newtio.c_cc[VMIN]     = 1;   /* blocking read until 5 chars received */
-
-    cfsetospeed(&newtio, val_BAUDRATE);
-    tcflush(fd, TCIFLUSH);
-    tcsetattr(fd,TCSANOW,&newtio);
+    if (cfsetispeed(&new_termios, val_BAUDRATE) != 0) {
+        fprintf(stderr, "cfsetispeed(&new_termios, val_BAUDRATE) failed: %s\n", strerror(errno));
+        return 1;
+    }
+    if (cfsetospeed(&new_termios, val_BAUDRATE) != 0) {
+        fprintf(stderr, "cfsetospeed(&new_termios, val_BAUDRATE) failed: %s\n", strerror(errno));
+        return 1;
+    }
+    if (tcsetattr(fd, TCSANOW, &new_termios) != 0) {
+        fprintf(stderr, "tcsetattr(fd, TCSANOW, &new_termios) failed: %s\n", strerror(errno));
+        return 1;
+    }
 
     portOpen = true;
 
@@ -137,10 +159,7 @@ int SerialClass::SerialGetPacket(unsigned char *packetBuffer, unsigned char deli
 }
 
 int SerialClass::SerialWrite(uint8_t *write_array, uint16_t write_array_length){
-    unsigned char tempstr[] = {3, 2, 1};
-    write(fd, tempstr, 3);
-  //if(portOpen)
-   //  return (write(fd, write_array, write_array_length));
-    std::cout << "Fd: " << fd << "\r\n";
+  if(portOpen)
+    return (write(fd, write_array, write_array_length));
   return 0;
 } 

@@ -57,7 +57,6 @@ int16_t LtpClass::PollReadLtp(struct LtpSample *ltp_sample)
         if(DecodePacket(packet_buffer_, packet_length,ltp_sample))
             return 1;
     }
-
     // packet read failed
     return 0;
 }

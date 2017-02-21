@@ -15,14 +15,14 @@ int main(int argc, char *argv[])
 
     while(1)
     {
-        /*
+        
         if(ltp1.PollReadLtp(&sample_temp))
             std::cout<< "We have an angle of: " << sample_temp.angle_
                      << " and a distance of " <<  sample_temp.distance_
                      << std::endl;
-*/
-        InputTest();
-        ltp1.SendCommand();
+
+       // InputTest();
+       // ltp1.SendCommand();
     }
 
     std::cout << "\r\n We shutdown with this code: " << ltp1.Shutdown();
