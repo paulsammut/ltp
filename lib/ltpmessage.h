@@ -26,9 +26,9 @@ enum LtpCommandType {
 struct LtpCommand
 {
     uint8_t cmdtype_;
-    uint16_t param1_;
-    uint16_t param2_;
-    uint16_t param3_;
+    int16_t param1_;
+    int16_t param2_;
+    int16_t param3_;
 };
 
 /**

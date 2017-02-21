@@ -100,6 +100,7 @@ void LTP_poll(void) {
                 break;
             case STOP:
                 motor_setSpeed(0);
+                LTP_setMode(IDLE);
                 break;
 
         }
@@ -128,7 +129,22 @@ void LTP_cmdSetpoint(uint16_t setpoint) {
 }
 
 void LTP_checkMessages(void) {
-    ReadLtpCommand(&ltp_command);
+    if (ReadLtpCommand(&ltp_command)) {
+        switch (ltp_command.cmdtype_) {
+            case MSG_STOP:
+                LTP_cmdStop();
+                break;
+            case MSG_SPIN:
+                LTP_cmdSpin(ltp_command.param1_);
+                break;
+            case MSG_SWEEP:
+                LTP_cmdSweep(ltp_command.param1_, ltp_command.param2_, ((double) ltp_command.param3_) / 10);
+                break;
+            case MSG_POSITION:
+                LTP_cmdSetpoint(ltp_command.param1_);
+                break;
+        }
+    }
 }
 
 static void LTP_setMode(LTP_MODE _mode) {

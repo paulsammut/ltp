@@ -89,7 +89,7 @@ int ReadLtpCommand(struct LtpCommand *ltp_command) {
             return 0;
         
         *ltp_command = *(struct LtpCommand*)decode_buff;
-               
+        return 1;
         
     }
     return 0;
@@ -111,7 +111,7 @@ static int SerialReadPacket() {
         // check to see if we overflowed after a serial read
         if (serial_buffer_length >= 254) {
             serial_packet_good = false;
-            serial_buffer_length = false;
+            serial_buffer_length = 0;
         } else if (bytes_read > 0) {
             // We scan the just read portion for a delimeter
             int i;
