@@ -95,11 +95,11 @@ void InputTest(void)
             break;
 
         case 1:
-            std::cout << "Please enter an angle from 0-4000 (maps to 0-360 degrees): ";
-            int pos;
+            std::cout << "Please enter an angle (0-360 degrees): ";
+            double pos;
             std::cin >> pos;
             cmd_from_input.cmdtype_ = MSG_POSITION;
-            cmd_from_input.param1_ = pos;
+            cmd_from_input.param1_ = (uint16_t)(pos/360*4000);
             ltp1.SendCommand(&cmd_from_input);
             break;
 

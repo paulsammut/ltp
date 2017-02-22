@@ -5,8 +5,8 @@
         <group>
             <file>file:/home/paul/work/LTP/firmware/LTP_Board/LTP_Board_V1.X/cobs.c</file>
             <file>file:/home/paul/work/LTP/firmware/LTP_Board/LTP_Board_V1.X/serialComms.h</file>
-            <file>file:/home/paul/work/LTP/firmware/LTP_Board/LTP_Board_V1.X/motor.h</file>
             <file>file:/home/paul/work/LTP/firmware/LTP_Board/LTP_Board_V1.X/main.c</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board/LTP_Board_V1.X/motor.h</file>
             <file>file:/home/paul/work/LTP/firmware/LTP_Board/LTP_Board_V1.X/mcc_generated_files/uart1.c</file>
             <file>file:/home/paul/work/LTP/firmware/LTP_Board/LTP_Board_V1.X/mcc_generated_files/traps.c</file>
             <file>file:/home/paul/work/LTP/firmware/LTP_Board/LTP_Board_V1.X/PID.c</file>
