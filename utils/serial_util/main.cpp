@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ltpclass.h"
 #include "ltpmessage.h"
+#include <thread>
 
 void InputTest(void);
 LtpClass ltp1;
@@ -14,6 +15,7 @@ void PrintBanner(void)
         << "============================\r\n"
         << "===== LTP Test Program =====\r\n"
         << "============================"<< std::endl;
+
 }
 
 int main(int argc, char *argv[])
@@ -21,24 +23,49 @@ int main(int argc, char *argv[])
     PrintBanner();
 
     ltp1.InitLtp("/dev/ttyUSB0");
-    struct LtpSample sample_temp;
     struct LtpCommand test_command;
     test_command.cmdtype_ = MSG_SPIN;
     test_command.param1_= 70;
     test_command.param2_= 0x24;
     test_command.param3_= 0x30;
 
-    while(1)
-    {
-       /* 
-        if(ltp1.PollReadLtp(&sample_temp))
-            std::cout<< "We have an angle of: " << sample_temp.angle_
-                     << " and a distance of " <<  sample_temp.distance_
-                     << std::endl;
-*/
-        PrintBanner();
-        InputTest();
-    }
+    std::thread poller{ []() {
+        struct LtpSample sample_temp;
+        int columns = 0;
+        char symbols[] = { '\\', '|', '/', '-'};
+             
+
+        while (1) {
+            if(ltp1.PollReadLtp(&sample_temp)) {
+                if (columns) {
+                    std::cout << "\x08";
+                }
+                std::cout << symbols[columns % 4];
+                std::cout.flush();
+
+                columns++;
+
+
+               // std::cout<< "We have an angle of: " << sample_temp.angle_
+               //         << " and a distance of " <<  sample_temp.distance_
+               //         << std::endl;
+
+             } 
+        }
+    }};
+    
+    std::thread input_thread{ []() {
+        while(1)
+        {
+           PrintBanner();
+           InputTest();
+        }
+    }};
+
+
+    poller.join();
+    input_thread.join();
+
 
     std::cout << "\r\n We shutdown with this code: " << ltp1.Shutdown();
     return 1;

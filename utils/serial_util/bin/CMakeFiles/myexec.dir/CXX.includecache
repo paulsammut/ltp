@@ -39,6 +39,8 @@ ltpclass.h
 /home/paul/work/LTP/utils/serial_util/ltpclass.h
 ltpmessage.h
 /home/paul/work/LTP/utils/serial_util/ltpmessage.h
+thread
+-
 
 /home/paul/work/LTP/utils/serial_util/serialclass.cpp
 serialclass.h
