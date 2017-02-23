@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <errno.h>
 
 SerialClass::SerialClass(void){
     BUFF_LENGTH = 255;  
