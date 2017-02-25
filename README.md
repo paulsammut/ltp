@@ -37,8 +37,8 @@ The LTP was designed to be able to work with a variety of cheap brushed DC motor
 ## Reference Frames
 The LTP's job is to give us LIDAR hits, which are a points in space. For points in space to mean anything, they need to be in a reference frame. The LTP uses two reference frames.
 
-* Internal reference frame used in the LtpSample
-* LTP_Body reference frame used in the LtpHitXyz
+* **Internal reference frame** used in the LtpSample**
+* **LTP_Body reference frame** used in the LtpHitXyz
 
 ### Internal Reference Frame
 ![Internal reference frame of the LTP][internal_reference_1]
