@@ -1,5 +1,5 @@
 # The Lidar Test Platform
-Rev1-2/25/2017
+*Rev1-2/25/2017*
 
 The Lidar Test Platform, or LTP is a low cost LIDAR system. Its main goal is to give Sammut Tech LLC the ability to have multiple LIDAR units at low cost, which are necassary for rapid and cost effective development of TD1.
 
