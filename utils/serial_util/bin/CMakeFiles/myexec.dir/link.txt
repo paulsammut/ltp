@@ -1,1 +1,0 @@
-/usr/bin/c++    -std=c++14 -g   CMakeFiles/myexec.dir/cobs.c.o CMakeFiles/myexec.dir/ltpclass.cpp.o CMakeFiles/myexec.dir/serialclass.cpp.o CMakeFiles/myexec.dir/main.cpp.o  -o myexec -rdynamic -lpthread 
