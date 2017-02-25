@@ -13,7 +13,9 @@ The LTP system has the following features:
 
 
 ## General overview
+
 ![Diagram of the LTP][overview]
+
 The LTP has a head that can spin around continuously and acquire distance and angle measurements. 
 There is a [custom build circuit board](https://workspace.circuitmaker.com/Projects/Details/Paul-Sammut-2/LTP-Board) that takes in power and has a USB connector to interface with a computer. Communications to and from the LTP is done as binary data encoded with COBS. 
 
@@ -39,34 +41,46 @@ The LTP's job is to give us LIDAR hits, which are a points in space. For points 
 
 ### Internal Reference Frame
 ![Internal reference frame of the LTP][internal_reference_1]
+
 This reference frame is used by the firmware for its calculations and also during LTP to Host communication. This reference frame has two components:
+
 * Head angle in 0-3999 encoder counts. Increments clockwise.
 * Distance in 0-4000 centimeters. 
 * Head tilt phi
+
 ![Head tilt of LTP][internal_reference_2]
+
 The user does not have to worry about this reference frame as it is handled by the lower level code. Conversion from this to LtpHitXyz is done with simple [spherical coordinate to cartesian coordinate transform math](http://mathinsight.org/spherical_coordinates). 
 
 ### LTP_Body Reference Frame
+
 ![LTP_Body reference frame][LTP_Body_reference_frame]
+
 The LTP_Body reference frame is compatible with the ROS standard for vehicle coordinates. X is positive forward, Y is positive west, and Z is positive up. 
 LtpHitXyz data is in this reference frame.
 
 ## Software
 There is a set of software that is required for operation of the LTP. They are as follows:
+
 * LTP Firmware that runs on the LTP Board
 * LTP Host software that runs on a host computer and interfaces with the LTP
 
 ### UML Overview
+
 ![UML overview of LTP software][ltp_uml]
+
 The firmware and host software share a header file that defines communications between the two.
 
 ### Host Software
+
 The host is defined as the computer the LTP is connected to. Software written for the LTP Host has two functions:
+
 * Decode packets coming from the LTP
 * Allow commands to be send to the LTP
 
 #### Decoding packets coming from the LTP
 The LTP host software monitors the serial port and looks for an LtpMessage packet. This a packet of COBS encoded binary data that has 0x00 at the end of it. If a packet is received, it is decoded from COBS and converted it to an X, Y, Z LIDAR hit location. This hit location is defined as an LtpHitXyz data structure. 
+
 ![PollRead() of LTP][ltp::pollread]
 
 #### Sending Commands to the LTP
@@ -74,6 +88,7 @@ Commands to the LTP are done via LtpCommand structers serialized into a byte arr
 
 ### LTP Firmware
 The LTP Board contains a PIC24FV16KM204 microntroller. Firmare for this chip was written in MplabX using the C30 compiler. The firmware handles the following operation:
+
 * Setup on the various subsystems for proper configurations
 * Monitor the serial port for any commands
 * Operate a state machine in three modes:
@@ -83,6 +98,7 @@ The LTP Board contains a PIC24FV16KM204 microntroller. Firmare for this chip was
 * Sample the lidar and send out raw LTP Samples over the UART as fast as it can
 
 This microcontroller communicates to the following systems: 
+
 * DRV8801 motorcontroller via PWM singal and direction digital line
 * LFLS7366R encoder processor chip via SPI
 * LIDAR-Lite V3 via I2C
