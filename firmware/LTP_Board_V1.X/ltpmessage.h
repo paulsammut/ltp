@@ -1,1 +1,1 @@
-../../../lib/ltpmessage.h
+../../lib/ltpmessage.h
