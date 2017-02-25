@@ -19,6 +19,8 @@ serialclass.h
 /home/paul/work/LTP/utils/serial_util/serialclass.h
 iostream
 -
+math.h
+-
 cobs.h
 /home/paul/work/LTP/utils/serial_util/cobs.h
 
@@ -61,6 +63,8 @@ sys/types.h
 -
 sys/stat.h
 -
+errno.h
+-
 
 /home/paul/work/LTP/utils/serial_util/serialclass.h
 stdint.h
@@ -69,14 +73,4 @@ stdlib.h
 -
 termios.h
 -
-
-/home/paul/work/LTP/utils/serial_util/test.cpp
-test.h
-/home/paul/work/LTP/utils/serial_util/test.h
-iostream
--
-stdio.h
--
-
-/home/paul/work/LTP/utils/serial_util/test.h
 

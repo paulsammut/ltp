@@ -17,6 +17,3 @@ CMakeFiles/myexec.dir/main.cpp.o: ../serialclass.h
 CMakeFiles/myexec.dir/serialclass.cpp.o: ../serialclass.cpp
 CMakeFiles/myexec.dir/serialclass.cpp.o: ../serialclass.h
 
-CMakeFiles/myexec.dir/test.cpp.o: ../test.cpp
-CMakeFiles/myexec.dir/test.cpp.o: ../test.h
-

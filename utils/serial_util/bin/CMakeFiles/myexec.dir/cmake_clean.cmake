@@ -2,7 +2,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/myexec.dir/cobs.c.o"
   "CMakeFiles/myexec.dir/ltpclass.cpp.o"
   "CMakeFiles/myexec.dir/serialclass.cpp.o"
-  "CMakeFiles/myexec.dir/test.cpp.o"
   "CMakeFiles/myexec.dir/main.cpp.o"
   "myexec.pdb"
   "myexec"

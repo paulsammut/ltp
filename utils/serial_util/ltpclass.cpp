@@ -1,13 +1,18 @@
 #include "ltpclass.h"
 #include "serialclass.h"
 #include <iostream>
+#include <math.h>
+
+#ifndef PI
+#define PI 3.14159265
+#endif
 
 extern "C"
 {
 #include "cobs.h"
 }
 
-uint16_t LtpClass::InitLtp(const char *port_name)
+uint16_t LtpClass::Init(const char *port_name, double head_phi_radians=(PI/2))
 {
     //char port[] = "/dev/ttyUSB0";
     std::cout << "Program Loaded!" << std::endl;
@@ -47,18 +52,49 @@ uint16_t LtpClass::DecodePacket(
     return 1;
 }
 
-int16_t LtpClass::PollReadLtp(struct LtpSample *ltp_sample)
+int16_t LtpClass::PollRead(LtpHitXyz *ltp_hit_xyz)
 {
+    LtpSample ltp_sample;
     // Do a serial read
     int packet_length = ltp_serial_port_.SerialGetPacket(packet_buffer_,0x00);
     if(packet_length)
     {
         // This means that we got a byte array from the serial read.
-        if(DecodePacket(packet_buffer_, packet_length,ltp_sample))
+        if(DecodePacket(packet_buffer_, packet_length,&ltp_sample))
+        {
+            // Convert the ltp_sample to a LtpHitXyz
+            ConvToXyz(&ltp_sample, ltp_hit_xyz);  
             return 1;
+        }
     }
     // packet read failed
     return 0;
+}
+
+int LtpClass::ConvToXyz(const struct LtpSample *ltp_sample, LtpHitXyz *ltp_hit_xyz)
+{
+    // Reverse the angle to work with the LTP_Body reference frame
+    double reversed = 3999 -ltp_sample->angle_;
+    // convert to radians. 
+    double head_angle_theta = reversed / 3999 * PI * 2;
+    // convert distance to meters from centimeteres
+    double distance_rho = ((double)ltp_sample->distance_) / 100;
+
+    // Calculate cartesian coordinates
+    ltp_hit_xyz->hitpos_x = distance_rho * sin(head_angel_phi_) * cos(head_angle_theta);
+    ltp_hit_xyz->hitpos_y = distance_rho * sin(head_angel_phi_) * sin(head_angle_theta);
+    ltp_hit_xyz->hitpos_z = distance_rho * cos(head_angel_phi_);
+
+    /*
+     * std::cout << "Distance: " << distance_rho 
+     *   << " Reversed angle: " << head_angle_theta
+     *   << " X: " << ltp_hit_xyz->hitpos_x 
+     *   << " Y: " << ltp_hit_xyz->hitpos_y 
+     *   << " Z: " << ltp_hit_xyz->hitpos_z 
+     *   << "\r";
+     */
+
+    return 1;
 }
 
 int LtpClass::SendCommand(struct LtpCommand *input_ltpcommand)
@@ -90,11 +126,20 @@ int LtpClass::SendCommand(struct LtpCommand *input_ltpcommand)
        temp_encoded[temp_encoded_length++] = 0;
        write_return = ltp_serial_port_.SerialWrite(temp_encoded, temp_encoded_length);  
     }
+
         
     return write_return;
+}
+
+
+void PrintHit(LtpHitXyz *ltp_hit_xyz)
+{
+    std::cout << "Print something" << std::endl;
 }
 
 int16_t LtpClass::Shutdown(void)
 {
     return ltp_serial_port_.SerialClose();
 }
+
+

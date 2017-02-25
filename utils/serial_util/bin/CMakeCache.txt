@@ -171,12 +171,6 @@ LTP_Utility_BINARY_DIR:STATIC=/home/paul/work/LTP/utils/serial_util/bin
 //Value Computed by CMake
 LTP_Utility_SOURCE_DIR:STATIC=/home/paul/work/LTP/utils/serial_util
 
-//Value Computed by CMake
-myfirstproj_BINARY_DIR:STATIC=/home/paul/work/LTP/utils/serial_util/bin
-
-//Value Computed by CMake
-myfirstproj_SOURCE_DIR:STATIC=/home/paul/work/LTP/utils/serial_util
-
 
 ########################
 # INTERNAL cache entries

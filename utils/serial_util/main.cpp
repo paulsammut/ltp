@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 {
     PrintBanner();
 
-    ltp1.InitLtp("/dev/ttyUSB0");
+    ltp1.Init("/dev/ttyUSB0", 0);
     struct LtpCommand test_command;
     test_command.cmdtype_ = MSG_SPIN;
     test_command.param1_= 70;
@@ -30,13 +30,13 @@ int main(int argc, char *argv[])
     test_command.param3_= 0x30;
 
     std::thread poller{ []() {
-        struct LtpSample sample_temp;
+        LtpHitXyz hitpos;
         int columns = 0;
         char symbols[] = { '\\', '|', '/', '-'};
              
 
         while (1) {
-            if(ltp1.PollReadLtp(&sample_temp)) {
+            if(ltp1.PollRead(&hitpos)) {
                 if (columns) {
                     std::cout << "\x08";
                 }
