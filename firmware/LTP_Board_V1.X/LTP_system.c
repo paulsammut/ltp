@@ -54,6 +54,8 @@ void LTP_system_init(void) {
     LIDAR1_PE = 1; // turn on lidar
     DEBUG_GREEN = 0;
     DEBUG_RED = 0;
+    DP1 = 0;
+    DP2 = 0;
 
     encoder_init();
     LIDAR_init();
@@ -64,7 +66,9 @@ void LTP_system_init(void) {
 
 void LTP_sampleAndSend(void) {
     encoder_updateAngle();
-    LIDAR_updateDistance();
+    if(!LIDAR_updateDistance())
+        DP1 = 1;
+    
     //dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
 
     sendLTPSample(curSamplePtr);

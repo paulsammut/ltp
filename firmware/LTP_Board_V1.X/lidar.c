@@ -65,7 +65,6 @@ uint8_t LIDAR_updateDistance(void) {
 
     if (response == 0) {
         dbg_printf("Failed to write sample request!\r\n");
-        LIDAR_init();
         return 0;
     }
 
@@ -109,6 +108,10 @@ uint8_t LIDAR_updateDistance(void) {
 
 uint8_t LIDAR_Read(uint8_t registerAddress, uint8_t *pData, uint8_t length) {
 
+    // Ok so this read does the following:
+    // - First it writes the address of the register we want to read. 
+    // - Then it does a read. 
+    
     MSSP2_I2C_MESSAGE_STATUS status = MSSP2_I2C_MESSAGE_PENDING;
     uint8_t writeBuffer[2];
     uint16_t retryTimeOut, slaveTimeOut;
@@ -275,7 +278,7 @@ uint8_t LIDAR_Write(uint8_t registerAddress, uint8_t pData) {
     }
 
 
-    // Sucessfull write!
+    // Successfull write!
     return (1);
 }
 
