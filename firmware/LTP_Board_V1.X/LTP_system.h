@@ -22,6 +22,12 @@ extern "C" {
 #define MOTOR_DIR LATBbits.LATB6
 #define SS_ENCODER LATBbits.LATB12
 #define LIDAR1_PE LATBbits.LATB5
+    
+    //For i2c recovery
+#define SCL_TRIS TRISBbits.TRISB3 
+#define SDA_TRIS TRISBbits.TRISB2 
+#define SCL LATBbits.LATB3
+#define SDA LATBbits.LATB2    
 
     extern struct LtpSample *curSamplePtr;
 
@@ -94,6 +100,11 @@ extern "C" {
      * @param setpoint setpoint from 0-4000 which means angle
      */
     void LTP_cmdSetpoint(uint16_t setpoint);
+    
+    /**
+     * Called when a fault is detected with the I2C and runs recovery code
+     */
+    void LTP_recover(void);
 #ifdef	__cplusplus
 }
 #endif

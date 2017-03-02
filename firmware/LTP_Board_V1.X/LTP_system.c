@@ -10,8 +10,14 @@
 #include <stdlib.h>
 #include "serialComms.h"
 
+#define FOSC    (32000000ULL)
+#define FCY     (FOSC/2)
+
+#include <libpic30.h>
+
 //#define _DEBUG
 #include "dbg.h"
+#include "mcc_generated_files/mssp2_i2c.h"
 
 
 #include <stdio.h>
@@ -67,9 +73,11 @@ void LTP_system_init(void) {
 void LTP_sampleAndSend(void) {
     encoder_updateAngle();
     if(!LIDAR_updateDistance())
-        DP1 = 1;
-    
-    //dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
+    {
+       LTP_recover();        
+    }
+   
+    dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
 
     sendLTPSample(curSamplePtr);
 
@@ -140,6 +148,7 @@ void LTP_checkMessages(void) {
                 break;
             case MSG_SPIN:
                 LTP_cmdSpin(ltp_command.param1_);
+                LTP_recover();
                 break;
             case MSG_SWEEP:
                 LTP_cmdSweep(ltp_command.param1_, ltp_command.param2_, ((double) ltp_command.param3_) / 10);
@@ -153,4 +162,49 @@ void LTP_checkMessages(void) {
 
 static void LTP_setMode(LTP_MODE _mode) {
     LTP_mode = _mode;
+}
+
+void LTP_recover(void)
+{
+     DP1 = 1;
+     SSP2CON1 &= 0xFFEF; 
+      //__delay_ms(10);
+     SCL_TRIS = 0; //output
+     SDA_TRIS = 1; //input
+     
+     //SDA input and let float
+     int i;
+     for(i = 0; i < 9; i++)
+     {
+         SCL = 0;
+         DP1=0;
+         __delay_us(10);
+         SCL = 1;
+         DP1=1;
+         __delay_us(10);
+     }
+     
+     //START CONDITION
+     SDA_TRIS = 0; //output
+     
+     __delay_us(5);
+     SDA = 0;
+     __delay_us(5);
+     SCL = 0;
+     __delay_us(5);
+     
+     //STOP CONDITION
+     SCL = 1;
+     __delay_us(5);
+     SDA = 1;
+     __delay_us(5);
+     
+     //Renable the I2C Stack
+     SCL_TRIS = 1;
+     SDA_TRIS = 1;
+     //enable the SSPEN bit
+     SSP2CON1 |= 0x0010;
+     MSSP2_I2C_Initialize();
+     DP1 = 0;
+         
 }
