@@ -148,7 +148,7 @@ void LTP_checkMessages(void) {
                 break;
             case MSG_SPIN:
                 LTP_cmdSpin(ltp_command.param1_);
-                LTP_recover();
+                //wLTP_recover();
                 break;
             case MSG_SWEEP:
                 LTP_cmdSweep(ltp_command.param1_, ltp_command.param2_, ((double) ltp_command.param3_) / 10);
@@ -167,7 +167,7 @@ static void LTP_setMode(LTP_MODE _mode) {
 void LTP_recover(void)
 {
      DP1 = 1;
-     SSP2CON1 &= 0xFFEF; 
+     SSP2CON1bits.SSPEN = 0; 
       //__delay_ms(10);
      SCL_TRIS = 0; //output
      SDA_TRIS = 1; //input
@@ -202,9 +202,9 @@ void LTP_recover(void)
      //Renable the I2C Stack
      SCL_TRIS = 1;
      SDA_TRIS = 1;
-     //enable the SSPEN bit
-     SSP2CON1 |= 0x0010;
+    
+    
      MSSP2_I2C_Initialize();
+     
      DP1 = 0;
-         
 }
