@@ -180,14 +180,15 @@ static void MSSP2_I2C_Stop(MSSP2_I2C_MESSAGE_STATUS completion_code);
  Section: Local Variables
 */
 
-static I2C_TR_QUEUE_ENTRY                  mssp2_i2c_tr_queue[MSSP2_I2C_CONFIG_TR_QUEUE_LENGTH];
-static I2C_OBJECT                          mssp2_i2c_object;
-static I2C_MASTER_STATES                   mssp2_i2c_state = S_MASTER_IDLE;
-static uint8_t                             mssp2_i2c_trb_count = 0;
+static I2C_TR_QUEUE_ENTRY                    mssp2_i2c_tr_queue[MSSP2_I2C_CONFIG_TR_QUEUE_LENGTH];
+static I2C_OBJECT                                     mssp2_i2c_object;
+static I2C_MASTER_STATES                       mssp2_i2c_state = S_MASTER_IDLE;
+static uint8_t                                             mssp2_i2c_trb_count = 0;
 
 static MSSP2_I2C_TRANSACTION_REQUEST_BLOCK *p_mssp2_i2c_trb_current = NULL;
 static I2C_TR_QUEUE_ENTRY                  *p_mssp2_i2c_current = NULL;
 
+static bool i2c_reset = false;
 
 /**
   Section: Driver Interface
@@ -196,28 +197,43 @@ static I2C_TR_QUEUE_ENTRY                  *p_mssp2_i2c_current = NULL;
 
 void MSSP2_I2C_Initialize(void)
 {
+    //Disable the interrupts
+    IEC3bits.SSP2IE = 0;
+    mssp2_i2c_state = S_MASTER_IDLE;
+    mssp2_i2c_trb_count = 0;
+    p_mssp2_i2c_trb_current = NULL;
+    p_mssp2_i2c_current = NULL;
+
     mssp2_i2c_object.pTrHead = mssp2_i2c_tr_queue;
     mssp2_i2c_object.pTrTail = mssp2_i2c_tr_queue;
     mssp2_i2c_object.trStatus.s.empty = true;
     mssp2_i2c_object.trStatus.s.full = false;
+    
+    
+
 
     mssp2_i2c_object.i2cErrors = 0;
 
     // SMP High Speed; CKE Idle to Active; 
     SSP2STAT = 0x0000;
-    // SSPEN enabled; WCOL no_collision; CKP Clock Stretch; SSPM FOSC/(2 * (BRG_Value_I2C + 1)); SSPOV no_overflow; 
-    SSP2CON1 = 0x0028;
+    
     // SBCDE disabled; BOEN disabled; SCIE disabled; PCIE disabled; DHEN disabled; SDAHT 100ns; AHEN disabled; 
     SSP2CON3 = 0x0000;
     // Baud Rate Generator Value: SSPADD 25;   
     // Calculated Frequency: 307692.30769230769230769230769230769230769230769230769230769230769230769230769230769230769230769230769230769230769230769230769230769231
     SSP2ADD = 0x0019;
 
-    /* MSSP2 - I2C/SPI Interrupt */
-    // clear the master interrupt flag
-    IFS3bits.SSP2IF = 0;
+    
+    // SSPEN enabled; WCOL no_collision; CKP Clock Stretch; SSPM FOSC/(2 * (BRG_Value_I2C + 1)); SSPOV no_overflow; 
+    SSP2CON1 = 0x0028;
+    
     // enable the master interrupt
     IEC3bits.SSP2IE = 1;
+    
+    // clear the master interrupt flag
+    IFS3bits.SSP2IF = 0;
+    IFS3bits.BCL2IF = 0;
+    
     
 }
 
@@ -235,13 +251,18 @@ uint8_t MSSP2_I2C_ErrorCountGet(void)
 
 void __attribute__ ( ( interrupt, no_auto_psv ) ) _MSSP2Interrupt ( void )
 {
-  
+      
     static uint8_t  *pi2c_buf_ptr;
     static uint16_t i2c_address = 0;
     static uint8_t  i2c_bytes_left = 0;
     static uint8_t  i2c_10bit_address_restart = 0;
-
+    
     IFS3bits.SSP2IF = 0;
+    
+    if(i2c_reset)
+    {
+        i2c_bytes_left = 0;
+    }
 
     // Check first if there was a collision.
     // If we have a Write Collision, reset and go to idle state */
@@ -257,7 +278,7 @@ void __attribute__ ( ( interrupt, no_auto_psv ) ) _MSSP2Interrupt ( void )
 
         return;
     }
-
+    
     /* Handle the correct i2c state */
     switch(mssp2_i2c_state)
     {

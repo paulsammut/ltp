@@ -53,6 +53,12 @@
 */
 void INTERRUPT_Initialize (void)
 {
+    //    BCLI: MSSP2BC - MSSP2 Bus Collision
+    //    Priority: 1
+        IPC12bits.BCL2IP = 1;
+    //    SSPI: MSSP2 - I2C/SPI Interrupt
+    //    Priority: 1
+        IPC12bits.SSP2IP = 1;
     //    UERI: U1E - UART1 Error
     //    Priority: 1
         IPC16bits.U1ERIP = 1;

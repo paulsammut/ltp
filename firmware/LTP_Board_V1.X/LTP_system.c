@@ -167,8 +167,7 @@ static void LTP_setMode(LTP_MODE _mode) {
 void LTP_recover(void)
 {
      DP1 = 1;
-     SSP2CON1bits.SSPEN = 0; 
-      //__delay_ms(10);
+     SSP2CON1bits.SSPEN = 0;  // disable the i2c peripheral
      SCL_TRIS = 0; //output
      SDA_TRIS = 1; //input
      
@@ -177,10 +176,8 @@ void LTP_recover(void)
      for(i = 0; i < 9; i++)
      {
          SCL = 0;
-         DP1=0;
          __delay_us(10);
          SCL = 1;
-         DP1=1;
          __delay_us(10);
      }
      
@@ -199,11 +196,12 @@ void LTP_recover(void)
      SDA = 1;
      __delay_us(5);
      
-     //Renable the I2C Stack
+     
+     // Set the pins to input which is required to re-enable the i2c peripheral
      SCL_TRIS = 1;
      SDA_TRIS = 1;
     
-    
+     
      MSSP2_I2C_Initialize();
      
      DP1 = 0;
