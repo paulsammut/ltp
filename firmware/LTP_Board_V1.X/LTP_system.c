@@ -18,6 +18,7 @@
 //#define _DEBUG
 #include "dbg.h"
 #include "mcc_generated_files/mssp2_i2c.h"
+#include "LIDAR_PWM.h"
 
 
 #include <stdio.h>
@@ -66,18 +67,21 @@ void LTP_system_init(void) {
     DP2 = 0;
 
     encoder_init();
-    LIDAR_init();
+    //LIDAR_init();
     motor_init();
     PID_init();
+    LIDAR_PWM_Initialize();
 
 }
 
 void LTP_sampleAndSend(void) {
     encoder_updateAngle();
+    /*
     if (!LIDAR_updateDistance()) {
         LTP_recover();
     } else
         sendLTPSample(curSamplePtr);
+     */
     dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
 
 

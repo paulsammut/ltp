@@ -17,17 +17,10 @@ void LIDAR_PWM_Initialize(void) {
     IFS1bits.CCT4IF = 0;
     // Enabling SCCP4 interrupt.
     IEC1bits.CCT4IE = 1;
-
-}
-
-void SCCP4_CAPTURE_Start(void) {
-    /* Start the Timer */
+    
+        /* Start the Timer */
     CCP4CON1Lbits.CCPON = true;
-}
 
-void SCCP4_CAPTURE_Stop(void) {
-    /* Stop the Timer */
-    CCP4CON1Lbits.CCPON = false;
 }
 
 //Compare event interrupt
@@ -58,17 +51,15 @@ uint32_t SCCP4_CAPTURE_Data32Read(void) {
     return (captureVal);
 }
 
-bool SCCP4_CAPTURE_HasBufferOverflowed(void) {
-    return ( CCP4STATLbits.ICOV);
-}
 
-bool SCCP4_CAPTURE_IsBufferEmpty(void) {
-    return ( !CCP4STATLbits.ICBNE);
-}
+/*
+ *  Buffer overflow flag
+ * CCP4STATLbits.ICOV
+ * 
+ * Buffer empty flag
+ * CCP4STATLbits.ICBNE
+ */
 
-void SCCP4_CAPTURE_OverflowFlagReset(void) {
-    CCP4STATLbits.ICOV = 0;
-}
 /**
  End of File
  */
