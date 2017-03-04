@@ -41,7 +41,7 @@ int main(void) {
 
     LTP_system_init();
 
-    DEBUG_RED = 1;
+    DEBUG_RED = 0;
     DEBUG_GREEN = 1;
 
 
@@ -53,6 +53,6 @@ int main(void) {
         LTP_sampleAndSend();
         LTP_poll();
     }
-
+    
     return -1;
 }

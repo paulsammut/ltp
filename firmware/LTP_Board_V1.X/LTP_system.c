@@ -30,6 +30,8 @@
  */
 static void LTP_setMode(LTP_MODE _mode);
 
+int num_i2c_errors = 0;
+
 
 // we have a 16 bit timer with a 1:256 prescaler on a 32MHz clock cycle
 // which means a 16 us timer count. This gives us our PID loop time 
@@ -72,14 +74,13 @@ void LTP_system_init(void) {
 
 void LTP_sampleAndSend(void) {
     encoder_updateAngle();
-    if(!LIDAR_updateDistance())
-    {
-       LTP_recover();        
-    }
-   
+    if (!LIDAR_updateDistance()) {
+        LTP_recover();
+    } else
+        sendLTPSample(curSamplePtr);
     dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
 
-    sendLTPSample(curSamplePtr);
+
 
 }
 
@@ -164,45 +165,33 @@ static void LTP_setMode(LTP_MODE _mode) {
     LTP_mode = _mode;
 }
 
-void LTP_recover(void)
-{
-     DP1 = 1;
-     SSP2CON1bits.SSPEN = 0;  // disable the i2c peripheral
-     SCL_TRIS = 0; //output
-     SDA_TRIS = 1; //input
-     
-     //SDA input and let float
-     int i;
-     for(i = 0; i < 9; i++)
-     {
-         SCL = 0;
-         __delay_us(10);
-         SCL = 1;
-         __delay_us(10);
-     }
-     
-     //START CONDITION
-     SDA_TRIS = 0; //output
-     
-     __delay_us(5);
-     SDA = 0;
-     __delay_us(5);
-     SCL = 0;
-     __delay_us(5);
-     
-     //STOP CONDITION
-     SCL = 1;
-     __delay_us(5);
-     SDA = 1;
-     __delay_us(5);
-     
-     
-     // Set the pins to input which is required to re-enable the i2c peripheral
-     SCL_TRIS = 1;
-     SDA_TRIS = 1;
-    
-     
-     MSSP2_I2C_Initialize();
-     
-     DP1 = 0;
+void LTP_recover(void) {
+    DEBUG_RED = 1;
+    num_i2c_errors ++;
+    DP1 = 1; // this is my debug test point out so i can trigger my scope
+    SSP2CON1bits.SSPEN = 0; // disable the i2c peripheral
+    SCL_TRIS = 0; //output
+    SDA_TRIS = 1; //input
+
+    //SDA input and let float
+    // Toggle the SCL line to get any data out of the slave
+    int i;
+    for (i = 0; i < 9; i++) {
+        SCL = 0;        __delay_us(10);        SCL = 1;        __delay_us(10);
+    }
+
+    //START CONDITION
+    SDA_TRIS = 0; //output
+    __delay_us(5);    SDA = 0;    __delay_us(5);    SCL = 0;    __delay_us(5);
+
+    //STOP CONDITION
+    SCL = 1;    __delay_us(5);    SDA = 1;    __delay_us(5);
+
+    // Set the pins to input which is required to re-enable the i2c peripheral
+    SCL_TRIS = 1;
+    SDA_TRIS = 1;
+
+    MSSP2_I2C_Initialize();
+    DP1 = 0;
+    DEBUG_RED = 0;
 }
