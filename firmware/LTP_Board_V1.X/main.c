@@ -30,12 +30,11 @@
 
 #include <libpic30.h>
 
-
 int main(void) {
-    
+
     // initialize the device with MCC configuration
     SYSTEM_Initialize();
-          
+
     dbg_printf("\r\n");
     dbg_printf("LTP_BOARD_BOOTING..\r\n");
 
@@ -45,14 +44,16 @@ int main(void) {
     DEBUG_GREEN = 1;
 
 
-    LTP_cmdSweep(1500,500,.2);
-    
-    
-    while (1) {    
+    LTP_cmdSweep(1500, 500, .2);
+
+
+    while (1) {
         LTP_checkMessages();
+        DP1 = 0;
         LTP_sampleAndSend();
+        DP1 = 1;
         LTP_poll();
     }
-    
+
     return -1;
 }

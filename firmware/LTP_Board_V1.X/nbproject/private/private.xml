@@ -10,7 +10,7 @@
             <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/encoder.c</file>
             <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/lidar.c</file>
             <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/LIDAR_PWM.c</file>
-            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/mcc_generated_files/mssp1_spi.c</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/LIDAR_PWM.h</file>
         </group>
     </open-files>
 </project-private>

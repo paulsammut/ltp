@@ -44,13 +44,12 @@ int main(int argc, char *argv[])
                 std::cout.flush();
 
                 columns++;
-                ltp1.PrintHit(&hitpos);
              } 
         }
     }};
     
     std::thread input_thread{ []() {
-        while(0)
+        while(1)
         {
            PrintBanner();
            InputTest();

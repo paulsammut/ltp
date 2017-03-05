@@ -106,7 +106,7 @@ static UART_OBJECT uart1_obj ;
 */
 
 #define UART1_CONFIG_TX_BYTEQ_LENGTH 8
-#define UART1_CONFIG_RX_BYTEQ_LENGTH 16
+#define UART1_CONFIG_RX_BYTEQ_LENGTH 22
 
 
 /** UART Driver Queue

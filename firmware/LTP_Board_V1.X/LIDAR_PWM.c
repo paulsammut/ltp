@@ -35,17 +35,19 @@ void LIDAR_PWM_Initialize(void) {
     /* Start the Timer */
     CCP4CON1Lbits.CCPON = true;
 
-
-
-
 }
 
 //Compare event interrupt
-
+/*
+ * The goal is to measure the high pulse of the signal. 
+ * This function gets fired on every edge, both rising and falling. 
+ * Every time it gets fired, a timer value is written to a buffer.
+ * This is a 32 bit timer that overflows every ~4 minutes
+ * 
+ */
 void __attribute__((interrupt, no_auto_psv)) _CCP4Interrupt(void) {
-
     // Read the buffer value
-    uint32_t captureVal = 0xFFFFFFFF;
+    uint32_t captureVal = 0xFFFFFFFF;  //don't really have to set it this number. 
     captureVal = CCP4BUFL;
     captureVal |= ((uint32_t) CCP4BUFH << 16);
     DEBUG_GREEN = !DEBUG_GREEN;
@@ -55,11 +57,15 @@ void __attribute__((interrupt, no_auto_psv)) _CCP4Interrupt(void) {
     if (LIDAR_PWM_PIN) {
         capture_valid = true;
         capture_start = captureVal;
-    }// we are going from high to low, so end of measurment
+    }// we are going from high to low, so end of measurement
     else if (capture_valid && (captureVal > capture_start)) {
         pwm_measurement = captureVal - capture_start;
         pwm_measurement_ready = true;
-    } else if (capture_valid && (captureVal < capture_start)) {
+        capture_valid = false;
+    }
+    
+    // This is in case we overflow. We just do a simple calculate
+   else if (capture_valid && (captureVal < capture_start)) {
         pwm_measurement = (0xFFFFFFFF - capture_start) + captureVal;
         pwm_measurement_ready = true;
     } else
@@ -85,9 +91,7 @@ int16_t LIDAR_PWM_Poll(void)
     if(pwm_measurement_ready)
     {
         pwm_measurement_ready = false;
-        char ser_array[500];
-        int length =  sprintf(ser_array, "measurement is: %d\r\n", pwm_measurement);
-        UART1_WriteBuffer( ser_array, length );
+        pwm_measurement = pwm_measurement / 161;
         
         return pwm_measurement;
     }

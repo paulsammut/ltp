@@ -67,29 +67,29 @@ void LTP_system_init(void) {
     DP2 = 0;
 
     encoder_init();
-    //LIDAR_init();
+    LIDAR_init();
     motor_init();
     PID_init();
-    LIDAR_PWM_Initialize();
+    //LIDAR_PWM_Initialize();
 
 }
 
 void LTP_sampleAndSend(void) {
     
-    /*
+    
     if (!LIDAR_updateDistance()) {
         LTP_recover();
     } else
         sendLTPSample(curSamplePtr);
-     */
+    
     dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
     
     // PWM system
-    curSamplePtr->distance_ = LIDAR_PWM_Poll();
-    encoder_updateAngle();
-    //sendLTPSample(curSamplePtr);
+    // curSamplePtr->distance_ = LIDAR_PWM_Poll();
     
     
+    encoder_updateAngle();   
+    sendLTPSample(curSamplePtr);    
 }
 
 void LTP_poll(void) {
@@ -176,7 +176,7 @@ static void LTP_setMode(LTP_MODE _mode) {
 void LTP_recover(void) {
     DEBUG_RED = 1;
     num_i2c_errors ++;
-    DP1 = 1; // this is my debug test point out so i can trigger my scope
+    DP2 = 1; // this is my debug test point out so i can trigger my scope
     SSP2CON1bits.SSPEN = 0; // disable the i2c peripheral
     SCL_TRIS = 0; //output
     SDA_TRIS = 1; //input
@@ -200,6 +200,6 @@ void LTP_recover(void) {
     SDA_TRIS = 1;
 
     MSSP2_I2C_Initialize();
-    DP1 = 0;
+    DP2 = 0;
     DEBUG_RED = 0;
 }

@@ -80,6 +80,10 @@ int LtpClass::ConvToXyz(const struct LtpSample *ltp_sample, LtpHitXyz *ltp_hit_x
     // convert distance to meters from centimeteres
     double distance_rho = ((double)ltp_sample->distance_) / 100;
 
+    // std::cout << "Distance: " << ltp_sample->distance_
+    //     << " Angle: " << ltp_sample->angle_
+    //     << std::endl;
+
     // Calculate cartesian coordinates
     ltp_hit_xyz->hitpos_x = distance_rho * sin(head_angel_phi_) * cos(head_angle_theta);
     ltp_hit_xyz->hitpos_y = distance_rho * sin(head_angel_phi_) * sin(head_angle_theta);
