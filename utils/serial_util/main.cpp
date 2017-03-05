@@ -44,18 +44,13 @@ int main(int argc, char *argv[])
                 std::cout.flush();
 
                 columns++;
-
-
-               // std::cout<< "We have an angle of: " << sample_temp.angle_
-               //         << " and a distance of " <<  sample_temp.distance_
-               //         << std::endl;
-
+                ltp1.PrintHit(&hitpos);
              } 
         }
     }};
     
     std::thread input_thread{ []() {
-        while(1)
+        while(0)
         {
            PrintBanner();
            InputTest();

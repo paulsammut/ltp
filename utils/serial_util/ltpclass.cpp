@@ -63,7 +63,7 @@ int16_t LtpClass::PollRead(LtpHitXyz *ltp_hit_xyz)
         if(DecodePacket(packet_buffer_, packet_length,&ltp_sample))
         {
             // Convert the ltp_sample to a LtpHitXyz
-            ConvToXyz(&ltp_sample, ltp_hit_xyz);  
+            ConvToXyz(&ltp_sample, ltp_hit_xyz);
             return 1;
         }
     }
@@ -75,7 +75,7 @@ int LtpClass::ConvToXyz(const struct LtpSample *ltp_sample, LtpHitXyz *ltp_hit_x
 {
     // Reverse the angle to work with the LTP_Body reference frame
     double reversed = 3999 -ltp_sample->angle_;
-    // convert to radians. 
+    // convert to radians.
     double head_angle_theta = reversed / 3999 * PI * 2;
     // convert distance to meters from centimeteres
     double distance_rho = ((double)ltp_sample->distance_) / 100;
@@ -85,14 +85,7 @@ int LtpClass::ConvToXyz(const struct LtpSample *ltp_sample, LtpHitXyz *ltp_hit_x
     ltp_hit_xyz->hitpos_y = distance_rho * sin(head_angel_phi_) * sin(head_angle_theta);
     ltp_hit_xyz->hitpos_z = distance_rho * cos(head_angel_phi_);
 
-    /*
-     * std::cout << "Distance: " << distance_rho 
-     *   << " Reversed angle: " << head_angle_theta
-     *   << " X: " << ltp_hit_xyz->hitpos_x 
-     *   << " Y: " << ltp_hit_xyz->hitpos_y 
-     *   << " Z: " << ltp_hit_xyz->hitpos_z 
-     *   << "\r";
-     */
+
 
     return 1;
 }
@@ -105,36 +98,39 @@ int LtpClass::SendCommand(struct LtpCommand *input_ltpcommand)
     static uint8_t temp_encoded[255];
     static int temp_encoded_length;
     static int write_return = 0;
-    
+
     // get the size of our byte array
-    static int temp_cmd_length = sizeof(*input_ltpcommand); 
-    
+    static int temp_cmd_length = sizeof(*input_ltpcommand);
+
     // Make sure our string is not too long
     if(temp_cmd_length> 251)
         return 0;
-    
+
     // make our byte array hold the address of the command struct
     temp_ltpcommand = (uint8_t*)input_ltpcommand;
 
     // encode the command string
     temp_encoded_length = cobs_encode(temp_ltpcommand, temp_cmd_length, temp_encoded);
-    
+
     if(temp_encoded_length && temp_encoded_length < 255)
     {
-       // This means we successfully encoded this string and it is not too long
-       // Terminate our string with a zero and increment our length
-       temp_encoded[temp_encoded_length++] = 0;
-       write_return = ltp_serial_port_.SerialWrite(temp_encoded, temp_encoded_length);  
+        // This means we successfully encoded this string and it is not too long
+        // Terminate our string with a zero and increment our length
+        temp_encoded[temp_encoded_length++] = 0;
+        write_return = ltp_serial_port_.SerialWrite(temp_encoded, temp_encoded_length);
     }
 
-        
+
     return write_return;
 }
 
 
-void PrintHit(LtpHitXyz *ltp_hit_xyz)
+void LtpClass::PrintHit(LtpHitXyz *ltp_hit_xyz)
 {
-    std::cout << "Print something" << std::endl;
+    std::cout <<  " X: " << ltp_hit_xyz->hitpos_x
+            << " Y: " << ltp_hit_xyz->hitpos_y
+            << " Z: " << ltp_hit_xyz->hitpos_z
+            << "\r";
 }
 
 int16_t LtpClass::Shutdown(void)

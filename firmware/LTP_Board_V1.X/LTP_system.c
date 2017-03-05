@@ -75,7 +75,7 @@ void LTP_system_init(void) {
 }
 
 void LTP_sampleAndSend(void) {
-    encoder_updateAngle();
+    
     /*
     if (!LIDAR_updateDistance()) {
         LTP_recover();
@@ -83,9 +83,13 @@ void LTP_sampleAndSend(void) {
         sendLTPSample(curSamplePtr);
      */
     dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
-
-
-
+    
+    // PWM system
+    curSamplePtr->distance_ = LIDAR_PWM_Poll();
+    encoder_updateAngle();
+    //sendLTPSample(curSamplePtr);
+    
+    
 }
 
 void LTP_poll(void) {

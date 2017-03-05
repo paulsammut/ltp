@@ -22,10 +22,19 @@
 extern "C" {
 #endif
     
+#define LIDAR_PWM_PIN PORTCbits.RC9
+#define LIDAR_PWM_TRIS TRISCbits.TRISC9
+    
     /**
      * Sets up the SCCP4 peripheral in input capture mode and clears the interrupts. 
      */
     void LIDAR_PWM_Initialize(void);
+    
+    /**
+     * 
+     * @return 0 if no sample
+     */
+    int16_t LIDAR_PWM_Poll(void);
 
 
 
