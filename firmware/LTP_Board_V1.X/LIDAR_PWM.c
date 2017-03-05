@@ -6,6 +6,10 @@
 //#define _DEBUG
 #include "dbg.h"
 
+// Here we define the number of useconds per count. This is Fosc/20000
+#define USECS_PER_COUNT 160
+
+
 uint32_t capture_start = 0;
 uint32_t pwm_measurement = 0;
 bool capture_valid = false;
@@ -83,6 +87,8 @@ int16_t LIDAR_PWM_Poll(void)
 {
     uint32_t poll_timeout_threshold = 0x0FFFFFFF;
     uint32_t poll_timeout_counter = 0;
+    
+    // This is if we time out, so we can try to recover
     while(!pwm_measurement_ready && (poll_timeout_threshold > poll_timeout_counter))
     {
         Nop();
@@ -91,7 +97,7 @@ int16_t LIDAR_PWM_Poll(void)
     if(pwm_measurement_ready)
     {
         pwm_measurement_ready = false;
-        pwm_measurement = pwm_measurement / 161;
+        pwm_measurement = pwm_measurement / USECS_PER_COUNT;
         
         return pwm_measurement;
     }
@@ -102,15 +108,3 @@ int16_t LIDAR_PWM_Poll(void)
         return 0;
     }  
 }
-
-/*
- *  Buffer overflow flag
- * CCP4STATLbits.ICOV
- * 
- * Buffer empty flag
- * CCP4STATLbits.ICBNE
- */
-
-/**
- End of File
- */

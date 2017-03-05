@@ -23,6 +23,8 @@
 
 #include <stdio.h>
 
+#define LIDAR_MODE_I2C
+
 /*----- Static Functions -------------------------------------*/
 
 /**
@@ -67,29 +69,35 @@ void LTP_system_init(void) {
     DP2 = 0;
 
     encoder_init();
-    LIDAR_init();
+
     motor_init();
     PID_init();
-    //LIDAR_PWM_Initialize();
+
+#ifdef LIDAR_MODE_I2C 
+    LIDAR_init();
+#endif
+
+#ifdef LIDAR_MODE_PWM
+    LIDAR_PWM_Initialize();
+#endif
 
 }
 
 void LTP_sampleAndSend(void) {
-    
-    
+
+#ifdef LIDAR_MODE_I2C 
     if (!LIDAR_updateDistance()) {
         LTP_recover();
     } else
         sendLTPSample(curSamplePtr);
-    
-    dbg_printf("Angle is: % 4u, and distance is: % 4u\r", *LTP_anglePtr, *LTP_distancePtr);
-    
-    // PWM system
-    // curSamplePtr->distance_ = LIDAR_PWM_Poll();
-    
-    
-    encoder_updateAngle();   
-    sendLTPSample(curSamplePtr);    
+#endif
+
+#ifdef LIDAR_MODE_PWM
+    curSamplePtr->distance_ = LIDAR_PWM_Poll();
+#endif
+
+    encoder_updateAngle();
+    sendLTPSample(curSamplePtr);
 }
 
 void LTP_poll(void) {
@@ -175,7 +183,7 @@ static void LTP_setMode(LTP_MODE _mode) {
 
 void LTP_recover(void) {
     DEBUG_RED = 1;
-    num_i2c_errors ++;
+    num_i2c_errors++;
     DP2 = 1; // this is my debug test point out so i can trigger my scope
     SSP2CON1bits.SSPEN = 0; // disable the i2c peripheral
     SCL_TRIS = 0; //output
@@ -185,15 +193,25 @@ void LTP_recover(void) {
     // Toggle the SCL line to get any data out of the slave
     int i;
     for (i = 0; i < 9; i++) {
-        SCL = 0;        __delay_us(10);        SCL = 1;        __delay_us(10);
+        SCL = 0;
+        __delay_us(10);
+        SCL = 1;
+        __delay_us(10);
     }
 
     //START CONDITION
     SDA_TRIS = 0; //output
-    __delay_us(5);    SDA = 0;    __delay_us(5);    SCL = 0;    __delay_us(5);
+    __delay_us(5);
+    SDA = 0;
+    __delay_us(5);
+    SCL = 0;
+    __delay_us(5);
 
     //STOP CONDITION
-    SCL = 1;    __delay_us(5);    SDA = 1;    __delay_us(5);
+    SCL = 1;
+    __delay_us(5);
+    SDA = 1;
+    __delay_us(5);
 
     // Set the pins to input which is required to re-enable the i2c peripheral
     SCL_TRIS = 1;
