@@ -54,13 +54,13 @@
 #pragma config GCP = OFF    // General Segment Code Protect->No Protection
 
 // FOSCSEL
-#pragma config FNOSC = PRI    // Oscillator Select->Primary Oscillator (XT, HS, EC)
+#pragma config FNOSC = FRCPLL    // Oscillator Select->Fast RC Oscillator with Postscaler and PLL Module (FRCDIV+PLL)
 #pragma config SOSCSRC = ANA    // SOSC Source Type->Analog Mode for use with crystal
 #pragma config LPRCSEL = HP    // LPRC Oscillator Power and Accuracy->High Power, High Accuracy Mode
 #pragma config IESO = ON    // Internal External Switch Over bit->Internal External Switchover mode enabled (Two-speed Start-up enabled)
 
 // FOSC
-#pragma config POSCMOD = HS    // Primary Oscillator Configuration bits->HS oscillator mode selected
+#pragma config POSCMOD = NONE    // Primary Oscillator Configuration bits->Primary oscillator disabled
 #pragma config OSCIOFNC = IO    // CLKO Enable Configuration bit->Port I/O enabled (CLKO disabled)
 #pragma config POSCFREQ = HS    // Primary Oscillator Frequency Range Configuration bits->Primary oscillator/external clock input frequency greater than 8MHz
 #pragma config SOSCSEL = SOSCHP    // SOSC Power Selection Configuration bits->Secondary Oscillator configured for high-power operation
@@ -99,8 +99,8 @@ void SYSTEM_Initialize(void)
 
 void OSCILLATOR_Initialize(void)
 {
-    // CF no clock failure; NOSC PRI; SOSCEN disabled; SOSCDRV disabled; CLKLOCK unlocked; OSWEN Switch is Complete; 
-    __builtin_write_OSCCONL((uint8_t) (0x0200 & 0x00FF));
+    // CF no clock failure; NOSC FRCPLL; SOSCEN disabled; SOSCDRV disabled; CLKLOCK unlocked; OSWEN Switch is Complete; 
+    __builtin_write_OSCCONL((uint8_t) (0x0100 & 0x00FF));
     // RCDIV FRC/1; DOZE 1:1; DOZEN disabled; ROI disabled; 
     CLKDIV = 0x0000;
     // TUN Center frequency; 
