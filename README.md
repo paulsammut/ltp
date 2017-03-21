@@ -11,7 +11,6 @@ The LTP system has the following features:
 * The head can be set a desired fixed tilt
 * Closed loop PID control of head position
 
-
 ## General overview
 
 ![Diagram of the LTP][overview]
