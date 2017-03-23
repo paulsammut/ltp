@@ -26,6 +26,8 @@ typedef struct
     uint8_t SIG_COUNT_VAL; // maximum number of acquisitions during measurement
     uint8_t ACQ_CONFIG_REG; // acquisition mode control
     uint8_t THRESHOLD_BYPASS; // Peak detection threshold bypass   
+    uint8_t OUTER_LOOP_COUNT; // burst measurement count control
+    uint8_t MEASURE_DELAY; // Delay between automatic measurements
 } LIDAR_CONFIG;
 
 /**

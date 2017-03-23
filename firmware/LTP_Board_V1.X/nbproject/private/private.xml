@@ -4,13 +4,22 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/LTP_system.c</file>
-            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/main.c</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/mcc_generated_files/mccp1_compare.h</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/lidar.h</file>
             <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/mcc_generated_files/mssp2_i2c.c</file>
-            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/sweep.c</file>
-            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/encoder.c</file>
             <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/lidar.c</file>
             <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/LIDAR_PWM.c</file>
             <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/LIDAR_PWM.h</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/PID.c</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/motor.c</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/serialComms.c</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/main.c</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/sweep.c</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/tests.c</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/encoder.c</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/mcc_generated_files/traps.c</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/mcc_generated_files/mccp1_compare.c</file>
+            <file>file:/home/paul/work/LTP/firmware/LTP_Board_V1.X/LTP_system.h</file>
         </group>
     </open-files>
 </project-private>

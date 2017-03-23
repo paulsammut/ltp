@@ -16,7 +16,7 @@ int16_t error;
 int16_t error_prior = 0;
 int16_t integral = 0;
 int16_t derivative = 0;
-double KP = .15;
+double KP = .05;  //0.15 if really aggressive
 double KI = .0002;
 double KD = 2;
 int16_t output = 0;

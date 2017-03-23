@@ -64,9 +64,25 @@ void LTP_system_init(void) {
     SS_ENCODER = 1; //idle high
     LIDAR1_PE = 1; // turn on lidar
     DEBUG_GREEN = 0;
-    DEBUG_RED = 0;
+    DEBUG_RED = 1;
+    DP1 = 1;
+    DP2 = 0;
+    int i;
+    for(i = 0; i < 20; i++)
+    {
+        DEBUG_GREEN = !DEBUG_GREEN;
+        DEBUG_RED = !DEBUG_RED;
+        DP1 = !DP1;
+        DP2 = !DP2;
+        __delay_ms(50);
+    }
+    
     DP1 = 0;
     DP2 = 0;
+    
+    DEBUG_GREEN = 0;
+    DEBUG_RED = 0;
+        
 
     encoder_init();
 

@@ -33,7 +33,7 @@ void ConvertToXYZ(double *x_pos, double *y_pos, struct LtpSample *ltp_sample)
 
 int main(int argc, char *argv[])
 {
-    ltp1.Init("/dev/ttyUSB0", (3.1415192/2));
+    ltp1.Init("/dev/ttyUSB1", (3.1415192/2));
     LtpHitXyz hitpos;
     int arrayLength = 30;
     // this is kinda like a window, but it's more than that, its how I wanna render

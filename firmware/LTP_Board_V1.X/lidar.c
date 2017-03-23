@@ -12,6 +12,9 @@
 
 #include <libpic30.h>
 
+#define LL3_FAST 0x00
+#define LL3_DEFAULT 0x08
+
 uint8_t lidar_numCal = 0;
 
 void LIDAR_init(void) {
@@ -27,7 +30,7 @@ void LIDAR_init(void) {
 
     LIDAR_CONFIG lidar_config;
     lidar_config.SIG_COUNT_VAL = 0x80;
-    lidar_config.ACQ_CONFIG_REG = 0x08;
+    lidar_config.ACQ_CONFIG_REG = LL3_FAST;
     lidar_config.THRESHOLD_BYPASS = 0x00;
 
     LIDAR_configure(&lidar_config);
