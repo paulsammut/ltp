@@ -1,13 +1,15 @@
 # The Lidar Test Platform
 *Rev1-2/25/2017*
 
-The Lidar Test Platform, or LTP is a low cost LIDAR system. Its main goal is to give Sammut Tech LLC the ability to have multiple LIDAR units at low cost, which are necassary for rapid and cost effective development of TD1.
+The Lidar Test Platform, or LTP is a low cost LIDAR system. Its main goal is to
+give Sammut Tech LLC the ability to have multiple LIDAR units at low cost, which
+are necessary for rapid and cost effective development of Primo.
 
 The LTP system has the following features:
 
 * Cost under 500 dollars
 * Capable of close to 500 Hz sampling rate (per point)
-* Up to 1000 RPM head rotation whic gives a full 360 degree scan at 15Hz
+* Up to 1000 RPM head rotation which gives a full 360 degree scan at 15Hz
 * The head can be set a desired fixed tilt
 * Closed loop PID control of head position
 
@@ -23,18 +25,35 @@ There is a [custom build circuit board](https://workspace.circuitmaker.com/Proje
 The LTP sends LtpSamples over serial asynchronously as fast as it can. The LTP can also be commanded to stop, spin, go to a position, or follow a sweep profile at a set frequency. 
 
 ### LTP Lidar Head
-The head contains a [Garmin LIDAR-Lite V3](https://buy.garmin.com/en-US/US/p/557294). It spins on an a hollow 8mm shaft with wires going through a [slip ring](http://www.digikey.com/product-detail/en/adafruit-industries-llc/736/1528-1152-ND/5353612).
+The head contains a [Garmin LIDAR-Lite
+V3](https://buy.garmin.com/en-US/US/p/557294). It spins on a hollow 8mm shaft
+with wires going through a [slip
+ring](http://www.digikey.com/product-detail/en/adafruit-industries-llc/736/1528-1152-ND/5353612).
 
 ### USB Serial Data Connection
-The USB connection is handled through an [FTDI232RL usb - uart controller](http://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT232R.pdf) and the computer sees it as serial port. Data rate is 230800 baud, which takes about 300-500us to transfer an LtpSample packet (see below). Data to and from the LTP is sent as COBS encoded binary data. Thee reason it is sent as binary and not ASCII is to minize packet length. The reason COBS is uses is to have a unique packet delimeter which allows for a robust and quick method of identifying packets in a potentially interruptable UART stream. 
+The USB connection is handled through an [FTDI232RL usb - uart
+controller](http://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT232R.pdf)
+and the computer sees it as serial port. Data rate is 230800 baud, which takes
+about 300-500us to transfer an LtpSample packet (see below). Data to and from
+the LTP is sent as COBS encoded binary data. Thee reason it is sent as binary
+and not ASCII is to mini's packet length. The reason COBS is uses is to have a
+unique packet delimiter which allows for a robust and quick method of
+identifying packets in a potentially interruptible UART stream. 
 
 ![LtpSample packet being sent over UART takes only 300us!][scope_serial_packet]
 
 ### Motor
-The LTP was designed to be able to work with a variety of cheap brushed DC motors. Because the LTP has as a closed loop PID control along with space for the user to place timing belt pulleys of varying gear ratios, motors of varying no-load shaft RPMs can be selected. As a general rule of thumb, a motor's power can be roughly estimated by the size of it's shaft. A motor with a shaft of 3mm - 4mm is recommended, which is in the neighborhood of 50-100 watts. 
+The LTP was designed to be able to work with a variety of cheap brushed DC
+motors. Because the LTP has closed loop PID control along with space for
+the user to place timing belt pulleys of varying gear ratios, motors of varying
+no-load shaft RPMs can be selected. As a general rule of thumb, a motor's power
+can be roughly estimated by the size of it's shaft. A motor with a shaft of 3mm
+- 4mm is recommended, which is in the neighborhood of 50-100 watts. 
 
 ## Reference Frames
-The LTP's job is to give us LIDAR hits, which are a points in space. For points in space to mean anything, they need to be in a reference frame. The LTP uses two reference frames.
+The LTP's job is to give us LIDAR hits, which are a points in space. For points
+in space to mean anything, they need to be in a reference frame. The LTP uses
+two reference frames.
 
 * **Internal reference frame** used in the LtpSample
 * **LTP_Body reference frame** used in the LtpHitXyz
@@ -42,7 +61,8 @@ The LTP's job is to give us LIDAR hits, which are a points in space. For points 
 ### Internal Reference Frame
 ![Internal reference frame of the LTP][internal_reference_1]
 
-This reference frame is used by the firmware for its calculations and also during LTP to Host communication. This reference frame has two components:
+This reference frame is used by the firmware for its calculations and also
+during LTP to Host communication. This reference frame has two components:
 
 * Head angle in 0-3999 encoder counts. Increments clockwise.
 * Distance in 0-4000 centimeters. 
@@ -50,13 +70,17 @@ This reference frame is used by the firmware for its calculations and also durin
 
 ![Head tilt of LTP][internal_reference_2]
 
-The user does not have to worry about this reference frame as it is handled by the lower level code. Conversion from this to LtpHitXyz is done with simple [spherical coordinate to cartesian coordinate transform math](http://mathinsight.org/spherical_coordinates). 
+The user does not have to worry about this reference frame as it is handled by
+the lower level code. Conversion from this to LtpHitXyz is done with simple
+[spherical coordinate to cartesian coordinate transform
+math](http://mathinsight.org/spherical_coordinates). 
 
 ### LTP_Body Reference Frame
 
 ![LTP_Body reference frame][LTP_Body_reference_frame]
 
-The LTP_Body reference frame is compatible with the ROS standard for vehicle coordinates. X is positive forward, Y is positive west, and Z is positive up. 
+The LTP_Body reference frame is compatible with the ROS standard for vehicle
+coordinates. X is positive forward, Y is positive west, and Z is positive up.
 LtpHitXyz data is in this reference frame.
 
 ## Software
@@ -79,15 +103,19 @@ The host is defined as the computer the LTP is connected to. Software written fo
 * Allow commands to be send to the LTP
 
 #### Decoding packets coming from the LTP
-The LTP host software monitors the serial port and looks for an LtpMessage packet. This a packet of COBS encoded binary data that has 0x00 at the end of it. If a packet is received, it is decoded from COBS and converted it to an X, Y, Z LIDAR hit location. This hit location is defined as an LtpHitXyz data structure. 
+The LTP host software monitors the serial port and looks for an LtpMessage
+packet. This a packet of COBS encoded binary data that has 0x00 at the end of
+it. If a packet is received, it is decoded from COBS and converted it to an X,
+Y, Z LIDAR hit location. This hit location is defined as an LtpHitXyz data
+structure. 
 
 ![PollRead() of LTP][ltp::pollread]
 
 #### Sending Commands to the LTP
-Commands to the LTP are done via LtpCommand structers serialized into a byte array and encoded with COBS and then sent over the UART. 
+Commands to the LTP are done via LtpCommand structures serialized into a byte array and encoded with COBS and then sent over the UART. 
 
 ### LTP Firmware
-The LTP Board contains a PIC24FV16KM204 microntroller. Firmare for this chip was written in MplabX using the C30 compiler. The firmware handles the following operation:
+The LTP Board contains a PIC24FV16KM204 microcontroller. Firmware for this chip was written in MplabX using the C30 compiler. The firmware handles the following operation:
 
 * Setup on the various subsystems for proper configurations
 * Monitor the serial port for any commands
@@ -95,21 +123,20 @@ The LTP Board contains a PIC24FV16KM204 microntroller. Firmare for this chip was
     * Spin: A constant signal is given and head spins
     * Position: An angular position is given and the head, using a PID loop, goes to that position and stays there
     * Sweep: A start angle, end angle, and frequency is given and the head follows that generated sweep signal
-* Sample the lidar and send out raw LTP Samples over the UART as fast as it can
+* Sample the Lidar and send out raw LTP Samples over the UART as fast as it can
 
 This microcontroller communicates to the following systems: 
 
-* DRV8801 motorcontroller via PWM singal and direction digital line
+* DRV8801 motor-controller via PWM signal and direction digital line
 * LFLS7366R encoder processor chip via SPI
 * LIDAR-Lite V3 via I2C
 * FT242RL via UART
 
 
-The firmware generates raw LTP sample packets, encodes them in COBS and sends them over UART as fast as it can. 
-The firmware also monitors the UART for incoming control packets encoded in COBS. 
-The firmware uses the LtpMessage.h file for definition of the structure used for communication over the wire.
-
-
+The firmware generates raw LTP sample packets, encodes them in COBS and sends
+them over UART as fast as it can.  The firmware also monitors the UART for
+incoming control packets encoded in COBS.  The firmware uses the LtpMessage.h
+file for definition of the structure used for communication over the wire.
 
 [overview]: http://i.imgur.com/LRjJuDY.png
 [func-overview]: http://i.imgur.com/LEC2WGl.png
