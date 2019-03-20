@@ -23,19 +23,20 @@ int main(int argc, char *argv[])
     PrintBanner();
 
     ltp1.Init("/dev/ttyUSB0", 0);
+
+    // Create a test command enact it
     struct LtpCommand test_command;
     test_command.cmdtype_ = MSG_SPIN;
-    test_command.param1_= 70;
-    test_command.param2_= 0x24;
-    test_command.param3_= 0x30;
+    test_command.param1_  = 70;
+    test_command.param2_  = 0x24;
+    test_command.param3_  = 0x30;
 
     std::thread poller{ []() {
         LtpHitXyz hitpos;
         int columns = 0;
         char symbols[] = { '\\', '|', '/', '-'};
-             
 
-        while (1) {
+        while (0) {
             if(ltp1.PollRead(&hitpos)) {
                 if (columns) {
                     std::cout << "\x08";
@@ -56,10 +57,8 @@ int main(int argc, char *argv[])
         }
     }};
 
-
     poller.join();
     input_thread.join();
-
 
     std::cout << "\r\n We shutdown with this code: " << ltp1.Shutdown();
     return 1;

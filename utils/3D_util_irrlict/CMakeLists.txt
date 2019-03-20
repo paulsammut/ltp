@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.6)
-PROJECT(example)
+PROJECT(3d_ltp)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -std=c++14")
@@ -27,7 +27,7 @@ ADD_EXECUTABLE(example
     ${HDRS}
     )
 
-TARGET_LINK_LIBRARIES(example
+TARGET_LINK_LIBRARIES(3d_ltp
     "/usr/local/lib/libIrrlicht.a"
     ${X11_LIBRARIES}
     ${OPENGL_LIBRARIES}
